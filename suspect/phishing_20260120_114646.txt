@@ -1,0 +1,49 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from SCYPR80MB7679.lamprd80.prod.outlook.com (2603:10d6:300:90::5) by SCYPR80MB7233.lamprd80.prod.outlook.com with HTTPS; Tue, 20 Jan 2026 08:01:14 +0000
+Received: from DS7PR05CA0045.namprd05.prod.outlook.com (2603:10b6:8:2f::7) by SCYPR80MB7679.lamprd80.prod.outlook.com (2603:10d6:300:90::5) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9520.4; Tue, 20 Jan 2026 08:01:09 +0000
+Received: from DS1PEPF00017094.namprd03.prod.outlook.com (2603:10b6:8:2f:cafe::9d) by DS7PR05CA0045.outlook.office365.com (2603:10b6:8:2f::7) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9542.8 via Frontend Transport; Tue, 20 Jan 2026 08:01:03 +0000
+Received: from e247-212.smtp-out.eu-west-3.amazonses.com (23.251.247.212) by DS1PEPF00017094.mail.protection.outlook.com (10.167.17.137) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9542.4 via Frontend Transport; Tue, 20 Jan 2026 08:01:07 +0000
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: "trainings@zepo.app" <trainings@zepo.app>
+To: "Sosa, Gabriel" <gabriel.sosa@tmoviles.com.ar>
+Subject: Movistar - ¡Te recordamos que tienes pendiente tu formación sobre ciberseguridad!
+Thread-Topic: Movistar - ¡Te recordamos que tienes pendiente tu formación sobre ciberseguridad!
+Thread-Index: AQHcieLy84VaraSzUEC1AI/rEvIG8g==
+Date: Tue, 20 Jan 2026 08:01:06 +0000
+Message-ID: <0113019bda6bf570-bbbadf0f-8fc4-47a9-a34d-e6ac2f99b740-000000@eu-west-3.amazonses.com>
+Content-Language: es-ES
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-AuthSource: DS1PEPF00017094.namprd03.prod.outlook.com
+X-MS-Has-Attach: 
+X-MS-Exchange-Organization-Network-Message-Id: 371b5ed4-10a3-4103-0a00-08de57fa116e
+X-MS-Exchange-Organization-SCL: -1
+X-MS-TNEF-Correlator: <0113019bda6bf570-bbbadf0f-8fc4-47a9-a34d-e6ac2f99b740-000000@eu-west-3.amazonses.com>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-ms-publictraffictype: Email
+received-spf: Pass (protection.outlook.com: domain of eu-west-3.amazonses.com designates 23.251.247.212 as permitted sender) receiver=protection.outlook.com; client-ip=23.251.247.212; helo=e247-212.smtp-out.eu-west-3.amazonses.com; pr=C
+dkim-signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;	s=4f4zjvqxldhskhj4hokzolcvnsn5qejk; d=amazonses.com; t=1768896067;	h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Feedback-ID;	bh=ySCZubbHXJ+1l+B/a1Eju6UwHFap6DL2g6fAV9QMqc4=;	b=hZ87n6Bh4l+F04qEZFTWF+xGU07tGD80dnCDQOYLB5TV2TowsUiXikb7+U1q8XlI	aEPhrknIYMBX5Spn7OQm2xJLa9qbkJVun5SubhhdnxEiN8fh/AOPvo2pj4A1XAEJOPC	Qkgn/kEVb1KyYqkKCuRiVv5eliFEW77gvS9o0OAw=
+authentication-results: spf=pass (sender IP is 23.251.247.212) smtp.mailfrom=eu-west-3.amazonses.com; dkim=pass (signature was verified) header.d=zepo.app;dkim=pass (signature was verified) header.d=amazonses.com;dmarc=pass action=none header.from=zepo.app;compauth=pass reason=100
+x-ms-office365-filtering-correlation-id: 371b5ed4-10a3-4103-0a00-08de57fa116e
+x-ms-traffictypediagnostic: DS1PEPF00017094:EE_|SCYPR80MB7679:EE_|SCYPR80MB7233:EE_
+x-microsoft-antispam: BCL:4;ARA:13230040|12012899012|32142699015|2092899012|3072899012|69100299015|54012099003|14062099003|8096899003;
+x-forefront-antispam-report: CIP:23.251.247.212;CTRY:US;LANG:es;SCL:-1;SRV:;IPV:CAL;SFV:SKN;H:e247-212.smtp-out.eu-west-3.amazonses.com;PTR:e247-212.smtp-out.eu-west-3.amazonses.com;CAT:NONE;SFS:(13230040)(12012899012)(32142699015)(2092899012)(3072899012)(69100299015)(54012099003)(14062099003)(8096899003);DIR:INB;
+x-ms-exchange-crosstenant-network-message-id: 371b5ed4-10a3-4103-0a00-08de57fa116e
+x-ms-exchange-crosstenant-originalarrivaltime: 20 Jan 2026 08:01:07.4225 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Internet
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-transport-crosstenantheadersstamped: SCYPR80MB7679
+x-eopattributedmessage: 0
+x-ms-exchange-transport-endtoendlatency: 00:00:07.1150193
+x-ms-exchange-processed-by-bccfoldering: 15.20.9520.006
+x-ms-exchange-crosstenant-authas: Anonymous
+x-ms-exchange-crosstenant-authsource: DS1PEPF00017094.namprd03.prod.outlook.com
+x-eoptenantattributedmessage: 17d02e16-8b83-4168-ba0d-c61ac0d093a6:0
+feedback-id: ::1.eu-west-3.4pnFiz9D2VlmzQGhP0d8fIkxn3pYGY9bzr2dgOZPp0Y=:AmazonSES
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

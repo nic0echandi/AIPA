@@ -1,0 +1,34 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from SCYPR80MB7694.lamprd80.prod.outlook.com (2603:10d6:300:97::14) by CPUPR80MB6444.lamprd80.prod.outlook.com with HTTPS; Tue, 20 Jan 2026 20:30:23 +0000
+Received: from SN7P222CA0011.NAMP222.PROD.OUTLOOK.COM (2603:10b6:806:124::32) by SCYPR80MB7694.lamprd80.prod.outlook.com (2603:10d6:300:97::14) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9542.9; Tue, 20 Jan 2026 20:30:17 +0000
+Received: from SA2PEPF00003F66.namprd04.prod.outlook.com (2603:10b6:806:124:cafe::e9) by SN7P222CA0011.outlook.office365.com (2603:10b6:806:124::32) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9520.12 via Frontend Transport; Tue, 20 Jan 2026 20:30:16 +0000
+Received: from ash1-smtp-1.onbmc.com (132.226.58.160) by SA2PEPF00003F66.mail.protection.outlook.com (10.167.248.41) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9542.4 via Frontend Transport; Tue, 20 Jan 2026 20:30:16 +0000
+Received: from emailengine-0.emailengine.tefremedyone-prod.svc.cluster.local (unknown [10.210.4.140])	by ash1-smtp-1.onbmc.com (Postfix) with ESMTPA id 90D4FC13735;	Tue, 20 Jan 2026 20:30:13 +0000 (GMT)
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: Remedy One <incoming@tefremedyone-mail.onbmc.com>
+To: Pablo Carmelo Bazzano <pablo.bazzano@tmoviles.com.ar>, VERONICA LOPEZ <veronicam.lopez@tmoviles.com.ar>, "GAVIDIA HERNANDEZ, KELLYS SARITZA" <KELLYS.GAVIDIA@tmoviles.com.ar>, "ESCRIBA BAB, SEBASTIAN LUIS" <sebastian.escriba@tmoviles.com.ar>
+Subject: NTM000000003546: Se ha asignado a su grupo la tarea TAS000000605610
+Thread-Topic: NTM000000003546: Se ha asignado a su grupo la tarea TAS000000605610
+Thread-Index: AQHcikua49ZzCBoz/EurmSIjAzi+wQ==
+Date: Tue, 20 Jan 2026 20:30:15 +0000
+Message-ID: <1432742530.1981418.1768941015617@emailengine-0.emailengine.tefremedyone-prod.svc.cluster.local>
+Reply-To: Remedy One <incoming@tefremedyone-mail.onbmc.com>
+Content-Language: es-ES
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-AuthSource: SA2PEPF00003F66.namprd04.prod.outlook.com
+X-MS-Has-Attach: 
+X-MS-Exchange-Organization-Network-Message-Id: f3772f66-081b-42da-4cc1-08de5862b8ec
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator: <1432742530.1981418.1768941015617@emailengine-0.emailengine.tefremedyone-prod.svc.cluster.local>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-ms-publictraffictype: Email
+received-spf: Pass (protection.outlook.com: domain of tefremedyone-mail.onbmc.com designates 132.226.58.160 as permitted sender) receiver=protection.outlook.com; client-ip=132.226.58.160; helo=ash1-smtp-1.onbmc.com; pr=C
+dkim-signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=onbmc.com; s=mail;	t=1768941013; bh=ERTQH27Udt0y9EpmfeSYUSl/DatPaF97l10bR3pU0QA=;	h=Date:From:Reply-To:To:Subject:From;	b=CvuRZ60605Pj8tXx7J+z5PklPwGmNIYeXUvwolKV/IQbgBwBA6kPHkVtTDwAesztG	 eVijbH6crqiehY2BTDApBLsRX2vn9imX5NgYJ94+HoVcaNC0KMn7oRIJseUGs8DpxH	 2thCJnctsbf89m+CFZ0ONdEVDNe3v/np4PJisBHs=
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

@@ -1,0 +1,51 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from CPWPR80MB7880.lamprd80.prod.outlook.com (2603:10d6:103:257::14) by SCZPR80MB8164.lamprd80.prod.outlook.com with HTTPS; Sat, 18 Apr 2026 13:30:59 +0000
+Received: from SCYPR80MB7267.lamprd80.prod.outlook.com (2603:10d6:300:ae::6) by CPWPR80MB7880.lamprd80.prod.outlook.com (2603:10d6:103:257::14) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9818.30; Sat, 18 Apr 2026 13:30:55 +0000
+Received: from SCYPR80MB7267.lamprd80.prod.outlook.com ([fe80::9769:ac20:a5ef:e55d]) by SCYPR80MB7267.lamprd80.prod.outlook.com ([fe80::9769:ac20:a5ef:e55d%3]) with mapi id 15.20.9818.028; Sat, 18 Apr 2026 13:30:55 +0000
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: "PASCUZZI, DIEGO HERNAN" <diego.pascuzzi@tmoviles.com.ar>
+To: "BERTOLOTTI, EVA VERONICA" <eva.bertolotti@tmoviles.com.ar>, backhaul <backhaul@tmoviles.com.ar>, CNTRadio.ar <CNTRadio.ar@tmoviles.com.ar>
+Subject: RV: CI-ADRED/26 1819-0  1820-0 // 2104015 - CN482-25-01 // SWAP: LABEL TP 4G M_AB+7_V6_H / LABEL TP 5G / DESCRIPCION: SWAP MACRO 4G + 2113958 CN482-26-01 RSH
+Thread-Topic: CI-ADRED/26 1819-0  1820-0 // 2104015 - CN482-25-01 // SWAP: LABEL TP 4G M_AB+7_V6_H / LABEL TP 5G / DESCRIPCION: SWAP MACRO 4G + 2113958 CN482-26-01 RSH
+Thread-Index: AQHczqTChCfYs8Us+kCN/w+U77CeGrXk0d8A
+Date: Sat, 18 Apr 2026 13:30:54 +0000
+Message-ID: <SCYPR80MB72670A845FD2DDE765218CB8C8212@SCYPR80MB7267.lamprd80.prod.outlook.com>
+References: <SCYPR80MB8555C062D4515F7CD70BA795CC67A@SCYPR80MB8555.lamprd80.prod.outlook.com> <SCYPR80MB8555B7AD62632D2973699D7ACC65A@SCYPR80MB8555.lamprd80.prod.outlook.com> <SCYPR80MB8555C1FD55F21C685740A29ACC62A@SCYPR80MB8555.lamprd80.prod.outlook.com> <SCYPR80MB8555B383695B17206C4A491ECC60A@SCYPR80MB8555.lamprd80.prod.outlook.com> <SCYPR80MB855545E77B8410BBD5BA9B05CC60A@SCYPR80MB8555.lamprd80.prod.outlook.com> <SCYPR80MB85550FD53D3A27D0E8350246CC75A@SCYPR80MB8555.lamprd80.prod.outlook.com> <SCYPR80MB8555876F9ACD0CEB13667F0ACC7EA@SCYPR80MB8555.lamprd80.prod.outlook.com> <SCYPR80MB8555C55097A8FDD667576E89CC7FA@SCYPR80MB8555.lamprd80.prod.outlook.com> <SCYPR80MB8555726A327CCA121EA32530CC7CA@SCYPR80MB8555.lamprd80.prod.outlook.com> <SCYPR80MB85557A9BF12C2603464D5246CC7CA@SCYPR80MB8555.lamprd80.prod.outlook.com> <SCYPR80MB8555E2495DE3B89AF89A37C1CC7DA@SCYPR80MB8555.lamprd80.prod.outlook.com> <SCYPR80MB8555FF517F227E249AAE8575CC7DA@SCYPR80MB8555.lamprd80.prod.outlook.com> <SCZPR80MB8164D41D7FDC0CC43F7F08E1AD7DA@SCZPR80MB8164.lamprd80.prod.outlook.com> <SCYPR80MB8555F11637A938C39EE54461CC44A@SCYPR80MB8555.lamprd80.prod.outlook.com> <SCYPR80MB8555B96CF05A3E2BEED2B8EDCC44A@SCYPR80MB8555.lamprd80.prod.outlook.com> <SCYPR80MB85559D8880762509BBC4DD8BCC45A@SCYPR80MB8555.lamprd80.prod.outlook.com> <SCYPR80MB8555DD0B504F906F9A3A5AA5CC45A@SCYPR80MB8555.lamprd80.prod.outlook.com> <SCYPR80MB855590036D5D0E030D358C3DCC582@SCYPR80MB8555.lamprd80.prod.outlook.com> <SCYPR80MB85555362BBD21179CA2678B7CC242@SCYPR80MB8555.lamprd80.prod.outlook.com> <SCYPR80MB85557F5A171BD84532087320CC252@SCYPR80MB8555.lamprd80.prod.outlook.com> <SCYPR80MB8555845C0ED7A2085693251ACC252@SCYPR80MB8555.lamprd80.prod.outlook.com> <SCYPR80MB8555AD923AB9DB1B49779811CC222@SCYPR80MB8555.lamprd80.prod.outlook.com> <SCYPR80MB8555FC578A94A32AE52735FECC232@SCYPR80MB8555.lamprd80.prod.outlook.com> <SCYPR80MB855596873C0743BD2B80788DCC232@SCYPR80MB8555.lamprd80.prod.outlook.com> <SCYPR80MB8555165B3AAFFB60D2ADBFA8CC202@SCYPR80MB8555.lamprd80.prod.outlook.com> <SCYPR80MB8555290394B415972A129011CC202@SCYPR80MB8555.lamprd80.prod.outlook.com>
+In-Reply-To: <SCYPR80MB8555290394B415972A129011CC202@SCYPR80MB8555.lamprd80.prod.outlook.com>
+Accept-Language: es-ES, en-US
+Content-Language: es-AR
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-AuthSource: SCYPR80MB7267.lamprd80.prod.outlook.com
+X-MS-Has-Attach: yes
+X-Auto-Response-Suppress: DR, OOF, AutoReply
+X-MS-Exchange-Organization-Network-Message-Id: dbcaa076-6dc2-4b78-9c01-08de9d4eb7d0
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator: <SCYPR80MB72670A845FD2DDE765218CB8C8212@SCYPR80MB7267.lamprd80.prod.outlook.com>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+msip_labels: MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_Enabled=True;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_SiteId=17d02e16-8b83-4168-ba0d-c61ac0d093a6;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_SetDate=2026-04-18T13:29:33.009Z;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_Name=Uso Interno;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_ContentBits=1;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_Method=Standard;
+x-ms-publictraffictype: Email
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:es;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SCYPR80MB7267.lamprd80.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(6049299003)(8096899003)(13003099007)(56012099003)(22082099003)(18002099003)(41050700001);DIR:INT;
+x-ms-traffictypediagnostic: SCYPR80MB7267:EE_|CPWPR80MB7880:EE_|SCZPR80MB8164:EE_
+x-ms-exchange-crosstenant-originalarrivaltime: 18 Apr 2026 13:30:54.9824 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Hosted
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-transport-crosstenantheadersstamped: CPWPR80MB7880
+x-ms-exchange-transport-endtoendlatency: 00:00:04.7868257
+x-ms-exchange-crosstenant-network-message-id: dbcaa076-6dc2-4b78-9c01-08de9d4eb7d0
+authentication-results: dkim=none (message not signed) header.d=none;dmarc=none action=none header.from=tmoviles.com.ar;
+x-ms-office365-filtering-correlation-id: dbcaa076-6dc2-4b78-9c01-08de9d4eb7d0
+x-microsoft-antispam: BCL:0;ARA:13230040|366016|6049299003|8096899003|13003099007|56012099003|22082099003|18002099003|41050700001;
+x-ms-exchange-processed-by-bccfoldering: 15.20.9818.014
+x-ms-exchange-crosstenant-authsource: SCYPR80MB7267.lamprd80.prod.outlook.com
+x-ms-exchange-crosstenant-authas: Internal
+x-ms-exchange-crosstenant-mailboxtype: HOSTED
+x-ms-exchange-crosstenant-userprincipalname: V3/DGkcZmJKsLUVLJCreQaO5Ol8DNIdXo1r732dygrml3Cs4AUGln7Ftv2XUe4aijDXmpWQWkNhvWcjJ+TrfPXDTcxIEyd6uGa27Emx8wC8=
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

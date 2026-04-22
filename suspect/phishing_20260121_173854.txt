@@ -1,0 +1,51 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from CPUPR80MB7296.lamprd80.prod.outlook.com (2603:10d6:103:1fb::10) by CPWPR80MB8919.lamprd80.prod.outlook.com with HTTPS; Wed, 14 Jan 2026 19:36:49 +0000
+Received: from CPWPR80MB6748.lamprd80.prod.outlook.com (2603:10d6:103:17b::11) by CPUPR80MB7296.lamprd80.prod.outlook.com (2603:10d6:103:1fb::10) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9520.4; Wed, 14 Jan 2026 19:36:45 +0000
+Received: from CPWPR80MB6748.lamprd80.prod.outlook.com ([fe80::9c34:c563:31d5:44f9]) by CPWPR80MB6748.lamprd80.prod.outlook.com ([fe80::9c34:c563:31d5:44f9%6]) with mapi id 15.20.9520.005; Wed, 14 Jan 2026 19:36:45 +0000
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: Cabrera Oscar Antonio <oscarantonio.cabrera@tmoviles.com.ar>
+To: coordinaciondesitios.ar <coordinaciondesitios.ar@tmoviles.com.ar>
+CC: "ESCOBAR, SEBASTIAN" <s.escobar@tmoviles.com.ar>, =?utf-8?B?RHB0byBFbmVyZ8OtYSBDbGltYXRpemFjacOzbiB5IE15QQ==?= <DptoEnergiaClimatizacionMyA@tmoviles.com.ar>, "Capucciati, Guido" <guido.capucciati@tmoviles.com.ar>
+Subject: RE: Ingreso Mineras Goldcorp Vein Zone y Goldcorp Eureka
+Thread-Topic: Ingreso Mineras Goldcorp Vein Zone y Goldcorp Eureka
+Thread-Index: AQD6PRW1B4lIjL1dDt4bgahjsY4sgLcWYifQgAAY8aCAAB68wA==
+Date: Wed, 14 Jan 2026 19:36:45 +0000
+Message-ID: <CPWPR80MB67489D1A559330E38AED08ADC18FA@CPWPR80MB6748.lamprd80.prod.outlook.com>
+References: <CACSTrGpM-9ur5X+yj7ON=CJ04MMCOOPMc969Q1VgtXS5FLwDVA@mail.gmail.com> <caf6ec8634e0213e2a32a7da06576d9f@mail.gmail.com> <SCYPR80MB76962859544063A24695B60FAD8FA@SCYPR80MB7696.lamprd80.prod.outlook.com>
+In-Reply-To: <SCYPR80MB76962859544063A24695B60FAD8FA@SCYPR80MB7696.lamprd80.prod.outlook.com>
+Accept-Language: es-ES, en-US
+Content-Language: es-ES
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-AuthSource: CPWPR80MB6748.lamprd80.prod.outlook.com
+X-MS-Has-Attach: yes
+X-Auto-Response-Suppress: DR, OOF, AutoReply
+X-MS-Exchange-Organization-Network-Message-Id: 1af1e92a-2c68-482d-805d-08de53a44089
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator: <CPWPR80MB67489D1A559330E38AED08ADC18FA@CPWPR80MB6748.lamprd80.prod.outlook.com>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-ms-publictraffictype: Email
+authentication-results: dkim=none (message not signed) header.d=none;dmarc=none action=none header.from=tmoviles.com.ar;
+x-ms-office365-filtering-correlation-id: 1af1e92a-2c68-482d-805d-08de53a44089
+x-ms-traffictypediagnostic: CPWPR80MB6748:EE_|CPUPR80MB7296:EE_|CPWPR80MB8919:EE_
+x-microsoft-antispam: BCL:0;ARA:13230040|366016|8096899003|7053199007|41050700001;
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:es;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CPWPR80MB6748.lamprd80.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(8096899003)(7053199007)(41050700001);DIR:INT;
+x-ms-exchange-crosstenant-authas: Internal
+x-ms-exchange-crosstenant-authsource: CPWPR80MB6748.lamprd80.prod.outlook.com
+x-ms-exchange-crosstenant-network-message-id: 1af1e92a-2c68-482d-805d-08de53a44089
+x-ms-exchange-crosstenant-originalarrivaltime: 14 Jan 2026 19:36:45.5587 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Hosted
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-crosstenant-mailboxtype: HOSTED
+x-ms-exchange-crosstenant-userprincipalname: cY/Db+C+wK5JYGI4SgkJBYsFg9Gveavxxgk0v2M5WNo3qCmLHZ3Totn4jBAgdscO1xsJTI/72TXTJ5WchX/sVGGwzb+nsSI5OQ+7nCOBV4ZU3nkf9zOpD4blsee6UHHr
+x-ms-exchange-transport-crosstenantheadersstamped: CPUPR80MB7296
+x-ms-exchange-transport-endtoendlatency: 00:00:03.5848983
+x-ms-exchange-processed-by-bccfoldering: 15.20.9520.004
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

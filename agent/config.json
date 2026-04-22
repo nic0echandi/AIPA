@@ -1,0 +1,49 @@
+{
+  "_comment": "Configuración del agente de análisis de phishing v0.8 — completar antes de iniciar",
+
+  "poll_interval_seconds": 60,
+  "ingress_dir":           "ingress",
+  "processed_dir":         "processed",
+  "analysis_dir":          "analysis_results",
+  "log_level":             "INFO",
+  "log_dir":               "logs",
+
+  "knn_confidence_threshold": 0.85,
+
+  "llm_provider":       "ollama",
+  "ollama_url":         "http://localhost:11434/api/generate",
+  "ollama_model":       "llama3.2",
+  "anthropic_api_key":  "",
+
+  "abuseipdb_api_key":  "",
+
+  "max_workers": 2,
+
+  "whitelist_path": "legitimos.txt",
+
+  "azure": {
+    "_comment":     "Azure App Registration con permisos Sites.Read.All y Files.Read.All",
+    "tenant_id":    "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+    "client_id":    "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+    "client_secret": "tu-client-secret-aqui"
+  },
+
+  "sharepoint": {
+    "_comment":    "Obtener site_id con: GET https://graph.microsoft.com/v1.0/sites/{hostname}:/sites/{site-name}",
+    "site_id":     "tuempresa.sharepoint.com,XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX,XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+    "drive_id":    "",
+    "folder_path": "/phishing-reports"
+  },
+
+  "webhook_spam":             "https://prod-XX.westus.logic.azure.com:443/workflows/.../triggers/...",
+  "webhook_legitimo":         "https://prod-XX.westus.logic.azure.com:443/workflows/.../triggers/...",
+  "webhook_notify_reporter":  "https://prod-XX.westus.logic.azure.com:443/workflows/.../triggers/...",
+
+  "iris_dfir": {
+    "url":                     "https://tu-iris-instance.ejemplo.com",
+    "api_key":                 "tu-api-key-de-iris",
+    "verify_ssl":              true,
+    "default_customer_id":     1,
+    "default_classification":  30
+  }
+}

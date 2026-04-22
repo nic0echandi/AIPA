@@ -1,0 +1,48 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from SCYPR80MB7949.lamprd80.prod.outlook.com (::1) by SCYPR80MB8585.lamprd80.prod.outlook.com with HTTPS; Wed, 21 Jan 2026 14:01:16 +0000
+Received: from MN0P222CA0002.NAMP222.PROD.OUTLOOK.COM (2603:10b6:208:531::7) by SCYPR80MB7949.lamprd80.prod.outlook.com (2603:10d6:300:84::7) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9542.10; Wed, 21 Jan 2026 14:01:11 +0000
+Received: from BN2PEPF000055DE.namprd21.prod.outlook.com (2603:10b6:208:531:cafe::2b) by MN0P222CA0002.outlook.office365.com (2603:10b6:208:531::7) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9542.10 via Frontend Transport; Wed, 21 Jan 2026 14:01:08 +0000
+Received: from CH4PR04CU002.outbound.protection.outlook.com (2a01:111:f403:c105::7) by BN2PEPF000055DE.mail.protection.outlook.com (2603:10b6:40f:fc02::1c8) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9564.0 via Frontend Transport; Wed, 21 Jan 2026 14:00:43 +0000
+Received: from CPWP152MB7046.LAMP152.PROD.OUTLOOK.COM (2603:10d6:103:221::7) by SCZP152MB5358.LAMP152.PROD.OUTLOOK.COM (2603:10d6:300:d::10) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9542.10; Wed, 21 Jan 2026 14:00:36 +0000
+Received: from CPWP152MB7046.LAMP152.PROD.OUTLOOK.COM ([fe80::129b:7ee0:bcbe:2d2f]) by CPWP152MB7046.LAMP152.PROD.OUTLOOK.COM ([fe80::129b:7ee0:bcbe:2d2f%6]) with mapi id 15.20.9542.009; Wed, 21 Jan 2026 14:00:36 +0000
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: Obra Social & Medicina Paga <obrasocialmedicinapaga@gesnext.com>
+Subject: BECAS ESTUDIOS SECUNDARIOS 2026 - APERTURA DE INSCRIPCIONES 
+Thread-Topic: BECAS ESTUDIOS SECUNDARIOS 2026 - APERTURA DE INSCRIPCIONES 
+Thread-Index: AdyK3a7SI6IfPMPzSD24aoG59m5OrQ==
+Importance: high
+X-Priority: 1
+Date: Wed, 21 Jan 2026 14:00:35 +0000
+Message-ID: <CPWP152MB7046C73809D8DE808C659E2C9B96A@CPWP152MB7046.LAMP152.PROD.OUTLOOK.COM>
+Accept-Language: es-AR, en-US
+Content-Language: es-ES
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-AuthSource: BN2PEPF000055DE.namprd21.prod.outlook.com
+X-MS-Has-Attach: 
+X-MS-Exchange-Organization-Network-Message-Id: 9a90ae72-8482-44f3-d2ec-08de58f5877f
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator: <CPWP152MB7046C73809D8DE808C659E2C9B96A@CPWP152MB7046.LAMP152.PROD.OUTLOOK.COM>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-ms-publictraffictype: Email
+received-spf: Pass (protection.outlook.com: domain of gesnext.com designates 2a01:111:f403:c105::7 as permitted sender) receiver=protection.outlook.com; client-ip=2a01:111:f403:c105::7; helo=CH4PR04CU002.outbound.protection.outlook.com; pr=C
+dkim-signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gesnext.com; s=selector1; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck; bh=hc7hYSwUkqtwYS5rNEZHfpY/yq8ZktSPXR92cHyeLOE=; b=lrY3BNUNkxQV9kL+1HjF9qyhEUJqrY+Wb7Ctucbi8iXOrRA0vobc//vHRQLl5iJmcrSOBl/I+3bAfk2iqav18K8lUI7Y25Osfa9oF189AfNDUFFHOZ/frwN28p6qykAZXmZ2XulpW25b+mbDgg3UBXTkZPWYdUXsXlDAtHXc617ICvHgWX19nsmTvDm2fRpMxGI8xDjx0hEVPay1bykVGtNv16SQC6Tjt39Q27MHftzXwVYJ20bLxWov48JL7BLLmIM7Sg/B5pIsJCGwyKLnkluWPhSMuQwfyIWCTLY7lt7wJNLwnglHLOBtxBFZ1ltekXWAFjdSIZv/SAaPWocGlw==
+authentication-results: spf=pass (sender IP is 2a01:111:f403:c105::7) smtp.mailfrom=gesnext.com; dkim=pass (signature was verified) header.d=gesnext.com;dmarc=pass action=none header.from=gesnext.com;compauth=pass reason=100
+x-ms-office365-filtering-correlation-id: 9a90ae72-8482-44f3-d2ec-08de58f5877f
+x-ms-traffictypediagnostic: CPWP152MB7046:EE_|SCZP152MB5358:EE_|BN2PEPF000055DE:EE_|SCYPR80MB7949:EE_|SCYPR80MB8585:EE_
+x-microsoft-antispam: BCL:0;ARA:13230040|35042699022|8096899003|13003099007|54012099003;
+x-forefront-antispam-report: CIP:2a01:111:f403:c105::7;CTRY:;LANG:es;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH4PR04CU002.outbound.protection.outlook.com;PTR:mail-northcentralusazlp170130007.outbound.protection.outlook.com;CAT:NONE;SFS:(13230040)(35042699022)(8096899003)(13003099007)(54012099003);DIR:INB;
+x-ms-exchange-crosstenant-authas: Anonymous
+x-ms-exchange-crosstenant-authsource: BN2PEPF000055DE.namprd21.prod.outlook.com
+x-ms-exchange-crosstenant-network-message-id: 9a90ae72-8482-44f3-d2ec-08de58f5877f
+x-ms-exchange-crosstenant-originalarrivaltime: 21 Jan 2026 14:00:43.5633 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Internet
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-transport-crosstenantheadersstamped: SCYPR80MB7949
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

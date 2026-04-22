@@ -1,0 +1,51 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from CPUPR80MB6645.lamprd80.prod.outlook.com (2603:10d6:103:184::8) by CPWPR80MB7129.lamprd80.prod.outlook.com with HTTPS; Fri, 23 Jan 2026 13:24:02 +0000
+Received: from RO2PR80MB7913.lamprd80.prod.outlook.com (2603:10d6:10:11e::16) by CPUPR80MB6645.lamprd80.prod.outlook.com (2603:10d6:103:184::8) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9542.11; Fri, 23 Jan 2026 13:24:00 +0000
+Received: from RO2PR80MB7913.lamprd80.prod.outlook.com ([fe80::1464:2e5d:9a46:b52d]) by RO2PR80MB7913.lamprd80.prod.outlook.com ([fe80::1464:2e5d:9a46:b52d%3]) with mapi id 15.20.9542.010; Fri, 23 Jan 2026 13:24:00 +0000
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: "Mella, Nadia" <nadia.mella@tmoviles.com.ar>
+To: "Pais Garay, Mariano" <mariano.paisgaray@tmoviles.com.ar>, "Arcuri,Marcelo  Adrian" <marcelo.arcuri@tmoviles.com.ar>, Marquetti Carla <carla.marquetti@tmoviles.com.ar>
+Subject: Cancelada: Repasamos el borrador de Reversionado eficiencia por desmonte con plan actual
+Thread-Topic: Repasamos el borrador de Reversionado eficiencia por desmonte con plan actual
+Thread-Index: AdyK3jA1ULuQyJ2kREmpGnMlrwCj0ABjVdjQ
+Importance: high
+X-Priority: 1
+Date: Fri, 23 Jan 2026 13:23:59 +0000
+Message-ID: <RO2PR80MB791301DC99F83E1A0E010D35BF94A@RO2PR80MB7913.lamprd80.prod.outlook.com>
+Accept-Language: es-ES, en-US
+Content-Language: es-ES
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-AuthSource: RO2PR80MB7913.lamprd80.prod.outlook.com
+X-MS-Has-Attach: 
+X-MS-Exchange-Organization-Network-Message-Id: 2b35d3bb-4b39-4c07-b437-08de5a82ab69
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator: <RO2PR80MB791301DC99F83E1A0E010D35BF94A@RO2PR80MB7913.lamprd80.prod.outlook.com>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+msip_labels: 
+x-ms-publictraffictype: Email
+authentication-results: dkim=none (message not signed) header.d=none;dmarc=none action=none header.from=tmoviles.com.ar;
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:es;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:RO2PR80MB7913.lamprd80.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(8096899003)(41050700001);DIR:INT;
+x-ms-traffictypediagnostic: RO2PR80MB7913:EE_MeetingMessage|CPUPR80MB6645:EE_MeetingMessage|CPWPR80MB7129:EE_MeetingMessage
+x-ms-exchange-crosstenant-originalarrivaltime: 23 Jan 2026 13:23:59.7185 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Hosted
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-transport-crosstenantheadersstamped: CPUPR80MB6645
+x-ms-exchange-transport-endtoendlatency: 00:00:02.6429889
+x-ms-exchange-crosstenant-network-message-id: 2b35d3bb-4b39-4c07-b437-08de5a82ab69
+x-ms-office365-filtering-correlation-id: 2b35d3bb-4b39-4c07-b437-08de5a82ab69
+x-microsoft-antispam: BCL:0;ARA:13230040|366016|8096899003|41050700001;
+x-ms-exchange-crosstenant-mailboxtype: HOSTED
+x-ms-exchange-crosstenant-userprincipalname: Pczyzn6T/nvCKxBsgyb+W/GdW56o7aGuVAeU/43/E928c3CVWlOU9rt+RW/rXZCavQ1IdQAviMqK2oMN6wacQgFnNaLSwQgTq7/gyh8nQMw=
+x-ms-exchange-processed-by-bccfoldering: 15.20.9542.003
+x-ms-exchange-crosstenant-authas: Internal
+x-ms-exchange-crosstenant-authsource: RO2PR80MB7913.lamprd80.prod.outlook.com
+x-ms-exchange-calendar-series-instance-id: BAAAAIIA4AB0xbcQGoLgCAAAAAAgD2/yxIrcAQAAAAAAAAAAEAAAAOeDJ+YIHOlCimNosbQ8xik=
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

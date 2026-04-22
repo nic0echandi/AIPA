@@ -1,0 +1,65 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from CPWPR80MB6863.lamprd80.prod.outlook.com (::1) by RO2PR80MB8179.lamprd80.prod.outlook.com with HTTPS; Thu, 29 Jan 2026 19:11:19 +0000
+Received: from SA0PR11CA0046.namprd11.prod.outlook.com (2603:10b6:806:d0::21) by CPWPR80MB6863.lamprd80.prod.outlook.com (2603:10d6:103:1d2::11) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9564.8; Thu, 29 Jan 2026 19:11:01 +0000
+Received: from SA2PEPF00003F68.namprd04.prod.outlook.com (2603:10b6:806:d0:cafe::29) by SA0PR11CA0046.outlook.office365.com (2603:10b6:806:d0::21) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9564.7 via Frontend Transport; Thu, 29 Jan 2026 19:11:00 +0000
+Received: from DM5PR21CU001.outbound.protection.outlook.com (2a01:111:f403:c111::9) by SA2PEPF00003F68.mail.protection.outlook.com (2603:10b6:80f:fc04::2b) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9564.3 via Frontend Transport; Thu, 29 Jan 2026 19:10:57 +0000
+Received: from SCYP152MB8041.LAMP152.PROD.OUTLOOK.COM (2603:10d6:300:11f::8) by RO2P152MB5861.LAMP152.PROD.OUTLOOK.COM (2603:10d6:10:e3::13) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9564.10; Thu, 29 Jan 2026 19:10:38 +0000
+Received: from SCYP152MB8041.LAMP152.PROD.OUTLOOK.COM ([fe80::4cd3:940e:a83a:a5b5]) by SCYP152MB8041.LAMP152.PROD.OUTLOOK.COM ([fe80::4cd3:940e:a83a:a5b5%2]) with mapi id 15.20.9564.006; Thu, 29 Jan 2026 19:10:38 +0000
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: BENEFICIO SEGURO DE VIDA <beneficiosegurovida@GCGESTION.COM.AR>
+To: BENEFICIO SEGURO DE VIDA <beneficiosegurovida@GCGESTION.COM.AR>
+CC: Soria Debora Stefania <dsoria@gcgestion.com.ar>, npuyo <npuyo@gcgestion.com.ar>, Camila Mercedes Sacardo <cmsacardo@gcgestion.com.ar>
+Subject: APP INSTRUCTIVO / FORMULARIO DESIGNACION DE BENEFICIARIOS - LA CAJA /TELEFONICA 
+Thread-Topic: APP INSTRUCTIVO / FORMULARIO DESIGNACION DE BENEFICIARIOS - LA CAJA /TELEFONICA 
+Thread-Index: AdyRGnG/hY1G+vMSS1aEuD8MePjH1A==
+Date: Thu, 29 Jan 2026 19:10:28 +0000
+Deferred-Delivery: Thu, 29 Jan 2026 19:10:00 +0000
+Message-ID: <SCYP152MB8041895780F8FB8FBCDBBAF5859EA@SCYP152MB8041.LAMP152.PROD.OUTLOOK.COM>
+Accept-Language: es-ES, en-US
+Content-Language: es-ES
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-AuthSource: SA2PEPF00003F68.namprd04.prod.outlook.com
+X-MS-Has-Attach: yes
+X-MS-Exchange-Organization-Network-Message-Id: d1bfdbcc-18f6-4404-14f3-08de5f6a231e
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator: <SCYP152MB8041895780F8FB8FBCDBBAF5859EA@SCYP152MB8041.LAMP152.PROD.OUTLOOK.COM>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+msip_labels: MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_Enabled=True;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_SiteId=17d02e16-8b83-4168-ba0d-c61ac0d093a6;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_SetDate=2026-01-12T13:26:43.0000000Z;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_Name=Uso Interno;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_ContentBits=3;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_Method=Standard
+x-ms-publictraffictype: Email
+received-spf: Pass (protection.outlook.com: domain of GCGESTION.COM.AR designates 2a01:111:f403:c111::9 as permitted sender) receiver=protection.outlook.com; client-ip=2a01:111:f403:c111::9; helo=DM5PR21CU001.outbound.protection.outlook.com; pr=C
+authentication-results: spf=pass (sender IP is 2a01:111:f403:c111::9) smtp.mailfrom=GCGESTION.COM.AR; dkim=pass (signature was verified) header.d=gcgestion.com.ar;dmarc=bestguesspass action=none header.from=GCGESTION.COM.AR;compauth=pass reason=109
+x-ms-office365-filtering-correlation-id: d1bfdbcc-18f6-4404-14f3-08de5f6a231e
+x-microsoft-antispam: BCL:0;ARA:13230040|22003199012|35042699022|5073199012|4073199012|5063199012|8096899003|4076899003|54012099003|4053099003|13003099007;
+x-ms-traffictypediagnostic: SCYP152MB8041:EE_|RO2P152MB5861:EE_|SA2PEPF00003F68:EE_|CPWPR80MB6863:EE_|RO2PR80MB8179:EE_
+x-forefront-antispam-report: CIP:2a01:111:f403:c111::9;CTRY:;LANG:es;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM5PR21CU001.outbound.protection.outlook.com;PTR:mail-centralusazlp170110009.outbound.protection.outlook.com;CAT:NONE;SFS:(13230040)(22003199012)(35042699022)(5073199012)(4073199012)(5063199012)(8096899003)(4076899003)(54012099003)(4053099003)(13003099007);DIR:INB;
+x-ms-exchange-crosstenant-originalarrivaltime: 29 Jan 2026 19:10:57.4848 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Internet
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-crosstenant-network-message-id: d1bfdbcc-18f6-4404-14f3-08de5f6a231e
+x-ms-exchange-transport-crosstenantheadersstamped: CPWPR80MB6863
+x-ms-exchange-transport-endtoendlatency: 00:00:21.7024225
+x-ms-exchange-processed-by-bccfoldering: 15.20.9564.000
+x-ms-exchange-crosstenant-authas: Anonymous
+x-ms-exchange-crosstenant-authsource: SA2PEPF00003F68.namprd04.prod.outlook.com
+x-eopattributedmessage: 0
+x-eoptenantattributedmessage: 17d02e16-8b83-4168-ba0d-c61ac0d093a6:0
+dkim-signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gcgestion.com.ar; s=selector1; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck; bh=im0VfBKzY6NmBy+yyAolaujuyP7LOqCJujMtc9gwNss=; b=YLTJ9IgTQ8aC8lMmBMF3+Nu11+GyKCVpfRkyyXmjtSMy2re2U+yXIj4mqe7XAKUQGBSSCmL5s/ywQxB62NKeABLldCK6WPDXvzO0yjr/p4SIrcE9G8avfW42NzgZZuSKbXYccaZSO+dG7Izv4qKZCsGR2Wh+m50z3N0CEDeY8gM=
+authentication-results-original: dkim=none (message not signed) header.d=none;dmarc=none action=none header.from=GCGESTION.COM.AR;
+x-forefront-antispam-report-untrusted: CIP:255.255.255.255;CTRY:;LANG:es;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SCYP152MB8041.LAMP152.PROD.OUTLOOK.COM;PTR:;CAT:NONE;SFS:(13230040)(10070799003)(1800799024)(366016)(7416014)(376014)(13003099007)(4053099003)(8096899003)(38070700021);DIR:OUT;SFP:1102;
+x-microsoft-antispam-untrusted: BCL:0;ARA:13230040|10070799003|1800799024|366016|7416014|376014|13003099007|4053099003|8096899003|38070700021;
+x-microsoft-antispam-message-info-original: alKL/PEMXur3+5741z8XifNfnVBcuUUlK2z1pvyHi3pD9AqYX8hN08h6Nl6d1j405PU9aACU3se1ybfPPwBPM8LmPXglmatXfwaWH9w4go1s9pR5lU5KXI5Psv+Seo+8qS7+lAMyj4IA95aoehgAtx9HNcOg5KzJb0HzwjeCwIlXj9uNp3DnJANKZ01Jv7nXFrPMTHPO+x/zPscrRV6j3ZqXIQAW9VwRI0j/VjQuMSc5AFT13lxki0JLZXlzbfduSzQEBUq8Cz7ZjBj1lSIWzkv7/l/Np9JVDaYnbFYgMfrF/rCjMJf/4SAab0pk6MAVwNAlaYd5e+l7Xuh60vIj90AOfId/euxVhCn4uOrcLNhTxX6lG2IUVyS3fUbA5ezBYMnyF9OKpCbB1UHxVj5N12ifSlfIxN9NnAUUnPNm8n7Dz8cHxWDbRD8wpucQRGAg6sY+aMHXqv+x1in/vvzjFTFFN+CfF8LeSGjG8qDZZup5fkNP5NOb7vTUlgBOGuxvG8NUQBu1TPtNLFcTNY4l5OmSBvN+vaaY7KtNpH7tFjulrjiYvGdR01Dj8WhxkkTQSVdhNa31CsSRkk7RBh4hbpbvBQptR5bN+1srgooSaRmfgQKVJiJJwRFxlO4NziOgWF8RAesIne689s6tbe2YSxaFYqC0Vt2Wp1Wcx6Tzf5OteUanBFAhioTF5Czfgg/7rX9C+dw8lI/PVj+bUtor0yGoKOIGMRtTYiyB6o/Zuq7M2P9AMUT3bFTtG7Pmx4e6xlMS9jtKryIsjhgi0JiPcnO56VHv6H00hMGLLyE0CXagHrWAw/bWDHTMPl5EmZdHpO/L3kAyu0P8mfuOJzgJvcRKoM7ZnPYmydgF6U2fJ3DKiTsMcn2OcZlnTXixG/NcESWjUME0gwwe7VDGHF+LQCK9Io8w3Z+bIMEix0C5JDluqQ5swQVhN0l9zcRWAkCdmmeYV95/F3UC9DGBJqavG7FXMLnYXazKaQ6vteiCwKQnas1VYhQdfSVmXuME/SiD3F6m3dXY9K/Knj8x9+ZibgzLGO21XZR8LVLrLFPb0hZk7ZBke42AsD+zdKD4Apnky/1XQ4Y5Vh+6tS0nXCZEYrUAnx0o0+xZrWZmyYuK3Q9Lqb4pVG3ngSdpW9mJtOalLBkHHIzRlvDU8XO4XDUKCnwSzoOhRK1bNT3FIgm02DKL002Rcevz+RQ4niXy9+UXJX5M7g7Ee3KOVW7687Obh/RgPhHiNuJvbK9bHhcjfuP/QnCbRgajxFJWc4lZ39aCL6wKUnVob5jab+UUsYKj1zEs7bjFuFfYilt0iT7D0ToYT14+HJiwbEi39SFIfYjubGvC/tbGmRM2ZEhfWWrrZI28u2biUOR+OUeEG0MFcLctu48H73ixwD59YLYAKYju4LW6ejazIXY6Ub6zqvFrMAxtaRlQqZjPgnm1z7Dn3iRxfg7QqImiElRow/xHffWl0vbiyFBF252lsDRYgmpwmeykPzk7DsWPfyM6JBUcOro=
+x-ms-exchange-transport-crosstenantheadersstripped: SA2PEPF00003F68.namprd04.prod.outlook.com
+x-ms-office365-filtering-correlation-id-prvs: 6574ba05-1329-475a-c334-08de5f6a1631
+arc-seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none; b=dG1ARNLTv2cuXcuIpfqwnWpYhguUqmyLIeW4lQwK9ODLWD6dT1JXBP22njCEq8U4Xk5VsYNOvrVuOdZu2bjPtdRnxJF1QstYJjihMIV5qbfkOUfB3Uvje/dQnd87ZAiZviu+Tj67WPGaHpZ6v3q2b6rOLJIT8xsj0rYGKo4z1ohoTk3lcfViyQ3vtg/6xYzqIt8RWhwhkF2gLFoudF/LsWyxkDfP6Xx1RTOK6oEpHo21chPYuJ1V51qs/M3mWYwdDnCdRvFVRw4LSgBpR1peGdfQ+clW4ligrIFD9HOXz0z1XHwaYJkaa50Plp9dqvYIODQP1BJ78aGTsMFyKQHP2Q==
+arc-message-signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; s=arcselector10001; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1; bh=im0VfBKzY6NmBy+yyAolaujuyP7LOqCJujMtc9gwNss=; b=w65gKgY1n7Bd008JqQ0R1qg+RRv9M8IHXlVGdD+pNHFfXxt3PQuhli+sOsspoffJsVZ2gHfiDJoQNseHIr1a8txzNqGsLf9UF4wGlpRyTqBCfMQrUXlCMzXjaGglkNY2bvEq7LGjt90qRpHqYaVzH4SJF60v03lImB6wakGVitiod5PlPGe7vyYtUvSleSNvO0tGVzbYVHl0tBXKAnJ5Rv2yXWxOJTaeslB3HDTfshF7KHjmCB2NPTvRVehkXvGojB+3qi5KB8PH0woNXrIqNP2SxnJnENrffHFE6/4kxVbP1hNs1qKZrl7/bp8sCf+5qNg3WSo9DsuVEwKxAtecmQ==
+arc-authentication-results: i=1; mx.microsoft.com 1; spf=pass smtp.mailfrom=gcgestion.com.ar; dmarc=pass action=none header.from=gcgestion.com.ar; dkim=pass header.d=gcgestion.com.ar; arc=none
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-transport-crosstenantheaderspromoted: SA2PEPF00003F68.namprd04.prod.outlook.com
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

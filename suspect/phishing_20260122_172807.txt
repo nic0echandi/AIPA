@@ -1,0 +1,52 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from CPUPR80MB7191.lamprd80.prod.outlook.com (2603:10d6:103:1ed::11) by CPWPR80MB7006.lamprd80.prod.outlook.com with HTTPS; Thu, 22 Jan 2026 02:15:00 +0000
+Received: from DM6PR06CA0067.namprd06.prod.outlook.com (2603:10b6:5:54::44) by CPUPR80MB7191.lamprd80.prod.outlook.com (2603:10d6:103:1ed::11) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9542.10; Thu, 22 Jan 2026 02:14:58 +0000
+Received: from DS3PEPF000099DE.namprd04.prod.outlook.com (2603:10b6:5:54:cafe::71) by DM6PR06CA0067.outlook.office365.com (2603:10b6:5:54::44) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9542.10 via Frontend Transport; Thu, 22 Jan 2026 02:14:57 +0000
+Received: from prodmail33c.sapsf.eu (130.214.193.78) by DS3PEPF000099DE.mail.protection.outlook.com (10.167.17.200) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9542.4 via Frontend Transport; Thu, 22 Jan 2026 02:14:55 +0000
+Received: from ss33mailint02 (unknown [10.33.3.170])	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)	(No client certificate requested)	by prodmail33c.sapsf.eu (Postfix) with ESMTPS id 4dxPkX2FvnzGsbPq	for <VERONICA.LAGO@TMOVILES.COM.AR>; Thu, 22 Jan 2026 02:13:56 +0000 (UTC)
+Received: from ss33mailint02.dc033.sf.priv (localhost [127.0.0.1])	by ss33mailint02 (Postfix) with ESMTP id 4dxPkX2BbFzJmhX	for <VERONICA.LAGO@TMOVILES.COM.AR>; Thu, 22 Jan 2026 02:13:56 +0000 (UTC)
+Received: from pc33lp62b0001.dc033.sf.priv (mail.dc033.sf.priv [10.33.2.217])	by ss33mailint02.dc033.sf.priv (Postfix) with ESMTP id 4dxPkX28lNz5vM8	for <VERONICA.LAGO@TMOVILES.COM.AR>; Thu, 22 Jan 2026 02:13:56 +0000 (UTC)
+Received: from pc33lp62b0001 (localhost [127.0.0.1])	by pc33lp62b0001.dc033.sf.priv (Postfix) with ESMTP id 4631B1DB46	for <VERONICA.LAGO@TMOVILES.COM.AR>; Thu, 22 Jan 2026 02:13:56 +0000 (UTC)
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: "PMNotifications@successfactors.eu" <PMNotifications@successfactors.eu>
+To: "LAGO, VERONICA DANIELA" <veronica.lago@tmoviles.com.ar>
+Subject: SuccessFactors – Notificación de cambios en las asignaciones de formación
+Thread-Topic: SuccessFactors – Notificación de cambios en las asignaciones de formación
+Thread-Index: AQHci0Tpa+hjse8b4Ee4Bp25SKpj6A==
+Date: Thu, 22 Jan 2026 02:13:56 +0000
+Message-ID: <1266164095.469153.1769048036286.JavaMail.plateau@pc33lp62b0001>
+Content-Language: es-ES
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-AuthSource: DS3PEPF000099DE.namprd04.prod.outlook.com
+X-MS-Has-Attach: 
+X-MS-Exchange-Organization-Network-Message-Id: 019d09cd-b8bc-4a78-37e9-08de595c0912
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator: <1266164095.469153.1769048036286.JavaMail.plateau@pc33lp62b0001>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-ms-publictraffictype: Email
+authentication-results: spf=pass (sender IP is 130.214.193.78) smtp.mailfrom=successfactors.eu; dkim=pass (signature was verified) header.d=successfactors.eu;dmarc=pass action=none header.from=successfactors.eu;compauth=pass reason=100
+x-forefront-antispam-report: CIP:130.214.193.78;CTRY:US;LANG:es;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:prodmail33c.sapsf.eu;PTR:prodmail33c.sapsf.eu;CAT:NONE;SFS:(13230040)(12012899012)(3072899012)(69100299015)(3092899012)(5062899012)(2092899012)(4076899003)(8096899003);DIR:INB;
+x-ms-office365-filtering-correlation-id: 019d09cd-b8bc-4a78-37e9-08de595c0912
+x-microsoft-antispam: BCL:2;ARA:13230040|12012899012|3072899012|69100299015|3092899012|5062899012|2092899012|4076899003|8096899003;
+x-ms-traffictypediagnostic: DS3PEPF000099DE:EE_|CPUPR80MB7191:EE_|CPWPR80MB7006:EE_
+x-ms-exchange-crosstenant-network-message-id: 019d09cd-b8bc-4a78-37e9-08de595c0912
+x-ms-exchange-crosstenant-originalarrivaltime: 22 Jan 2026 02:14:55.2138 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Internet
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-transport-crosstenantheadersstamped: CPUPR80MB7191
+x-ms-exchange-transport-endtoendlatency: 00:00:05.3445087
+x-ms-exchange-processed-by-bccfoldering: 15.20.9542.003
+x-ms-exchange-crosstenant-authas: Anonymous
+x-ms-exchange-crosstenant-authsource: DS3PEPF000099DE.namprd04.prod.outlook.com
+received-spf: Pass (protection.outlook.com: domain of successfactors.eu designates 130.214.193.78 as permitted sender) receiver=protection.outlook.com; client-ip=130.214.193.78; helo=prodmail33c.sapsf.eu; pr=C
+dkim-signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=successfactors.eu;	s=sfsf; t=1769048036;	bh=FWWM0srwz5CzZTUyU3761rrXpJyYkO1is+t81eF32m4=;	h=Date:From:To:Subject:From;	b=IhXE9mLjVVniiZG8gLmE+hOJpQnSvHe7ihTMesDciVyLSJu9079omolD8rBGImIfL	 VlwEPdIL/KkWJcVUR+USi9Ij3Ypu1GZnsC0GBHwyGAIVgiwsXEAMRoQj9PaHs/8ako	 nHsNkxhNURztuZSs8nl1qlSCChebHRoVCJG4+Wc4NyV8iqUULxDHMb1j2+ORajwagp	 I9xc0DaC28RB4gRBWKylXpNy8NT2z9lQU92AhBwrYKa8fpmPJ0OLPrdNGAZ7Gpw6R4	 1xGnjbblMhvrIIRfkKam2uiY3KGkSOhTgMB/sQtO+Q636JpNm2HgYhI5lev3zicbO0	 NXU4lNmIMgy2g==
+x-eopattributedmessage: 0
+x-eoptenantattributedmessage: 17d02e16-8b83-4168-ba0d-c61ac0d093a6:0
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

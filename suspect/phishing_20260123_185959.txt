@@ -1,0 +1,52 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from SCZPR80MB7322.lamprd80.prod.outlook.com (2603:10d6:300:73::13) by CPUPR80MB6757.lamprd80.prod.outlook.com with HTTPS; Mon, 12 Jan 2026 15:04:22 +0000
+Received: from CPWPR80MB8840.lamprd80.prod.outlook.com (2603:10d6:103:2f8::8) by SCZPR80MB7322.lamprd80.prod.outlook.com (2603:10d6:300:73::13) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9499.7; Mon, 12 Jan 2026 15:04:19 +0000
+Received: from CPWPR80MB8840.lamprd80.prod.outlook.com ([fe80::d74b:2723:ff8f:26a4]) by CPWPR80MB8840.lamprd80.prod.outlook.com ([fe80::d74b:2723:ff8f:26a4%5]) with mapi id 15.20.9499.005; Mon, 12 Jan 2026 15:04:19 +0000
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: "BARRIOS, DIEGO MARTIN" <diego.barrios@tmoviles.com.ar>
+To: "MASTRODOMENICO, MARIANO" <mariano.mastrodomenico@tmoviles.com.ar>, =?Windows-1252?Q?Acu=F1a=2C_Sebastian?= <sebastian.acuna@tmoviles.com.ar>, "DI TOMA, LUCAS MAURO" <lucas.ditoma@tmoviles.com.ar>, licitaciones <licitaciones@tmoviles.com.ar>
+Subject: Fw: ARCA - DDJJ de Intereses Decreto N° 202/17 - EX-2024-03163019- -AFIP-DVGCEP#SDGADF - Proceso de Compra N° A0KJ000000-0005-LPU24 - SERVICIOS DE IMPLEMENTACIÓN Y TRANSMISIÓN DE DATOS EN MÚLTIPLES NODOS DE ARCA
+Thread-Topic: ARCA - DDJJ de Intereses Decreto N° 202/17 - EX-2024-03163019- -AFIP-DVGCEP#SDGADF - Proceso de Compra N° A0KJ000000-0005-LPU24 - SERVICIOS DE IMPLEMENTACIÓN Y TRANSMISIÓN DE DATOS EN MÚLTIPLES NODOS DE ARCA
+Thread-Index: AdwmcBCjwEc34QkYTpuMNptJkk3WgwCKT9fQFs6S1VAAADOfNgAAC04x
+Date: Mon, 12 Jan 2026 15:04:19 +0000
+Message-ID: <CPWPR80MB884039295DED6AC97C37178AA381A@CPWPR80MB8840.lamprd80.prod.outlook.com>
+References: <004001dc83d4$51bc1ba0$f53452e0$@gob.ar> <SC3PR80MB88967EF9C05B1453667C314DBC81A@SC3PR80MB8896.lamprd80.prod.outlook.com>
+In-Reply-To: <SC3PR80MB88967EF9C05B1453667C314DBC81A@SC3PR80MB8896.lamprd80.prod.outlook.com>
+Accept-Language: es-AR, es-ES, en-US
+Content-Language: es-419
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-AuthSource: CPWPR80MB8840.lamprd80.prod.outlook.com
+X-MS-Exchange-Organization-ComplianceLabelId: 3dbb5f39-dc76-4916-9db3-fa9191760a55
+X-MS-Has-Attach: yes
+X-MS-Exchange-Organization-Network-Message-Id: f607c4cf-8567-4c91-f4ca-08de51ebdcbf
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator: <CPWPR80MB884039295DED6AC97C37178AA381A@CPWPR80MB8840.lamprd80.prod.outlook.com>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+msip_labels: MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_Enabled=True;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_SiteId=17d02e16-8b83-4168-ba0d-c61ac0d093a6;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_SetDate=2026-01-12T15:02:04.3177240Z;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_Name=Uso Interno;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_ContentBits=3;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_Method=Standard
+x-ms-publictraffictype: Email
+x-ms-reactions: allow
+authentication-results: dkim=none (message not signed) header.d=none;dmarc=none action=none header.from=tmoviles.com.ar;
+x-ms-office365-filtering-correlation-id: f607c4cf-8567-4c91-f4ca-08de51ebdcbf
+x-ms-traffictypediagnostic: CPWPR80MB8840:EE_|SCZPR80MB7322:EE_|CPUPR80MB6757:EE_
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:es;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CPWPR80MB8840.lamprd80.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(8096899003)(41050700001);DIR:INT;
+x-microsoft-antispam: BCL:0;ARA:13230040|366016|8096899003|41050700001;
+x-ms-exchange-crosstenant-originalarrivaltime: 12 Jan 2026 15:04:19.5448 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Hosted
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-crosstenant-network-message-id: f607c4cf-8567-4c91-f4ca-08de51ebdcbf
+x-ms-exchange-transport-crosstenantheadersstamped: SCZPR80MB7322
+x-ms-exchange-transport-endtoendlatency: 00:00:02.6162248
+x-ms-exchange-processed-by-bccfoldering: 15.20.9499.005
+x-ms-exchange-crosstenant-authsource: CPWPR80MB8840.lamprd80.prod.outlook.com
+x-ms-exchange-crosstenant-authas: Internal
+x-ms-exchange-crosstenant-mailboxtype: HOSTED
+x-ms-exchange-crosstenant-userprincipalname: Vv3x3VpmH1PQgxlQ8PdHkWTvwnrlVBOzSb8i1SLdxUlMzG+s8mVQ5+spaOHV9FISVYYjlRDyUtSFkEVlMAGeMG3ir/RLKnbTUhGuWiG9OvA=
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

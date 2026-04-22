@@ -1,0 +1,51 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from CPWPR80MB7490.lamprd80.prod.outlook.com (2603:10d6:103:219::7) by CPWPR80MB6761.lamprd80.prod.outlook.com with HTTPS; Wed, 28 Jan 2026 23:10:28 +0000
+Received: from SJ0PR05CA0064.namprd05.prod.outlook.com (2603:10b6:a03:332::9) by CPWPR80MB7490.lamprd80.prod.outlook.com (2603:10d6:103:219::7) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9564.7; Wed, 28 Jan 2026 23:10:25 +0000
+Received: from SJ1PEPF00002313.namprd03.prod.outlook.com (2603:10b6:a03:332:cafe::e6) by SJ0PR05CA0064.outlook.office365.com (2603:10b6:a03:332::9) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9564.7 via Frontend Transport; Wed, 28 Jan 2026 23:10:23 +0000
+Received: from c38.c09224bb.usw1.send.mailgun.net (198.244.59.38) by SJ1PEPF00002313.mail.protection.outlook.com (10.167.242.167) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9564.3 via Frontend Transport; Wed, 28 Jan 2026 23:10:25 +0000
+Received: from TV1-MS-DPC02 (unknown [200.32.41.95]) by e9db73c12aa773e19c0f8c792789a96c4b4ff83891b26a09c8271c0bf96fb90c with SMTP id 697a97602696f19834026587 (version=TLS1.2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Wed, 28 Jan 2026 23:10:24 GMT
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: Alarmas Urbetrack <alerta@urbetrack.com>
+To: "Lazarte, Pablo" <pablo.lazarte@tmoviles.com.ar>
+Subject: ACTIVIDAD FUERA DE TURNO de 20hs a 06hs
+Thread-Topic: ACTIVIDAD FUERA DE TURNO de 20hs a 06hs
+Thread-Index: AQHckKtKYblfXCWW/E6Rdv5GCXFx6w==
+X-MS-Exchange-MessageSentRepresentingType: 2
+Date: Wed, 28 Jan 2026 23:10:24 +0000
+Message-ID: <20260128231024.0caa638564d69e6c@urbetrack.com>
+Content-Language: es-ES
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-AuthSource: SJ1PEPF00002313.namprd03.prod.outlook.com
+X-MS-Has-Attach: 
+X-MS-Exchange-Organization-Network-Message-Id: 588c0078-cb17-4097-5b14-08de5ec26b83
+X-MS-Exchange-Organization-SCL: 1
+X-Message-Flag: Flag for follow up
+X-MS-TNEF-Correlator: <20260128231024.0caa638564d69e6c@urbetrack.com>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-ms-publictraffictype: Email
+received-spf: Pass (protection.outlook.com: domain of urbetrack.com designates 198.244.59.38 as permitted sender) receiver=protection.outlook.com; client-ip=198.244.59.38; helo=c38.c09224bb.usw1.send.mailgun.net; pr=C
+x-forefront-antispam-report: CIP:198.244.59.38;CTRY:US;LANG:es;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:c38.c09224bb.usw1.send.mailgun.net;PTR:c38.c09224bb.usw1.send.mailgun.net;CAT:NONE;SFS:(13230040)(29132699027)(5062899012)(2092899012)(12012899012)(3092899012)(3072899012)(8096899003);DIR:INB;
+dkim-signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=urbetrack.com; q=dns/txt; s=mx; t=1769641824; x=1769649024; h=Content-Transfer-Encoding: Content-Type: Subject: Subject: Date: To: To: From: From: MIME-Version: Message-Id: Sender: Sender; bh=DBjaytzVeN5lf2dWrB6s0wStSULuBz9/k0vzCwxaHCQ=; b=S2h7kOvPa8PNhiixK/++/jIhGZnY589KzAcAQ5GPKrP/8IpPLe4IKPMWLdMt2Bs2qy4Oi7LYJtYFpPbE3Fznwr7iIYkIGpgt/0WLRa+HcYedcxwJ7irxkcdHDr8Mqhcu3RPwPurA7sqZDEQYyOxkCqhUWVlBhWdvyMSaJH+NxcY=
+authentication-results: spf=pass (sender IP is 198.244.59.38) smtp.mailfrom=urbetrack.com; dkim=pass (signature was verified) header.d=urbetrack.com;dmarc=pass action=none header.from=urbetrack.com;compauth=pass reason=100
+x-ms-traffictypediagnostic: SJ1PEPF00002313:EE_|CPWPR80MB7490:EE_|CPWPR80MB6761:EE_
+x-ms-exchange-crosstenant-originalarrivaltime: 28 Jan 2026 23:10:25.0338 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Internet
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-transport-crosstenantheadersstamped: CPWPR80MB7490
+x-ms-exchange-transport-endtoendlatency: 00:00:03.1191946
+x-ms-exchange-crosstenant-network-message-id: 588c0078-cb17-4097-5b14-08de5ec26b83
+x-ms-office365-filtering-correlation-id: 588c0078-cb17-4097-5b14-08de5ec26b83
+x-microsoft-antispam: BCL:0;ARA:13230040|29132699027|5062899012|2092899012|12012899012|3092899012|3072899012|8096899003;
+x-ms-exchange-processed-by-bccfoldering: 15.20.9564.000
+x-eopattributedmessage: 0
+x-eoptenantattributedmessage: 17d02e16-8b83-4168-ba0d-c61ac0d093a6:0
+x-ms-exchange-crosstenant-authas: Anonymous
+x-ms-exchange-crosstenant-authsource: SJ1PEPF00002313.namprd03.prod.outlook.com
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

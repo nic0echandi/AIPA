@@ -1,0 +1,54 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from SCZPR80MB6653.lamprd80.prod.outlook.com (::1) by SCYPR80MB7886.lamprd80.prod.outlook.com with HTTPS; Wed, 14 Jan 2026 22:32:08 +0000
+Received: from SN7P220CA0022.NAMP220.PROD.OUTLOOK.COM (2603:10b6:806:123::27) by SCZPR80MB6653.lamprd80.prod.outlook.com (2603:10d6:300:27::9) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9520.4; Wed, 14 Jan 2026 22:32:02 +0000
+Received: from SN1PEPF000252A1.namprd05.prod.outlook.com (2603:10b6:806:123:cafe::a2) by SN7P220CA0022.outlook.office365.com (2603:10b6:806:123::27) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9520.5 via Frontend Transport; Wed, 14 Jan 2026 22:31:58 +0000
+Received: from m244-17.mailgun.net (159.112.244.17) by SN1PEPF000252A1.mail.protection.outlook.com (10.167.242.8) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9520.1 via Frontend Transport; Wed, 14 Jan 2026 22:32:01 +0000
+Received: by ad649f2099225912e58c81591e889f83d09d9b2cf14ab1a2398990e5f8ac1a0e with HTTP id 6968195cb052365a6122c919; Wed, 14 Jan 2026 22:31:54 GMT
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: =?utf-8?B?QFJuZXN0IGZyb20gRXJuZXN0b+KAmXMgU3Vic3RhY2s=?= <rnest@substack.com>
+To: "Vidal, Solana" <solana.vidal@tmoviles.com.ar>
+Subject: Volver a las oficinas o volver a los equipos - Vol 2
+Thread-Topic: Volver a las oficinas o volver a los equipos - Vol 2
+Thread-Index: AQHchaWeNUOQm/tMjE6wrorwt3D3aw==
+Date: Wed, 14 Jan 2026 22:31:06 +0000
+Message-ID: <20260114223106.3.5a1dd974832c9586@mg2.substack.com>
+References: <post-184487839@substack.com>
+List-Unsubscribe: <https://rnest.substack.com/action/disable_email/disable?token=eyJ1c2VyX2lkIjo0MjAzODQ0ODksInBvc3RfaWQiOjE4NDQ4NzgzOSwiaWF0IjoxNzY4NDI5OTExLCJleHAiOjE3OTk5NjU5MTEsImlzcyI6InB1Yi0xOTgzNDU2Iiwic3ViIjoiZGlzYWJsZV9lbWFpbCJ9.i4BxgjFIx70vfPpl5tzb2H48IGxjl3Is7hlsrKSwrY0&all_sections=true>
+In-Reply-To: <post-184487839@substack.com>
+Reply-To: =?utf-8?B?QFJuZXN0IGZyb20gRXJuZXN0b+KAmXMgU3Vic3RhY2s=?= <reply+31u7q7&6yaaqx&&d811b675880d9b441d35f93727f025fbd1987c7b002ee427a05a7701cbb6473b@mg1.substack.com>
+Content-Language: es-ES
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-AuthSource: SN1PEPF000252A1.namprd05.prod.outlook.com
+X-MS-Exchange-Organization-ComplianceLabelId: 3dbb5f39-dc76-4916-9db3-fa9191760a55
+X-MS-Has-Attach: 
+X-MS-Exchange-Organization-Network-Message-Id: 4c498ba6-067d-4ca8-abca-08de53bcbc62
+X-MS-Exchange-Organization-SCL: 5
+X-MS-TNEF-Correlator: <20260114223106.3.5a1dd974832c9586@mg2.substack.com>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-ms-publictraffictype: Email
+dkim-signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg2.substack.com; q=dns/txt; s=mailo; t=1768429920; x=1768437120; h=List-Unsubscribe-Post: List-Unsubscribe: List-Post: List-Id: List-Archive: List-Owner: Reply-To: In-Reply-To: References: Sender: Sender: Date: Message-Id: To: To: From: From: Subject: Subject: Content-Type: Mime-Version; bh=OvtWOfWmhRXHPt3eWXyR+AAUyW5OFIV6qIGNkw6l4fY=; b=sJNLK9wbTJz7/wtHgjRFhv6fN/PZDEEEDQl3AGppal2fIaxi5EPe2GusMVNwnw2LIslwbe1aYHpklV1v2C7vEyTyjzi/XBO8YJwtydGmUgywWx1yyN2ke/ThPIwImXcFAPZ26Qnu7DEDkbLP0kut8iEgx4Ls4MlpQpArNVK0OP0=
+received-spf: Pass (protection.outlook.com: domain of mg2.substack.com designates 159.112.244.17 as permitted sender) receiver=protection.outlook.com; client-ip=159.112.244.17; helo=m244-17.mailgun.net; pr=C
+x-forefront-antispam-report: CIP:159.112.244.17;CTRY:US;LANG:es;SCL:5;SRV:;IPV:NLI;SFV:SPM;H:m244-17.mailgun.net;PTR:m244-17.mailgun.net;CAT:SPM;SFS:(13230040)(4022899009)(1032899013)(69100299015)(29132699027)(20203002999009)(8096899003)(23003199003)(2066899003)(13003099007)(20204042999004)(14062099003)(54012099003)(7142099003);DIR:INB;
+authentication-results: spf=pass (sender IP is 159.112.244.17) smtp.mailfrom=mg2.substack.com; dkim=pass (signature was verified) header.d=mg2.substack.com;dmarc=pass action=none header.from=substack.com;compauth=pass reason=100
+x-ms-office365-filtering-correlation-id: 4c498ba6-067d-4ca8-abca-08de53bcbc62
+x-ms-traffictypediagnostic: SN1PEPF000252A1:EE_|SCZPR80MB6653:EE_|SCYPR80MB7886:EE_
+x-ms-exchange-transport-crosstenantheadersstamped: SCZPR80MB6653
+x-microsoft-antispam: BCL:0;ARA:13230040|4022899009|1032899013|69100299015|29132699027|20203002999009|8096899003|23003199003|2066899003|13003099007|20204042999004|14062099003|54012099003|7142099003;
+x-ms-exchange-crosstenant-originalarrivaltime: 14 Jan 2026 22:32:01.0459 (UTC)
+x-ms-exchange-crosstenant-network-message-id: 4c498ba6-067d-4ca8-abca-08de53bcbc62
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-crosstenant-fromentityheader: Internet
+x-ms-exchange-transport-endtoendlatency: 00:00:07.2108030
+x-ms-exchange-processed-by-bccfoldering: 15.20.9520.001
+x-eopattributedmessage: 0
+x-eoptenantattributedmessage: 17d02e16-8b83-4168-ba0d-c61ac0d093a6:0
+x-ms-exchange-crosstenant-authsource: SN1PEPF000252A1.namprd05.prod.outlook.com
+x-ms-exchange-crosstenant-authas: Anonymous
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

@@ -1,0 +1,53 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from RO2PR80MB7913.lamprd80.prod.outlook.com (2603:10d6:10:11e::16) by CPWPR80MB6552.lamprd80.prod.outlook.com with HTTPS; Tue, 27 Jan 2026 21:37:48 +0000
+Received: from CH5P221CA0014.NAMP221.PROD.OUTLOOK.COM (2603:10b6:610:1f2::7) by RO2PR80MB7913.lamprd80.prod.outlook.com (2603:10d6:10:11e::16) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9542.15; Tue, 27 Jan 2026 21:37:44 +0000
+Received: from CH1PEPF0000A34B.namprd04.prod.outlook.com (2603:10b6:610:1f2:cafe::f3) by CH5P221CA0014.outlook.office365.com (2603:10b6:610:1f2::7) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9542.16 via Frontend Transport; Tue, 27 Jan 2026 21:37:33 +0000
+Received: from mx.infraccionesba.gob.gba.gob.ar (170.155.9.131) by CH1PEPF0000A34B.mail.protection.outlook.com (10.167.244.10) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9564.3 via Frontend Transport; Tue, 27 Jan 2026 21:37:41 +0000
+Received: from localhost (localhost.localdomain [127.0.0.1])	by mx.infraccionesba.gob.gba.gob.ar (Postfix) with ESMTP id 151901E898B	for <elvio.gomes@tmoviles.com.ar>; Tue, 27 Jan 2026 18:37:40 -0300 (-03)
+Received: from mx.infraccionesba.gob.gba.gob.ar ([127.0.0.1])	by localhost (mx.infraccionesba.gob.gba.gob.ar [127.0.0.1]) (amavisd-new, port 10032)	with ESMTP id CYrZOKNpGYHv for <elvio.gomes@tmoviles.com.ar>;	Tue, 27 Jan 2026 18:37:39 -0300 (-03)
+Received: from localhost (localhost.localdomain [127.0.0.1])	by mx.infraccionesba.gob.gba.gob.ar (Postfix) with ESMTP id 9FC561E8C51	for <elvio.gomes@tmoviles.com.ar>; Tue, 27 Jan 2026 18:37:39 -0300 (-03)
+Received: from mx.infraccionesba.gob.gba.gob.ar ([127.0.0.1])	by localhost (mx.infraccionesba.gob.gba.gob.ar [127.0.0.1]) (amavisd-new, port 10026)	with ESMTP id WNb2XTDgsAFx for <elvio.gomes@tmoviles.com.ar>;	Tue, 27 Jan 2026 18:37:39 -0300 (-03)
+Received: from 9fa36906d672 (unknown [172.22.10.46])	by mx.infraccionesba.gob.gba.gob.ar (Postfix) with ESMTPSA id 84AFD1E8ADF	for <elvio.gomes@tmoviles.com.ar>; Tue, 27 Jan 2026 18:37:39 -0300 (-03)
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: "no-reply@transporte.gba.gob.ar" <no-reply@transporte.gba.gob.ar>
+To: "GOMES, ELVIO OSVALDO" <ELVIO.GOMES@tmoviles.com.ar>
+Subject: Constitución del domicilio vial electrónico
+Thread-Topic: Constitución del domicilio vial electrónico
+Thread-Index: AQHcj9UuTF8omeq5jkm4gGfUxsbnqQ==
+Date: Tue, 27 Jan 2026 21:37:39 +0000
+Message-ID: <2077122753.294041769549859449.JavaMail.root@9fa36906d672>
+Content-Language: es-ES
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-AuthSource: CH1PEPF0000A34B.namprd04.prod.outlook.com
+X-MS-Has-Attach: 
+X-MS-Exchange-Organization-Network-Message-Id: 96018ef9-05e0-4cb2-86ee-08de5dec4d12
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator: <2077122753.294041769549859449.JavaMail.root@9fa36906d672>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-ms-publictraffictype: Email
+received-spf: Pass (protection.outlook.com: domain of transporte.gba.gob.ar designates 170.155.9.131 as permitted sender) receiver=protection.outlook.com; client-ip=170.155.9.131; helo=mx.infraccionesba.gob.gba.gob.ar; pr=C
+authentication-results: spf=pass (sender IP is 170.155.9.131) smtp.mailfrom=transporte.gba.gob.ar; dkim=pass (signature was verified) header.d=transporte.gba.gob.ar;dmarc=pass action=none header.from=transporte.gba.gob.ar;compauth=pass reason=100
+x-ms-office365-filtering-correlation-id: 96018ef9-05e0-4cb2-86ee-08de5dec4d12
+x-ms-traffictypediagnostic: CH1PEPF0000A34B:EE_|RO2PR80MB7913:EE_|CPWPR80MB6552:EE_
+x-ms-exchange-transport-crosstenantheadersstamped: RO2PR80MB7913
+x-eopattributedmessage: 0
+x-eoptenantattributedmessage: 17d02e16-8b83-4168-ba0d-c61ac0d093a6:0
+x-forefront-antispam-report: CIP:170.155.9.131;CTRY:AR;LANG:es;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mx.infraccionesba.gob.gba.gob.ar;PTR:mx1.transporte.gba.gob.ar;CAT:NONE;SFS:(13230040)(5073199012)(69100299015)(8096899003)(4076899003)(13003099007);DIR:INB;
+x-microsoft-antispam: BCL:0;ARA:13230040|5073199012|69100299015|8096899003|4076899003|13003099007;
+x-ms-exchange-crosstenant-originalarrivaltime: 27 Jan 2026 21:37:41.6445 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Internet
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-crosstenant-network-message-id: 96018ef9-05e0-4cb2-86ee-08de5dec4d12
+x-ms-exchange-transport-endtoendlatency: 00:00:07.1106240
+x-ms-exchange-processed-by-bccfoldering: 15.20.9542.003
+x-ms-exchange-crosstenant-authsource: CH1PEPF0000A34B.namprd04.prod.outlook.com
+x-ms-exchange-crosstenant-authas: Anonymous
+dkim-signature: v=1; a=rsa-sha256; c=relaxed/relaxed;	d=transporte.gba.gob.ar; s=D22BA9D8-BB85-11EC-A79A-2E00C8E6803B;	t=1769549859; bh=xKipdu2o2jEK2ccdkZ1mw48GpLU1lWwlFQvkdaA1lRw=;	h=Date:From:To:Message-ID:MIME-Version;	b=ShFuCa1GqrbN+GlpKzC2uoLTB9Q2M7mvX6uTSWO5fo76vHDF7UyUHUDSlJsS6emNT	 BBSkdoPzq98MQEg1mKcYZ1Jl6J07pz3pNh9m+611rTHwdu2HjGFGxp8sqprlanTNNR	 NSBczOKDYtK/u7F3WfP8MKtodoBG/aceteVUONR/+8SHJ/n2RPwomVBOKIEtYrJC7d	 T3bkrHhdPianH0QfyO26B/nOmxpX9WPgvwfAMMCh1/Okgz6kvrpKbvpfITyOfQtYPJ	 Bi76wKcqr4DVnaCzNuZAJ2ajbLuymKxxGuuamCLaYP170FhwWDTMQGofWuchIFzzJJ	 n2WXEJivT/ZAQ==
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

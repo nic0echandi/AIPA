@@ -1,0 +1,12 @@
+├── suspect/                     ← acá van los .txt a analizar
+├── analyzed/
+│   ├── legitimo/
+│   ├── spam/
+│   ├── sospechoso/
+│   └── json/                    ← JSONs detallados de cada análisis
+├── test_log.txt                 ← se crea/acumula automáticamente
+├── test_agent.py
+├── test_config.json
+├── phishing_analyzer_txt_08.py
+├── knn_classifier.py
+└── legitimos.txt

@@ -1,0 +1,50 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from SCZPR80MB7424.lamprd80.prod.outlook.com (::1) by CPUPR80MB8961.lamprd80.prod.outlook.com with HTTPS; Wed, 28 Jan 2026 18:05:24 +0000
+Received: from RO2PR80MB7913.lamprd80.prod.outlook.com (2603:10d6:10:11e::16) by SCZPR80MB7424.lamprd80.prod.outlook.com (2603:10d6:300:b8::6) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9564.8; Wed, 28 Jan 2026 18:05:17 +0000
+Received: from RO2PR80MB7913.lamprd80.prod.outlook.com ([fe80::1464:2e5d:9a46:b52d]) by RO2PR80MB7913.lamprd80.prod.outlook.com ([fe80::1464:2e5d:9a46:b52d%3]) with mapi id 15.20.9564.006; Wed, 28 Jan 2026 18:05:17 +0000
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: "CATALDI, ESTEBAN ANDRES" <esteban.cataldi@tmoviles.com.ar>
+To: "MASTRULLI, CARLA ADRIANA" <carla.mastrulli@tmoviles.com.ar>, Ares Manuel <manuel.ares@tmoviles.com.ar>
+Subject: RE: 1774430 - ARRN0212-RS037-ADENDA ENERGIA-2026 V.E
+Thread-Topic: 1774430 - ARRN0212-RS037-ADENDA ENERGIA-2026 V.E
+Thread-Index: AdyQfGxeP7HW7RDwScaNwXIHwhjGvAAAXfDwAACrmLQ=
+Date: Wed, 28 Jan 2026 18:05:17 +0000
+Message-ID: <RO2PR80MB7913F7E50A28598E198F6E8EA991A@RO2PR80MB7913.lamprd80.prod.outlook.com>
+References: <CPWPR80MB6472CEF3EA9617420EBE3557AE91A@CPWPR80MB6472.lamprd80.prod.outlook.com> <CPUPR80MB8961D903F630E3D308C964B2AD91A@CPUPR80MB8961.lamprd80.prod.outlook.com>
+In-Reply-To: <CPUPR80MB8961D903F630E3D308C964B2AD91A@CPUPR80MB8961.lamprd80.prod.outlook.com>
+Accept-Language: es-AR, es-ES, en-US
+Content-Language: es-AR
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-AuthSource: RO2PR80MB7913.lamprd80.prod.outlook.com
+X-MS-Has-Attach: yes
+X-MS-Exchange-Organization-Network-Message-Id: 1e110462-4ae7-4f48-1ebe-08de5e97cb2a
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator: <RO2PR80MB7913F7E50A28598E198F6E8EA991A@RO2PR80MB7913.lamprd80.prod.outlook.com>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+msip_labels: MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_Enabled=True;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_SiteId=17d02e16-8b83-4168-ba0d-c61ac0d093a6;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_SetDate=2026-01-28T18:05:16.9330000Z;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_Name=Uso Interno;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_ContentBits=3;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_Method=Standard
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: RO2PR80MB7913:EE_|SCZPR80MB7424:EE_|CPUPR80MB8961:EE_
+x-ms-exchange-crosstenant-originalarrivaltime: 28 Jan 2026 18:05:17.4571 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Hosted
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-crosstenant-network-message-id: 1e110462-4ae7-4f48-1ebe-08de5e97cb2a
+x-ms-exchange-transport-crosstenantheadersstamped: SCZPR80MB7424
+x-ms-exchange-transport-endtoendlatency: 00:00:06.8861806
+authentication-results: dkim=none (message not signed) header.d=none;dmarc=none action=none header.from=tmoviles.com.ar;
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:es;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:RO2PR80MB7913.lamprd80.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(8096899003)(4013099003)(7053199007)(41050700001);DIR:INT;
+x-ms-office365-filtering-correlation-id: 1e110462-4ae7-4f48-1ebe-08de5e97cb2a
+x-microsoft-antispam: BCL:0;ARA:13230040|366016|8096899003|4013099003|7053199007|41050700001;
+x-ms-exchange-processed-by-bccfoldering: 15.20.9564.000
+x-ms-exchange-crosstenant-authas: Internal
+x-ms-exchange-crosstenant-authsource: RO2PR80MB7913.lamprd80.prod.outlook.com
+x-ms-exchange-crosstenant-mailboxtype: HOSTED
+x-ms-exchange-crosstenant-userprincipalname: qp6pquWjzhczjzuLG8yoAC1tWbYn0zLKG6hwJ3J9kl1iBr7MiFcmoC25KoqjtIMmYrUf8Hmjamqrdt2AKk5INUkyEqMhS5FtBcNa2fEVr24=
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

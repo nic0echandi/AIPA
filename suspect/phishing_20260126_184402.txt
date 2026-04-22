@@ -1,0 +1,51 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from CPWPR80MB7816.lamprd80.prod.outlook.com (::1) by CPUPR80MB6521.lamprd80.prod.outlook.com with HTTPS; Mon, 26 Jan 2026 09:01:21 +0000
+Received: from BY1P220CA0011.NAMP220.PROD.OUTLOOK.COM (2603:10b6:a03:59d::11) by CPWPR80MB7816.lamprd80.prod.outlook.com (2603:10d6:103:256::15) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9542.15; Mon, 26 Jan 2026 09:01:18 +0000
+Received: from SJ5PEPF00000209.namprd05.prod.outlook.com (2603:10b6:a03:59d:cafe::2f) by BY1P220CA0011.outlook.office365.com (2603:10b6:a03:59d::11) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9542.16 via Frontend Transport; Mon, 26 Jan 2026 09:01:20 +0000
+Received: from 1935391122.share-mta25.embluemktg.com (193.53.91.122) by SJ5PEPF00000209.mail.protection.outlook.com (10.167.244.42) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9564.3 via Frontend Transport; Mon, 26 Jan 2026 09:01:17 +0000
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: Maia Customer Engagement <maia@embluemail.com>
+To: "SUSNISKY, NADIA" <NADIA.SUSNISKY@tmoviles.com.ar>
+Subject: La IA cambió las reglas del engagement (y no es táctico)
+Thread-Topic: La IA cambió las reglas del engagement (y no es táctico)
+Thread-Index: AQHcjqJXxBbNlCiegECbntTWjVTHPQ==
+Date: Mon, 26 Jan 2026 09:01:09 +0000
+Message-ID: <1Va-f3ab91d352-J@embluemail.com>
+List-Unsubscribe: <https://app.embluemail.com/Services/Interaccion.svc/DesuscribirContactoEnvio?datos=5c3f-R-ixfxyrxBKuwioe%3Am%3Ac-R-7c:gpb>
+Reply-To: "maia@embluemail.com" <maia@embluemail.com>
+Content-Language: es-AR
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-AuthSource: SJ5PEPF00000209.namprd05.prod.outlook.com
+X-MS-Exchange-Organization-ComplianceLabelId: 3dbb5f39-dc76-4916-9db3-fa9191760a55
+X-MS-Has-Attach: 
+X-MS-Exchange-Organization-Network-Message-Id: 92edee52-da2c-4cb1-cecd-08de5cb977b8
+X-MS-Exchange-Organization-SCL: 5
+X-MS-TNEF-Correlator: <1Va-f3ab91d352-J@embluemail.com>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-ms-publictraffictype: Email
+received-spf: Pass (protection.outlook.com: domain of bounce.embluemail.com designates 193.53.91.122 as permitted sender) receiver=protection.outlook.com; client-ip=193.53.91.122; helo=1935391122.share-mta25.embluemktg.com; pr=C
+authentication-results: spf=pass (sender IP is 193.53.91.122) smtp.mailfrom=bounce.embluemail.com; dkim=pass (signature was verified) header.d=embluemail.com;dkim=pass (signature was verified) header.d=embluerpg.com;dmarc=pass action=none header.from=embluemail.com;compauth=pass reason=100
+x-forefront-antispam-report: CIP:193.53.91.122;CTRY:NL;LANG:es;SCL:5;SRV:;IPV:NLI;SFV:SPM;H:1935391122.share-mta25.embluemktg.com;PTR:1935391122.share-mta25.embluemktg.com;CAT:SPM;SFS:(13230040)(4022899009)(1032899013)(2092899012)(5063199012)(5073199012)(4123199012)(69100299015)(12012899012)(54012099003)(14062099003)(2066899003)(8096899003);DIR:INB;
+x-microsoft-antispam: BCL:0;ARA:13230040|4022899009|1032899013|2092899012|5063199012|5073199012|4123199012|69100299015|12012899012|54012099003|14062099003|2066899003|8096899003;
+x-ms-traffictypediagnostic: SJ5PEPF00000209:EE_|CPWPR80MB7816:EE_|CPUPR80MB6521:EE_
+x-ms-office365-filtering-correlation-id: 92edee52-da2c-4cb1-cecd-08de5cb977b8
+x-ms-exchange-crosstenant-originalarrivaltime: 26 Jan 2026 09:01:17.2574 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Internet
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-crosstenant-network-message-id: 92edee52-da2c-4cb1-cecd-08de5cb977b8
+x-ms-exchange-transport-crosstenantheadersstamped: CPWPR80MB7816
+x-ms-exchange-transport-endtoendlatency: 00:00:04.1021662
+x-ms-exchange-processed-by-bccfoldering: 15.20.9542.003
+x-ms-exchange-crosstenant-authas: Anonymous
+x-ms-exchange-crosstenant-authsource: SJ5PEPF00000209.namprd05.prod.outlook.com
+x-eopattributedmessage: 0
+x-eoptenantattributedmessage: 17d02e16-8b83-4168-ba0d-c61ac0d093a6:0
+dkim-signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=epexo; d=embluerpg.com; h=Content-Type:MIME-Version:From:To:Subject:reply-to:List-Unsubscribe: List-Unsubscribe-Post:Message-ID:Date; bh=9jW8PcASu0PQZu7C/byw3LSEVw2osI1HT7m3xZN4y9Q=; b=TRRShTwTP0XTFRWj3+ZwDyhthjWgsgSI3MUzyTCA7nM8o4g3I/z9WUyspp6lsgrhfoOcLdbzlMHz   5JVBwZC989y+C1RVgOjA3D3Q9/vh2vClx8x8F2RVStQD7/dEbOAfJdYI08LUP/p5yrk0TXQIAf1T   X4EBj69vme6cX+0bfkw=
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

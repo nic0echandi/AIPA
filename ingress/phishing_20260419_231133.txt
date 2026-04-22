@@ -1,0 +1,52 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from CPWPR80MB7729.lamprd80.prod.outlook.com (::1) by CPWPR80MB7861.lamprd80.prod.outlook.com with HTTPS; Thu, 16 Apr 2026 17:11:53 +0000
+Received: from MN0P223CA0009.NAMP223.PROD.OUTLOOK.COM (2603:10b6:208:52b::7) by CPWPR80MB7729.lamprd80.prod.outlook.com (2603:10d6:103:256::9) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9818.25; Thu, 16 Apr 2026 17:11:48 +0000
+Received: from BL02EPF0002992A.namprd02.prod.outlook.com (2603:10b6:208:52b:cafe::31) by MN0P223CA0009.outlook.office365.com (2603:10b6:208:52b::7) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9769.52 via Frontend Transport; Thu, 16 Apr 2026 17:11:48 +0000
+Received: from mail.12nisa.com (78.46.123.209) by BL02EPF0002992A.mail.protection.outlook.com (10.167.249.55) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9769.17 via Frontend Transport; Thu, 16 Apr 2026 17:11:47 +0000
+Received: from webmail.12nisa.com (localhost.localdomain [IPv6:::1])	by mail.12nisa.com (Postfix) with ESMTPSA id 9FBF09F5AF;	Thu, 16 Apr 2026 19:57:04 +0300 (EEST)
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: Armin Rodrigo Huarachi Lopez <omarsaravia@tecnografsalta.com.ar>
+Subject: pago
+Thread-Topic: pago
+Thread-Index: AQHczcQf69wGYEwpoU6MEnMp20fWLw==
+Date: Thu, 16 Apr 2026 16:57:04 +0000
+Message-ID: <fdc7ddc90a7673636642e541a99bd285@tecnografsalta.com.ar>
+References: <1173766453.890352.1726156996426.JavaMail.zimbra@easba.gob.bo>
+In-Reply-To: <1173766453.890352.1726156996426.JavaMail.zimbra@easba.gob.bo>
+Content-Language: es-ES
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-AuthSource: BL02EPF0002992A.namprd02.prod.outlook.com
+X-MS-Exchange-Organization-ComplianceLabelId: 3dbb5f39-dc76-4916-9db3-fa9191760a55
+X-MS-Has-Attach: yes
+X-MS-Exchange-Organization-Network-Message-Id: d42e274a-90fd-483f-11ca-08de9bdb3e2d
+X-MS-Exchange-Organization-SCL: 5
+X-MS-TNEF-Correlator: <fdc7ddc90a7673636642e541a99bd285@tecnografsalta.com.ar>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-ms-publictraffictype: Email
+x-forefront-antispam-report: CIP:78.46.123.209;CTRY:DE;LANG:es;SCL:5;SRV:;IPV:NLI;SFV:SPM;H:mail.12nisa.com;PTR:mail.12nisa.com;CAT:SPOOF;SFS:(13230040)(704162311799003)(704160111799003)(5073199012)(4073199012)(6049299003)(7149299003)(13003099007)(8096899003)(4053099003)(16102099003)(56012099003)(19002099003)(18002099003)(22082099003)(3613699012);DIR:INB;
+x-ms-exchange-crosstenant-fromentityheader: Internet
+x-ms-exchange-crosstenant-originalarrivaltime: 16 Apr 2026 17:11:47.4122 (UTC)
+x-microsoft-antispam: BCL:0;ARA:13230040|704162311799003|704160111799003|5073199012|4073199012|6049299003|7149299003|13003099007|8096899003|4053099003|16102099003|56012099003|19002099003|18002099003|22082099003|3613699012;
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-transport-crosstenantheadersstamped: CPWPR80MB7729
+authentication-results: spf=softfail (sender IP is 78.46.123.209) smtp.mailfrom=tecnografsalta.com.ar; dkim=none (message not signed) header.d=none;dmarc=none action=none header.from=tecnografsalta.com.ar;compauth=fail reason=001
+x-ms-office365-filtering-correlation-id: d42e274a-90fd-483f-11ca-08de9bdb3e2d
+x-ms-traffictypediagnostic: BL02EPF0002992A:EE_|CPWPR80MB7729:EE_|CPWPR80MB7861:EE_
+x-ms-exchange-crosstenant-network-message-id: d42e274a-90fd-483f-11ca-08de9bdb3e2d
+x-ms-exchange-transport-endtoendlatency: 00:00:06.5042367
+x-ms-exchange-processed-by-bccfoldering: 15.20.9818.014
+x-ms-exchange-crosstenant-authsource: BL02EPF0002992A.namprd02.prod.outlook.com
+x-ms-exchange-crosstenant-authas: Anonymous
+received-spf: pass (mail.12nisa.com: connection is authenticated)
+x-eopattributedmessage: 0
+x-eoptenantattributedmessage: 17d02e16-8b83-4168-ba0d-c61ac0d093a6:0
+authentication-results-original: mail.12nisa.com;        spf=pass (sender IP is ::1) smtp.mailfrom=omarsaravia@tecnografsalta.com.ar smtp.helo=webmail.12nisa.com
+x-sender: omarsaravia@tecnografsalta.com.ar
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

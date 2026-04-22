@@ -1,0 +1,54 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from SCZPR80MB7014.lamprd80.prod.outlook.com (::1) by CPWPR80MB8418.lamprd80.prod.outlook.com with HTTPS; Fri, 9 Jan 2026 15:30:28 +0000
+Received: from BN0PR04CA0020.namprd04.prod.outlook.com (2603:10b6:408:ee::25) by SCZPR80MB7014.lamprd80.prod.outlook.com (2603:10d6:300:3b::11) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9499.5; Fri, 9 Jan 2026 15:30:24 +0000
+Received: from BN2PEPF000055DD.namprd21.prod.outlook.com (2603:10b6:408:ee:cafe::e9) by BN0PR04CA0020.outlook.office365.com (2603:10b6:408:ee::25) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9499.5 via Frontend Transport; Fri, 9 Jan 2026 15:30:24 +0000
+Received: from mail141.atl271.mcdlv.net (198.2.142.141) by BN2PEPF000055DD.mail.protection.outlook.com (10.167.245.7) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9520.0 via Frontend Transport; Fri, 9 Jan 2026 15:30:23 +0000
+Received: from localhost (localhost [127.0.0.1])	by mail141.atl271.mcdlv.net (Mailchimp) with ESMTP id 4dnm130LyRzDS51f9	for <DAMIANGUILLERMO.CORTES@tmoviles.com.ar>; Fri,  9 Jan 2026 15:29:58 +0000 (GMT)
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: =?utf-8?B?VW5pw7NuIGRlbCBQZXJzb25hbCBKZXLDoXJxdWljbyBkZSBFbXByZXNhcyBk?=  =?utf-8?Q?e_Telecomunicaciones_-_UPJET_-?= <info@upjet.org.ar>
+To: "CORTES, DAMIAN GUILLERMO" <damianguillermo.cortes@tmoviles.com.ar>
+Subject: COMPLEJO LA TORRE - Ampliación de Servicios - Temporada 2025-2026
+Thread-Topic: COMPLEJO LA TORRE - Ampliación de Servicios - Temporada 2025-2026
+Thread-Index: AQHcgXzi5nc5eg04+0ulL9bjK05aQA==
+Date: Fri, 9 Jan 2026 15:29:57 +0000
+Message-ID: <d0a33285986b2ca263b202cd9.410d4e2a89.20260109152940.21cb0fb1b4.b445cc56@mail141.atl271.mcdlv.net>
+List-Unsubscribe: <https://upjet.us20.list-manage.com/unsubscribe?u=d0a33285986b2ca263b202cd9&id=8a4bfa5098&t=h&e=410d4e2a89&c=21cb0fb1b4>, <mailto:unsubscribe-mc.us20_d0a33285986b2ca263b202cd9.21cb0fb1b4-410d4e2a89@unsubscribe.mailchimpapp.net?subject=unsubscribe>
+Reply-To: =?utf-8?B?VW5pw7NuIGRlbCBQZXJzb25hbCBKZXLDoXJxdWljbyBkZSBFbXByZXNhcyBk?=  =?utf-8?Q?e_Telecomunicaciones_-_UPJET_-?= <info@upjet.org.ar>
+Content-Language: es-ES
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-AuthSource: BN2PEPF000055DD.namprd21.prod.outlook.com
+X-MS-Exchange-Organization-ComplianceLabelId: 3dbb5f39-dc76-4916-9db3-fa9191760a55
+X-MS-Has-Attach: 
+X-MS-Exchange-Organization-Network-Message-Id: 0219d769-a07e-400c-871b-08de4f940200
+X-MS-Exchange-Organization-SCL: 5
+X-MS-TNEF-Correlator: <d0a33285986b2ca263b202cd9.410d4e2a89.20260109152940.21cb0fb1b4.b445cc56@mail141.atl271.mcdlv.net>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-ms-publictraffictype: Email
+x-forefront-antispam-report: CIP:198.2.142.141;CTRY:US;LANG:es;SCL:5;SRV:;IPV:NLI;SFV:SPM;H:mail141.atl271.mcdlv.net;PTR:mail141.atl271.mcdlv.net;CAT:SPM;SFS:(13230040)(1032899013)(12012899012)(69100299015)(4022899009)(2092899012)(20203042999009)(4076899003)(8096899003)(2066899003)(13003099007)(20204142999004);DIR:INB;
+authentication-results: spf=pass (sender IP is 198.2.142.141) smtp.mailfrom=mail141.atl271.mcdlv.net; dkim=pass (signature was verified) header.d=upjet.org.ar;dmarc=pass action=none header.from=upjet.org.ar;compauth=pass reason=100
+x-ms-office365-filtering-correlation-id: 0219d769-a07e-400c-871b-08de4f940200
+x-ms-traffictypediagnostic: BN2PEPF000055DD:EE_|SCZPR80MB7014:EE_|CPWPR80MB8418:EE_
+x-microsoft-antispam: BCL:0;ARA:13230040|1032899013|12012899012|69100299015|4022899009|2092899012|20203042999009|4076899003|8096899003|2066899003|13003099007|20204142999004;
+x-ms-exchange-crosstenant-network-message-id: 0219d769-a07e-400c-871b-08de4f940200
+x-ms-exchange-crosstenant-originalarrivaltime: 09 Jan 2026 15:30:23.9704 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Internet
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-transport-crosstenantheadersstamped: SCZPR80MB7014
+x-ms-exchange-transport-endtoendlatency: 00:00:04.4121210
+x-ms-exchange-processed-by-bccfoldering: 15.20.9499.003
+x-ms-exchange-crosstenant-authsource: BN2PEPF000055DD.namprd21.prod.outlook.com
+x-ms-exchange-crosstenant-authas: Anonymous
+received-spf: Pass (protection.outlook.com: domain of mail141.atl271.mcdlv.net designates 198.2.142.141 as permitted sender) receiver=protection.outlook.com; client-ip=198.2.142.141; helo=mail141.atl271.mcdlv.net; pr=C
+dkim-signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=upjet.org.ar; s=k3;	t=1767972599; x=1768242599; i=info@upjet.org.ar;	bh=XarE8bvcht2AFjYg1kRSNms0d+JUFPWe+AWgZPUy1Gs=;	h=Subject:From:Reply-To:To:Date:Message-ID:X-MC-User:Feedback-ID:	 List-ID:List-Unsubscribe:List-Unsubscribe-Post:Content-Type:	 MIME-Version:CC:Date:Subject:From;	b=kq36AYpvHvWKgx8cWC8ZHGPhmSHnEktV8BWELp/F+Zef6NiNkkaUaV+JWiDX82IPX	 zvu4CyJE0IjKNAmC+mb5lvqJK6J2BHi13maB8L5nzAVcTce3xBIbXQVuO+4x+6xkPu	 7UwhloIK3Qh84Lo8Opuf8WjCf1shCCC1HtJqvCPSyrv3v6/DWA3kG9ZGQLuH/oQh2n	 m8faDUw6kmtqJT1slZsWYN9QNGnhQoTT8hHpjj9E9o9zk1UUwJ4PpPIvOIJ5fxP2mJ	 ygP5sYVny08idCHVl03h7TVy+6XmXAfMQmf11MC7t20goRAeNGrmQI5zcyPIwd3HEs	 jvYIrTmq5Ingg==
+x-eopattributedmessage: 0
+x-eoptenantattributedmessage: 17d02e16-8b83-4168-ba0d-c61ac0d093a6:0
+x-mailer: Mailchimp Mailer - **CID21cb0fb1b4410d4e2a89**
+x-report-abuse: Please report abuse for this campaign here: https://mailchimp.com/contact/abuse/?u=d0a33285986b2ca263b202cd9&id=21cb0fb1b4&e=410d4e2a89
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

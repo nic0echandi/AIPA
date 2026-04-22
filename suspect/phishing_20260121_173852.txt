@@ -1,0 +1,52 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from CPWPR80MB6486.lamprd80.prod.outlook.com (2603:10d6:103:191::6) by CPWPR80MB8919.lamprd80.prod.outlook.com with HTTPS; Thu, 15 Jan 2026 17:25:06 +0000
+Received: from RO2PR80MB7620.lamprd80.prod.outlook.com (2603:10d6:10:11a::11) by CPWPR80MB6486.lamprd80.prod.outlook.com (2603:10d6:103:191::6) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9499.7; Thu, 15 Jan 2026 17:25:04 +0000
+Received: from RO2PR80MB7620.lamprd80.prod.outlook.com ([fe80::8f41:b4f2:af46:2942]) by RO2PR80MB7620.lamprd80.prod.outlook.com ([fe80::8f41:b4f2:af46:2942%4]) with mapi id 15.20.9520.005; Thu, 15 Jan 2026 17:25:04 +0000
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: "SANCHEZ, MARIA DE LOS ANGELES" <MARIADELOS.SANCHEZ@tmoviles.com.ar>
+To: Cabrera Oscar Antonio <oscarantonio.cabrera@tmoviles.com.ar>, coordinaciondesitios.ar <coordinaciondesitios.ar@tmoviles.com.ar>, "Veron,  Leila Fatima" <leila.veron@tmoviles.com.ar>
+CC: "ESCOBAR, SEBASTIAN" <s.escobar@tmoviles.com.ar>, =?Windows-1252?Q?Dpto_Energ=EDa_Climatizaci=F3n_y_MyA?= <DptoEnergiaClimatizacionMyA@tmoviles.com.ar>, "Capucciati, Guido" <guido.capucciati@tmoviles.com.ar>
+Subject: RE: Ingreso Mineras Goldcorp Vein Zone y Goldcorp Eureka
+Thread-Topic: Ingreso Mineras Goldcorp Vein Zone y Goldcorp Eureka
+Thread-Index: AQD6PRW1B4lIjL1dDt4bgahjsY4sgLcWYifQgAAY8aCAAB68wIABc25L
+Date: Thu, 15 Jan 2026 17:25:03 +0000
+Message-ID: <RO2PR80MB7620495B686F1C605B73D4BCDA8CA@RO2PR80MB7620.lamprd80.prod.outlook.com>
+References: <CACSTrGpM-9ur5X+yj7ON=CJ04MMCOOPMc969Q1VgtXS5FLwDVA@mail.gmail.com> <caf6ec8634e0213e2a32a7da06576d9f@mail.gmail.com> <SCYPR80MB76962859544063A24695B60FAD8FA@SCYPR80MB7696.lamprd80.prod.outlook.com> <CPWPR80MB67489D1A559330E38AED08ADC18FA@CPWPR80MB6748.lamprd80.prod.outlook.com>
+In-Reply-To: <CPWPR80MB67489D1A559330E38AED08ADC18FA@CPWPR80MB6748.lamprd80.prod.outlook.com>
+Accept-Language: es-ES, en-US
+Content-Language: es-ES
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-AuthSource: RO2PR80MB7620.lamprd80.prod.outlook.com
+X-MS-Has-Attach: yes
+X-Auto-Response-Suppress: DR, OOF, AutoReply
+X-MS-Exchange-Organization-Network-Message-Id: 40307713-e9bd-4208-bf05-08de545b0542
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator: <RO2PR80MB7620495B686F1C605B73D4BCDA8CA@RO2PR80MB7620.lamprd80.prod.outlook.com>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+msip_labels: MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_Enabled=True;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_SiteId=17d02e16-8b83-4168-ba0d-c61ac0d093a6;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_SetDate=2026-01-15T17:25:03.377Z;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_Name=Uso Interno;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_ContentBits=1;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_Method=Standard;
+x-ms-publictraffictype: Email
+authentication-results: dkim=none (message not signed) header.d=none;dmarc=none action=none header.from=tmoviles.com.ar;
+x-ms-office365-filtering-correlation-id: 40307713-e9bd-4208-bf05-08de545b0542
+x-ms-traffictypediagnostic: RO2PR80MB7620:EE_|CPWPR80MB6486:EE_|CPWPR80MB8919:EE_
+x-microsoft-antispam: BCL:0;ARA:13230040|366016|4013099003|8096899003|7053199007|41050700001;
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:es;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:RO2PR80MB7620.lamprd80.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(4013099003)(8096899003)(7053199007)(41050700001);DIR:INT;
+x-ms-exchange-crosstenant-authas: Internal
+x-ms-exchange-crosstenant-authsource: RO2PR80MB7620.lamprd80.prod.outlook.com
+x-ms-exchange-crosstenant-network-message-id: 40307713-e9bd-4208-bf05-08de545b0542
+x-ms-exchange-crosstenant-originalarrivaltime: 15 Jan 2026 17:25:03.9904 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Hosted
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-crosstenant-mailboxtype: HOSTED
+x-ms-exchange-crosstenant-userprincipalname: 2L75i0YDBnXjeBfFU9h8gL3nL9K5aKydyVglICPiTrX4YQFuB5PZvBjuPqj1TLBtTk1Z6AcJmkAF/c5LIpRVO7hgYNIG9GNjpwu8uVsgVU08eBhgOyp2PyX3r7NvKUja
+x-ms-exchange-transport-crosstenantheadersstamped: CPWPR80MB6486
+x-ms-exchange-transport-endtoendlatency: 00:00:02.8037608
+x-ms-exchange-processed-by-bccfoldering: 15.20.9520.004
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

@@ -1,0 +1,52 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from CPWPR80MB7070.lamprd80.prod.outlook.com (2603:10d6:103:1c7::14) by CPWPR80MB7717.lamprd80.prod.outlook.com with HTTPS; Wed, 21 Jan 2026 20:05:47 +0000
+Received: from BYAPR08CA0028.namprd08.prod.outlook.com (2603:10b6:a03:100::41) by CPWPR80MB7070.lamprd80.prod.outlook.com (2603:10d6:103:1c7::14) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9542.10; Wed, 21 Jan 2026 20:05:44 +0000
+Received: from SJ5PEPF000001EC.namprd05.prod.outlook.com (2603:10b6:a03:100:cafe::65) by BYAPR08CA0028.outlook.office365.com (2603:10b6:a03:100::41) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9542.10 via Frontend Transport; Wed, 21 Jan 2026 20:05:43 +0000
+Received: from mail030.mlsend.com (185.225.161.30) by SJ5PEPF000001EC.mail.protection.outlook.com (10.167.242.200) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9542.4 via Frontend Transport; Wed, 21 Jan 2026 20:05:42 +0000
+Received: from 10.36.40.136 by 10.164.0.44 with http; 21 Jan 2026 20:05:40 +0000
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: Frogmi <info@gofrogmi.com>
+To: "SANTIAGO, GUILLERMO SEBASTIAN" <GUILLERMO.SANTIAGO@tmoviles.com.ar>
+Subject: La paradoja del control: Perseguir menos para lograr más
+Thread-Topic: La paradoja del control: Perseguir menos para lograr más
+Thread-Index: AQHcixFVzumpCKSPBk6tdZbuhySLHA==
+Date: Wed, 21 Jan 2026 20:05:40 +0000
+Message-ID: <177236332032034652a1747813@mlsend.com>
+List-Unsubscribe: <https://agdaqbz.clicks.mlsend.com/tb/c/eyJ2Ijoie1wiYVwiOjE3NDc4MTMsXCJsXCI6MTc3MjM2MzIwNjkzNzgyMDg5LFwiclwiOjE3NzIzNjMzMjAzMjAzNDY1Mn0iLCJzIjoiZjkzNWZlYjFiNTY3YzYwZCJ9>
+Reply-To: Frogmi <info@gofrogmi.com>
+Content-Language: es-AR
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-AuthSource: SJ5PEPF000001EC.namprd05.prod.outlook.com
+X-MS-Has-Attach: 
+X-Auto-Response-Suppress: All
+X-MS-Exchange-Organization-Network-Message-Id: 535d0f0f-6c30-4318-22ae-08de59287552
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator: <177236332032034652a1747813@mlsend.com>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-ms-publictraffictype: Email
+received-spf: Pass (protection.outlook.com: domain of mlsend.com designates 185.225.161.30 as permitted sender) receiver=protection.outlook.com; client-ip=185.225.161.30; helo=mail030.mlsend.com; pr=C
+authentication-results: spf=pass (sender IP is 185.225.161.30) smtp.mailfrom=mlsend.com; dkim=pass (signature was verified) header.d=gofrogmi.com;dkim=pass (signature was verified) header.d=mlsend.com;dmarc=pass action=none header.from=gofrogmi.com;compauth=pass reason=100
+x-ms-traffictypediagnostic: SJ5PEPF000001EC:EE_|CPWPR80MB7070:EE_|CPWPR80MB7717:EE_
+x-ms-office365-filtering-correlation-id: 535d0f0f-6c30-4318-22ae-08de59287552
+x-microsoft-antispam: BCL:0;ARA:13230040|1032899013|69100299015|5063199012|5073199012|4123199012|4022899009|8096899003|13003099007|2066899003|54012099003|14062099003|18906007;
+x-forefront-antispam-report: CIP:185.225.161.30;CTRY:PL;LANG:es;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail030.mlsend.com;PTR:mail030.mlsend.com;CAT:NONE;SFS:(13230040)(1032899013)(69100299015)(5063199012)(5073199012)(4123199012)(4022899009)(8096899003)(13003099007)(2066899003)(54012099003)(14062099003)(18906007);DIR:INB;
+x-ms-exchange-transport-crosstenantheadersstamped: CPWPR80MB7070
+x-ms-exchange-crosstenant-originalarrivaltime: 21 Jan 2026 20:05:42.5802 (UTC)
+x-ms-exchange-crosstenant-network-message-id: 535d0f0f-6c30-4318-22ae-08de59287552
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-crosstenant-fromentityheader: Internet
+x-ms-exchange-transport-endtoendlatency: 00:00:05.2073399
+x-ms-exchange-processed-by-bccfoldering: 15.20.9520.006
+x-ms-exchange-crosstenant-authsource: SJ5PEPF000001EC.namprd05.prod.outlook.com
+x-ms-exchange-crosstenant-authas: Anonymous
+x-eopattributedmessage: 0
+x-eoptenantattributedmessage: 17d02e16-8b83-4168-ba0d-c61ac0d093a6:0
+dkim-signature: a=rsa-sha256; bh=ibS8Wf2vMYAQEWHLSrCE9KZTY3iEWkxZhfp6e6pY4To=; c=relaxed/relaxed; d=mlsend.com; h=X-Mailer-Info:Subject:From:To:Date:Received:Message-ID:x-mailer-recipientid:Feedback-ID:List-Unsubscribe-Post:List-Unsubscribe:Precedence:X-Mailru-Msgtype:X-CampaignID:Reply-To:MIME-Version:Content-Type; s=litesrv; t=1769025941; v=1; b=gA+n2a3mfxvfzYO49CazYeBp0MVQkMAppTxf8Kxky4PDbgegFA9X8zusTvcCWUuS+AKzoTL9 TRHFqVraRz9j6raxW+SgpHqPW1ZPhDcJVXTg1UmYTWUIwquUhT7lPo8NcCF9Yi7fJTfPftt7PA9 36ypWJ7vO2D4Oq8xQs0EufPg=
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

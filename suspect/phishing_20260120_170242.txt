@@ -1,0 +1,60 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from SCZPR80MB7454.lamprd80.prod.outlook.com (::1) by CPWPR80MB8418.lamprd80.prod.outlook.com with HTTPS; Fri, 16 Jan 2026 20:16:33 +0000
+Received: from DM6PR11CA0050.namprd11.prod.outlook.com (2603:10b6:5:14c::27) by SCZPR80MB7454.lamprd80.prod.outlook.com (2603:10d6:300:b7::14) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9520.7; Fri, 16 Jan 2026 20:16:28 +0000
+Received: from DS1PEPF0001709C.namprd05.prod.outlook.com (2603:10b6:5:14c:cafe::3d) by DM6PR11CA0050.outlook.office365.com (2603:10b6:5:14c::27) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9520.9 via Frontend Transport; Fri, 16 Jan 2026 20:16:30 +0000
+Received: from mail-qt1-x82f.google.com (2607:f8b0:4864:20::82f) by DS1PEPF0001709C.mail.protection.outlook.com (2603:10b6:2c:400:0:1007:0:a) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9542.4 via Frontend Transport; Fri, 16 Jan 2026 20:16:27 +0000
+Received: by mail-qt1-x82f.google.com with SMTP id d75a77b69052e-501506f448bso14346621cf.3        for <servicedesk.corp@tmoviles.com.ar>; Fri, 16 Jan 2026 12:16:27 -0800 (PST)
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: Juan Manuel Rosales <jrosales@fiberland.com.ar>
+To: "RUSSO, FERNANDO ARIEL" <russofe@tmoviles.com.ar>
+CC: cate2.ar <cate2.ar@tmoviles.com.ar>, =?utf-8?B?Q2VudHJvIGRlIEF0ZW5jacOzbiBTRA==?= <servicedesk.corp@tmoviles.com.ar>, NOC FIBERLAND <noc@fiberland.com.ar>
+Subject: Re: INC000137359279 FIBERLAND SRL
+Thread-Topic: INC000137359279 FIBERLAND SRL
+Thread-Index: AQHchyUCzAcv3zPfMUWbFf8MDYDh8g==
+Date: Fri, 16 Jan 2026 20:16:15 +0000
+Message-ID: <CAG+hpWDzbCkkb82fRSoPGinTC9iOgDBNAkUqgkxhi3SKqOytCg@mail.gmail.com>
+References: <RO2PR80MB6579F828E8FEE67FC6594495F08DA@RO2PR80MB6579.lamprd80.prod.outlook.com>
+In-Reply-To: <RO2PR80MB6579F828E8FEE67FC6594495F08DA@RO2PR80MB6579.lamprd80.prod.outlook.com>
+Content-Language: es-ES
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-AuthSource: DS1PEPF0001709C.namprd05.prod.outlook.com
+X-MS-Exchange-Organization-ComplianceLabelId: 3dbb5f39-dc76-4916-9db3-fa9191760a55
+X-MS-Has-Attach: yes
+X-Auto-Response-Suppress: DR, OOF, AutoReply
+X-MS-Exchange-Organization-Network-Message-Id: b2a7e060-da51-4de2-ec9b-08de553c212c
+X-MS-Exchange-Organization-SCL: 9
+X-MS-TNEF-Correlator: <CAG+hpWDzbCkkb82fRSoPGinTC9iOgDBNAkUqgkxhi3SKqOytCg@mail.gmail.com>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-ms-publictraffictype: Email
+x-forefront-antispam-report: CIP:2607:f8b0:4864:20::82f;CTRY:;LANG:es;SCL:9;SRV:;IPV:NLI;SFV:SPM;H:mail-qt1-x82f.google.com;PTR:mail-qt1-x82f.google.com;CAT:HSPM;SFS:(13230040)(43022699015)(4076899003)(8096899003)(13003099007)(4053099003)(54012099003);DIR:INB;
+authentication-results: spf=none (sender IP is 2607:f8b0:4864:20::82f) smtp.mailfrom=fiberland.com.ar; dkim=pass (signature was verified) header.d=fiberland-com-ar.20230601.gappssmtp.com;dmarc=fail action=none header.from=fiberland.com.ar;compauth=pass reason=106
+x-ms-office365-filtering-correlation-id: b2a7e060-da51-4de2-ec9b-08de553c212c
+x-ms-traffictypediagnostic: DS1PEPF0001709C:EE_|SCZPR80MB7454:EE_|CPWPR80MB8418:EE_
+x-microsoft-antispam: BCL:0;ARA:13230040|43022699015|4076899003|8096899003|13003099007|4053099003|54012099003;
+x-ms-exchange-crosstenant-network-message-id: b2a7e060-da51-4de2-ec9b-08de553c212c
+x-ms-exchange-crosstenant-originalarrivaltime: 16 Jan 2026 20:16:27.5831 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Internet
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-transport-crosstenantheadersstamped: SCZPR80MB7454
+x-ms-exchange-transport-endtoendlatency: 00:00:05.6423351
+x-ms-exchange-processed-by-bccfoldering: 15.20.9520.006
+x-ms-exchange-crosstenant-authsource: DS1PEPF0001709C.namprd05.prod.outlook.com
+x-ms-exchange-crosstenant-authas: Anonymous
+received-spf: None (protection.outlook.com: fiberland.com.ar does not designate permitted sender hosts)
+dkim-signature: v=1; a=rsa-sha256; c=relaxed/relaxed;        d=fiberland-com-ar.20230601.gappssmtp.com; s=20230601; t=1768594587; x=1769199387; darn=tmoviles.com.ar;        h=cc:to:subject:message-id:date:from:in-reply-to:references         :mime-version:from:to:cc:subject:date:message-id:reply-to;        bh=xxDVL0/dWe6sMPk7GUtmDEkpoDt8oYvtzJJ/nFkDFfs=;        b=1d6gJcAGFjYAW4HEue0qVLcFlcUArSk0r1tTduLuKt0CJ9zV2ta4pph9y4xfeiVGCM         o6U3lYkhJD4WmZACkOvNaoOqammzXp/YmoKKoqGQTD7GNsA7DaN6JuRSevdKUC4HM/Y1         35icXKXT1OJyLuol8+xeJSSCzi9sEaw7OYFedarZXg/AofD5Ntxe1JU10Uf4alzhvdRk         knpblSeZbYZmCz449LRfx+pmE7ZqzmvfZMNTVxevpxB69aABO5U1Kbfj1wtZTungC8Tz         JR50j5OgoJKit0hSay9WEURkzPSqIkP0WZ5EoWGjGP2bkew6OJtDgp5TWPMHQwB22qfu         cCGg==
+arc-seal: i=1; a=rsa-sha256; t=1768594587; cv=none;        d=google.com; s=arc-20240605;        b=FUbaOgXAj807oi8oUbnxNYeDotsPTQb+q7Gs7A+XjDmi2p7WmSgnGc2JIv5gRbV3mo         PSCGkIimE29IXVARyCQypeaZXZbJc612inTM0ZObWWyoIHLnOJHV8qJ4uZH7o7frPMt3         SkP92iI3IZJpp1ID1vKa31uuGrpew1sSpAPAFL14lBeF3eVfeuxB5rBUnTxeXojh2w9X         cQYT9nJ2qgWNdd/dEfaCARLSQxRJadGXlASxvr780tZzODQ5PfdbUiMKXb/XUIt/qJ3F         K5zvUfU99vsB77OJhYQRW8V29fOQpCDl8tSJEekOtC48KFa0chogE0DpllkfADEjszkw         Xapw==
+arc-message-signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;        h=cc:to:subject:message-id:date:from:in-reply-to:references         :mime-version:dkim-signature;        bh=xxDVL0/dWe6sMPk7GUtmDEkpoDt8oYvtzJJ/nFkDFfs=;        fh=qoqp8vKhgRuInvJGNpWQF/kOsKsefnrVc5hh97W9HjM=;        b=cZX//xWTBwhhfXL06XAnUvSNmHCoWfIXldvxfeGAcQh4RSrEzH7vXBplZdiYh1c3+d         U2W1enWgQ4cLAvsg3w4Yic3trxmSTTetKdlcGSHxGqmMfWCNbHL3vWYIxyZK6i1xi/U3         plyTlc/Pd2Mx9gp914j1wqX0i42Kk/ZQbyp0RoV6xZksJRqJ5VwmKjCZWIYoQQQ4mWxh         dZnqC+8cxCuxoC4SMf4hgwAYe5ppu3oG/PO52mr6aOotFVYWURSlTSBQ1exHdiT1NW6u         DebNEXJXeZOKDt8weDgHFLQe/KhtsBqQQdqy40eDq8yQ5fcRJsgiRne41GoA+yCiB4N7         tZDg==;        darn=tmoviles.com.ar
+arc-authentication-results: i=1; mx.google.com; arc=none
+x-eopattributedmessage: 0
+x-eoptenantattributedmessage: 17d02e16-8b83-4168-ba0d-c61ac0d093a6:0
+x-received: by 2002:a05:622a:19a0:b0:501:423d:e658 with SMTP id d75a77b69052e-502a168dadfmr56820931cf.28.1768594586439; Fri, 16 Jan 2026 12:16:26 -0800 (PST)
+x-google-dkim-signature: v=1; a=rsa-sha256; c=relaxed/relaxed;        d=1e100.net; s=20230601; t=1768594587; x=1769199387;        h=cc:to:subject:message-id:date:from:in-reply-to:references         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date         :message-id:reply-to;        bh=xxDVL0/dWe6sMPk7GUtmDEkpoDt8oYvtzJJ/nFkDFfs=;        b=MsL1hhAI/xQDTBsDH8uXoOf0iSdfjXfr77cMRjdSbK7Ot/V0ZebGuo3H5zQhBMGXEn         lMsbfnzGfYTj6KNfKWIzZiuA8zvrbtZ9Xzqdpbn/XuXWmY/bFhWKt9IwjVlusV/i/4in         LWBWEyTMkhs19e7n+E7MKuQe2w0PszQD6a1qlXoU72sIRqL1n/gL65m+YIWmqz0tJmqP         kr48tzyUW9Zmf1Lg6vcvHSwhYeWIkJJ1dvqnX5aGAFSuXVYhaWffPSp4bkXMyNO2821k         Z1xEa/JGyTBl3CPsG0KVPePSMbEt/icOdQugHogdlkiz0eM3pwsg0VDiSN/ZiAjoJiHB         aIwg==
+x-gm-message-state: AOJu0YzIsYgf/726DxVadBVPiFuX5eYi10JfNEzSatxDnGqzjyIfr8yB	li8H+dVsF6PTRV8kF1qnN+/h06gcL5tiqzdXCiaYZ+WNVE++tqmCg1T62gDc9QU5QPBnXIGWHDn	iKJJ1lQDGvpwZ6ozxa+NurnAYJ3Eioh9MjR5Wg86OxA==
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

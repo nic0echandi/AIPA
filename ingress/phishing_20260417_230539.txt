@@ -1,0 +1,50 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from CPWPR80MB7553.lamprd80.prod.outlook.com (2603:10d6:103:21e::12) by CPWPR80MB6700.lamprd80.prod.outlook.com with HTTPS; Fri, 22 Aug 2025 13:41:41 +0000
+Received: from BN9PR03CA0616.namprd03.prod.outlook.com (2603:10b6:408:106::21) by CPWPR80MB7553.lamprd80.prod.outlook.com (2603:10d6:103:21e::12) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9052.14; Fri, 22 Aug 2025 13:41:39 +0000
+Received: from BL02EPF0002992C.namprd02.prod.outlook.com (2603:10b6:408:106:cafe::3d) by BN9PR03CA0616.outlook.office365.com (2603:10b6:408:106::21) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9052.19 via Frontend Transport; Fri, 22 Aug 2025 13:41:38 +0000
+Received: from mta-out2.pod13.usw2.zdsys.com (192.161.151.2) by BL02EPF0002992C.mail.protection.outlook.com (10.167.249.57) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9052.8 via Frontend Transport; Fri, 22 Aug 2025 13:41:38 +0000
+Received: from zendesk.com (unknown [127.0.0.6])	by mta-out15.pod13.usw2.zdsys.com (Zendesk) with ESMTP	id ffa0488e-ba91-4104-a3a3-9c45e151098b	for <alan.leonel.fernandes@tmoviles.com.ar>;	Fri, 22 Aug 2025 13:41:37 +0000 (UTC)
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: =?utf-8?B?Q2VudHJvIGRlIEF0ZW5jacOzbiBhbCBFbXBsZWFkbw==?= <centrodeatencionalempleado@telefonicahelprh.zendesk.com>
+To: "FERNANDES MACIEL, ALAN LEONEL" <ALAN.LEONEL.FERNANDES@tmoviles.com.ar>
+Subject: Activar cuenta para Centro de Atención
+Thread-Topic: Activar cuenta para Centro de Atención
+Thread-Index: AQHcE2p+K1zXzklWMkawE17CpBCfKQ==
+Date: Fri, 22 Aug 2025 13:41:37 +0000
+Message-ID: <68a873918d17b_b515782733fd_sprut@zendesk.com>
+Content-Language: es-ES
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-AuthSource: BL02EPF0002992C.namprd02.prod.outlook.com
+X-MS-Has-Attach: 
+X-Auto-Response-Suppress: All
+X-MS-Exchange-Organization-Network-Message-Id: aa6e1554-0001-4d1d-ba13-08dde1819eb6
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator: <68a873918d17b_b515782733fd_sprut@zendesk.com>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-ms-publictraffictype: Email
+received-spf: Pass (protection.outlook.com: domain of telefonicahelprh.zendesk.com designates 192.161.151.2 as permitted sender) receiver=protection.outlook.com; client-ip=192.161.151.2; helo=mta-out2.pod13.usw2.zdsys.com; pr=C
+x-forefront-antispam-report: CIP:192.161.151.2;CTRY:US;LANG:es;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mta-out2.pod13.usw2.zdsys.com;PTR:mta-out2.pod13.usw2.zdsys.com;CAT:NONE;SFS:(13230040)(3072899012)(2092899012)(12012899012)(13003099007)(8096899003);DIR:INB;
+authentication-results: spf=pass (sender IP is 192.161.151.2) smtp.mailfrom=telefonicahelprh.zendesk.com; dkim=pass (signature was verified) header.d=zendesk.com;dmarc=pass action=none header.from=telefonicahelprh.zendesk.com;compauth=pass reason=100
+x-ms-office365-filtering-correlation-id: aa6e1554-0001-4d1d-ba13-08dde1819eb6
+x-ms-traffictypediagnostic: BL02EPF0002992C:EE_|CPWPR80MB7553:EE_|CPWPR80MB6700:EE_
+x-microsoft-antispam: BCL:0;ARA:13230040|3072899012|2092899012|12012899012|13003099007|8096899003;
+x-ms-exchange-crosstenant-network-message-id: aa6e1554-0001-4d1d-ba13-08dde1819eb6
+x-ms-exchange-crosstenant-originalarrivaltime: 22 Aug 2025 13:41:38.4242 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Internet
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-transport-crosstenantheadersstamped: CPWPR80MB7553
+x-ms-exchange-transport-endtoendlatency: 00:00:03.3441984
+x-ms-exchange-processed-by-bccfoldering: 15.20.9052.000
+x-ms-exchange-crosstenant-authas: Anonymous
+x-ms-exchange-crosstenant-authsource: BL02EPF0002992C.namprd02.prod.outlook.com
+dkim-signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=zendesk.com; q=dns/txt; s=zendesk1; t=1755870097; bh=aqJNghJcQCLsf8I41JgBpSaXeMy0NCaAn7IQEKnlkM8=; h=date:from:to:message-id:subject:mime-version:content-type:content-transfer-encoding; b=wHRgGv2YpqfYqb+cPdstDKEmg6D1RBzDzS3RMFYac5WDi5CNGaP0tr/aCnJ/u2Cp7OElPJjVq3e0zKM1hnWNcoucsEfMm6QDrT+1fb1ja1tVlalnNjEI40n7l4DcFOvFI9YzHSzdpnJaLBQlIpeEr4iKZf1Tksvt15NTW7xO4M6vRNhTTH3pnpFrcYVihHQcYSFh3SfRLYbkl7f6bpsq+GALTWtFkq3z2K8l2qTbBbvswTnt/rbOGKX7ufsrdaIcYk7wzvbMwE1nwoaeVps99WNX/km55kDIkZOWMdEklHHWMdGQOf63bKXue2Y22kUj/+cuQzP8L5Zr9alaYOJVlA==
+x-eopattributedmessage: 0
+x-eoptenantattributedmessage: 17d02e16-8b83-4168-ba0d-c61ac0d093a6:0
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

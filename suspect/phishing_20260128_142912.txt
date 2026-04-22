@@ -1,0 +1,67 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from RO2PR80MB6722.lamprd80.prod.outlook.com (::1) by CPUPR80MB6412.lamprd80.prod.outlook.com with HTTPS; Mon, 5 Jan 2026 17:53:39 +0000
+Received: from SN1PR12CA0103.namprd12.prod.outlook.com (2603:10b6:802:21::38) by RO2PR80MB6722.lamprd80.prod.outlook.com (2603:10d6:10:b4::12) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9478.4; Mon, 5 Jan 2026 17:53:36 +0000
+Received: from SA2PEPF00001507.namprd04.prod.outlook.com (2603:10b6:802:21:cafe::7f) by SN1PR12CA0103.outlook.office365.com (2603:10b6:802:21::38) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9478.4 via Frontend Transport; Mon, 5 Jan 2026 17:53:35 +0000
+Received: from PH0PR06CU001.outbound.protection.outlook.com (2a01:111:f403:c107::3) by SA2PEPF00001507.mail.protection.outlook.com (2603:10b6:82c:400:0:1005:0:7) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9499.1 via Frontend Transport; Mon, 5 Jan 2026 17:53:35 +0000
+Received: from MN2PR02CA0031.namprd02.prod.outlook.com (2603:10b6:208:fc::44) by MW3PR18MB3515.namprd18.prod.outlook.com (2603:10b6:303:59::22) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9478.4; Mon, 5 Jan 2026 17:53:30 +0000
+Received: from BL6PEPF00022573.namprd02.prod.outlook.com (2603:10b6:208:fc:cafe::7d) by MN2PR02CA0031.outlook.office365.com (2603:10b6:208:fc::44) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9478.4 via Frontend Transport; Mon, 5 Jan 2026 17:53:33 +0000
+Received: from 1772fdb19a52.localdomain (135.233.5.9) by BL6PEPF00022573.mail.protection.outlook.com (10.167.249.41) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9499.1 via Frontend Transport; Mon, 5 Jan 2026 17:53:29 +0000
+Received: by 1772fdb19a52.localdomain (Postfix, from userid 0)	id 4BE3A140076; Mon, 05 Jan 2026 17:53:29 +0000 (UTC)
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: "experienciaempleados.ar, Ferrari, Monica, +5 others" <noreply@yammer.com>
+To: "Mendez, Sabrina Soledad" <sabrina.mendez@tmoviles.com.ar>
+Subject: TMA Daily Digest
+Thread-Topic: TMA Daily Digest
+Thread-Index: AQHcfmw5M9VH71o/wU+M8FiDKYq61w==
+Date: Mon, 5 Jan 2026 17:53:29 +0000
+Message-ID: <04d8e4aca14eaa28d1d9367ee7af2f28cff477078e2b2b0c9a8337976f45587e@engage.mail.microsoft>
+Content-Language: es-ES
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-AuthSource: SA2PEPF00001507.namprd04.prod.outlook.com
+X-MS-Exchange-Organization-ComplianceLabelId: 3dbb5f39-dc76-4916-9db3-fa9191760a55
+X-MS-Has-Attach: 
+X-Auto-Response-Suppress: All
+X-MS-Exchange-Organization-Network-Message-Id: 382decb3-8779-45b8-f2a9-08de4c83596e
+X-MS-Exchange-Organization-SCL: 5
+X-MS-TNEF-Correlator: <04d8e4aca14eaa28d1d9367ee7af2f28cff477078e2b2b0c9a8337976f45587e@engage.mail.microsoft>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-ms-publictraffictype: Email
+received-spf: Pass (protection.outlook.com: domain of yammer.com designates 135.233.5.9 as permitted sender) receiver=protection.outlook.com; client-ip=135.233.5.9; helo=1772fdb19a52.localdomain; pr=C
+authentication-results: spf=pass (sender IP is 2a01:111:f403:c107::3) smtp.mailfrom=yammer.com; dkim=pass (signature was verified) header.d=yammer.com;dmarc=pass action=none header.from=yammer.com;compauth=pass reason=100
+x-ms-office365-filtering-correlation-id: 382decb3-8779-45b8-f2a9-08de4c83596e
+x-microsoft-antispam: BCL:0;ARA:13230040|4092899012|2092899012|69100299015|3072899012|3092899012|5082899009|6062899009|4022899009|12012899012|35042699022|5062899012|13012899012|13102899012|8096899003|13003099007;
+x-ms-traffictypediagnostic: BL6PEPF00022573:EE_|MW3PR18MB3515:EE_|SA2PEPF00001507:EE_|RO2PR80MB6722:EE_|CPUPR80MB6412:EE_
+x-forefront-antispam-report: CIP:2a01:111:f403:c107::3;CTRY:;LANG:es;SCL:5;SRV:;IPV:NLI;SFV:SPM;H:PH0PR06CU001.outbound.protection.outlook.com;PTR:mail-westus3azlp170110003.outbound.protection.outlook.com;CAT:SPM;SFS:(13230040)(4092899012)(2092899012)(69100299015)(3072899012)(3092899012)(5082899009)(6062899009)(4022899009)(12012899012)(35042699022)(5062899012)(13012899012)(13102899012)(8096899003)(13003099007);DIR:INB;
+x-ms-exchange-crosstenant-network-message-id: 382decb3-8779-45b8-f2a9-08de4c83596e
+x-ms-exchange-crosstenant-originalarrivaltime: 05 Jan 2026 17:53:35.6718 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Internet
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-transport-crosstenantheadersstamped: RO2PR80MB6722
+x-ms-exchange-transport-endtoendlatency: 00:00:03.8483120
+x-ms-exchange-processed-by-bccfoldering: 15.20.9478.004
+x-ms-exchange-crosstenant-authsource: SA2PEPF00001507.namprd04.prod.outlook.com
+x-ms-exchange-crosstenant-authas: Anonymous
+dkim-signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yammer.com; s=selector2; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck; bh=eziakx69JbYO2HHV5RSv7h/lfDM8MuqsUF/sLnTw79U=; b=ipVF/79N2R7vgoF0s/nnCFztYbReZhkfzAFq96S6t/+/LEQJBWw8ieewlUfBumYAQ/f+gp4YN1f4f5ELGmLWD9x2HChGH9VJScrmKy7LhWEu5eKfTnYmcunnbXPe8cJCEbGkH7oz9EiCFrfvIpktkkFWvGgrbeeyVNWx1s/d+9o=
+x-eopattributedmessage: 1
+x-eoptenantattributedmessage: 17d02e16-8b83-4168-ba0d-c61ac0d093a6:0
+arc-seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none; b=MZtxUfvAplDVnR1OLXNQXxE3LqcpsYystV/q4ONx/bTVtMul2fPSk4uR33t4nFo1oSu0DQRoLtQMmxZ+tPPBEJnnHfQQVcorI+Brysfzra8Gfxdxr0zxnbbBSzr9x+ADzFazArKq7atto6Mc+PWC0DjCF+PYz4yjf/3Ijot/mXckj9OAU/xNBmGeyVsAYFFu91cBpKMXh99p8FB0lsOhpYTAM+bpubxu1r2BILMNtR+1lAfz3MO3XpoLGq5tjZZ235KfTf4ZU3YSzhFl4s9Ed5Je0vEezLfcZZvzM04DJxppomCmWSByHfjjVhijjzQyd2BXBNk/7YeWEtcnJbFYDw==
+arc-message-signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; s=arcselector10001; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1; bh=eziakx69JbYO2HHV5RSv7h/lfDM8MuqsUF/sLnTw79U=; b=MEDpfvsaKLwHDB2k3o1Lm2rD09VZckJXksDhAl6xT0e3B2WCmKSthverqgZyv3R+43aZlzHWYrezjXZglZDssb90XMECfjMbIThUQa1qfE5Om8IhAmA/Q8HSYjRPU6pvxFAysVILvVEY1INdJKyirCGGZpbNi6Oi905cao6DAyZnWRtqQc3LsuNIfSZrFveoVaDHBhmL844ycujzoGBfJ2GYoGMOBllxNVijO6H3bViMPwevrKQwje3oxgAkiHtMEwBVp40u6K8pGRaRSrIgKnB/tfHW6ETDmrrAY8iuZmmV0EHVdtJLKIhFAwVn8MiPzR81rjgKOFKIEjLT5RCrvQ==
+arc-authentication-results: i=1; mx.microsoft.com 1; spf=pass (sender ip is 135.233.5.9) smtp.rcpttodomain=tmoviles.com.ar smtp.mailfrom=yammer.com; dmarc=pass (p=quarantine sp=quarantine pct=100) action=none header.from=yammer.com; dkim=none (message not signed); arc=none (0)
+x-ms-exchange-senderadcheck: 1
+x-forefront-antispam-report-untrusted: CIP:135.233.5.9;CTRY:US;LANG:es;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:1772fdb19a52.localdomain;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(41320700013)(40480700016)(36860700013)(376014)(4022899009)(61400799027)(82310400026)(69100299015)(586017)(34036016)(13003099007)(8096899003)(7142099003);DIR:OUT;SFP:1102;
+x-microsoft-antispam-untrusted: BCL:0;ARA:13230040|41320700013|40480700016|36860700013|376014|4022899009|61400799027|82310400026|69100299015|586017|34036016|13003099007|8096899003|7142099003;
+x-microsoft-antispam-message-info-original: nMTnXtOitsQ8cDAqT4AqorSWfKGpzCPS3/jZ0xQx1DjPpf3AuOrNmXeTh9Uf7sOcjz0EGG9Sp4RiCC9FjAY4xm0HtLO+JY7VWs6XRrY0cZnoy5t7HlCZkN2DdWrUjOQ1dAw5RNAt7RsKNFBt2EuhZkEbB+twakzoqtAc9lN10RQPWOuOD+iDimMTaXii1IlqZWL//SnQDaKpy8IZH3Xy0d0QnoS5RyWmJNtETF3ko8YGEauORwS6vccmyaX5OFPTZZNT+1D/2EDSqDZ+acnKhIBUFdbUrVOhFTigtv0SY6WyaM42Hs+Ux9amwiVEsr6BpdH+4VibpFXi6i+7zru7MGrmkfFWD31sLt8u+I2g8CxoQBIrM+sGO2qPod/N1X6RQOkNXGSMUaHGsPs51Ys6XM8v4Xe3QcIsdyzMP0xslEAMi+QjjWMydmqSPTfG94KrFUo0aXp3TDmcw5wqzT9uq6XEDDCVjyzEA51lOMY5jeCKEhsjGEG27Z9+GghMoUz7sBjGM0dBtq2RDSER67qf0jI94HoiIDF+ZvbDb0Yh3D/sOvXb5hTkMUuhBJOcu0Ru0UaPKSIrmSIeNsjrag9TYeq1sW/9yIQOhB5JQhyotSwTzwgfRE560D/s6QAHYXm0cWbqxtJcgFZiSjUiDCY/BGguG/DkIcCd0vyOWJk6/zNFEs5wJ/e6/EG1D1byUFaTyLoV3juZnKaenDwX6BZe03wXKeGZjiHAM2HwUQBGN7MzJRs82xnsq26W8VTwjRhudeo/nmFcdyz2lUNIDBVZ7/sG8BSdsCQCG08h8oWh09tilfqf499oogMRM2+M75r88LUXtp+Q5rh/mCkMrP4FRiVXqO0aU06Gi7LJ9tw30i6bK97GgSPSDdC0iGpMpNfeYTjHuRb0LM0HmX0qKRHOMtmtsDmYn2IVUYgMaNaScm5v84/to1Klwof9jEAuyiJXFczGc0cL+atCPD6Nu8qPiDc4eQ0QZA6meWATbAY3Azq4u5EeFFFQ+MHOZypdJGzhILkFe3hwonqG434Ge30mx8fAiuQAwBAvpATX9Xwy7Knuok3CNhQA6ab0hamLG8yTvjTnXZNQB5qWh5RMYUia6Wf7ouX6qWLbdc4alqn1q/Z0b/Nb+d9wFWHSmouTmLOld9j5qHNpAFx3MhBlPzUeUiTU5WQzx3nCypl8VunZTIOj9kkhepRL3t0T2J8ROtZg+Rk1bZwBGqaOxv3mqX0q1nzS3gRKfzyGMbSWeGQViAX4toacmTjAd8VEQa3cX7f5UTZkcObP0aTjZulxwHL3Kpx/ghhWV4M+LCx2jKBLOPtF6x/saSPl3/o/YCx3klAoNTGoH1Kq9QJDwF+8wQ7e6tgWFDTr51+7tc3xrOCYH87mLaW9jhYyG1ulSTjjxAlEUUht2rGCUFb4VDbw0oYOpY4MVSSJCnDh4rh/0X5OvQxx7zcp7xW3Kt35aCzhJtlP5jrHmrS3ZD0HIhJiw+ZM6/AdAJqsEK6Soz94qF/o1DcXubqNY3vQ0k4Liay5XuxN
+x-ms-exchange-transport-crosstenantheadersstripped: SA2PEPF00001507.namprd04.prod.outlook.com
+x-ms-office365-filtering-correlation-id-prvs: aad73325-d634-4443-4de7-08de4c8355c9
+x-ms-exchange-antispam-relay: 0
+x-ms-exchange-transport-crosstenantheaderspromoted: SA2PEPF00001507.namprd04.prod.outlook.com
+x-ms-exchange-crosstenant-originalattributedtenantconnectingip: TenantId=a10dd091-a8c0-476f-bfb8-a857426775cb;Ip=[135.233.5.9];Helo=[1772fdb19a52.localdomain]
+x-ms-exchange-authentication-results: spf=pass (sender IP is 135.233.5.9) smtp.mailfrom=yammer.com; dkim=none (message not signed) header.d=none;dmarc=pass action=none header.from=yammer.com;
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

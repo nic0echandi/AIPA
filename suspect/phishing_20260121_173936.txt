@@ -1,0 +1,57 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from RO2PR80MB7359.lamprd80.prod.outlook.com (2603:10d6:10:132::10) by CPWPR80MB8919.lamprd80.prod.outlook.com with HTTPS; Wed, 21 Jan 2026 15:49:13 +0000
+Received: from SJ0PR03CA0273.namprd03.prod.outlook.com (2603:10b6:a03:39e::8) by RO2PR80MB7359.lamprd80.prod.outlook.com (2603:10d6:10:132::10) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9542.10; Wed, 21 Jan 2026 15:49:09 +0000
+Received: from CO1PEPF000075ED.namprd03.prod.outlook.com (2603:10b6:a03:39e:cafe::38) by SJ0PR03CA0273.outlook.office365.com (2603:10b6:a03:39e::8) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9542.10 via Frontend Transport; Wed, 21 Jan 2026 15:49:02 +0000
+Received: from mail-vs1-xe2c.google.com (2607:f8b0:4864:20::e2c) by CO1PEPF000075ED.mail.protection.outlook.com (2603:10b6:30f:fff5::424) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9542.4 via Frontend Transport; Wed, 21 Jan 2026 15:49:07 +0000
+Received: by mail-vs1-xe2c.google.com with SMTP id ada2fe7eead31-5f530da3a07so118841137.1        for <DptoEnergiaClimatizacionMyA@tmoviles.com.ar>; Wed, 21 Jan 2026 07:49:06 -0800 (PST)
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: Damian Ruiz Diaz <damian.ruiz.diaz@ice-sa.com.ar>
+To: "ESCOBAR, SEBASTIAN" <s.escobar@tmoviles.com.ar>, Cabrera Oscar Antonio <oscarantonio.cabrera@tmoviles.com.ar>, =?utf-8?B?RHB0byBFbmVyZ8OtYSBDbGltYXRpemFjacOzbiB5IE15QQ==?= <DptoEnergiaClimatizacionMyA@tmoviles.com.ar>
+CC: Alan Pomato <alan.pomato@ice-sa.com.ar>, nicolas.fernandez <nicolas.fernandez@ice-sa.com.ar>, diego.merlo <diego.merlo@ice-sa.com.ar>, Sebastian Penagos <sebastian.penagos@ice-sa.com.ar>, claudio.barbieri <claudio.barbieri@ice-sa.com.ar>, Leonardo Szkarlatiuk <leonardo@sytex.io>
+Subject: RE: Ingreso Mineras Goldcorp Vein Zone y Goldcorp Eureka
+Thread-Topic: Ingreso Mineras Goldcorp Vein Zone y Goldcorp Eureka
+Thread-Index: AQD6PRW1B4lIjL1dDt4bgahjsY4sgLcWYifQgAAY8aCACuWkgA==
+Date: Wed, 21 Jan 2026 15:48:57 +0000
+Message-ID: <69c52584d88225895469c91d8815e40d@mail.gmail.com>
+References: <CACSTrGpM-9ur5X+yj7ON=CJ04MMCOOPMc969Q1VgtXS5FLwDVA@mail.gmail.com> <caf6ec8634e0213e2a32a7da06576d9f@mail.gmail.com> <SCYPR80MB76962859544063A24695B60FAD8FA@SCYPR80MB7696.lamprd80.prod.outlook.com>
+In-Reply-To: <SCYPR80MB76962859544063A24695B60FAD8FA@SCYPR80MB7696.lamprd80.prod.outlook.com>
+Content-Language: es-ES
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-AuthSource: CO1PEPF000075ED.namprd03.prod.outlook.com
+X-MS-Has-Attach: yes
+X-Auto-Response-Suppress: DR, OOF, AutoReply
+X-MS-Exchange-Organization-Network-Message-Id: 4fef4739-bbcf-4e2b-fe17-08de59049ca4
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator: <69c52584d88225895469c91d8815e40d@mail.gmail.com>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-ms-publictraffictype: Email
+received-spf: Pass (protection.outlook.com: domain of ice-sa.com.ar designates 2607:f8b0:4864:20::e2c as permitted sender) receiver=protection.outlook.com; client-ip=2607:f8b0:4864:20::e2c; helo=mail-vs1-xe2c.google.com; pr=C
+authentication-results: spf=pass (sender IP is 2607:f8b0:4864:20::e2c) smtp.mailfrom=ice-sa.com.ar; dkim=pass (signature was verified) header.d=ice-sa-com-ar.20230601.gappssmtp.com;dmarc=pass action=none header.from=ice-sa.com.ar;compauth=pass reason=100
+x-ms-office365-filtering-correlation-id: 4fef4739-bbcf-4e2b-fe17-08de59049ca4
+x-ms-traffictypediagnostic: CO1PEPF000075ED:EE_|RO2PR80MB7359:EE_|CPWPR80MB8919:EE_
+x-microsoft-antispam: BCL:0;ARA:13230040|43022699015|4053099003|4013099003|4076899003|8096899003;
+x-forefront-antispam-report: CIP:2607:f8b0:4864:20::e2c;CTRY:;LANG:es;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail-vs1-xe2c.google.com;PTR:mail-vs1-xe2c.google.com;CAT:NONE;SFS:(13230040)(43022699015)(4053099003)(4013099003)(4076899003)(8096899003);DIR:INB;
+x-ms-exchange-crosstenant-authas: Anonymous
+x-ms-exchange-crosstenant-authsource: CO1PEPF000075ED.namprd03.prod.outlook.com
+x-ms-exchange-crosstenant-network-message-id: 4fef4739-bbcf-4e2b-fe17-08de59049ca4
+x-ms-exchange-crosstenant-originalarrivaltime: 21 Jan 2026 15:49:07.0124 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Internet
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-transport-crosstenantheadersstamped: RO2PR80MB7359
+x-ms-exchange-transport-endtoendlatency: 00:00:06.8804024
+x-ms-exchange-processed-by-bccfoldering: 15.20.9542.003
+dkim-signature: v=1; a=rsa-sha256; c=relaxed/relaxed;        d=ice-sa-com-ar.20230601.gappssmtp.com; s=20230601; t=1769010546; x=1769615346; darn=tmoviles.com.ar;        h=cc:to:subject:message-id:date:thread-index:mime-version:in-reply-to         :references:from:from:to:cc:subject:date:message-id:reply-to;        bh=PgxEjdKu0RF9BFFPTUbSPoM+qrv0mi3Vb7L6fW2IHa0=;        b=a+alcroX31JRzjcCyT7IT0fOGdEPUoijapNfwEHkHqh04hm8L2VKTsVZs42llFj0vh         o0pWbxYqbywTL8A2RdbxkyWYZP7JpfqJQ9vaT6vFOlD8/X6AhIS52ietGOVNGJXZINRO         e0tLmRN52cw7m8/YMthfY8S8dcLbUQxnfloh1+MUJnxetg//EMgF+MbsO99nUk8VVE7J         iXA8G7L0W/yodA3MBiWLCduoOXXfWvh8OQUFwLx233dd4UfryK92iZk97nroo+cFHeMz         QMkpE1HJK88m+4H6HjggXfgJcR4ufqe+fhnKQFXCHlZ0XzWoF+VDkdSc8Vez3Q+DtzqO         et5g==
+x-eopattributedmessage: 0
+x-eoptenantattributedmessage: 17d02e16-8b83-4168-ba0d-c61ac0d093a6:0
+arc-seal: i=1; a=rsa-sha256; t=1769010546; cv=none;        d=google.com; s=arc-20240605;        b=W7rLyKmlD6cZdoNrMMRonTOR6f5KRib3k9ylXxxwJIMX+OEpxPVRE6o3aSOAHudlHx         KazxMyM3oywx3JJW4d5kk4RZFTVAZUVHq7bwD9A0OnY4nIGcu7cqxKDk+yKKRqs6Y0/p         kHSptudl1sWnwqwCOK6pVnadOIGM2pVdvc3u9UJc4bcM5O3y9bHVqhlIAP0pRCEVlsCa         iPYOquLOvhsNldPc+zWu4UyDoEw/WCGXKVHU7HGKXhoPWNAZVYIj2fNuOY6YDP89lwqF         lDdf8O3Kfh9WIiedCttzKe4fkpHLzLC4c0sDnYQ5PFtdaNtxXnEOkETZicOxETvh/ofk         OKHQ==
+arc-message-signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;        h=cc:to:subject:message-id:date:thread-index:mime-version:in-reply-to         :references:from:dkim-signature;        bh=PgxEjdKu0RF9BFFPTUbSPoM+qrv0mi3Vb7L6fW2IHa0=;        fh=eq0eiZHAFit9WmePyifY7oU0/YbG+HZCXOtY7Lzyg+s=;        b=OcS6HPAwiREymVgq67mBwKkyKXCB12OA9tw1V3MnIqYU7qivHJoZtH6mJ2R5K3350s         sdGjmR9gCA5s12nEY0k2hDjVYjS6HEX2r6CapDTrqD7/qE+DNQSOqC3F7JHkpBh518g8         uB6t33QWngL8uLSmiZBHFoT2CmPm+j9y6t27aYE8jIk49nzarTw4nneM6eQZKY/YWwBU         OlRsAkT+RinwpnauS/UznMB/o1X8XL7V4CsIlrSuUkt5D20T8I+GDPvJYLdM2KAonOv2         h09luC1hqRPV8F8Btbwxb4bkNJCnvEc6yme+lwLECFu5DkO7rJOkhOK4fbotoM+ueIX8         pKjA==;        darn=tmoviles.com.ar
+arc-authentication-results: i=1; mx.google.com; arc=none
+x-mailer: Microsoft Outlook 16.0
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

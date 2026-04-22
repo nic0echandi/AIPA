@@ -1,0 +1,46 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from CPWPR80MB7719.lamprd80.prod.outlook.com (2603:10d6:103:250::9) by CPWPR80MB6260.lamprd80.prod.outlook.com with HTTPS; Tue, 20 Jan 2026 08:06:12 +0000
+Received: from BL0PR1501CA0004.namprd15.prod.outlook.com (2603:10b6:207:17::17) by CPWPR80MB7719.lamprd80.prod.outlook.com (2603:10d6:103:250::9) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9520.12; Tue, 20 Jan 2026 08:06:10 +0000
+Received: from MN1PEPF0000ECD6.namprd02.prod.outlook.com (2603:10b6:207:17:cafe::86) by BL0PR1501CA0004.outlook.office365.com (2603:10b6:207:17::17) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9542.9 via Frontend Transport; Tue, 20 Jan 2026 08:06:09 +0000
+Received: from e247-211.smtp-out.eu-west-3.amazonses.com (23.251.247.211) by MN1PEPF0000ECD6.mail.protection.outlook.com (10.167.242.135) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9542.4 via Frontend Transport; Tue, 20 Jan 2026 08:06:09 +0000
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: "trainings@zepo.app" <trainings@zepo.app>
+To: "FREIMAN, SEBASTIAN ANDRES" <SEBASTIAN.FREIMAN@tmoviles.com.ar>
+Subject: Movistar - ¡Te recordamos que tienes pendiente tu formación sobre ciberseguridad!
+Thread-Topic: Movistar - ¡Te recordamos que tienes pendiente tu formación sobre ciberseguridad!
+Thread-Index: AQHcieOkFSLrsj1zoEK1692bhuNmAw==
+Date: Tue, 20 Jan 2026 08:06:08 +0000
+Message-ID: <0113019bda709089-e833d576-14b5-42ae-a7ae-b1bdaf5e054a-000000@eu-west-3.amazonses.com>
+Content-Language: es-ES
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-AuthSource: MN1PEPF0000ECD6.namprd02.prod.outlook.com
+X-MS-Has-Attach: 
+X-MS-Exchange-Organization-Network-Message-Id: 82c02c2c-ed21-4580-1c84-08de57fac52a
+X-MS-Exchange-Organization-SCL: -1
+X-MS-TNEF-Correlator: <0113019bda709089-e833d576-14b5-42ae-a7ae-b1bdaf5e054a-000000@eu-west-3.amazonses.com>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-ms-publictraffictype: Email
+received-spf: Pass (protection.outlook.com: domain of eu-west-3.amazonses.com designates 23.251.247.211 as permitted sender) receiver=protection.outlook.com; client-ip=23.251.247.211; helo=e247-211.smtp-out.eu-west-3.amazonses.com; pr=C
+authentication-results: spf=pass (sender IP is 23.251.247.211) smtp.mailfrom=eu-west-3.amazonses.com; dkim=pass (signature was verified) header.d=zepo.app;dkim=pass (signature was verified) header.d=amazonses.com;dmarc=pass action=none header.from=zepo.app;compauth=pass reason=100
+x-ms-office365-filtering-correlation-id: 82c02c2c-ed21-4580-1c84-08de57fac52a
+x-ms-traffictypediagnostic: MN1PEPF0000ECD6:EE_|CPWPR80MB7719:EE_|CPWPR80MB6260:EE_
+x-forefront-antispam-report: CIP:23.251.247.211;CTRY:US;LANG:es;SCL:-1;SRV:;IPV:CAL;SFV:SKN;H:e247-211.smtp-out.eu-west-3.amazonses.com;PTR:e247-211.smtp-out.eu-west-3.amazonses.com;CAT:NONE;SFS:(13230040)(2092899012)(12012899012)(69100299015)(32142699015)(3072899012)(8096899003)(14062099003)(54012099003);DIR:INB;
+x-microsoft-antispam: BCL:4;ARA:13230040|2092899012|12012899012|69100299015|32142699015|3072899012|8096899003|14062099003|54012099003;
+x-ms-exchange-crosstenant-network-message-id: 82c02c2c-ed21-4580-1c84-08de57fac52a
+x-ms-exchange-crosstenant-originalarrivaltime: 20 Jan 2026 08:06:09.1868 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Internet
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-transport-crosstenantheadersstamped: CPWPR80MB7719
+x-ms-exchange-transport-endtoendlatency: 00:00:03.3409370
+x-ms-exchange-processed-by-bccfoldering: 15.20.9520.006
+x-ms-exchange-crosstenant-authas: Anonymous
+x-ms-exchange-crosstenant-authsource: MN1PEPF0000ECD6.namprd02.prod.outlook.com
+x-eopattributedmessage: 0
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

@@ -1,0 +1,46 @@
+# Whitelist de Dominios Legítimos
+# Servicios de Microsoft
+microsoft.com
+office365.com
+onmicrosoft.com
+teams.mail.microsoft
+
+# Servicios conocidos
+github.com
+gitlab.com
+atlassian.com
+
+# Marketing legítimo
+mailchimp.com
+sendgrid.net
+constantcontact.com
+
+# Movistar / Telefónica
+tmoviles.com.ar
+telefonica.com
+movistar.com.ar
+
+# Otros servicios
+google.com
+amazonaws.com
+
+# Club de beneficios
+mailing-clubdebeneficios.com
+
+# Remedy
+tefremedyone-mail.onbmc.com
+
+# Yammer
+yammer.com
+
+# Upjet (sindicato)
+upjet.org.ar
+
+# Success Factors
+successfactors.eu
+
+# Tool de campaña de phishing y concientización
+zepo.app
+
+# Gestnex (outsoursing)
+gesnext.com

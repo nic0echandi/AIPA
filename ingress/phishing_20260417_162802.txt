@@ -1,0 +1,49 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from PA3PR06MB9837.eurprd06.prod.outlook.com (2603:10a6:102:4aa::13) by VI1PR06MB8736.eurprd06.prod.outlook.com with HTTPS; Thu, 24 Jul 2025 15:34:21 +0000
+Received: from DU2PR04CA0189.eurprd04.prod.outlook.com (2603:10a6:10:28d::14) by PA3PR06MB9837.eurprd06.prod.outlook.com (2603:10a6:102:4aa::13) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8943.30; Thu, 24 Jul 2025 15:34:18 +0000
+Received: from DU2PEPF00028D0E.eurprd03.prod.outlook.com (2603:10a6:10:28d:cafe::4e) by DU2PR04CA0189.outlook.office365.com (2603:10a6:10:28d::14) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.8964.22 via Frontend Transport; Thu, 24 Jul 2025 15:34:18 +0000
+Received: from a107-211.smtp-out.eu-west-1.amazonses.com (54.240.107.211) by DU2PEPF00028D0E.mail.protection.outlook.com (10.167.242.22) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.8964.20 via Frontend Transport; Thu, 24 Jul 2025 15:34:18 +0000
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: "trainings@zepo.app" <trainings@zepo.app>
+To: "Errecalde, Barbara Ines" <barbara.errecalde@telefonica.com>
+Subject: Movistar - ¡Tu píldora formativa está aquí!
+Thread-Topic: Movistar - ¡Tu píldora formativa está aquí!
+Thread-Index: AQHb/LBtxCfnygVCmU2nXt8WlMmouw==
+X-MS-Exchange-MessageSentRepresentingType: 1
+Date: Thu, 24 Jul 2025 15:34:18 +0000
+Message-ID: <010201983d122d9a-dd8d98eb-0166-430c-8f3e-dc08ad770f07-000000@eu-west-1.amazonses.com>
+Content-Language: es-AR
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-AuthSource: DU2PEPF00028D0E.eurprd03.prod.outlook.com
+X-MS-Has-Attach: 
+X-MS-Exchange-Organization-Network-Message-Id: 6c446099-41fb-4d82-bbb1-08ddcac78e06
+X-MS-Exchange-Organization-SCL: -1
+X-MS-TNEF-Correlator: <010201983d122d9a-dd8d98eb-0166-430c-8f3e-dc08ad770f07-000000@eu-west-1.amazonses.com>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-ms-publictraffictype: Email
+received-spf: Pass (protection.outlook.com: domain of ses.zepo.app designates 54.240.107.211 as permitted sender) receiver=protection.outlook.com; client-ip=54.240.107.211; helo=a107-211.smtp-out.eu-west-1.amazonses.com; pr=C
+authentication-results: spf=pass (sender IP is 54.240.107.211) smtp.mailfrom=ses.zepo.app; dkim=pass (signature was verified) header.d=zepo.app;dkim=pass (signature was verified) header.d=amazonses.com;dmarc=pass action=none header.from=zepo.app;compauth=pass reason=100
+x-ms-office365-filtering-correlation-id: 6c446099-41fb-4d82-bbb1-08ddcac78e06
+x-ms-traffictypediagnostic: DU2PEPF00028D0E:EE_|PA3PR06MB9837:EE_|VI1PR06MB8736:EE_
+x-forefront-antispam-report: CIP:54.240.107.211;CTRY:US;LANG:es;SCL:-1;SRV:;IPV:NLI;SFV:NSPM;H:a107-211.smtp-out.eu-west-1.amazonses.com;PTR:a107-211.smtp-out.eu-west-1.amazonses.com;CAT:NONE;SFS:(13230040)(69100299015)(32142699015)(12012899012)(2092899012)(3072899012)(8096899003)(13003099007);DIR:INB;
+x-microsoft-antispam: BCL:0;ARA:13230040|69100299015|32142699015|12012899012|2092899012|3072899012|8096899003|13003099007;
+x-ms-exchange-crosstenant-network-message-id: 6c446099-41fb-4d82-bbb1-08ddcac78e06
+x-ms-exchange-crosstenant-originalarrivaltime: 24 Jul 2025 15:34:18.6493 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Internet
+x-ms-exchange-crosstenant-id: 9744600e-3e04-492e-baa1-25ec245c6f10
+x-ms-exchange-transport-crosstenantheadersstamped: PA3PR06MB9837
+x-ms-exchange-transport-endtoendlatency: 00:00:02.4047316
+x-ms-exchange-processed-by-bccfoldering: 15.20.8943.020
+x-ms-exchange-crosstenant-authas: Anonymous
+x-ms-exchange-crosstenant-authsource: DU2PEPF00028D0E.eurprd03.prod.outlook.com
+x-eopattributedmessage: 0
+x-eoptenantattributedmessage: 9744600e-3e04-492e-baa1-25ec245c6f10:0
+dkim-signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;	s=ihchhvubuqgjsxyuhssfvqohv7z3u4hn; d=amazonses.com; t=1753371258;	h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Feedback-ID;	bh=0yWIY+DXxxOa4DUWc2//w6oH0H/7L3/uIsnc+XfxgPY=;	b=JC8lPcyJgC8b6Hz/1xDj036NGa9av64p4Fw+kIccJLU9EZNy1ipDx4XfWiD0T3C5	pOK2TI7jshNQe22Fqw7cc5VcvVL16c6S5JbAYZk40y+JgyjXwELTNTPz1WUpUrN0U4s	hygKraI2HiNjUcm70Z+7pqzi4C/bq9sNETbrxna4=
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

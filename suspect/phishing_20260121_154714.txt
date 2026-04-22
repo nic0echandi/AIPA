@@ -1,0 +1,62 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from SCZPR80MB7052.lamprd80.prod.outlook.com (::1) by CPWPR80MB8664.lamprd80.prod.outlook.com with HTTPS; Wed, 21 Jan 2026 14:11:25 +0000
+Received: from MN2PR16CA0055.namprd16.prod.outlook.com (2603:10b6:208:234::24) by SCZPR80MB7052.lamprd80.prod.outlook.com (2603:10d6:300:3d::8) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9542.10; Wed, 21 Jan 2026 14:11:21 +0000
+Received: from BL02EPF0002992E.namprd02.prod.outlook.com (2603:10b6:208:234:cafe::c) by MN2PR16CA0055.outlook.office365.com (2603:10b6:208:234::24) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9542.10 via Frontend Transport; Wed, 21 Jan 2026 14:11:18 +0000
+Received: from DM1PR04CU001.outbound.protection.outlook.com (2a01:111:f403:c111::5) by BL02EPF0002992E.mail.protection.outlook.com (2603:10b6:20f:fc04::13b) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9542.4 via Frontend Transport; Wed, 21 Jan 2026 14:10:57 +0000
+Received: from CPWP152MB7046.LAMP152.PROD.OUTLOOK.COM (2603:10d6:103:221::7) by SCZP152MB5947.LAMP152.PROD.OUTLOOK.COM (2603:10d6:300:69::5) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9542.10; Wed, 21 Jan 2026 14:10:44 +0000
+Received: from CPWP152MB7046.LAMP152.PROD.OUTLOOK.COM ([fe80::129b:7ee0:bcbe:2d2f]) by CPWP152MB7046.LAMP152.PROD.OUTLOOK.COM ([fe80::129b:7ee0:bcbe:2d2f%6]) with mapi id 15.20.9542.009; Wed, 21 Jan 2026 14:10:44 +0000
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: Obra Social & Medicina Paga <obrasocialmedicinapaga@gesnext.com>
+Subject: BECAS ESTUDIOS SECUNDARIOS 2026 - APERTURA DE INSCRIPCIONES 
+Thread-Topic: BECAS ESTUDIOS SECUNDARIOS 2026 - APERTURA DE INSCRIPCIONES 
+Thread-Index: AdyK3cC6bFs15wL6S8GwhxQlPqMsFA==
+Date: Wed, 21 Jan 2026 14:10:44 +0000
+Message-ID: <CPWP152MB7046DB88606F8711C77EAC419B96A@CPWP152MB7046.LAMP152.PROD.OUTLOOK.COM>
+Accept-Language: es-AR, en-US
+Content-Language: es-ES
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-AuthSource: BL02EPF0002992E.namprd02.prod.outlook.com
+X-MS-Has-Attach: 
+X-MS-Exchange-Organization-Network-Message-Id: 13adc39d-d00a-4b23-2ec2-08de58f6f40b
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator: <CPWP152MB7046DB88606F8711C77EAC419B96A@CPWP152MB7046.LAMP152.PROD.OUTLOOK.COM>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-ms-publictraffictype: Email
+received-spf: Pass (protection.outlook.com: domain of gesnext.com designates 2a01:111:f403:c111::5 as permitted sender) receiver=protection.outlook.com; client-ip=2a01:111:f403:c111::5; helo=DM1PR04CU001.outbound.protection.outlook.com; pr=C
+x-forefront-antispam-report: CIP:2a01:111:f403:c111::5;CTRY:;LANG:es;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM1PR04CU001.outbound.protection.outlook.com;PTR:mail-centralusazlp170100005.outbound.protection.outlook.com;CAT:NONE;SFS:(13230040)(35042699022)(8096899003)(13003099007)(54012099003);DIR:INB;
+x-ms-traffictypediagnostic: CPWP152MB7046:EE_|SCZP152MB5947:EE_|BL02EPF0002992E:EE_|SCZPR80MB7052:EE_|CPWPR80MB8664:EE_
+x-ms-exchange-crosstenant-originalarrivaltime: 21 Jan 2026 14:10:57.3440 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Internet
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-transport-crosstenantheadersstamped: SCZPR80MB7052
+x-ms-exchange-transport-endtoendlatency: 00:00:28.6459786
+x-ms-exchange-crosstenant-network-message-id: 13adc39d-d00a-4b23-2ec2-08de58f6f40b
+authentication-results: spf=pass (sender IP is 2a01:111:f403:c111::5) smtp.mailfrom=gesnext.com; dkim=pass (signature was verified) header.d=gesnext.com;dmarc=pass action=none header.from=gesnext.com;compauth=pass reason=100
+x-ms-office365-filtering-correlation-id: 13adc39d-d00a-4b23-2ec2-08de58f6f40b
+x-microsoft-antispam: BCL:0;ARA:13230040|35042699022|8096899003|13003099007|54012099003;
+x-ms-exchange-processed-by-bccfoldering: 15.20.9542.003
+x-eopattributedmessage: 0
+x-eoptenantattributedmessage: 17d02e16-8b83-4168-ba0d-c61ac0d093a6:0
+x-ms-exchange-crosstenant-authsource: BL02EPF0002992E.namprd02.prod.outlook.com
+x-ms-exchange-crosstenant-authas: Anonymous
+dkim-signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gesnext.com; s=selector1; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck; bh=Y5nDviBNiwYvJQJGEoDNfUT2+hfFa3dmCzS/4/9c5z0=; b=FllevXqSpRNb5naendTP3YgIUCtoa+gH0rUSXaNMOVMensAqyqOlPVS7HVwE0Q10ly1keifMZseTQ47jzHbWTuTyImZ/0vjC6bIpNj7K0tC7NREu/il7nK5QYstb8VuKeRDS9EKUMqQNSK8wDcJK9kWZwf2SMZlH0BWo4IFkQi/qlWzx5Vx6lYlJUZ9eQpP0c9bQyoDHSOXgI1QUEhpVaboOIvhzVdSH4ORqiIVfTIwG6+OKnzYJkJbX0tzIrbPLXn67VNbICjRH7caNaLncGd9e4EsPahg9WJf2eVkjMlWJoz+ait3fk/4krxDD8ZnNOxLdgLAW4iiCOkDoNQw+gA==
+x-ld-processed: ffa4e79c-e12f-40e0-9cde-d8c3573ae027,ExtAddr
+x-ms-exchange-senderadcheck: 1
+authentication-results-original: dkim=none (message not signed) header.d=none;dmarc=none action=none header.from=gesnext.com;
+x-forefront-antispam-report-untrusted: CIP:255.255.255.255;CTRY:;LANG:es;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CPWP152MB7046.LAMP152.PROD.OUTLOOK.COM;PTR:;CAT:NONE;SFS:(13230040)(10070799003)(366016)(1800799024)(7416014)(376014)(8096899003)(38070700021)(13003099007)(27013499003);DIR:OUT;SFP:1102;
+x-microsoft-antispam-untrusted: BCL:0;ARA:13230040|10070799003|366016|1800799024|7416014|376014|8096899003|38070700021|13003099007|27013499003;
+x-microsoft-antispam-message-info-original: MWAdquYfkGvhC6u6gORAEdrklhzxdKptkINW/LBTO2Cmk6omm6MWISMfDCY3foe6pREsW/RNLGB0HUTWxav5IHKrRo/xQkP5vIn7A+gwmN4SSPYipHM7n7cNWoo4gn+HUKCe3kcWBKWzMM0DX4ztCkhYm+jN2MMPTNaiI6g4aXkuXpTH6RZy33gPe2tyFMaRyFup8LZ4Cl2ru/tBhj04PQQbxG1m9W9WKn4vrR7aizxprPgbGOD/5iEA+Hou5YrSQ+lSikek4GBWWz7kg6LblcT4pqq4cI/jY0w/cmPitohFA4vX36qltTy/q1Xj8tKi2I3ZuVHuagrCLESbuwET3N5sKCCx2MmgV96oNwF7ja0XdzITwAwYxUZnwLzcIBQPI04oAyy68hbtZBy83AmJahKXnhy4h79wwmIzxVpjjaqh+AbytN0iRQ/X1SHSaghO2vh0kfGwuSaat0PWJeMyrr1rScdS7OcM6PcwvDQyCV/naGG8lrg85E3gC5ghPPvzunIX6FdkK4/OcJZIm8rF12QsUgNY7PSQ25L/JKpja35Cgiz3Du8WMXuWjCC/RBomBydXrWe0U4xsLbjb/+RB4Dn/G4e3xJfD7teAbMmv5a0+PR5hdZGKYJVb2ewgL1PJfyi0j/3U4xVfT2LgGAWaipXy7/0hbAeQVUu1vgZbdIYEkgLOVVJdhh+m9y7rjc1pPrJaoX1l5OAPERV4gY97rtxZKfeR/kXDQgrSlCme6sLpR/hfrM/gmzin0YP/nCQU4tQ8u1n/0eZLr2PjnYX8nXJ2DGbdS7aIXvCbzAPEZwveIjG0UyP+kDUh8+J7bKBPAe2al9ccKz64O2DQbav3W5u565Ha+wOT3FB7z8+rZN59ko0TuKuQiWXg5rG+2EdzWUQnaHSDZH21dT7fDNtTdObQO3bFkv3xjRankPVwE95P1gCbZOH/kN+UmPo003Scq5ILkVyNAaVLPggskHteUN0cyGvEhdiJubHFa2WGYxfKsR5TJoSjxv42UCa2UCmaxfkM/wNk9xfX0NFuWaKfXfqryt/kh8EheyKPFCsbMjUw27QcPou4c96YKzoxfg6Haa66tsG2uGrLTzSqLZiZhFUK6veQqe8YM5p1XBcxc2zGlkqP1EMvZX18k9WRueiEmfh7SGjNPLmZBpKeboT5/0dJ27w1XBSZWKw2HqunwDQTLE6P9MhSlD0f7FaBN5Hrqh3pdMVXkRsmxRZ2ESpNvmR2WUiV02yKVLSpg76Zf+Ya3GEgEUVvb+DJtlmzNFxV3xwX8csrpXxtnvvJ2EYbwjvwuPV+6uYF8KQ5IibsFyjvevg9z3l/rLAWq7vhHIt+b9hdg8/cwwLTyXJ2BwEKARN1JLob/tHvqQKI0t7RnkogNhbiIPDA+MkZktqKhJYm9S7HS1lZPpqNlqL5cayquM/+hWLSjbugVkKU097XiYDWpk+2h5ukqKkqXDMBPDe/EjoJQeMr0uD1oCOOdy1lPf0Z5Ht1IYh1IMCsSsQUydz7cDHd6wDm7rYKPaDv1yNd1h1WMIcR80+Du7J/bO4oTkQrqECR0DdCPRgK+NkXHymUpcExri3fxQJe0D1uxnV2MYYhR+VoKY2P02C4ayDxUn4/nWy4ZXGP8wvHushkLpM=
+x-ms-exchange-transport-crosstenantheadersstripped: BL02EPF0002992E.namprd02.prod.outlook.com
+x-ms-office365-filtering-correlation-id-prvs: c867e686-0aea-40d7-a655-08de58f6de09
+arc-seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none; b=hXey1NkPNFUG+QPhDTiGUFT7O1A4wtrWzoD/zkvaMU/mybuEWIRwy82yEl3TtUB/oWZGVakRTdqV4Ie+jsnFbfbB66YMrdqdaf8vYh3F9XB+xEJd8Yl9SjpnrvSmovZILIGa6bXYEcGG3AIBGfhOQd4LB9kr/8VTDUspDm5MMmlZuSYmDi4bDzchKkU0+lO7fpnrxJFkQfr+Z+GjLVXR8oU/McqFZbDKTEyLLgMKST6OtE+hOE8WXLKwIzqTgjlqtW5E5bwfSBci0sTnII7aemVmzrw4n+xpKzkNlCcEbp9r7Ks/H3Zo937JLpRrmzR64e+Uk+jzvPC6LhknwI+QxA==
+arc-message-signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; s=arcselector10001; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1; bh=Y5nDviBNiwYvJQJGEoDNfUT2+hfFa3dmCzS/4/9c5z0=; b=G4LYlRvxHSTTDbiiZGpTaXH46fWY/wpJcZY69LpBdBEKRkv/urDAlDtGWXeskMcAMkjfZUU2aGA85DKanUyx+MS9ZA2b6rb8z7UIl7A+hXJAUK5b5PpvNgzZu7xFyP+BslWw+wnyxxWgU+yNHg4lTKlnWkUtJoMBdIBAzepv6d3uJrKoTNV+ot8rMO8CH6c0d1aQ/GwHfKECg5X6qNrse/jNN8V/LiyQDJ3uCiaHBVy0XUQyU1oUp7D984dc9qByrA3la4yDRnl5zNDoliA1GmXCnRH2WQWYrO8ED9KOUQa3RJkqoCMUyH1QbTBL6RBZAxtRlQoolVzjMKVzqNMNAQ==
+arc-authentication-results: i=1; mx.microsoft.com 1; spf=pass smtp.mailfrom=gesnext.com; dmarc=pass action=none header.from=gesnext.com; dkim=pass header.d=gesnext.com; arc=none
+x-ms-exchange-transport-crosstenantheaderspromoted: BL02EPF0002992E.namprd02.prod.outlook.com
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

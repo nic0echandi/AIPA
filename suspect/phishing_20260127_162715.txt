@@ -1,0 +1,64 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from RO2PR80MB6390.lamprd80.prod.outlook.com (2603:10d6:10:84::11) by CPWPR80MB6800.lamprd80.prod.outlook.com with HTTPS; Tue, 27 Jan 2026 15:00:33 +0000
+Received: from SJ0PR13CA0149.namprd13.prod.outlook.com (2603:10b6:a03:2c6::34) by RO2PR80MB6390.lamprd80.prod.outlook.com (2603:10d6:10:84::11) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9564.7; Tue, 27 Jan 2026 15:00:30 +0000
+Received: from SJ1PEPF00002311.namprd03.prod.outlook.com (2603:10b6:a03:2c6:cafe::f5) by SJ0PR13CA0149.outlook.office365.com (2603:10b6:a03:2c6::34) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9564.7 via Frontend Transport; Tue, 27 Jan 2026 14:59:54 +0000
+Received: from GVXPR05CU001.outbound.protection.outlook.com (2a01:111:f403:da02::3) by SJ1PEPF00002311.mail.protection.outlook.com (2603:10b6:a0f:fc02::1a5) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9564.3 via Frontend Transport; Tue, 27 Jan 2026 15:00:28 +0000
+Received: from DU7P191CA0009.EURP191.PROD.OUTLOOK.COM (2603:10a6:10:54e::13) by AS8PR06MB7400.eurprd06.prod.outlook.com (2603:10a6:20b:332::9) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9542.15; Tue, 27 Jan 2026 15:00:09 +0000
+Received: from DB1PEPF000509F2.eurprd02.prod.outlook.com (2603:10a6:10:54e:cafe::b2) by DU7P191CA0009.outlook.office365.com (2603:10a6:10:54e::13) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9542.16 via Frontend Transport; Tue, 27 Jan 2026 15:00:03 +0000
+Received: from a48-37.smtp-out.amazonses.com (54.240.48.37) by DB1PEPF000509F2.mail.protection.outlook.com (10.167.242.148) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9564.3 via Frontend Transport; Tue, 27 Jan 2026 15:00:09 +0000
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: SecureDoc <rtinh@thecommunityforum.com>
+To: "anabel.alvarez@telefonica.com" <anabel.alvarez@telefonica.com>
+Subject: GMFoyVzy9D7nPAsFOyQq92Qv37jhOnOl-NPdAGPhQ0AQA18pmjihm_LGFi0pz8yRQOE3yHuNxw383AKWGiXmtLFSb6X80gQk3YU5-aOr5JC-rc005s7tLiuBkmYeKnKM70GnXnhkZ5fO288vZSDd7qII8BG7JHnDqoKTkiM
+Thread-Topic: GMFoyVzy9D7nPAsFOyQq92Qv37jhOnOl-NPdAGPhQ0AQA18pmjihm_LGFi0pz8yRQOE3yHuNxw383AKWGiXmtLFSb6X80gQk3YU5-aOr5JC-rc005s7tLiuBkmYeKnKM70GnXnhkZ5fO288vZSDd7qII8BG7JHnDqoKTkiM
+Thread-Index: AQHcj52w1308lz6ua0mBcvdT6DTrtQ==
+Date: Tue, 27 Jan 2026 15:00:08 +0000
+Message-ID: <0100019bfff81b0a-5378ac75-33c7-42d6-9a05-3c1f5b4308ca-000000@email.amazonses.com>
+Content-Language: es-ES
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-AuthSource: SJ1PEPF00002311.namprd03.prod.outlook.com
+X-MS-Has-Attach: 
+X-MS-Exchange-Organization-Network-Message-Id: fe84c173-5d71-4bfe-a8ff-08de5db4cf4a
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator: <0100019bfff81b0a-5378ac75-33c7-42d6-9a05-3c1f5b4308ca-000000@email.amazonses.com>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-ms-publictraffictype: Email
+received-spf: None (protection.outlook.com: tech.thecommunityforum.com does not designate permitted sender hosts)
+authentication-results: spf=softfail (sender IP is 2a01:111:f403:da02::3) smtp.mailfrom=telefonicacorp.onmicrosoft.com; dkim=pass (signature was verified) header.d=telefonicacorp.onmicrosoft.com;dkim=fail (body hash did not verify) header.d=thecommunityforum.com;dkim=fail (body hash did not verify) header.d=amazonses.com;dmarc=fail action=none header.from=thecommunityforum.com;compauth=pass reason=130
+x-ms-office365-filtering-correlation-id: fe84c173-5d71-4bfe-a8ff-08de5db4cf4a
+x-ms-traffictypediagnostic: DB1PEPF000509F2:EE_|AS8PR06MB7400:EE_|SJ1PEPF00002311:EE_|RO2PR80MB6390:EE_|CPWPR80MB6800:EE_
+x-ms-exchange-transport-crosstenantheadersstamped: RO2PR80MB6390
+x-forefront-antispam-report: CIP:2a01:111:f403:da02::3;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GVXPR05CU001.outbound.protection.outlook.com;PTR:mail-swedencentralazhn150130003.outbound.protection.outlook.com;CAT:NONE;SFS:(13230040)(32142699015)(12022799006)(5073199012)(35042699022)(4076899003)(8096899003)(54012099003)(4126899003);DIR:INB;
+x-microsoft-antispam: BCL:0;ARA:13230040|32142699015|12022799006|5073199012|35042699022|4076899003|8096899003|54012099003|4126899003;
+x-ms-exchange-crosstenant-originalarrivaltime: 27 Jan 2026 15:00:28.2285 (UTC)
+x-ms-exchange-crosstenant-network-message-id: fe84c173-5d71-4bfe-a8ff-08de5db4cf4a
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-crosstenant-fromentityheader: Internet
+x-ms-exchange-transport-endtoendlatency: 00:00:05.7158445
+x-ms-exchange-processed-by-bccfoldering: 15.20.9564.000
+x-ms-exchange-crosstenant-authas: Anonymous
+x-ms-exchange-crosstenant-authsource: SJ1PEPF00002311.namprd03.prod.outlook.com
+x-ld-processed: 9744600e-3e04-492e-baa1-25ec245c6f10,ExtFwd
+dkim-signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1769526008;	h=From:To:Subject:Message-ID:Content-Transfer-Encoding:Date:MIME-Version:Content-Type:Feedback-ID;	bh=veBw3rw/KEIhNDxmeoKFhHY1tJXPNDSvUmm+wWEGEbw=;	b=evDqrpRFC0oIVJzk+nf11IwEMs4nW/t3JU0zPOkb+VADWDXKj9gHHFILp7h1NeiO	C5IaZnXyOkGNmy8T5242EbB16wh8jL2Dhpd0VhfQE/g4vOxe83hHS+8EX1rA0pyIolP	20ZXKsjpBMkkjHddBG76MZ3N/gS8hYz1wA8w4o70=
+x-eopattributedmessage: 1
+x-eoptenantattributedmessage: 17d02e16-8b83-4168-ba0d-c61ac0d093a6:0
+authentication-results-original: spf=none (sender IP is 54.240.48.37) smtp.mailfrom=tech.thecommunityforum.com; dkim=pass (signature was verified) header.d=thecommunityforum.com;dkim=pass (signature was verified) header.d=amazonses.com;dmarc=pass action=none header.from=thecommunityforum.com;
+x-forefront-antispam-report-untrusted: CIP:54.240.48.37;CTRY:US;LANG:en;SCL:8;SRV:;IPV:NLI;SFV:SPM;H:a48-37.smtp-out.amazonses.com;PTR:a48-37.smtp-out.amazonses.com;CAT:OSPM;SFS:(13230040)(376014)(32142699015)(48200799018)(9140799003)(61400799027)(4076899003)(8096899003)(14062099003)(54012099003);DIR:OUT;SFP:1501;
+x-microsoft-antispam-untrusted: BCL:0;ARA:13230040|376014|32142699015|48200799018|9140799003|61400799027|4076899003|8096899003|14062099003|54012099003;
+x-ms-exchange-transport-crosstenantheadersstripped: SJ1PEPF00002311.namprd03.prod.outlook.com
+x-ms-office365-filtering-correlation-id-prvs: a6f139c6-3909-4a37-8165-08de5db4c400
+arc-seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none; b=CcKDfgV5PjZlU/o7sQcFutzv/esR+QmFfAshmn6lvdOzcukQ05AwZ8UK6EHCXy9df5B0+ncE/2iEyKX5OfiKekWisi+bhirbs7weWWmRP1b5d8mu309JTxGRuLP1qQEqMrQHCiFge65gqT6swP7o3avaH1DpCjt75Dq949O85nGVlBOuLQcaujyZOmPLz4E+AqemgPs6h6eZjgcoizA2y1Ndm2audvGezcdqMJEl6wAg7ZttQmkXFvUlRqouCnXn4OwFiMTOvMweMum2726yN1iqaQn6ulw4q61DJbI8kJugCaUj/q09FEV7J+5TrHcrvB9Q+fW20xdz2vBBSPLHQQ==
+arc-message-signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; s=arcselector10001; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1; bh=212oFj66XnUhGrQoPVDnoi9BdkPmXJj5G4SwEnF1N5g=; b=cKmboIgP57aHrTu1cv4GOMd7JJvyYsckAeTCPS+6v893HEAOZwCdhMHNkM4WaqgUKkR224E8ECwYHNEMKwwWidwWRECgDfZxV38YPdUODHSyuhPHrLoGzuXwe6Hglze7wqyjxM23P9IonpGMbkUBGmILR1tA1Ipjj2rhwIcyqiWFtxKCiVgwlvuXvu64CtpAwQRbTKphgZzhzDYGmvyRel9ZzTXRb4B1e0da1C6AGW45llxoVL9FKBsZMCD6MxqwFDVfWyL+La6KRdjw0SuaOk+49xAqR7eM0C+etiZEFjzdr7Smd23YlroYE2jaJ7LEIhgGuY80C2DmC6CmhjJMLw==
+arc-authentication-results: i=1; mx.microsoft.com 1; spf=none (sender ip is 54.240.48.37) smtp.rcpttodomain=telefonica.com smtp.mailfrom=tech.thecommunityforum.com; dmarc=pass (p=none sp=none pct=100) action=none header.from=thecommunityforum.com; dkim=pass (signature was verified) header.d=thecommunityforum.com; dkim=pass (signature was verified) header.d=amazonses.com; arc=none (0)
+x-ms-exchange-senderadcheck: 0
+x-ms-exchange-transport-crosstenantheaderspromoted: SJ1PEPF00002311.namprd03.prod.outlook.com
+x-ms-exchange-antispam-relay: 0
+Resent-From: <anabel.alvarez@telefonica.com>
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

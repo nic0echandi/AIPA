@@ -1,0 +1,69 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from RO2PR80MB7691.lamprd80.prod.outlook.com (2603:10d6:10:fd::9) by CPWPR80MB8209.lamprd80.prod.outlook.com with HTTPS; Tue, 27 Jan 2026 14:31:53 +0000
+Received: from CH0PR03CA0182.namprd03.prod.outlook.com (2603:10b6:610:e4::7) by RO2PR80MB7691.lamprd80.prod.outlook.com (2603:10d6:10:fd::9) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9542.15; Tue, 27 Jan 2026 14:31:49 +0000
+Received: from CH2PEPF0000013B.namprd02.prod.outlook.com (2603:10b6:610:e4:cafe::b) by CH0PR03CA0182.outlook.office365.com (2603:10b6:610:e4::7) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9542.16 via Frontend Transport; Tue, 27 Jan 2026 14:31:49 +0000
+Received: from DU2PR03CU002.outbound.protection.outlook.com (2a01:111:f403:c200::3) by CH2PEPF0000013B.mail.protection.outlook.com (2603:10b6:61f:fc00::344) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9564.3 via Frontend Transport; Tue, 27 Jan 2026 14:31:48 +0000
+Received: from AM8P190CA0029.EURP190.PROD.OUTLOOK.COM (2603:10a6:20b:219::34) by VI0PR06MB10316.eurprd06.prod.outlook.com (2603:10a6:800:2e6::11) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9564.7; Tue, 27 Jan 2026 14:31:43 +0000
+Received: from AM1PEPF000252DF.eurprd07.prod.outlook.com (2603:10a6:20b:219:cafe::85) by AM8P190CA0029.outlook.office365.com (2603:10a6:20b:219::34) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9542.16 via Frontend Transport; Tue, 27 Jan 2026 14:31:35 +0000
+Received: from senderb52.zcsend.net (135.84.83.52) by AM1PEPF000252DF.mail.protection.outlook.com (10.167.16.57) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9564.3 via Frontend Transport; Tue, 27 Jan 2026 14:31:43 +0000
+Received: from 10.80.153.47 by senderb52.zcsend.net	with SMTP id 176952430095245239; Tue, 27 Jan 2026 06:31:40 -0800
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: =?utf-8?B?RXJnb3NpdDogU2lsbGFzIEVyZ29uw7NtaWNhcw==?= <marketing@ergosit.com.ar>
+To: "cintia.cisterna@telefonica.com" <cintia.cisterna@telefonica.com>
+Subject: 👉 15% OFF en Sillas Operativas Premium | En Ergosit
+Thread-Topic: 👉 15% OFF en Sillas Operativas Premium | En Ergosit
+Thread-Index: AQHcj5murWvH/YCGYUGr2/f062WSnw==
+Date: Tue, 27 Jan 2026 14:31:40 +0000
+Message-ID: <zcb.3z086a9cb3325fe90e3b9fe631c12a0cec92680edbfcd1acaa967557b0955de583.184f38235efc5ea7.1769524300945@mailb.zgpm.zcsend.net>
+List-Unsubscribe: <https://maci-zgpm.maillist-manage.com/ua/optout?od=3z086a9cb3325fe90e3b9fe631c12a0cec92680edbfcd1acaa967557b0955de583&rd=184f38235efc5ea7&sd=184f38235efc4471&n=11699e4c1a25920>,<mailto:leave_697781945+184f38235efc5ea7_184f38235efc4471@zcsend.net>
+Reply-To: "marketing@ergosit.com.ar" <marketing@ergosit.com.ar>
+Content-Language: es-ES
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-AuthSource: CH2PEPF0000013B.namprd02.prod.outlook.com
+X-MS-Has-Attach: 
+X-MS-Exchange-Organization-Network-Message-Id: 2221b496-3e11-407e-e55a-08de5db0ce69
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator: <zcb.3z086a9cb3325fe90e3b9fe631c12a0cec92680edbfcd1acaa967557b0955de583.184f38235efc5ea7.1769524300945@mailb.zgpm.zcsend.net>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: AM1PEPF000252DF:EE_|VI0PR06MB10316:EE_|CH2PEPF0000013B:EE_|RO2PR80MB7691:EE_|CPWPR80MB8209:EE_
+x-ms-exchange-crosstenant-originalarrivaltime: 27 Jan 2026 14:31:48.8798 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Internet
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-transport-crosstenantheadersstamped: RO2PR80MB7691
+x-ms-exchange-transport-endtoendlatency: 00:00:04.4211379
+authentication-results: spf=pass (sender IP is 2a01:111:f403:c200::3) smtp.mailfrom=telefonicacorp.onmicrosoft.com; dkim=pass (signature was verified) header.d=telefonicacorp.onmicrosoft.com;dkim=fail (no key for signature) header.d=ergosit.com.ar;dkim=fail (body hash did not verify) header.d=mail4.zgpm.zcsend.net;dmarc=fail action=none header.from=ergosit.com.ar;compauth=fail reason=001
+x-forefront-antispam-report: CIP:2a01:111:f403:c200::3;CTRY:;LANG:es;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR03CU002.outbound.protection.outlook.com;PTR:mail-northeuropeazlp170110003.outbound.protection.outlook.com;CAT:NONE;SFS:(13230040)(5063199012)(5073199012)(4022899009)(4123199012)(1032899013)(69100299015)(35042699022)(29132699027)(3122999021)(13003099007)(8096899003)(2066899003)(54012099003);DIR:INB;
+x-ms-office365-filtering-correlation-id: 2221b496-3e11-407e-e55a-08de5db0ce69
+x-microsoft-antispam: BCL:0;ARA:13230040|5063199012|5073199012|4022899009|4123199012|1032899013|69100299015|35042699022|29132699027|3122999021|13003099007|8096899003|2066899003|54012099003;
+x-ms-exchange-crosstenant-network-message-id: 2221b496-3e11-407e-e55a-08de5db0ce69
+x-ms-exchange-processed-by-bccfoldering: 15.20.9542.003
+x-ms-exchange-crosstenant-authsource: CH2PEPF0000013B.namprd02.prod.outlook.com
+x-ms-exchange-crosstenant-authas: Anonymous
+received-spf: Pass (protection.outlook.com: domain of mailb.zgpm.zcsend.net designates 135.84.83.52 as permitted sender) receiver=protection.outlook.com; client-ip=135.84.83.52; helo=senderb52.zcsend.net; pr=C
+x-eopattributedmessage: 1
+x-eoptenantattributedmessage: 17d02e16-8b83-4168-ba0d-c61ac0d093a6:0
+dkim-signature: a=rsa-sha256; q=dns/txt; b=VlFKWkRBhoTVCh+JymAERlmXW97nBu7ksGz6fuaVTCYJGjMoctZmPoAVE1JkEctJB65475M1/n4QmDs6m40SWz3p7hbKbd9v7/Gne7DrIWotNaOcrWjaZzNlcx/+y7l+BX1c9FtxM7nKPsUOvKPoxLbym7w7ixmpS79GxnpV3Ck=; c=simple/simple; s=k1; d=mail4.zgpm.zcsend.net; v=1; bh=B7AlAYJ1EcqKiFmcQUHJVe8mgj+RFveTN4J4RswXj0s=; h=date:date:from:from:to:to:message-id:subject:subject:mime-version:content-type:list-unsubscribe:list-unsubscribe:list-unsubscribe-post:x-csa-complaints;
+x-mailer: Zoho Campaigns
+arc-seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none; b=OjanXGuad5yYDW7dL0sb+4vMyseUauv4yWms7u+CTsF3FzRC3JWB2PVzwO2pwtt/jbyf50MoQ9U42vFFv/zh8r+2e1mhMPP1ql2yBa8BbqMBVe1DaAwKMo3fvbnyHUnGsw3a9tWTpE1bgnZKsX6lNl+3ZF+pIaZLO2K8yThCB+3Dmi912mOQZcbfeG5IDilh9R/dn38YEbiBrFZ4ebavsz5twUSgdpuFbD86665k56tbReQ8IieeznpF7HK39be5hHIoJ1xg7ENpUCCmOr33DCw6xr2QMo+MZD1GmS+Edv7UvBx6yd+iOvCnEWnMjcR9z3lyiT3jwQ5SCEFhOAQkbw==
+arc-message-signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; s=arcselector10001; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1; bh=sidL7PrrPBFM9olOs99ipta5huxjEr91u8TYmJBXbI8=; b=Uye1s8ojhmD8M6Gq/MfaruZJ9e75UCe9GyRNYlONkZ6iGNVi1GkgMXeXn17rN8Bqhha2E7CIhDKDTGUNQ421+obLMtx/yEKptHGt82IVsMvSRbBLx/QP3kUr1RMruRHyyW2+0JmHto/EsLbSRtV9Yj2CNMMKdx+Folqzr17bwssF31YpUQeyvj+IyyQPo/zmTkaBuSoJf78x0JWYEjPYLjEwN/k0gFovVD5imO0IvfOsaWaHToCh6DCpTbPRvDHj1/ayOYu3zmSZjY0cuIwf9bwLtLZfzC8Z5gm4Ly4CdF9LohByLz16sppKtg9kPFI2tJntEA+0WwTPpSdGQ3FJgA==
+arc-authentication-results: i=1; mx.microsoft.com 1; spf=pass (sender ip is 135.84.83.52) smtp.rcpttodomain=telefonica.com smtp.mailfrom=mailb.zgpm.zcsend.net; dmarc=fail (p=none sp=none pct=100) action=none header.from=ergosit.com.ar; dkim=fail (no key for signature) header.d=ergosit.com.ar; dkim=pass (signature was verified) header.d=mail4.zgpm.zcsend.net; arc=none (0)
+x-microsoft-antispam-untrusted: BCL:0;ARA:13230040|29132699027|69100299015|9140799003|61400799027|48200799018|376014|1032899013|4022899009|13003099007|8096899003|2066899003|14062099003|54012099003|3122999021;
+x-microsoft-antispam-message-info-original: 6eExaX/bonLrRTMKE+KpDg2yqtMppOKgUnxUdCLUI+bYxGMA94PvhHAgZMVeFTvG8O7Qw0QU7Anica340QuVtTL2sfae2mgtaLSJIU+nJ967X2gmpV715I0ZJI0l7/9i2ZnSqpJl5Em2E9+iHT42PUv2C/mlKOip0u8dhXXaDf1NY8LIcEJ0yhIuzKigzK+QnPHxkwmGHGVrSUPtvsF+dzz1gU8OJAmCAX3qeX2/96iUlSACi4+ebINRTcStqdz5Pq4AJh0U5mSDGwUA5dcwn2/tYPCS0SpqcWHCYQnbIWiX8c5i7KKjvIm7shlDuNg80h5Fs7XaP9Ur37oMQ0JywDcihSSPRyE0yZ95UXSAC5eQbcJVFA0Qlo2MkWwY29qITy5k7JsSICyGQtL2lt36CfBjuxtvo2Eu3uQNohpePe+OIyEw1rSuX8u6zYeWUtSFIVXn3VrairTs+VetMDEWmsiV/2ozr8E9OFxbg0y7DdNHYstLjHxhFjrrDPsy14zE8wKgWVRi9Z0rHdC4xO6lxyLTkHPkLacNh008PnEXvj6V84cpqR7QzrAwfmfKLh9h5tlNnukN3OLyvdHlOI/F3TXEh/k5Tvo5L944QWu9KhNrXSXkBPJ0hSYWAi1c/2WiFtedwfe3Wk2TVDe+I5nJ8Zzcio+y/V1HymutNhM3IlM03yZbqq7kthlq+w2Xucm1aRu/RqE1IPtaGbl7ts7wduyEoXHZ5j4HUm/DQtWxK//4JA3jyAEeaLpqCfb91RvLwsIAcZDqfkcW/4Qs7uuT6fXN2oig61+b4jvmf5NNqZVrI+jbwqJsqfka/+gNiv7ydCeUqn/GGQdrLFVC0uqpOlOwZV4ktuGSgUHFpW8c/Rdh0DENJkIArwLeSKGcMvBytzxgO+sWa6HSba4ohaIMq1WrEuEJ+HKbanLujNvxVORqzjcovhylteiajLH8SxcUaJJD6ssJREc0tpWCAHHCjeDJnpLz+u4czV1LAqKzsRVsSEZmp0qAZhOqOfAYKesZyzvO+6fZy5cy2uci8qB9BILVT3Rl15nJ9rU38l0oBDexl1OLqqUQofFGDex5xYiPChl5Z7+7UPJyaARyv55tij1yaPFbrtgoxVKmpEPnFeJ+19wd6BIwBL1WtqRmsphksb4XhOwgolHBjUv+UxLa4iFQ/lRCovtpcQHLDRW1LSsqiOr7Iy1neKk+wAE/nJZTJ1oSm5HyBb3Dqh5W88jYhuNzx964GWS1yeqLjqNQWhH6Qk1tM4dEnCcDh3BJWmI38Ps9xIPmnYi2ZYBVSFdP51DPsRhbOjntRrTMo9jEbUcNBP8sV0rG6dEk0AVziT5fWjLylyqzBuhJHsgLeKioyv30MSZrp3E1wSsTU2lYJ7Dwujo41nx8snw07xKwMCiA5KPjn5B7UB2kcMa0sInQDLunP6WzCRsxH5J6wsOHmjj1D09+tfroc8Gh+mif05OvcjfpvAQ3BV6fh2Ux+l9MleMZHvoMAYms6aMeZOljvlMH/9/d9m4/Ne2LUVfnv4FVjlNFN2jO6ucaKZlRNotkIMuO1iwbadQLtI+RMwRZwKseaUDwnsInNlckxmYq+TupRkmfq/+HnO7xnAEzN1OdsTqB+mfuOTgQioT7D0PDK/e8wdWnXBF0ga1qb7hNBU4i0NoGmKY9kbyYHr/nu6UqLWejSJlqbiQt72hsMS/FJGg0YMvpfnSImGm9SWXiXH8+2Ud6wzp1GKuTVdiEOI3gAUGPi8K8UayVadivnQz1Rvp7pol6eqynoEPJW6y2skgIJHNCslX1MuVAeqsBxcZw6jP6K0Cd25knk2/Or3y4F36Zr5QV6O54xxvew74uDSuiLP8RWyF+WEMdCufPhe3tTCZS6DNeOMGj7qaXP3tuQZ0jnQlILox0F+Lqrdl2/vIeAmSmBOA+xjaal8vohjWVEgMb//yuCtrruir+P3UwHCY=
+x-forefront-antispam-report-untrusted: CIP:135.84.83.52;CTRY:US;LANG:es;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:senderb52.zcsend.net;PTR:senderb52.zcsend.net;CAT:NONE;SFS:(13230040)(29132699027)(69100299015)(9140799003)(61400799027)(48200799018)(376014)(1032899013)(4022899009)(13003099007)(8096899003)(2066899003)(14062099003)(54012099003)(3122999021);DIR:OUT;SFP:1101;
+x-ms-exchange-transport-crosstenantheadersstripped: CH2PEPF0000013B.namprd02.prod.outlook.com
+x-ms-exchange-transport-crosstenantheaderspromoted: CH2PEPF0000013B.namprd02.prod.outlook.com
+x-ms-office365-filtering-correlation-id-prvs: db2a5182-193a-4f21-1e33-08de5db0cb04
+x-ms-exchange-antispam-relay: 0
+x-ms-exchange-senderadcheck: 0
+authentication-results-original: spf=pass (sender IP is 135.84.83.52) smtp.mailfrom=mailb.zgpm.zcsend.net; dkim=fail (no key for signature) header.d=ergosit.com.ar;dkim=pass (signature was verified) header.d=mail4.zgpm.zcsend.net;dmarc=fail action=none header.from=ergosit.com.ar;
+x-ld-processed: 9744600e-3e04-492e-baa1-25ec245c6f10,ExtFwd
+Resent-From: <cintia.cisterna@telefonica.com>
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

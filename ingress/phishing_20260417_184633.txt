@@ -1,0 +1,53 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from SCZPR80MB7932.lamprd80.prod.outlook.com (::1) by SCZPR80MB7379.lamprd80.prod.outlook.com with HTTPS; Tue, 14 Apr 2026 13:58:38 +0000
+Received: from SJ0PR03CA0070.namprd03.prod.outlook.com (2603:10b6:a03:331::15) by SCZPR80MB7932.lamprd80.prod.outlook.com (2603:10d6:300:d8::10) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9769.48; Tue, 14 Apr 2026 13:58:36 +0000
+Received: from SJ1PEPF0000231B.namprd03.prod.outlook.com (2603:10b6:a03:331:cafe::9e) by SJ0PR03CA0070.outlook.office365.com (2603:10b6:a03:331::15) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9769.48 via Frontend Transport; Tue, 14 Apr 2026 13:58:35 +0000
+Received: from smtp68153.sh03.musvc.com (93.174.68.153) by SJ1PEPF0000231B.mail.protection.outlook.com (10.167.242.232) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9769.17 via Frontend Transport; Tue, 14 Apr 2026 13:58:33 +0000
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: Cruz Roja Argentina <capacitacionvirtual@cruzroja.org.ar>
+To: "GIARRIZZO, PABLO" <pablo.giarrizzo@tmoviles.com.ar>
+Subject: ¡Aprendé Primeros Auxilios Pediátricos! ⛑️
+Thread-Topic: ¡Aprendé Primeros Auxilios Pediátricos! ⛑️
+Thread-Index: AQHczBbLRP6H0HQZWUu+3OWXM/JY2w==
+Date: Tue, 14 Apr 2026 13:58:31 +0000
+Message-ID: <202604141558286673.632959.9876.146163@emailsp.net> 
+List-Unsubscribe: <https://cruzrojaargentina.musvc3.net/e/o?q=7%3dATMUFS%263%3dU%26x%3dRHbH%26E%3dMWBYLc%26r%3d6tWH5QYE-WK0D-TsWA-XLcG-QQWl5wckUO6p%265%3d75lB6.As19LsPGI_2qjt_DZAGyLzFoI.tIw.19%26C3%3dYOaF%26G%3drXpQwW.oCrCvI7.7yC%26u%3dG5IC7C.DvN%26n3B%3dB4J7_Lasg_Wk_HhwZ_Rw_Lasg_Vp1K0A6J.9w1zF3F.tIw_HhwZ_Rw02E5NoDu_Lasg_VpE7NyKA_IzJzIxI.rMzN_9ucp_J0s4_9ucp_J8FSIcEY_9ucp_IZr10B_2qjt_C4w7CXvdEU-NXpT-K6CQ-OYIW5k1r-HdC2v0I1Lbl6_9ucp_IZs4cC3J_9ucp_J8A_HhwZ_RMCnnc_Lasg_WnRHbH%26J%3dHWBZMYEZOd>, <mailto:146163.632959.fc38e055-74f4-4b31-8597-103bef9a58bf.1.2188@unsubscribe.musvc.com>
+Reply-To: "capacitacionvirtual@cruzroja.org.ar" <capacitacionvirtual@cruzroja.org.ar>
+Content-Language: es-ES
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-AuthSource: SJ1PEPF0000231B.namprd03.prod.outlook.com
+X-MS-Exchange-Organization-ComplianceLabelId: 3dbb5f39-dc76-4916-9db3-fa9191760a55
+X-MS-Has-Attach: 
+X-Auto-Response-Suppress: OOF, AutoReply
+X-MS-Exchange-Organization-Network-Message-Id: 185e9b5e-1d44-4a56-7e0e-08de9a2deb3c
+X-MS-Exchange-Organization-SCL: 5
+X-MS-TNEF-Correlator: <202604141558286673.632959.9876.146163@emailsp.net> 
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-ms-publictraffictype: Email
+x-forefront-antispam-report: CIP:93.174.68.153;CTRY:IT;LANG:es;SCL:5;SRV:;IPV:NLI;SFV:SPM;H:smtp68153.sh03.musvc.com;PTR:smtp68153.sh03.musvc.com;CAT:SPM;SFS:(13230040)(704160211799003)(4022899009)(5073199012)(3109299003)(69100299015)(7149299003)(7049299003)(13003099007)(56012099003)(21082099003)(19002099003)(8096899003)(18002099003)(16102099003);DIR:INB;
+x-ms-traffictypediagnostic: SJ1PEPF0000231B:EE_|SCZPR80MB7932:EE_|SCZPR80MB7379:EE_
+x-ms-exchange-crosstenant-originalarrivaltime: 14 Apr 2026 13:58:33.7551 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Internet
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-transport-crosstenantheadersstamped: SCZPR80MB7932
+x-ms-exchange-transport-endtoendlatency: 00:00:04.9140297
+x-ms-exchange-crosstenant-network-message-id: 185e9b5e-1d44-4a56-7e0e-08de9a2deb3c
+authentication-results: spf=pass (sender IP is 93.174.68.153) smtp.mailfrom=bounce.emailsp.net; dkim=pass (signature was verified) header.d=cruzroja.org.ar;dmarc=pass action=none header.from=cruzroja.org.ar;compauth=pass reason=100
+x-ms-office365-filtering-correlation-id: 185e9b5e-1d44-4a56-7e0e-08de9a2deb3c
+x-microsoft-antispam: BCL:0;ARA:13230040|704160211799003|4022899009|5073199012|3109299003|69100299015|7149299003|7049299003|13003099007|56012099003|21082099003|19002099003|8096899003|18002099003|16102099003;
+x-ms-exchange-processed-by-bccfoldering: 15.20.9769.044
+x-ms-exchange-crosstenant-authsource: SJ1PEPF0000231B.namprd03.prod.outlook.com
+x-ms-exchange-crosstenant-authas: Anonymous
+received-spf: Pass (protection.outlook.com: domain of bounce.emailsp.net designates 93.174.68.153 as permitted sender) receiver=protection.outlook.com; client-ip=93.174.68.153; helo=smtp68153.sh03.musvc.com; pr=C
+dkim-signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=ml02; d=cruzroja.org.ar; h=Message-ID:From:Reply-To:To:Subject:Date:MIME-Version:Content-Type:List-Id: List-Unsubscribe:Feedback-ID:X-CSA-Complaints:List-Unsubscribe-Post:To:From: Subject:Reply-To; t=1776175114; x=1776477514; bh=APN++vKCf4/NJmJ5jZl0tLIJohBc/nH8xkFtaX+3X+I=; b=AAv+85d3KTZFS/tmvUTZHP/tGtfILxwT7P6nkLH/kS5edIFvsOTSQzeG/pswSpRiTsPzztMsNaVc   IrVdqD+MkDZekAWRL9Mkq1O7HM3SabWnPsADNSCjNtpysViRlfpC+x5O8FLtjUBhn6CbfhbynXwz   AgA2nArQIz8i6RbT4lntT0CX8NQC1/OrvhwZlTz9Kyx6xxnIKvUswiTPczoKqgccse+CPa9u41e5   PPi2MEy20wBKU54FzNa8yPMsCbgWKih0EJuIRrYJLpYetrcKgZ2GywkgipTnjIvmgPu3hIhhTkq2   xzu/2mnZzdwAlbJKOh6wmjR8YAH/NmDmCjgYyw==
+x-eopattributedmessage: 0
+x-eoptenantattributedmessage: 17d02e16-8b83-4168-ba0d-c61ac0d093a6:0
+x-mailer: MailUp
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

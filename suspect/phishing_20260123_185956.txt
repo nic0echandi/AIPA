@@ -1,0 +1,52 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from CPVPR80MB6368.lamprd80.prod.outlook.com (2603:10d6:103:158::14) by CPUPR80MB6757.lamprd80.prod.outlook.com with HTTPS; Tue, 13 Jan 2026 14:58:38 +0000
+Received: from SC3PR80MB8896.lamprd80.prod.outlook.com (2603:10d6:300:12b::8) by CPVPR80MB6368.lamprd80.prod.outlook.com (2603:10d6:103:158::14) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9499.7; Tue, 13 Jan 2026 14:58:36 +0000
+Received: from SC3PR80MB8896.lamprd80.prod.outlook.com ([fe80::7fcd:8fef:8af4:f3af]) by SC3PR80MB8896.lamprd80.prod.outlook.com ([fe80::7fcd:8fef:8af4:f3af%6]) with mapi id 15.20.9499.005; Tue, 13 Jan 2026 14:58:36 +0000
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: "COLOMBO, ESTEFANIA ANDREA" <estefania.colombo@tmoviles.com.ar>
+To: "MASTRODOMENICO, MARIANO" <mariano.mastrodomenico@tmoviles.com.ar>, "Turiaci, Adriana Mabel" <adriana.turiaci@tmoviles.com.ar>, licitaciones <licitaciones@tmoviles.com.ar>
+CC: =?iso-8859-1?Q?Acu=F1a=2C_Sebastian?= <sebastian.acuna@tmoviles.com.ar>
+Subject: RV: ARCA - DDJJ de Intereses Decreto N° 202/17 - Notificación cambio de autoridades artículos 1° y 2°
+Thread-Topic: ARCA - DDJJ de Intereses Decreto N° 202/17 - Notificación cambio de autoridades artículos 1° y 2°
+Thread-Index: AdyDza0aM03v2ikCTeKRACKByhLr7QAALOZQADNxLrAAADDGQA==
+Date: Tue, 13 Jan 2026 14:58:36 +0000
+Message-ID: <SC3PR80MB8896A603FE7DC9B81DE7B36DBC8EA@SC3PR80MB8896.lamprd80.prod.outlook.com>
+References: <009a01dc849c$94cb0550$be610ff0$@gob.ar>
+In-Reply-To: <009a01dc849c$94cb0550$be610ff0$@gob.ar>
+Accept-Language: es-AR, es-ES, en-US
+Content-Language: es-ES
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-AuthSource: SC3PR80MB8896.lamprd80.prod.outlook.com
+X-MS-Exchange-Organization-ComplianceLabelId: 3dbb5f39-dc76-4916-9db3-fa9191760a55
+X-MS-Has-Attach: 
+X-MS-Exchange-Organization-Network-Message-Id: 59097e86-45ff-435a-b1a8-08de52b43ada
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator: <SC3PR80MB8896A603FE7DC9B81DE7B36DBC8EA@SC3PR80MB8896.lamprd80.prod.outlook.com>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+msip_labels: MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_Enabled=True;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_SiteId=17d02e16-8b83-4168-ba0d-c61ac0d093a6;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_SetDate=2026-01-13T14:57:16.0000000Z;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_Name=Uso Interno;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_ContentBits=3;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_Method=Standard
+x-ms-publictraffictype: Email
+authentication-results: dkim=none (message not signed) header.d=none;dmarc=none action=none header.from=tmoviles.com.ar;
+x-ms-office365-filtering-correlation-id: 59097e86-45ff-435a-b1a8-08de52b43ada
+x-ms-traffictypediagnostic: SC3PR80MB8896:EE_|CPVPR80MB6368:EE_|CPUPR80MB6757:EE_
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:es;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SC3PR80MB8896.lamprd80.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(8096899003)(41050700001);DIR:INT;
+x-microsoft-antispam: BCL:0;ARA:13230040|366016|8096899003|41050700001;
+x-ms-exchange-crosstenant-originalarrivaltime: 13 Jan 2026 14:58:36.8033 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Hosted
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-crosstenant-network-message-id: 59097e86-45ff-435a-b1a8-08de52b43ada
+x-ms-exchange-transport-crosstenantheadersstamped: CPVPR80MB6368
+x-ms-exchange-transport-endtoendlatency: 00:00:01.6375180
+x-ms-exchange-processed-by-bccfoldering: 15.20.9499.005
+x-ms-exchange-crosstenant-authsource: SC3PR80MB8896.lamprd80.prod.outlook.com
+x-ms-exchange-crosstenant-authas: Internal
+x-ms-exchange-crosstenant-mailboxtype: HOSTED
+x-ms-exchange-crosstenant-userprincipalname: oazquIwMB+1BHrmEj3eRs0sO7aTZob8dNo4mxjqPEoi5YVQwUA1HsNO2Wu/+gnUYFzYRRvVQkFrLHvshYy5Vp4kKG4ZPjkRhqM7QYbuoJROU3lez0bZpxDCKiq3pzs97
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

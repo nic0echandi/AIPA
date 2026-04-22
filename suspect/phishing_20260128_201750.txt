@@ -1,0 +1,49 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from CPUPR80MB6521.lamprd80.prod.outlook.com (::1) by CPWPR80MB8242.lamprd80.prod.outlook.com with HTTPS; Wed, 28 Jan 2026 18:47:42 +0000
+Received: from RO2PR80MB6424.lamprd80.prod.outlook.com (2603:10d6:10:5d::6) by CPUPR80MB6521.lamprd80.prod.outlook.com (2603:10d6:103:19b::9) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9542.15; Wed, 28 Jan 2026 18:47:38 +0000
+Received: from RO2PR80MB6424.lamprd80.prod.outlook.com ([fe80::e67e:b84a:5bc7:aabe]) by RO2PR80MB6424.lamprd80.prod.outlook.com ([fe80::e67e:b84a:5bc7:aabe%3]) with mapi id 15.20.9564.006; Wed, 28 Jan 2026 18:47:38 +0000
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: Gallicchio Maximiliano <maximiliano.gallicchio@tmoviles.com.ar>
+To: "DI LORENZO, JAVIER NICOLAS" <javier.dilorenzo@tmoviles.com.ar>
+CC: "Alvez, Dario" <dario.alvez@tmoviles.com.ar>, "COZZOLINO, ROBERTO DANIEL" <roberto.cozzolino@tmoviles.com.ar>, "Robales, Mauricio Ariel" <mauricio.robales@tmoviles.com.ar>, "Medrano, Luciano" <luciano.medrano@tmoviles.com.ar>
+Subject: Incidencia >Gobernador Galvez
+Thread-Topic: Incidencia >Gobernador Galvez
+Thread-Index: AdyQhg4qUYZKBzeZQjaJ/pOMK793Vg==
+Date: Wed, 28 Jan 2026 18:47:37 +0000
+Message-ID: <RO2PR80MB6424EA3B7D07EAEFC09702DEC891A@RO2PR80MB6424.lamprd80.prod.outlook.com>
+Accept-Language: es-ES, en-US
+Content-Language: es-ES
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-AuthSource: RO2PR80MB6424.lamprd80.prod.outlook.com
+X-MS-Has-Attach: yes
+X-MS-Exchange-Organization-Network-Message-Id: 7f3365cf-48af-4820-a431-08de5e9db548
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator: <RO2PR80MB6424EA3B7D07EAEFC09702DEC891A@RO2PR80MB6424.lamprd80.prod.outlook.com>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+msip_labels: MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_Enabled=True;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_SiteId=17d02e16-8b83-4168-ba0d-c61ac0d093a6;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_SetDate=2026-01-28T18:43:21.0000000Z;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_Name=Uso Interno;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_ContentBits=3;MSIP_Label_ae67402c-8836-4bc5-8dc7-52e17881ec87_Method=Standard
+x-ms-publictraffictype: Email
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:es;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:RO2PR80MB6424.lamprd80.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(8096899003)(41050700001);DIR:INT;
+authentication-results: dkim=none (message not signed) header.d=none;dmarc=none action=none header.from=tmoviles.com.ar;
+x-ms-office365-filtering-correlation-id: 7f3365cf-48af-4820-a431-08de5e9db548
+x-ms-traffictypediagnostic: RO2PR80MB6424:EE_|CPUPR80MB6521:EE_|CPWPR80MB8242:EE_
+x-microsoft-antispam: BCL:0;ARA:13230040|366016|8096899003|41050700001;
+x-ms-exchange-crosstenant-network-message-id: 7f3365cf-48af-4820-a431-08de5e9db548
+x-ms-exchange-crosstenant-originalarrivaltime: 28 Jan 2026 18:47:37.6516 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Hosted
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-crosstenant-mailboxtype: HOSTED
+x-ms-exchange-crosstenant-userprincipalname: j3FxaUuEYvPCFRIQiA1zePLwlnnNb2RVJHBXa4VBUU6buKZkjATh0YNc3KrufnqopQehSoxZMH9uNMVenkX83ziIGBRk6I/Nxw43fQMtfLDeKEF1KLYixSpViLRkrhHX
+x-ms-exchange-transport-crosstenantheadersstamped: CPUPR80MB6521
+x-ms-exchange-transport-endtoendlatency: 00:00:04.9360889
+x-ms-exchange-processed-by-bccfoldering: 15.20.9564.000
+x-ms-exchange-crosstenant-authsource: RO2PR80MB6424.lamprd80.prod.outlook.com
+x-ms-exchange-crosstenant-authas: Internal
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage
