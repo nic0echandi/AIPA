@@ -228,7 +228,7 @@ class PhishingAnalyzerTXT:
         log.setLevel(getattr(logging, level, logging.INFO))
 
     def _load_whitelist(self) -> set:
-        whitelist_path = self.config.get("whitelist_path", "legitimos.txt")
+        whitelist_path = self.config.get("whitelist_path", "whitelist.txt")
         domains = set()
         if not os.path.exists(whitelist_path):
             log.warning("Whitelist no encontrada: %s", whitelist_path)

@@ -1,0 +1,583 @@
+2026-05-22T22:01:09 | INFO     | Configuración de prueba cargada: test_config.json
+2026-05-22T22:01:09 | INFO     | 
+2026-05-22T22:01:09 | INFO     | ════════════════════════════════════════════════════════════════
+2026-05-22T22:01:09 | INFO     |   TEST RUN — Agente de análisis de phishing v0.8
+2026-05-22T22:01:09 | INFO     |   Inicio   : 2026-05-22 22:01:09
+2026-05-22T22:01:09 | INFO     |   Archivos : 60 archivo(s) en suspect/
+2026-05-22T22:01:09 | INFO     | ════════════════════════════════════════════════════════════════
+2026-05-22T22:01:09 | INFO     | 
+2026-05-22T22:01:09 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:01:09 | INFO     | ARCHIVO : phishing_20260122_175938.txt
+2026-05-22T22:01:09 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:01:09 | INFO     | FROM    : "Ayala, Guillermo" <Guillermo.Ayala@wolterskluwer.com>
+2026-05-22T22:01:09 | INFO     | SUBJECT : Marcelo, simplifica la planificación y ejecución de las auditorías con TeamMate+
+2026-05-22T22:01:09 | INFO     | KNN     : LEGITIMO (confianza 81.8%) [umbral 85%]
+2026-05-22T22:01:09 | DEBUG    | KNN features activas: {"auth_all_pass": 1.0, "cat_none": 1.0, "ipv_nli": 1.0, "url_count_norm": 0.1, "short_urls": 0.5, "has_attachment": 1.0}
+2026-05-22T22:01:09 | INFO     | MÉTODO  : KNN inseguro → escalando a Ollama para análisis profundo
+2026-05-22T22:01:28 | INFO     | 
+2026-05-22T22:01:28 | INFO     | ┌─ RESULTADO ─────────────────────────────────────┐
+2026-05-22T22:01:28 | INFO     | │  Clasificación : SPAM                            │
+2026-05-22T22:01:28 | INFO     | │  Risk score    : 0  /100                         │
+2026-05-22T22:01:28 | INFO     | │  Confianza     : 95.0 %                          │
+2026-05-22T22:01:28 | INFO     | │  Método        : ollama                          │
+2026-05-22T22:01:28 | INFO     | │  From          : "Ayala, Guillermo" <Guillermo.Ay│
+2026-05-22T22:01:28 | INFO     | │  Reply-To      : N/A                             │
+2026-05-22T22:01:28 | INFO     | │  IP origen     : N/A                             │
+2026-05-22T22:01:28 | INFO     | │  MS URLs       : None                            │
+2026-05-22T22:01:28 | INFO     | │  SPF/DKIM/DMARC: pass / pass / pass            │
+2026-05-22T22:01:28 | INFO     | └─────────────────────────────────────────────────┘
+2026-05-22T22:01:28 | INFO     | RAZONES :
+2026-05-22T22:01:28 | INFO     |   • KNN sugirió: legitimo (82%)
+2026-05-22T22:01:28 | INFO     |   • El correo electrónico fue clasificado como 'spam' debido a que se remite desde una dirección que tiene una alta reputación de abuso (AbuseScore: -1), lo cual es un indicador en contra, aunque no hay evidencia clara de phishing. El Risk Score es bajo y Microsoft no detectó URLs sospechosas, lo que respalda la clasificación como 'spam'.
+2026-05-22T22:01:28 | DEBUG    | JSON guardado: analyzed\json\test_20260522_220128_spam.json
+2026-05-22T22:01:28 | INFO     | MOVIDO  : suspect/phishing_20260122_175938.txt → analyzed/spam/test_20260522_220128_phishing_20260122_175938.txt
+2026-05-22T22:01:28 | INFO     | 
+2026-05-22T22:01:28 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:01:28 | INFO     | ARCHIVO : phishing_20260122_180158.txt
+2026-05-22T22:01:28 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:01:28 | INFO     | FROM    : "Rodriguez, Mauro David" <maudarod@tmoviles.com.ar>
+2026-05-22T22:01:28 | INFO     | SUBJECT : RE: VACANTE MAURO RODRIGUEZ
+2026-05-22T22:01:28 | INFO     | KNN     : SPAM (confianza 65.0%) [umbral 85%]
+2026-05-22T22:01:28 | DEBUG    | KNN features activas: {"dkim_none": 1.0, "dmarc_none": 1.0, "cat_none": 1.0, "ipv_nli": 1.0, "url_count_norm": 0.1, "short_urls": 0.5, "has_attachment": 1.0, "thread_hijacking": 1.0}
+2026-05-22T22:01:28 | INFO     | MÉTODO  : KNN inseguro → escalando a Ollama para análisis profundo
+2026-05-22T22:01:53 | INFO     | 
+2026-05-22T22:01:53 | INFO     | ┌─ RESULTADO ─────────────────────────────────────┐
+2026-05-22T22:01:53 | INFO     | │  Clasificación : SOSPECHOSO                      │
+2026-05-22T22:01:53 | INFO     | │  Risk score    : 18 /100                         │
+2026-05-22T22:01:53 | INFO     | │  Confianza     : 55.0 %                          │
+2026-05-22T22:01:53 | INFO     | │  Método        : ollama                          │
+2026-05-22T22:01:53 | INFO     | │  From          : "Rodriguez, Mauro David" <maudar│
+2026-05-22T22:01:53 | INFO     | │  Reply-To      : N/A                             │
+2026-05-22T22:01:53 | INFO     | │  IP origen     : N/A                             │
+2026-05-22T22:01:53 | INFO     | │  MS URLs       : None                            │
+2026-05-22T22:01:53 | INFO     | │  SPF/DKIM/DMARC: unknown / none / none            │
+2026-05-22T22:01:53 | INFO     | └─────────────────────────────────────────────────┘
+2026-05-22T22:01:53 | INFO     | RAZONES :
+2026-05-22T22:01:53 | INFO     |   • KNN sugirió: spam (65%)
+2026-05-22T22:01:53 | INFO     |   • La presencia de un homógrafo detectado no es suficiente para clasificar el correo como 'spam'. Sin embargo, la falta de autenticación y la alta reputación del IP origen (AbuseScore: -1) sugiere una cierta oscuridad. También es importante destacar que no se han reportado URLs maliciosas ni autenticación fallida.
+2026-05-22T22:01:53 | DEBUG    | JSON guardado: analyzed\json\test_20260522_220153_sospechoso.json
+2026-05-22T22:01:53 | INFO     | MOVIDO  : suspect/phishing_20260122_180158.txt → analyzed/sospechoso/test_20260522_220153_phishing_20260122_180158.txt
+2026-05-22T22:01:53 | INFO     | 
+2026-05-22T22:01:53 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:01:53 | INFO     | ARCHIVO : phishing_20260122_180203.txt
+2026-05-22T22:01:53 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:01:53 | INFO     | FROM    : "Rodriguez, Mauro David" <maudarod@tmoviles.com.ar>
+2026-05-22T22:01:53 | INFO     | SUBJECT : RE: VACANTE MAURO RODRIGUEZ
+2026-05-22T22:01:53 | INFO     | KNN     : SPAM (confianza 65.0%) [umbral 85%]
+2026-05-22T22:01:53 | DEBUG    | KNN features activas: {"dkim_none": 1.0, "dmarc_none": 1.0, "cat_none": 1.0, "ipv_nli": 1.0, "url_count_norm": 0.1, "short_urls": 0.5, "has_attachment": 1.0, "thread_hijacking": 1.0}
+2026-05-22T22:01:53 | INFO     | MÉTODO  : KNN inseguro → escalando a Ollama para análisis profundo
+2026-05-22T22:02:06 | INFO     | 
+2026-05-22T22:02:06 | INFO     | ┌─ RESULTADO ─────────────────────────────────────┐
+2026-05-22T22:02:06 | INFO     | │  Clasificación : SOSPECHOSO                      │
+2026-05-22T22:02:06 | INFO     | │  Risk score    : 18 /100                         │
+2026-05-22T22:02:06 | INFO     | │  Confianza     : 15.0 %                          │
+2026-05-22T22:02:06 | INFO     | │  Método        : ollama                          │
+2026-05-22T22:02:06 | INFO     | │  From          : "Rodriguez, Mauro David" <maudar│
+2026-05-22T22:02:06 | INFO     | │  Reply-To      : N/A                             │
+2026-05-22T22:02:06 | INFO     | │  IP origen     : N/A                             │
+2026-05-22T22:02:06 | INFO     | │  MS URLs       : None                            │
+2026-05-22T22:02:06 | INFO     | │  SPF/DKIM/DMARC: unknown / none / none            │
+2026-05-22T22:02:06 | INFO     | └─────────────────────────────────────────────────┘
+2026-05-22T22:02:06 | INFO     | RAZONES :
+2026-05-22T22:02:06 | INFO     |   • KNN sugirió: spam (65%)
+2026-05-22T22:02:06 | INFO     |   • La ausencia de SPF, DKIM y DMARC hace que el email sea sospechoso. Aunque el Risk Score es bajo (18/100), la información disponible no presenta evidencia clara de phishing.
+2026-05-22T22:02:06 | DEBUG    | JSON guardado: analyzed\json\test_20260522_220206_sospechoso.json
+2026-05-22T22:02:06 | INFO     | MOVIDO  : suspect/phishing_20260122_180203.txt → analyzed/sospechoso/test_20260522_220206_phishing_20260122_180203.txt
+2026-05-22T22:02:06 | INFO     | 
+2026-05-22T22:02:06 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:02:06 | INFO     | ARCHIVO : phishing_20260122_183334.txt
+2026-05-22T22:02:06 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:02:06 | INFO     | FROM    : "PMNotifications@successfactors.eu" <PMNotifications@successfactors.eu>
+2026-05-22T22:02:06 | INFO     | SUBJECT : SuccessFactors – Notificación de cambios en las asignaciones de formación
+2026-05-22T22:02:06 | INFO     | KNN     : LEGITIMO (confianza 82.7%) [umbral 85%]
+2026-05-22T22:02:06 | DEBUG    | KNN features activas: {"auth_all_pass": 1.0, "cat_none": 1.0, "ipv_nli": 1.0, "url_count_norm": 0.1, "short_urls": 0.5}
+2026-05-22T22:02:06 | INFO     | MÉTODO  : KNN inseguro → escalando a Ollama para análisis profundo
+2026-05-22T22:02:26 | INFO     | 
+2026-05-22T22:02:26 | INFO     | ┌─ RESULTADO ─────────────────────────────────────┐
+2026-05-22T22:02:26 | INFO     | │  Clasificación : SPAM                            │
+2026-05-22T22:02:26 | INFO     | │  Risk score    : 0  /100                         │
+2026-05-22T22:02:26 | INFO     | │  Confianza     : 95.0 %                          │
+2026-05-22T22:02:26 | INFO     | │  Método        : ollama                          │
+2026-05-22T22:02:26 | INFO     | │  From          : "PMNotifications@successfactors.│
+2026-05-22T22:02:26 | INFO     | │  Reply-To      : N/A                             │
+2026-05-22T22:02:26 | INFO     | │  IP origen     : 127.0.0.1                       │
+2026-05-22T22:02:26 | INFO     | │  MS URLs       : None                            │
+2026-05-22T22:02:26 | INFO     | │  SPF/DKIM/DMARC: pass / pass / pass            │
+2026-05-22T22:02:26 | INFO     | └─────────────────────────────────────────────────┘
+2026-05-22T22:02:26 | INFO     | RAZONES :
+2026-05-22T22:02:26 | INFO     |   • KNN sugirió: legitimo (83%)
+2026-05-22T22:02:26 | INFO     |   • La clasificación se basa en la ausencia de URL sospechosas detectadas por Microsoft y un Risk Score bajo, lo que sugiere que el correo es probablemente una newsletter.
+2026-05-22T22:02:26 | DEBUG    | JSON guardado: analyzed\json\test_20260522_220226_spam.json
+2026-05-22T22:02:26 | INFO     | MOVIDO  : suspect/phishing_20260122_183334.txt → analyzed/spam/test_20260522_220226_phishing_20260122_183334.txt
+2026-05-22T22:02:26 | INFO     | 
+2026-05-22T22:02:26 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:02:26 | INFO     | ARCHIVO : phishing_20260123_111547.txt
+2026-05-22T22:02:26 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:02:26 | INFO     | FROM    : =?utf-8?B?Q29tdW5pY2FjacOzbiBJbnRlcm5hLCBNaWNlbGksIE1hcmNlbG8sICs2IG90?=  =?utf-8?Q?hers?= <noreply@yammer.com>
+2026-05-22T22:02:26 | INFO     | SUBJECT : TMA Daily Digest
+2026-05-22T22:02:26 | INFO     | KNN     : LEGITIMO (confianza 81.3%) [umbral 85%]
+2026-05-22T22:02:26 | DEBUG    | KNN features activas: {"auth_all_pass": 1.0, "sfv_spam": 1.0, "ipv_nli": 1.0, "url_count_norm": 0.1, "short_urls": 0.5}
+2026-05-22T22:02:26 | INFO     | MÉTODO  : KNN inseguro → escalando a Ollama para análisis profundo
+2026-05-22T22:02:48 | INFO     | 
+2026-05-22T22:02:48 | INFO     | ┌─ RESULTADO ─────────────────────────────────────┐
+2026-05-22T22:02:48 | INFO     | │  Clasificación : SPAM                            │
+2026-05-22T22:02:48 | INFO     | │  Risk score    : 0  /100                         │
+2026-05-22T22:02:48 | INFO     | │  Confianza     : 90.0 %                          │
+2026-05-22T22:02:48 | INFO     | │  Método        : ollama                          │
+2026-05-22T22:02:48 | INFO     | │  From          : =?utf-8?B?Q29tdW5pY2FjacOzbiBJbn│
+2026-05-22T22:02:48 | INFO     | │  Reply-To      : N/A                             │
+2026-05-22T22:02:48 | INFO     | │  IP origen     : N/A                             │
+2026-05-22T22:02:48 | INFO     | │  MS URLs       : None                            │
+2026-05-22T22:02:48 | INFO     | │  SPF/DKIM/DMARC: pass / pass / pass            │
+2026-05-22T22:02:48 | INFO     | └─────────────────────────────────────────────────┘
+2026-05-22T22:02:48 | INFO     | RAZONES :
+2026-05-22T22:02:48 | INFO     |   • KNN sugirió: legitimo (81%)
+2026-05-22T22:02:48 | INFO     |   • Dado que el SPF, DKIM y DMARC están activados, y no se detectaron URLs sospechosas según Microsoft, lo clasifico como spam sin necesidad de realizar una investigacion adicional.
+2026-05-22T22:02:48 | DEBUG    | JSON guardado: analyzed\json\test_20260522_220248_spam.json
+2026-05-22T22:02:48 | INFO     | MOVIDO  : suspect/phishing_20260123_111547.txt → analyzed/spam/test_20260522_220248_phishing_20260123_111547.txt
+2026-05-22T22:02:48 | INFO     | 
+2026-05-22T22:02:48 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:02:48 | INFO     | ARCHIVO : phishing_20260123_132538.txt
+2026-05-22T22:02:48 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:02:48 | INFO     | FROM    : "Mella, Nadia" <nadia.mella@tmoviles.com.ar>
+2026-05-22T22:02:48 | INFO     | SUBJECT : Cancelada: Repasamos el borrador de Reversionado eficiencia por desmonte con plan actual
+2026-05-22T22:02:48 | INFO     | KNN     : SPAM (confianza 68.5%) [umbral 85%]
+2026-05-22T22:02:48 | DEBUG    | KNN features activas: {"dkim_none": 1.0, "dmarc_none": 1.0, "cat_none": 1.0, "ipv_nli": 1.0, "url_count_norm": 0.1, "short_urls": 0.5}
+2026-05-22T22:02:48 | INFO     | MÉTODO  : KNN inseguro → escalando a Ollama para análisis profundo
+2026-05-22T22:03:12 | INFO     | 
+2026-05-22T22:03:12 | INFO     | ┌─ RESULTADO ─────────────────────────────────────┐
+2026-05-22T22:03:12 | INFO     | │  Clasificación : SPAM                            │
+2026-05-22T22:03:12 | INFO     | │  Risk score    : 18 /100                         │
+2026-05-22T22:03:12 | INFO     | │  Confianza     : 85.0 %                          │
+2026-05-22T22:03:12 | INFO     | │  Método        : ollama                          │
+2026-05-22T22:03:12 | INFO     | │  From          : "Mella, Nadia" <nadia.mella@tmov│
+2026-05-22T22:03:12 | INFO     | │  Reply-To      : N/A                             │
+2026-05-22T22:03:12 | INFO     | │  IP origen     : N/A                             │
+2026-05-22T22:03:12 | INFO     | │  MS URLs       : None                            │
+2026-05-22T22:03:12 | INFO     | │  SPF/DKIM/DMARC: unknown / none / none            │
+2026-05-22T22:03:12 | INFO     | └─────────────────────────────────────────────────┘
+2026-05-22T22:03:12 | INFO     | RAZONES :
+2026-05-22T22:03:12 | INFO     |   • KNN sugirió: spam (68%)
+2026-05-22T22:03:12 | INFO     |   • El email es considerado spam debido a que el SPF y DKIM no están configurados, lo que indica una falta de autenticación. Además, la IP origen tiene un AbuseScore bajo (-1), lo que sugiere un alto riesgo de abuso. El Risk Score de 18/100 también apoya esta clasificación.
+2026-05-22T22:03:12 | DEBUG    | JSON guardado: analyzed\json\test_20260522_220312_spam.json
+2026-05-22T22:03:12 | INFO     | MOVIDO  : suspect/phishing_20260123_132538.txt → analyzed/spam/test_20260522_220312_phishing_20260123_132538.txt
+2026-05-22T22:03:12 | INFO     | 
+2026-05-22T22:03:12 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:03:12 | INFO     | ARCHIVO : phishing_20260123_143042.txt
+2026-05-22T22:03:12 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:03:12 | INFO     | FROM    : Jelissa Guzman <jelissa.guzman@hashicorp.com>
+2026-05-22T22:03:12 | INFO     | SUBJECT : Final Attempt
+2026-05-22T22:03:12 | INFO     | KNN     : LEGITIMO (confianza 82.7%) [umbral 85%]
+2026-05-22T22:03:12 | DEBUG    | KNN features activas: {"auth_all_pass": 1.0, "cat_none": 1.0, "ipv_nli": 1.0, "url_count_norm": 0.2, "short_urls": 0.5}
+2026-05-22T22:03:12 | INFO     | MÉTODO  : KNN inseguro → escalando a Ollama para análisis profundo
+2026-05-22T22:03:31 | INFO     | 
+2026-05-22T22:03:31 | INFO     | ┌─ RESULTADO ─────────────────────────────────────┐
+2026-05-22T22:03:31 | INFO     | │  Clasificación : SPAM                            │
+2026-05-22T22:03:31 | INFO     | │  Risk score    : 0  /100                         │
+2026-05-22T22:03:31 | INFO     | │  Confianza     : 85.0 %                          │
+2026-05-22T22:03:31 | INFO     | │  Método        : ollama                          │
+2026-05-22T22:03:31 | INFO     | │  From          : Jelissa Guzman <jelissa.guzman@h│
+2026-05-22T22:03:31 | INFO     | │  Reply-To      : N/A                             │
+2026-05-22T22:03:31 | INFO     | │  IP origen     : N/A                             │
+2026-05-22T22:03:31 | INFO     | │  MS URLs       : None                            │
+2026-05-22T22:03:31 | INFO     | │  SPF/DKIM/DMARC: pass / pass / pass            │
+2026-05-22T22:03:31 | INFO     | └─────────────────────────────────────────────────┘
+2026-05-22T22:03:31 | INFO     | RAZONES :
+2026-05-22T22:03:31 | INFO     |   • KNN sugirió: legitimo (83%)
+2026-05-22T22:03:31 | INFO     |   • El email es considerado como spam debido a que no se detectaron URLs sospechosas y su Risk Score es inferior a 30, lo cual indica un nivel de riesgo bajo según las reglas proporcionadas.
+2026-05-22T22:03:31 | DEBUG    | JSON guardado: analyzed\json\test_20260522_220331_spam.json
+2026-05-22T22:03:31 | INFO     | MOVIDO  : suspect/phishing_20260123_143042.txt → analyzed/spam/test_20260522_220331_phishing_20260123_143042.txt
+2026-05-22T22:03:31 | INFO     | 
+2026-05-22T22:03:31 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:03:31 | INFO     | ARCHIVO : phishing_20260123_145010.txt
+2026-05-22T22:03:31 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:03:31 | INFO     | FROM    : "SAFTIH, CARLOS, Damonte Nicolas, +6 others" <noreply@yammer.com>
+2026-05-22T22:03:31 | INFO     | SUBJECT : TMA Daily Digest
+2026-05-22T22:03:31 | INFO     | KNN     : LEGITIMO (confianza 81.3%) [umbral 85%]
+2026-05-22T22:03:31 | DEBUG    | KNN features activas: {"auth_all_pass": 1.0, "sfv_spam": 1.0, "ipv_nli": 1.0, "url_count_norm": 0.1, "short_urls": 0.5}
+2026-05-22T22:03:31 | INFO     | MÉTODO  : KNN inseguro → escalando a Ollama para análisis profundo
+2026-05-22T22:03:50 | INFO     | 
+2026-05-22T22:03:50 | INFO     | ┌─ RESULTADO ─────────────────────────────────────┐
+2026-05-22T22:03:50 | INFO     | │  Clasificación : SPAM                            │
+2026-05-22T22:03:50 | INFO     | │  Risk score    : 0  /100                         │
+2026-05-22T22:03:50 | INFO     | │  Confianza     : 80.0 %                          │
+2026-05-22T22:03:50 | INFO     | │  Método        : ollama                          │
+2026-05-22T22:03:50 | INFO     | │  From          : "SAFTIH, CARLOS, Damonte Nicolas│
+2026-05-22T22:03:50 | INFO     | │  Reply-To      : N/A                             │
+2026-05-22T22:03:50 | INFO     | │  IP origen     : N/A                             │
+2026-05-22T22:03:50 | INFO     | │  MS URLs       : None                            │
+2026-05-22T22:03:50 | INFO     | │  SPF/DKIM/DMARC: pass / pass / pass            │
+2026-05-22T22:03:50 | INFO     | └─────────────────────────────────────────────────┘
+2026-05-22T22:03:50 | INFO     | RAZONES :
+2026-05-22T22:03:50 | INFO     |   • KNN sugirió: legitimo (81%)
+2026-05-22T22:03:50 | INFO     |   • El email no contiene indicadores de phishing y la SPF, DKIM y DMARC están habilitados, lo que indica que es un newsletter de Mailchimp/SendGrid con autenticación correcta
+2026-05-22T22:03:50 | DEBUG    | JSON guardado: analyzed\json\test_20260522_220350_spam.json
+2026-05-22T22:03:50 | INFO     | MOVIDO  : suspect/phishing_20260123_145010.txt → analyzed/spam/test_20260522_220350_phishing_20260123_145010.txt
+2026-05-22T22:03:50 | INFO     | 
+2026-05-22T22:03:50 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:03:50 | INFO     | ARCHIVO : phishing_20260123_145012.txt
+2026-05-22T22:03:50 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:03:50 | INFO     | FROM    : "Pivano Fernando, ALESSIO, CLAUDIO DANIEL, +6 others" <noreply@yammer.com>
+2026-05-22T22:03:50 | INFO     | SUBJECT : TMA Daily Digest
+2026-05-22T22:03:50 | INFO     | KNN     : LEGITIMO (confianza 81.3%) [umbral 85%]
+2026-05-22T22:03:50 | DEBUG    | KNN features activas: {"auth_all_pass": 1.0, "sfv_spam": 1.0, "ipv_nli": 1.0, "url_count_norm": 0.1, "short_urls": 0.5}
+2026-05-22T22:03:50 | INFO     | MÉTODO  : KNN inseguro → escalando a Ollama para análisis profundo
+2026-05-22T22:04:52 | INFO     | 
+2026-05-22T22:04:52 | INFO     | ┌─ RESULTADO ─────────────────────────────────────┐
+2026-05-22T22:04:52 | INFO     | │  Clasificación : SPAM                            │
+2026-05-22T22:04:52 | INFO     | │  Risk score    : 0  /100                         │
+2026-05-22T22:04:52 | INFO     | │  Confianza     : 75.0 %                          │
+2026-05-22T22:04:52 | INFO     | │  Método        : ollama                          │
+2026-05-22T22:04:52 | INFO     | │  From          : "Pivano Fernando, ALESSIO, CLAUD│
+2026-05-22T22:04:52 | INFO     | │  Reply-To      : N/A                             │
+2026-05-22T22:04:52 | INFO     | │  IP origen     : N/A                             │
+2026-05-22T22:04:52 | INFO     | │  MS URLs       : None                            │
+2026-05-22T22:04:52 | INFO     | │  SPF/DKIM/DMARC: pass / pass / pass            │
+2026-05-22T22:04:52 | INFO     | └─────────────────────────────────────────────────┘
+2026-05-22T22:04:52 | INFO     | RAZONES :
+2026-05-22T22:04:52 | INFO     |   • KNN sugirió: legitimo (81%)
+2026-05-22T22:04:52 | INFO     |   • Autenticación completa y risk score bajo
+2026-05-22T22:04:52 | DEBUG    | JSON guardado: analyzed\json\test_20260522_220452_spam.json
+2026-05-22T22:04:52 | INFO     | MOVIDO  : suspect/phishing_20260123_145012.txt → analyzed/spam/test_20260522_220452_phishing_20260123_145012.txt
+2026-05-22T22:04:52 | INFO     | 
+2026-05-22T22:04:52 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:04:52 | INFO     | ARCHIVO : phishing_20260123_170632.txt
+2026-05-22T22:04:52 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:04:52 | INFO     | FROM    : Avisos Movistar <Cobranzas_movistar@movistar.com.ar>
+2026-05-22T22:04:52 | INFO     | SUBJECT : ¿Querés un descuento en tu factura? 🙌🏼
+2026-05-22T22:04:52 | INFO     | KNN     : LEGITIMO (confianza 82.6%) [umbral 85%]
+2026-05-22T22:04:52 | DEBUG    | KNN features activas: {"auth_all_pass": 1.0, "cat_none": 1.0, "subject_keywords": 0.33, "ipv_nli": 1.0, "url_count_norm": 0.2, "short_urls": 0.5}
+2026-05-22T22:04:52 | INFO     | MÉTODO  : KNN inseguro → escalando a Ollama para análisis profundo
+2026-05-22T22:05:54 | INFO     | 
+2026-05-22T22:05:54 | INFO     | ┌─ RESULTADO ─────────────────────────────────────┐
+2026-05-22T22:05:54 | INFO     | │  Clasificación : SPAM                            │
+2026-05-22T22:05:54 | INFO     | │  Risk score    : 0  /100                         │
+2026-05-22T22:05:54 | INFO     | │  Confianza     : 75.0 %                          │
+2026-05-22T22:05:54 | INFO     | │  Método        : ollama                          │
+2026-05-22T22:05:54 | INFO     | │  From          : Avisos Movistar <Cobranzas_movis│
+2026-05-22T22:05:54 | INFO     | │  Reply-To      : "Cobranzas_movistar@movistar.com│
+2026-05-22T22:05:54 | INFO     | │  IP origen     : 185.98.146.225                  │
+2026-05-22T22:05:54 | INFO     | │  MS URLs       : None                            │
+2026-05-22T22:05:54 | INFO     | │  SPF/DKIM/DMARC: pass / pass / pass            │
+2026-05-22T22:05:54 | INFO     | └─────────────────────────────────────────────────┘
+2026-05-22T22:05:54 | INFO     | RAZONES :
+2026-05-22T22:05:54 | INFO     |   • KNN sugirió: legitimo (83%)
+2026-05-22T22:05:54 | INFO     |   • Autenticación completa y risk score bajo
+2026-05-22T22:05:54 | DEBUG    | JSON guardado: analyzed\json\test_20260522_220554_spam.json
+2026-05-22T22:05:54 | INFO     | MOVIDO  : suspect/phishing_20260123_170632.txt → analyzed/spam/test_20260522_220554_phishing_20260123_170632.txt
+2026-05-22T22:05:54 | INFO     | 
+2026-05-22T22:05:54 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:05:54 | INFO     | ARCHIVO : phishing_20260123_185956.txt
+2026-05-22T22:05:54 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:05:54 | INFO     | FROM    : "COLOMBO, ESTEFANIA ANDREA" <estefania.colombo@tmoviles.com.ar>
+2026-05-22T22:05:54 | INFO     | SUBJECT : RV: ARCA - DDJJ de Intereses Decreto N° 202/17 - Notificación cambio de autoridades artículos 1° y 2°
+2026-05-22T22:05:54 | INFO     | KNN     : SPAM (confianza 66.2%) [umbral 85%]
+2026-05-22T22:05:54 | DEBUG    | KNN features activas: {"dkim_none": 1.0, "dmarc_none": 1.0, "cat_none": 1.0, "ipv_nli": 1.0, "url_count_norm": 0.1, "short_urls": 0.5, "thread_hijacking": 1.0}
+2026-05-22T22:05:54 | INFO     | MÉTODO  : KNN inseguro → escalando a Ollama para análisis profundo
+2026-05-22T22:06:56 | INFO     | 
+2026-05-22T22:06:56 | INFO     | ┌─ RESULTADO ─────────────────────────────────────┐
+2026-05-22T22:06:56 | INFO     | │  Clasificación : SPAM                            │
+2026-05-22T22:06:56 | INFO     | │  Risk score    : 18 /100                         │
+2026-05-22T22:06:56 | INFO     | │  Confianza     : 50.0 %                          │
+2026-05-22T22:06:56 | INFO     | │  Método        : ollama                          │
+2026-05-22T22:06:56 | INFO     | │  From          : "COLOMBO, ESTEFANIA ANDREA" <est│
+2026-05-22T22:06:56 | INFO     | │  Reply-To      : N/A                             │
+2026-05-22T22:06:56 | INFO     | │  IP origen     : N/A                             │
+2026-05-22T22:06:56 | INFO     | │  MS URLs       : None                            │
+2026-05-22T22:06:56 | INFO     | │  SPF/DKIM/DMARC: unknown / none / none            │
+2026-05-22T22:06:56 | INFO     | └─────────────────────────────────────────────────┘
+2026-05-22T22:06:56 | INFO     | RAZONES :
+2026-05-22T22:06:56 | INFO     |   • KNN sugirió: spam (66%)
+2026-05-22T22:06:56 | INFO     |   • Sin indicadores claros de phishing (score: 18)
+2026-05-22T22:06:56 | DEBUG    | JSON guardado: analyzed\json\test_20260522_220656_spam.json
+2026-05-22T22:06:56 | INFO     | MOVIDO  : suspect/phishing_20260123_185956.txt → analyzed/spam/test_20260522_220656_phishing_20260123_185956.txt
+2026-05-22T22:06:56 | INFO     | 
+2026-05-22T22:06:56 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:06:56 | INFO     | ARCHIVO : phishing_20260123_185959.txt
+2026-05-22T22:06:56 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:06:56 | INFO     | FROM    : "BARRIOS, DIEGO MARTIN" <diego.barrios@tmoviles.com.ar>
+2026-05-22T22:06:56 | INFO     | SUBJECT : Fw: ARCA - DDJJ de Intereses Decreto N° 202/17 - EX-2024-03163019- -AFIP-DVGCEP#SDGADF - Proceso de Compra N° A0KJ000000-0005-LPU24 - SERVICIOS DE IMPLEMENTACIÓN Y TRANSMISIÓN DE DATOS EN MÚLTIPLES NODOS DE ARCA
+2026-05-22T22:06:56 | INFO     | KNN     : SPAM (confianza 65.0%) [umbral 85%]
+2026-05-22T22:06:56 | DEBUG    | KNN features activas: {"dkim_none": 1.0, "dmarc_none": 1.0, "cat_none": 1.0, "ipv_nli": 1.0, "url_count_norm": 0.1, "short_urls": 0.5, "has_attachment": 1.0, "thread_hijacking": 1.0}
+2026-05-22T22:06:56 | INFO     | MÉTODO  : KNN inseguro → escalando a Ollama para análisis profundo
+2026-05-22T22:07:58 | INFO     | 
+2026-05-22T22:07:58 | INFO     | ┌─ RESULTADO ─────────────────────────────────────┐
+2026-05-22T22:07:58 | INFO     | │  Clasificación : SPAM                            │
+2026-05-22T22:07:58 | INFO     | │  Risk score    : 18 /100                         │
+2026-05-22T22:07:58 | INFO     | │  Confianza     : 50.0 %                          │
+2026-05-22T22:07:58 | INFO     | │  Método        : ollama                          │
+2026-05-22T22:07:58 | INFO     | │  From          : "BARRIOS, DIEGO MARTIN" <diego.b│
+2026-05-22T22:07:58 | INFO     | │  Reply-To      : N/A                             │
+2026-05-22T22:07:58 | INFO     | │  IP origen     : N/A                             │
+2026-05-22T22:07:58 | INFO     | │  MS URLs       : None                            │
+2026-05-22T22:07:58 | INFO     | │  SPF/DKIM/DMARC: unknown / none / none            │
+2026-05-22T22:07:58 | INFO     | └─────────────────────────────────────────────────┘
+2026-05-22T22:07:58 | INFO     | RAZONES :
+2026-05-22T22:07:58 | INFO     |   • KNN sugirió: spam (65%)
+2026-05-22T22:07:58 | INFO     |   • Sin indicadores claros de phishing (score: 18)
+2026-05-22T22:07:58 | DEBUG    | JSON guardado: analyzed\json\test_20260522_220758_spam.json
+2026-05-22T22:07:58 | INFO     | MOVIDO  : suspect/phishing_20260123_185959.txt → analyzed/spam/test_20260522_220758_phishing_20260123_185959.txt
+2026-05-22T22:07:58 | INFO     | 
+2026-05-22T22:07:58 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:07:58 | INFO     | ARCHIVO : phishing_20260126_110955.txt
+2026-05-22T22:07:58 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:07:58 | INFO     | FROM    : "trainings@zepo.app" <trainings@zepo.app>
+2026-05-22T22:07:58 | INFO     | SUBJECT : Movistar - ¡Te recordamos que tienes pendiente tu formación sobre ciberseguridad!
+2026-05-22T22:07:58 | INFO     | KNN     : LEGITIMO (confianza 100.0%) [umbral 85%]
+2026-05-22T22:07:58 | DEBUG    | KNN features activas: {"auth_all_pass": 1.0, "sfv_skip": 1.0, "cat_none": 1.0, "subject_keywords": 0.33, "url_count_norm": 0.1, "short_urls": 0.5}
+2026-05-22T22:07:58 | INFO     | MÉTODO  : KNN directo (confianza suficiente — Ollama omitido)
+2026-05-22T22:07:58 | INFO     | 
+2026-05-22T22:07:58 | INFO     | ┌─ RESULTADO ─────────────────────────────────────┐
+2026-05-22T22:07:58 | INFO     | │  Clasificación : LEGITIMO                        │
+2026-05-22T22:07:58 | INFO     | │  Risk score    : 0  /100                         │
+2026-05-22T22:07:58 | INFO     | │  Confianza     : 100.0%                          │
+2026-05-22T22:07:58 | INFO     | │  Método        : knn_direct                      │
+2026-05-22T22:07:58 | INFO     | │  From          : "trainings@zepo.app" <trainings@│
+2026-05-22T22:07:58 | INFO     | │  Reply-To      : N/A                             │
+2026-05-22T22:07:58 | INFO     | │  IP origen     : 23.251.247.212                  │
+2026-05-22T22:07:58 | INFO     | │  MS URLs       : None                            │
+2026-05-22T22:07:58 | INFO     | │  SPF/DKIM/DMARC: pass / pass / pass            │
+2026-05-22T22:07:58 | INFO     | └─────────────────────────────────────────────────┘
+2026-05-22T22:07:58 | INFO     | RAZONES :
+2026-05-22T22:07:58 | INFO     |   • KNN features: auth_all_pass, sfv_skip, cat_none, subject_keywords, url_count_norm, short_urls
+2026-05-22T22:07:58 | DEBUG    | JSON guardado: analyzed\json\test_20260522_220758_legitimo.json
+2026-05-22T22:07:58 | INFO     | MOVIDO  : suspect/phishing_20260126_110955.txt → analyzed/legitimo/test_20260522_220758_phishing_20260126_110955.txt
+2026-05-22T22:07:58 | INFO     | 
+2026-05-22T22:07:58 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:07:58 | INFO     | ARCHIVO : phishing_20260126_184402.txt
+2026-05-22T22:07:58 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:07:58 | INFO     | FROM    : Maia Customer Engagement <maia@embluemail.com>
+2026-05-22T22:07:58 | INFO     | SUBJECT : La IA cambió las reglas del engagement (y no es táctico)
+2026-05-22T22:07:58 | INFO     | KNN     : LEGITIMO (confianza 62.8%) [umbral 85%]
+2026-05-22T22:07:58 | DEBUG    | KNN features activas: {"auth_all_pass": 1.0, "sfv_spam": 1.0, "ipv_nli": 1.0, "url_count_norm": 0.2, "short_urls": 0.5}
+2026-05-22T22:07:58 | INFO     | MÉTODO  : KNN inseguro → escalando a Ollama para análisis profundo
+2026-05-22T22:09:00 | INFO     | 
+2026-05-22T22:09:00 | INFO     | ┌─ RESULTADO ─────────────────────────────────────┐
+2026-05-22T22:09:00 | INFO     | │  Clasificación : SPAM                            │
+2026-05-22T22:09:00 | INFO     | │  Risk score    : 0  /100                         │
+2026-05-22T22:09:00 | INFO     | │  Confianza     : 75.0 %                          │
+2026-05-22T22:09:00 | INFO     | │  Método        : ollama                          │
+2026-05-22T22:09:00 | INFO     | │  From          : Maia Customer Engagement <maia@e│
+2026-05-22T22:09:00 | INFO     | │  Reply-To      : "maia@embluemail.com" <maia@embl│
+2026-05-22T22:09:00 | INFO     | │  IP origen     : 193.53.91.122                   │
+2026-05-22T22:09:00 | INFO     | │  MS URLs       : None                            │
+2026-05-22T22:09:00 | INFO     | │  SPF/DKIM/DMARC: pass / pass / pass            │
+2026-05-22T22:09:00 | INFO     | └─────────────────────────────────────────────────┘
+2026-05-22T22:09:00 | INFO     | RAZONES :
+2026-05-22T22:09:00 | INFO     |   • KNN sugirió: legitimo (63%)
+2026-05-22T22:09:00 | INFO     |   • Autenticación completa y risk score bajo
+2026-05-22T22:09:00 | DEBUG    | JSON guardado: analyzed\json\test_20260522_220900_spam.json
+2026-05-22T22:09:00 | INFO     | MOVIDO  : suspect/phishing_20260126_184402.txt → analyzed/spam/test_20260522_220900_phishing_20260126_184402.txt
+2026-05-22T22:09:00 | INFO     | 
+2026-05-22T22:09:00 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:09:00 | INFO     | ARCHIVO : phishing_20260126_191330.txt
+2026-05-22T22:09:00 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:09:00 | INFO     | FROM    : "Santa Marinha, Julieta - (Emova)" <jmarinha@emova.com.ar>
+2026-05-22T22:09:00 | INFO     | SUBJECT : RE: pago BRT Movistar enero 2026
+2026-05-22T22:09:00 | INFO     | KNN     : LEGITIMO (confianza 100.0%) [umbral 85%]
+2026-05-22T22:09:00 | DEBUG    | KNN features activas: {"auth_all_pass": 1.0, "cat_none": 1.0, "subject_keywords": 0.33, "ipv_nli": 1.0, "url_count_norm": 0.1, "short_urls": 0.5, "has_attachment": 1.0, "thread_hijacking": 1.0}
+2026-05-22T22:09:00 | INFO     | MÉTODO  : KNN directo (confianza suficiente — Ollama omitido)
+2026-05-22T22:09:00 | INFO     | 
+2026-05-22T22:09:00 | INFO     | ┌─ RESULTADO ─────────────────────────────────────┐
+2026-05-22T22:09:00 | INFO     | │  Clasificación : LEGITIMO                        │
+2026-05-22T22:09:00 | INFO     | │  Risk score    : 0  /100                         │
+2026-05-22T22:09:00 | INFO     | │  Confianza     : 100.0%                          │
+2026-05-22T22:09:00 | INFO     | │  Método        : knn_direct                      │
+2026-05-22T22:09:00 | INFO     | │  From          : "Santa Marinha, Julieta - (Emova│
+2026-05-22T22:09:00 | INFO     | │  Reply-To      : N/A                             │
+2026-05-22T22:09:00 | INFO     | │  IP origen     : N/A                             │
+2026-05-22T22:09:00 | INFO     | │  MS URLs       : None                            │
+2026-05-22T22:09:00 | INFO     | │  SPF/DKIM/DMARC: pass / pass / pass            │
+2026-05-22T22:09:00 | INFO     | └─────────────────────────────────────────────────┘
+2026-05-22T22:09:00 | INFO     | RAZONES :
+2026-05-22T22:09:00 | INFO     |   • KNN features: auth_all_pass, cat_none, subject_keywords, ipv_nli, url_count_norm, short_urls, has_attachment, thread_hijacking
+2026-05-22T22:09:00 | DEBUG    | JSON guardado: analyzed\json\test_20260522_220900_legitimo.json
+2026-05-22T22:09:00 | INFO     | MOVIDO  : suspect/phishing_20260126_191330.txt → analyzed/legitimo/test_20260522_220900_phishing_20260126_191330.txt
+2026-05-22T22:09:00 | INFO     | 
+2026-05-22T22:09:00 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:09:00 | INFO     | ARCHIVO : phishing_20260127_100721.txt
+2026-05-22T22:09:00 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:09:00 | INFO     | FROM    : "News Tecnicas, experienciaempleados.ar, +6 others" <noreply@yammer.com>
+2026-05-22T22:09:00 | INFO     | SUBJECT : TMA Daily Digest
+2026-05-22T22:09:00 | INFO     | KNN     : LEGITIMO (confianza 81.3%) [umbral 85%]
+2026-05-22T22:09:00 | DEBUG    | KNN features activas: {"auth_all_pass": 1.0, "sfv_spam": 1.0, "ipv_nli": 1.0, "url_count_norm": 0.1, "short_urls": 0.5}
+2026-05-22T22:09:00 | INFO     | MÉTODO  : KNN inseguro → escalando a Ollama para análisis profundo
+2026-05-22T22:10:02 | INFO     | 
+2026-05-22T22:10:02 | INFO     | ┌─ RESULTADO ─────────────────────────────────────┐
+2026-05-22T22:10:02 | INFO     | │  Clasificación : SPAM                            │
+2026-05-22T22:10:02 | INFO     | │  Risk score    : 0  /100                         │
+2026-05-22T22:10:02 | INFO     | │  Confianza     : 75.0 %                          │
+2026-05-22T22:10:02 | INFO     | │  Método        : ollama                          │
+2026-05-22T22:10:02 | INFO     | │  From          : "News Tecnicas, experienciaemple│
+2026-05-22T22:10:02 | INFO     | │  Reply-To      : N/A                             │
+2026-05-22T22:10:02 | INFO     | │  IP origen     : N/A                             │
+2026-05-22T22:10:02 | INFO     | │  MS URLs       : None                            │
+2026-05-22T22:10:02 | INFO     | │  SPF/DKIM/DMARC: pass / pass / pass            │
+2026-05-22T22:10:02 | INFO     | └─────────────────────────────────────────────────┘
+2026-05-22T22:10:02 | INFO     | RAZONES :
+2026-05-22T22:10:02 | INFO     |   • KNN sugirió: legitimo (81%)
+2026-05-22T22:10:02 | INFO     |   • Autenticación completa y risk score bajo
+2026-05-22T22:10:02 | DEBUG    | JSON guardado: analyzed\json\test_20260522_221002_spam.json
+2026-05-22T22:10:02 | INFO     | MOVIDO  : suspect/phishing_20260127_100721.txt → analyzed/spam/test_20260522_221002_phishing_20260127_100721.txt
+2026-05-22T22:10:02 | INFO     | 
+2026-05-22T22:10:02 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:10:02 | INFO     | ARCHIVO : phishing_20260127_115529.txt
+2026-05-22T22:10:02 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:10:02 | INFO     | FROM    : "trainings@zepo.app" <trainings@zepo.app>
+2026-05-22T22:10:02 | INFO     | SUBJECT : Movistar - ¡Te recordamos que tienes pendiente tu formación sobre ciberseguridad!
+2026-05-22T22:10:02 | INFO     | KNN     : LEGITIMO (confianza 100.0%) [umbral 85%]
+2026-05-22T22:10:02 | DEBUG    | KNN features activas: {"auth_all_pass": 1.0, "sfv_skip": 1.0, "cat_none": 1.0, "subject_keywords": 0.33, "url_count_norm": 0.1, "short_urls": 0.5}
+2026-05-22T22:10:02 | INFO     | MÉTODO  : KNN directo (confianza suficiente — Ollama omitido)
+2026-05-22T22:10:02 | INFO     | 
+2026-05-22T22:10:02 | INFO     | ┌─ RESULTADO ─────────────────────────────────────┐
+2026-05-22T22:10:02 | INFO     | │  Clasificación : LEGITIMO                        │
+2026-05-22T22:10:02 | INFO     | │  Risk score    : 0  /100                         │
+2026-05-22T22:10:02 | INFO     | │  Confianza     : 100.0%                          │
+2026-05-22T22:10:02 | INFO     | │  Método        : knn_direct                      │
+2026-05-22T22:10:02 | INFO     | │  From          : "trainings@zepo.app" <trainings@│
+2026-05-22T22:10:02 | INFO     | │  Reply-To      : N/A                             │
+2026-05-22T22:10:02 | INFO     | │  IP origen     : 23.251.247.211                  │
+2026-05-22T22:10:02 | INFO     | │  MS URLs       : None                            │
+2026-05-22T22:10:02 | INFO     | │  SPF/DKIM/DMARC: pass / pass / pass            │
+2026-05-22T22:10:02 | INFO     | └─────────────────────────────────────────────────┘
+2026-05-22T22:10:02 | INFO     | RAZONES :
+2026-05-22T22:10:02 | INFO     |   • KNN features: auth_all_pass, sfv_skip, cat_none, subject_keywords, url_count_norm, short_urls
+2026-05-22T22:10:02 | DEBUG    | JSON guardado: analyzed\json\test_20260522_221002_legitimo.json
+2026-05-22T22:10:02 | INFO     | MOVIDO  : suspect/phishing_20260127_115529.txt → analyzed/legitimo/test_20260522_221002_phishing_20260127_115529.txt
+2026-05-22T22:10:02 | INFO     | 
+2026-05-22T22:10:02 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:10:02 | INFO     | ARCHIVO : phishing_20260127_122148.txt
+2026-05-22T22:10:02 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:10:02 | INFO     | FROM    : "trainings@zepo.app" <trainings@zepo.app>
+2026-05-22T22:10:02 | INFO     | SUBJECT : Movistar - ¡Te recordamos que tienes pendiente tu formación sobre ciberseguridad!
+2026-05-22T22:10:02 | INFO     | KNN     : LEGITIMO (confianza 100.0%) [umbral 85%]
+2026-05-22T22:10:02 | DEBUG    | KNN features activas: {"auth_all_pass": 1.0, "sfv_skip": 1.0, "cat_none": 1.0, "subject_keywords": 0.33, "url_count_norm": 0.1, "short_urls": 0.5}
+2026-05-22T22:10:02 | INFO     | MÉTODO  : KNN directo (confianza suficiente — Ollama omitido)
+2026-05-22T22:10:02 | INFO     | 
+2026-05-22T22:10:02 | INFO     | ┌─ RESULTADO ─────────────────────────────────────┐
+2026-05-22T22:10:02 | INFO     | │  Clasificación : LEGITIMO                        │
+2026-05-22T22:10:02 | INFO     | │  Risk score    : 0  /100                         │
+2026-05-22T22:10:02 | INFO     | │  Confianza     : 100.0%                          │
+2026-05-22T22:10:02 | INFO     | │  Método        : knn_direct                      │
+2026-05-22T22:10:02 | INFO     | │  From          : "trainings@zepo.app" <trainings@│
+2026-05-22T22:10:02 | INFO     | │  Reply-To      : N/A                             │
+2026-05-22T22:10:02 | INFO     | │  IP origen     : 23.251.247.211                  │
+2026-05-22T22:10:02 | INFO     | │  MS URLs       : None                            │
+2026-05-22T22:10:02 | INFO     | │  SPF/DKIM/DMARC: pass / pass / pass            │
+2026-05-22T22:10:02 | INFO     | └─────────────────────────────────────────────────┘
+2026-05-22T22:10:02 | INFO     | RAZONES :
+2026-05-22T22:10:02 | INFO     |   • KNN features: auth_all_pass, sfv_skip, cat_none, subject_keywords, url_count_norm, short_urls
+2026-05-22T22:10:02 | DEBUG    | JSON guardado: analyzed\json\test_20260522_221002_legitimo.json
+2026-05-22T22:10:02 | INFO     | MOVIDO  : suspect/phishing_20260127_122148.txt → analyzed/legitimo/test_20260522_221002_phishing_20260127_122148.txt
+2026-05-22T22:10:02 | INFO     | 
+2026-05-22T22:10:02 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:10:02 | INFO     | ARCHIVO : phishing_20260127_130753.txt
+2026-05-22T22:10:02 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:10:02 | INFO     | FROM    : "trainings@zepo.app" <trainings@zepo.app>
+2026-05-22T22:10:02 | INFO     | SUBJECT : Movistar - ¡Te recordamos que tienes pendiente tu formación sobre ciberseguridad!
+2026-05-22T22:10:02 | INFO     | KNN     : LEGITIMO (confianza 100.0%) [umbral 85%]
+2026-05-22T22:10:02 | DEBUG    | KNN features activas: {"auth_all_pass": 1.0, "sfv_skip": 1.0, "cat_none": 1.0, "subject_keywords": 0.33, "url_count_norm": 0.1, "short_urls": 0.5}
+2026-05-22T22:10:02 | INFO     | MÉTODO  : KNN directo (confianza suficiente — Ollama omitido)
+2026-05-22T22:10:02 | INFO     | 
+2026-05-22T22:10:02 | INFO     | ┌─ RESULTADO ─────────────────────────────────────┐
+2026-05-22T22:10:02 | INFO     | │  Clasificación : LEGITIMO                        │
+2026-05-22T22:10:02 | INFO     | │  Risk score    : 0  /100                         │
+2026-05-22T22:10:02 | INFO     | │  Confianza     : 100.0%                          │
+2026-05-22T22:10:02 | INFO     | │  Método        : knn_direct                      │
+2026-05-22T22:10:02 | INFO     | │  From          : "trainings@zepo.app" <trainings@│
+2026-05-22T22:10:02 | INFO     | │  Reply-To      : N/A                             │
+2026-05-22T22:10:02 | INFO     | │  IP origen     : 23.251.247.212                  │
+2026-05-22T22:10:02 | INFO     | │  MS URLs       : None                            │
+2026-05-22T22:10:02 | INFO     | │  SPF/DKIM/DMARC: pass / pass / pass            │
+2026-05-22T22:10:02 | INFO     | └─────────────────────────────────────────────────┘
+2026-05-22T22:10:02 | INFO     | RAZONES :
+2026-05-22T22:10:02 | INFO     |   • KNN features: auth_all_pass, sfv_skip, cat_none, subject_keywords, url_count_norm, short_urls
+2026-05-22T22:10:02 | DEBUG    | JSON guardado: analyzed\json\test_20260522_221002_legitimo.json
+2026-05-22T22:10:02 | INFO     | MOVIDO  : suspect/phishing_20260127_130753.txt → analyzed/legitimo/test_20260522_221002_phishing_20260127_130753.txt
+2026-05-22T22:10:02 | INFO     | 
+2026-05-22T22:10:02 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:10:02 | INFO     | ARCHIVO : phishing_20260127_135933.txt
+2026-05-22T22:10:02 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:10:02 | INFO     | FROM    : "trainings@zepo.app" <trainings@zepo.app>
+2026-05-22T22:10:02 | INFO     | SUBJECT : Movistar - ¡Te recordamos que tienes pendiente tu formación sobre ciberseguridad!
+2026-05-22T22:10:02 | INFO     | KNN     : LEGITIMO (confianza 100.0%) [umbral 85%]
+2026-05-22T22:10:02 | DEBUG    | KNN features activas: {"auth_all_pass": 1.0, "sfv_skip": 1.0, "cat_none": 1.0, "subject_keywords": 0.33, "url_count_norm": 0.1, "short_urls": 0.5}
+2026-05-22T22:10:02 | INFO     | MÉTODO  : KNN directo (confianza suficiente — Ollama omitido)
+2026-05-22T22:10:02 | INFO     | 
+2026-05-22T22:10:02 | INFO     | ┌─ RESULTADO ─────────────────────────────────────┐
+2026-05-22T22:10:02 | INFO     | │  Clasificación : LEGITIMO                        │
+2026-05-22T22:10:02 | INFO     | │  Risk score    : 0  /100                         │
+2026-05-22T22:10:02 | INFO     | │  Confianza     : 100.0%                          │
+2026-05-22T22:10:02 | INFO     | │  Método        : knn_direct                      │
+2026-05-22T22:10:02 | INFO     | │  From          : "trainings@zepo.app" <trainings@│
+2026-05-22T22:10:02 | INFO     | │  Reply-To      : N/A                             │
+2026-05-22T22:10:02 | INFO     | │  IP origen     : 23.251.247.212                  │
+2026-05-22T22:10:02 | INFO     | │  MS URLs       : None                            │
+2026-05-22T22:10:02 | INFO     | │  SPF/DKIM/DMARC: pass / pass / pass            │
+2026-05-22T22:10:02 | INFO     | └─────────────────────────────────────────────────┘
+2026-05-22T22:10:02 | INFO     | RAZONES :
+2026-05-22T22:10:02 | INFO     |   • KNN features: auth_all_pass, sfv_skip, cat_none, subject_keywords, url_count_norm, short_urls
+2026-05-22T22:10:02 | DEBUG    | JSON guardado: analyzed\json\test_20260522_221002_legitimo.json
+2026-05-22T22:10:02 | INFO     | MOVIDO  : suspect/phishing_20260127_135933.txt → analyzed/legitimo/test_20260522_221002_phishing_20260127_135933.txt
+2026-05-22T22:10:02 | INFO     | 
+2026-05-22T22:10:02 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:10:02 | INFO     | ARCHIVO : phishing_20260127_162715.txt
+2026-05-22T22:10:02 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:10:02 | INFO     | FROM    : SecureDoc <rtinh@thecommunityforum.com>
+2026-05-22T22:10:02 | INFO     | SUBJECT : GMFoyVzy9D7nPAsFOyQq92Qv37jhOnOl-NPdAGPhQ0AQA18pmjihm_LGFi0pz8yRQOE3yHuNxw383AKWGiXmtLFSb6X80gQk3YU5-aOr5JC-rc005s7tLiuBkmYeKnKM70GnXnhkZ5fO288vZSDd7qII8BG7JHnDqoKTkiM
+2026-05-22T22:10:02 | INFO     | KNN     : SPAM (confianza 81.5%) [umbral 85%]
+2026-05-22T22:10:02 | DEBUG    | KNN features activas: {"spf_fail": 1.0, "spf_softfail": 1.0, "dmarc_none": 1.0, "cat_none": 1.0, "ipv_nli": 1.0, "url_count_norm": 0.1, "short_urls": 0.5}
+2026-05-22T22:10:02 | INFO     | MÉTODO  : KNN inseguro → escalando a Ollama para análisis profundo
+2026-05-22T22:11:04 | INFO     | 
+2026-05-22T22:11:04 | INFO     | ┌─ RESULTADO ─────────────────────────────────────┐
+2026-05-22T22:11:04 | INFO     | │  Clasificación : SPAM                            │
+2026-05-22T22:11:04 | INFO     | │  Risk score    : 37 /100                         │
+2026-05-22T22:11:04 | INFO     | │  Confianza     : 50.0 %                          │
+2026-05-22T22:11:04 | INFO     | │  Método        : ollama                          │
+2026-05-22T22:11:04 | INFO     | │  From          : SecureDoc <rtinh@thecommunityfor│
+2026-05-22T22:11:04 | INFO     | │  Reply-To      : N/A                             │
+2026-05-22T22:11:04 | INFO     | │  IP origen     : 54.240.48.37                    │
+2026-05-22T22:11:04 | INFO     | │  MS URLs       : None                            │
+2026-05-22T22:11:04 | INFO     | │  SPF/DKIM/DMARC: softfail / pass / fail            │
+2026-05-22T22:11:04 | INFO     | └─────────────────────────────────────────────────┘
+2026-05-22T22:11:04 | INFO     | RAZONES :
+2026-05-22T22:11:04 | INFO     |   • KNN sugirió: spam (81%)
+2026-05-22T22:11:04 | INFO     |   • Keyword sospechosa: 'verify'
+2026-05-22T22:11:04 | INFO     |   • Sin indicadores claros de phishing (score: 37)
+2026-05-22T22:11:04 | DEBUG    | JSON guardado: analyzed\json\test_20260522_221104_spam.json
+2026-05-22T22:11:04 | INFO     | MOVIDO  : suspect/phishing_20260127_162715.txt → analyzed/spam/test_20260522_221104_phishing_20260127_162715.txt
+2026-05-22T22:11:04 | INFO     | 
+2026-05-22T22:11:04 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:11:04 | INFO     | ARCHIVO : phishing_20260127_183528.txt
+2026-05-22T22:11:04 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:11:04 | INFO     | FROM    : =?utf-8?B?VW5pw7NuIGRlbCBQZXJzb25hbCBKZXLDoXJxdWljbyBkZSBFbXByZXNhcyBk?=  =?utf-8?Q?e_Telecomunicaciones_-_UPJET_-?= <info@upjet.org.ar>
+2026-05-22T22:11:04 | INFO     | SUBJECT : COMPLEJO LA TORRE - Ampliación de Servicios - Temporada 2025-2026
+2026-05-22T22:11:04 | INFO     | KNN     : LEGITIMO (confianza 62.8%) [umbral 85%]
+2026-05-22T22:11:04 | DEBUG    | KNN features activas: {"auth_all_pass": 1.0, "sfv_spam": 1.0, "ipv_nli": 1.0, "url_count_norm": 0.2, "short_urls": 0.5}
+2026-05-22T22:11:04 | INFO     | MÉTODO  : KNN inseguro → escalando a Ollama para análisis profundo
+2026-05-22T22:12:06 | INFO     | 
+2026-05-22T22:12:06 | INFO     | ┌─ RESULTADO ─────────────────────────────────────┐
+2026-05-22T22:12:06 | INFO     | │  Clasificación : SPAM                            │
+2026-05-22T22:12:06 | INFO     | │  Risk score    : 0  /100                         │
+2026-05-22T22:12:06 | INFO     | │  Confianza     : 75.0 %                          │
+2026-05-22T22:12:06 | INFO     | │  Método        : ollama                          │
+2026-05-22T22:12:06 | INFO     | │  From          : =?utf-8?B?VW5pw7NuIGRlbCBQZXJzb2│
+2026-05-22T22:12:06 | INFO     | │  Reply-To      : =?utf-8?B?VW5pw7NuIGRlbCBQZXJzb2│
+2026-05-22T22:12:06 | INFO     | │  IP origen     : 127.0.0.1                       │
+2026-05-22T22:12:06 | INFO     | │  MS URLs       : None                            │
+2026-05-22T22:12:06 | INFO     | │  SPF/DKIM/DMARC: pass / pass / pass            │
+2026-05-22T22:12:06 | INFO     | └─────────────────────────────────────────────────┘
+2026-05-22T22:12:06 | INFO     | RAZONES :
+2026-05-22T22:12:06 | INFO     |   • KNN sugirió: legitimo (63%)
+2026-05-22T22:12:06 | INFO     |   • Autenticación completa y risk score bajo
+2026-05-22T22:12:06 | DEBUG    | JSON guardado: analyzed\json\test_20260522_221206_spam.json
+2026-05-22T22:12:06 | INFO     | MOVIDO  : suspect/phishing_20260127_183528.txt → analyzed/spam/test_20260522_221206_phishing_20260127_183528.txt
+2026-05-22T22:12:06 | INFO     | 
+2026-05-22T22:12:06 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:12:06 | INFO     | ARCHIVO : phishing_20260127_210412.txt
+2026-05-22T22:12:06 | INFO     | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-22T22:12:06 | INFO     | FROM    : "incoming@tefremedyone-mail.onbmc.com" <incoming@tefremedyone-mail.onbmc.com>
+2026-05-22T22:12:06 | INFO     | SUBJECT : SERGIO SOURIGUES ha dejado un comentario en Microinformática
+2026-05-22T22:12:06 | INFO     | KNN     : LEGITIMO (confianza 81.8%) [umbral 85%]
+2026-05-22T22:12:06 | DEBUG    | KNN features activas: {"auth_all_pass": 1.0, "cat_none": 1.0, "ipv_nli": 1.0, "url_count_norm": 0.1, "short_urls": 0.5, "has_attachment": 1.0}
+2026-05-22T22:12:06 | INFO     | MÉTODO  : KNN inseguro → escalando a Ollama para análisis profundo

@@ -77,7 +77,7 @@ TEST_CONFIG_DEFAULTS = {
     "ollama_model":             "llama3.2",
     "anthropic_api_key":        "",
     "abuseipdb_api_key":        "",
-    "whitelist_path":           "legitimos.txt",
+    "whitelist_path":           "whitelist.txt",
     "log_level":                "DEBUG",
     "max_workers":              1,
     "knn_confidence_threshold": 0.85,

@@ -1,0 +1,102 @@
+2026-05-22T21:19:45 | WARNING  | phishing_analyzer | jsonschema no instalado — validación de config omitida.
+2026-05-22T21:19:45 | WARNING  | phishing_analyzer | Whitelist no encontrada: legitimos.txt
+2026-05-22T21:19:45 | INFO     | phishing_analyzer.knn | Modelo KNN inicializado con 15 ejemplos base
+2026-05-22T21:55:13 | WARNING  | phishing_analyzer | jsonschema no instalado — validación de config omitida.
+2026-05-22T21:55:13 | WARNING  | phishing_analyzer | Whitelist no encontrada: legitimos.txt
+2026-05-22T21:55:13 | INFO     | phishing_analyzer.knn | Modelo KNN cargado: 15 ejemplos
+2026-05-22T21:55:13 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 100.00%) [DIRECTO]
+2026-05-22T21:55:13 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 57.92%) [→ Ollama]
+2026-05-22T21:55:17 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:55:17 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 100.00%) [DIRECTO]
+2026-05-22T21:55:17 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 100.00%) [DIRECTO]
+2026-05-22T21:55:17 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 100.00%) [DIRECTO]
+2026-05-22T21:55:17 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 62.78%) [→ Ollama]
+2026-05-22T21:55:21 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:55:21 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 100.00%) [DIRECTO]
+2026-05-22T21:55:21 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 64.96%) [→ Ollama]
+2026-05-22T21:55:26 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:55:26 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 64.96%) [→ Ollama]
+2026-05-22T21:55:30 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:55:30 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 81.35%) [→ Ollama]
+2026-05-22T21:55:34 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:55:34 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 62.81%) [→ Ollama]
+2026-05-22T21:55:38 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:55:38 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 60.52%) [→ Ollama]
+2026-05-22T21:55:42 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:55:42 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 60.52%) [→ Ollama]
+2026-05-22T21:55:46 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:55:46 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 100.00%) [DIRECTO]
+2026-05-22T21:55:46 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 100.00%) [DIRECTO]
+2026-05-22T21:55:46 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 57.70%) [→ Ollama]
+2026-05-22T21:55:50 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:55:50 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.72%) [→ Ollama]
+2026-05-22T21:55:54 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:55:54 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 64.96%) [→ Ollama]
+2026-05-22T21:55:58 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:55:58 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 58.43%) [→ Ollama]
+2026-05-22T21:56:02 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:56:02 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.69%) [→ Ollama]
+2026-05-22T21:56:06 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:56:06 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.69%) [→ Ollama]
+2026-05-22T21:56:10 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:56:10 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.69%) [→ Ollama]
+2026-05-22T21:56:15 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:56:15 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 66.24%) [→ Ollama]
+2026-05-22T21:56:19 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:56:19 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 64.96%) [→ Ollama]
+2026-05-22T21:56:23 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:56:23 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 64.96%) [→ Ollama]
+2026-05-22T21:56:27 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:56:27 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 64.96%) [→ Ollama]
+2026-05-22T21:56:31 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:56:31 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 64.96%) [→ Ollama]
+2026-05-22T21:56:35 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:56:35 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 81.40%) [→ Ollama]
+2026-05-22T21:56:39 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:56:39 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.72%) [→ Ollama]
+2026-05-22T21:56:43 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:56:43 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.69%) [→ Ollama]
+2026-05-22T21:56:47 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:56:47 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 66.24%) [→ Ollama]
+2026-05-22T21:56:51 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:56:51 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.72%) [→ Ollama]
+2026-05-22T21:56:56 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:56:56 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.69%) [→ Ollama]
+2026-05-22T21:57:00 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:57:00 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.69%) [→ Ollama]
+2026-05-22T21:57:04 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión")) — usando fallback.
+2026-05-22T21:57:04 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 81.83%) [→ Ollama]
+2026-05-22T22:01:09 | WARNING  | phishing_analyzer | jsonschema no instalado — validación de config omitida.
+2026-05-22T22:01:09 | WARNING  | phishing_analyzer | Whitelist no encontrada: legitimos.txt
+2026-05-22T22:01:09 | INFO     | phishing_analyzer.knn | Modelo KNN cargado: 15 ejemplos
+2026-05-22T22:01:09 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 81.83%) [→ Ollama]
+2026-05-22T22:01:28 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 64.96%) [→ Ollama]
+2026-05-22T22:01:53 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 64.96%) [→ Ollama]
+2026-05-22T22:02:06 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.69%) [→ Ollama]
+2026-05-22T22:02:26 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 81.35%) [→ Ollama]
+2026-05-22T22:02:48 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 68.48%) [→ Ollama]
+2026-05-22T22:03:12 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.72%) [→ Ollama]
+2026-05-22T22:03:31 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 81.35%) [→ Ollama]
+2026-05-22T22:03:50 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 81.35%) [→ Ollama]
+2026-05-22T22:04:52 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60) — usando fallback.
+2026-05-22T22:04:52 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.63%) [→ Ollama]
+2026-05-22T22:05:54 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60) — usando fallback.
+2026-05-22T22:05:54 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 66.24%) [→ Ollama]
+2026-05-22T22:06:56 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60) — usando fallback.
+2026-05-22T22:06:56 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 64.96%) [→ Ollama]
+2026-05-22T22:07:58 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60) — usando fallback.
+2026-05-22T22:07:58 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 100.00%) [DIRECTO]
+2026-05-22T22:07:58 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 62.78%) [→ Ollama]
+2026-05-22T22:09:00 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60) — usando fallback.
+2026-05-22T22:09:00 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 100.00%) [DIRECTO]
+2026-05-22T22:09:00 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 81.35%) [→ Ollama]
+2026-05-22T22:10:02 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60) — usando fallback.
+2026-05-22T22:10:02 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 100.00%) [DIRECTO]
+2026-05-22T22:10:02 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 100.00%) [DIRECTO]
+2026-05-22T22:10:02 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 100.00%) [DIRECTO]
+2026-05-22T22:10:02 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 100.00%) [DIRECTO]
+2026-05-22T22:10:02 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 81.49%) [→ Ollama]
+2026-05-22T22:11:04 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60) — usando fallback.
+2026-05-22T22:11:04 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 62.78%) [→ Ollama]
+2026-05-22T22:12:06 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60) — usando fallback.
+2026-05-22T22:12:06 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 81.83%) [→ Ollama]

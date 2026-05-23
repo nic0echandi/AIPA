@@ -9,4 +9,4 @@
 ├── test_config.json
 ├── phishing_analyzer_txt_08.py
 ├── knn_classifier.py
-└── legitimos.txt
+└── whitelist.txt

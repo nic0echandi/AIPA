@@ -8,7 +8,7 @@
 
   "abuseipdb_api_key":        "",
 
-  "whitelist_path":           "legitimos.txt",
+  "whitelist_path":           "whitelist.txt",
   "log_level":                "DEBUG",
   "knn_confidence_threshold": 0.85,
 
