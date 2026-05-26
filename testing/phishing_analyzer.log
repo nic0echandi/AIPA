@@ -100,3 +100,159 @@
 2026-05-22T22:11:04 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 62.78%) [→ Ollama]
 2026-05-22T22:12:06 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60) — usando fallback.
 2026-05-22T22:12:06 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 81.83%) [→ Ollama]
+2026-05-22T22:31:03 | WARNING  | phishing_analyzer | jsonschema no instalado — validación de config omitida.
+2026-05-22T22:31:03 | INFO     | phishing_analyzer | Whitelist cargada: 22 dominios
+2026-05-22T22:31:03 | INFO     | phishing_analyzer.knn | Modelo KNN cargado: 15 ejemplos
+2026-05-22T22:31:54 | WARNING  | phishing_analyzer | jsonschema no instalado — validación de config omitida.
+2026-05-22T22:31:54 | INFO     | phishing_analyzer | Whitelist cargada: 22 dominios
+2026-05-22T22:31:54 | INFO     | phishing_analyzer.knn | Modelo KNN cargado: 15 ejemplos
+2026-05-22T22:31:54 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: UPJET - JUNTA ELECTORAL <juntaelectoral@upjet.org.ar>
+2026-05-22T22:31:54 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "trainings@zepo.app" <trainings@zepo.app>
+2026-05-22T22:31:54 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 62.78%) [→ Ollama]
+2026-05-22T22:32:56 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60) — usando fallback.
+2026-05-22T22:32:56 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 81.10%) [→ Ollama]
+2026-05-22T22:33:58 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60) — usando fallback.
+2026-05-22T22:33:58 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.69%) [→ Ollama]
+2026-05-22T22:35:00 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60) — usando fallback.
+2026-05-22T22:35:00 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: SoporteNOC <SoporteNOC@tmoviles.com.ar>
+2026-05-22T22:35:00 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "PASCUZZI, DIEGO HERNAN" <diego.pascuzzi@tmoviles.com.ar>
+2026-05-22T22:35:00 | INFO     | phishing_analyzer.knn | KNN → SOSPECHOSO (confianza: 85.38%) [DIRECTO]
+2026-05-22T22:35:00 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 58.43%) [→ Ollama]
+2026-05-22T22:36:02 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60) — usando fallback.
+2026-05-22T22:36:02 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 58.43%) [→ Ollama]
+2026-05-22T22:37:04 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60) — usando fallback.
+2026-05-22T22:37:04 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "Lluch, Maria Emilia" <notifications@yammer.com>
+2026-05-22T22:37:04 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: Partner-led Sales Resource <plsrbr@microsoft.com>
+2026-05-22T22:37:04 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: Partner-led Sales Resource <plsrbr@microsoft.com>
+2026-05-22T22:37:04 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "NETTO, FRANCISCO DANIEL en Teams" <no-reply@teams.mail.microsoft>
+2026-05-22T22:37:04 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 58.43%) [→ Ollama]
+2026-05-22T22:38:06 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60) — usando fallback.
+2026-05-22T22:38:06 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 80.92%) [→ Ollama]
+2026-05-22T22:39:09 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60) — usando fallback.
+2026-05-22T22:39:09 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 80.92%) [→ Ollama]
+2026-05-26T18:21:19 | WARNING  | phishing_analyzer | jsonschema no instalado — validación de config omitida.
+2026-05-26T18:21:19 | INFO     | phishing_analyzer | Whitelist cargada: 22 dominios
+2026-05-26T18:21:19 | INFO     | phishing_analyzer.knn | Modelo KNN cargado: 15 ejemplos
+2026-05-26T18:21:19 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 80.92%) [→ Ollama]
+2026-05-26T18:21:54 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 80.92%) [→ Ollama]
+2026-05-26T18:22:14 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 80.92%) [→ Ollama]
+2026-05-26T18:23:00 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 81.10%) [→ Ollama]
+2026-05-26T18:23:23 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.72%) [→ Ollama]
+2026-05-26T18:23:46 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.72%) [→ Ollama]
+2026-05-26T18:24:09 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.69%) [→ Ollama]
+2026-05-26T18:24:28 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 81.10%) [→ Ollama]
+2026-05-26T18:24:51 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 80.92%) [→ Ollama]
+2026-05-26T18:25:18 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 80.92%) [→ Ollama]
+2026-05-26T18:25:40 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 62.27%) [→ Ollama]
+2026-05-26T18:25:59 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.69%) [→ Ollama]
+2026-05-26T18:26:20 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 62.27%) [→ Ollama]
+2026-05-26T18:26:42 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 62.27%) [→ Ollama]
+2026-05-26T18:27:08 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.72%) [→ Ollama]
+2026-05-26T18:27:36 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 62.27%) [→ Ollama]
+2026-05-26T18:27:57 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.72%) [→ Ollama]
+2026-05-26T18:28:25 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 81.83%) [→ Ollama]
+2026-05-26T18:28:45 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 62.78%) [→ Ollama]
+2026-05-26T18:29:04 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 62.78%) [→ Ollama]
+2026-05-26T18:29:14 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 81.83%) [→ Ollama]
+2026-05-26T18:29:34 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 81.83%) [→ Ollama]
+2026-05-26T18:45:32 | WARNING  | phishing_analyzer | jsonschema no instalado — validación de config omitida.
+2026-05-26T18:45:32 | INFO     | phishing_analyzer | Whitelist cargada: 22 dominios
+2026-05-26T18:45:32 | INFO     | phishing_analyzer.knn | Modelo KNN cargado: 15 ejemplos
+2026-05-26T18:45:32 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "trainings@zepo.app" <trainings@zepo.app>
+2026-05-26T18:45:32 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "trainings@zepo.app" <trainings@zepo.app>
+2026-05-26T18:45:32 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "trainings@zepo.app" <trainings@zepo.app>
+2026-05-26T18:45:32 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "trainings@zepo.app" <trainings@zepo.app>
+2026-05-26T18:45:32 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "trainings@zepo.app" <trainings@zepo.app>
+2026-05-26T18:45:32 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 62.78%) [→ Ollama]
+2026-05-26T18:46:07 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "trainings@zepo.app" <trainings@zepo.app>
+2026-05-26T18:46:07 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: Ortiz Corzo Maria Ines <mariaines.ortizc@tmoviles.com.ar>
+2026-05-26T18:46:07 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "SEGATA, JORGE EDUARDO" <jorge.segata@tmoviles.com.ar>
+2026-05-26T18:46:07 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "PEREZ MULLER, ALEJANDRO JAVIER, SAFTIH, CARLOS, +6 others" <noreply@yammer.com>
+2026-05-26T18:46:07 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: =?utf-8?B?VW5pw7NuIGRlbCBQZXJzb25hbCBKZXLDoXJxdWljbyBkZSBFbXByZXNhcyBk?=  =?utf-8?Q?e_Telecomunicaciones_-_UPJET_-?= <info@upjet.org.ar>
+2026-05-26T18:46:07 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 60.52%) [→ Ollama]
+2026-05-26T18:46:24 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 60.52%) [→ Ollama]
+2026-05-26T18:46:43 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "trainings@zepo.app" <trainings@zepo.app>
+2026-05-26T18:46:43 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "trainings@zepo.app" <trainings@zepo.app>
+2026-05-26T18:46:43 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: Remedy One <incoming@tefremedyone-mail.onbmc.com>
+2026-05-26T18:46:43 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.72%) [DIRECTO]
+2026-05-26T18:46:43 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "Gonzalez, Laura" <lauraa.gonzalez@tmoviles.com.ar>
+2026-05-26T18:46:43 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: Obra Social & Medicina Paga <obrasocialmedicinapaga@gesnext.com>
+2026-05-26T18:46:43 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: Obra Social & Medicina Paga <obrasocialmedicinapaga@gesnext.com>
+2026-05-26T18:46:43 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: Obra Social & Medicina Paga <obrasocialmedicinapaga@gesnext.com>
+2026-05-26T18:46:43 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: Obra Social & Medicina Paga <obrasocialmedicinapaga@gesnext.com>
+2026-05-26T18:46:43 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: planificacioncomercialB2B.arg <planificacioncomercialB2B.arg@tmoviles.com.ar>
+2026-05-26T18:46:43 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "Veron, Leila Fatima" <leila.veron@tmoviles.com.ar>
+2026-05-26T18:46:43 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "SANCHEZ, MARIA DE LOS ANGELES" <MARIADELOS.SANCHEZ@tmoviles.com.ar>
+2026-05-26T18:46:43 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "ESCOBAR, SEBASTIAN" <s.escobar@tmoviles.com.ar>
+2026-05-26T18:46:43 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: Cabrera Oscar Antonio <oscarantonio.cabrera@tmoviles.com.ar>
+2026-05-26T18:46:43 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 81.40%) [DIRECTO]
+2026-05-26T18:46:43 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.72%) [DIRECTO]
+2026-05-26T18:46:43 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: =?utf-8?B?VFJVQkJPIE5JQ09MQVMgR0FCUklFTCwgRGlnb24gTWFsZW5hIHkgNSBtw6Fz?= <noreply@yammer.com>
+2026-05-26T18:46:43 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: =?iso-8859-1?Q?Y=D1IGO_OURA=2C_TAKEO_FRANCISCO?= <TAKEO.YNIGO@tmoviles.com.ar>
+2026-05-26T18:46:43 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.72%) [DIRECTO]
+2026-05-26T18:46:43 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: =?utf-8?B?QnJpenVlbGEsIENsYXVkaW8sIEhlcmVkaWEsIExvcmVuYSB5IDYgbcOhcw==?= <noreply@yammer.com>
+2026-05-26T18:46:43 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "PMNotifications@successfactors.eu" <PMNotifications@successfactors.eu>
+2026-05-26T18:46:43 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 81.83%) [DIRECTO]
+2026-05-26T18:46:43 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "Rodriguez, Mauro David" <maudarod@tmoviles.com.ar>
+2026-05-26T18:46:43 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "Rodriguez, Mauro David" <maudarod@tmoviles.com.ar>
+2026-05-26T18:46:43 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "PMNotifications@successfactors.eu" <PMNotifications@successfactors.eu>
+2026-05-26T18:46:43 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: =?utf-8?B?Q29tdW5pY2FjacOzbiBJbnRlcm5hLCBNaWNlbGksIE1hcmNlbG8sICs2IG90?=  =?utf-8?Q?hers?= <noreply@yammer.com>
+2026-05-26T18:46:43 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "Mella, Nadia" <nadia.mella@tmoviles.com.ar>
+2026-05-26T18:46:44 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.72%) [DIRECTO]
+2026-05-26T18:46:44 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "SAFTIH, CARLOS, Damonte Nicolas, +6 others" <noreply@yammer.com>
+2026-05-26T18:46:44 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "Pivano Fernando, ALESSIO, CLAUDIO DANIEL, +6 others" <noreply@yammer.com>
+2026-05-26T18:46:44 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: Avisos Movistar <Cobranzas_movistar@movistar.com.ar>
+2026-05-26T18:46:44 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "COLOMBO, ESTEFANIA ANDREA" <estefania.colombo@tmoviles.com.ar>
+2026-05-26T18:46:44 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "BARRIOS, DIEGO MARTIN" <diego.barrios@tmoviles.com.ar>
+2026-05-26T18:46:44 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "trainings@zepo.app" <trainings@zepo.app>
+2026-05-26T18:46:44 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 62.78%) [→ Ollama]
+2026-05-26T18:47:10 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 100.00%) [DIRECTO]
+2026-05-26T18:47:10 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "News Tecnicas, experienciaempleados.ar, +6 others" <noreply@yammer.com>
+2026-05-26T18:47:10 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "trainings@zepo.app" <trainings@zepo.app>
+2026-05-26T18:47:10 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "trainings@zepo.app" <trainings@zepo.app>
+2026-05-26T18:47:10 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "trainings@zepo.app" <trainings@zepo.app>
+2026-05-26T18:47:10 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "trainings@zepo.app" <trainings@zepo.app>
+2026-05-26T18:47:10 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 81.49%) [DIRECTO]
+2026-05-26T18:47:10 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: =?utf-8?B?VW5pw7NuIGRlbCBQZXJzb25hbCBKZXLDoXJxdWljbyBkZSBFbXByZXNhcyBk?=  =?utf-8?Q?e_Telecomunicaciones_-_UPJET_-?= <info@upjet.org.ar>
+2026-05-26T18:47:10 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "incoming@tefremedyone-mail.onbmc.com" <incoming@tefremedyone-mail.onbmc.com>
+2026-05-26T18:47:10 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "ALESSIO, CLAUDIO DANIEL, BRITEZ, GISELA YANINA, +6 others" <noreply@yammer.com>
+2026-05-26T18:47:10 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: TSA_Comercial TCE <comercialtce@telefonica.com>
+2026-05-26T18:47:11 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 100.00%) [DIRECTO]
+2026-05-26T18:47:11 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "experienciaempleados.ar, Ferrari, Monica, +5 others" <noreply@yammer.com>
+2026-05-26T18:47:11 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "experienciaempleados.ar, FERNANDEZ, MARIA CARLA, +6 others" <noreply@yammer.com>
+2026-05-26T18:47:11 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 81.49%) [DIRECTO]
+2026-05-26T18:47:11 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 61.69%) [→ Ollama]
+2026-05-26T18:47:29 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 61.69%) [→ Ollama]
+2026-05-26T18:47:51 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: =?utf-8?B?U21vbGphbm92aWNoLCBGcmFuY2lzY28sIERpZ29uIE1hbGVuYSB5IDUgbcOh?=  =?utf-8?Q?s?= <noreply@yammer.com>
+2026-05-26T18:47:51 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: REPUBLICA - Piso 7 comercial - Sala 1 - 12p - TELEPRESENCIA <sala1.REPUBLICA.comercial.piso7.ar@tmoviles.com.ar>
+2026-05-26T18:47:51 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "trainings@zepo.app" <trainings@zepo.app>
+2026-05-26T18:47:51 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "CATALDI, ESTEBAN ANDRES" <esteban.cataldi@tmoviles.com.ar>
+2026-05-26T18:47:51 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: Gallicchio Maximiliano <maximiliano.gallicchio@tmoviles.com.ar>
+2026-05-26T18:47:51 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.69%) [DIRECTO]
+2026-05-26T18:47:51 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 58.39%) [→ Ollama]
+2026-05-26T18:48:12 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.69%) [DIRECTO]
+2026-05-26T18:48:12 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.69%) [DIRECTO]
+2026-05-26T18:48:12 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.69%) [DIRECTO]
+2026-05-26T18:48:12 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.69%) [DIRECTO]
+2026-05-26T18:48:12 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: Avisos Movistar <Cobranzas_movistar@movistar.com.ar>
+2026-05-26T18:48:12 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: =?utf-8?B?VW5pw7NuIGRlbCBQZXJzb25hbCBKZXLDoXJxdWljbyBkZSBFbXByZXNhcyBk?=  =?utf-8?Q?e_Telecomunicaciones_-_UPJET_-?= <info@upjet.org.ar>
+2026-05-26T18:48:12 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.69%) [DIRECTO]
+2026-05-26T18:48:12 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 62.26%) [→ Ollama]
+2026-05-26T18:49:12 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60) — usando fallback.
+2026-05-26T18:49:12 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 62.25%) [→ Ollama]
+2026-05-26T18:50:12 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60) — usando fallback.
+2026-05-26T18:50:12 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: Avisos Movistar <Cobranzas_movistar@movistar.com.ar>
+2026-05-26T18:50:12 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 81.40%) [DIRECTO]
+2026-05-26T18:50:12 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 58.80%) [→ Ollama]
+2026-05-26T18:51:13 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60) — usando fallback.
+2026-05-26T18:51:13 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: Movistar <noreply@movistar.com.ar>
+2026-05-26T18:51:13 | INFO     | phishing_analyzer.knn | KNN → SPAM (confianza: 62.27%) [→ Ollama]
+2026-05-26T18:52:13 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60) — usando fallback.
+2026-05-26T18:52:13 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 82.69%) [DIRECTO]
+2026-05-26T18:52:13 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "SAFTIH, CARLOS, RAMIREZ, MARIO ARIEL, +6 others" <noreply@yammer.com>
+2026-05-26T18:52:13 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: =?utf-8?B?VW5pw7NuIGRlbCBQZXJzb25hbCBKZXLDoXJxdWljbyBkZSBFbXByZXNhcyBk?=  =?utf-8?Q?e_Telecomunicaciones_-_UPJET_-?= <info@upjet.org.ar>
+2026-05-26T18:52:13 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "VOLPE, MARCOS, Miceli, Marcelo, +6 others" <noreply@yammer.com>
+2026-05-26T18:52:13 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "SAFTIH, CARLOS, Rodriguez, Hugo O., +5 others" <noreply@yammer.com>
+2026-05-26T18:52:13 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "TILLAR TAMIOZZO, JOANA KAREN, BRITEZ, GISELA YANINA, +5 others" <noreply@yammer.com>
+2026-05-26T18:52:13 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: "Machado Nadia Giselle, BRITEZ, GISELA YANINA, +5 others" <noreply@yammer.com>
+2026-05-26T18:52:13 | INFO     | phishing_analyzer | Dominio en whitelist → clasificado como LEGÍTIMO: =?utf-8?B?Q29tdW5pY2FjacOzbiBJbnRlcm5hLCBEaWdvbiBNYWxlbmEsICszIG90aGVy?=  =?utf-8?Q?s?= <noreply@yammer.com>
