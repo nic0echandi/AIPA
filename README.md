@@ -54,12 +54,96 @@ Ejecuta el script PowerShell con permisos de administrador:
 powershell -ExecutionPolicy Bypass -File agent/install_service.ps1
 ```
 
+
 ## ¿Cómo funciona el agente?
-1. **Ingreso de archivos:** Los archivos sospechosos se colocan en la carpeta `ingress/`.
-2. **Procesamiento:** El agente lee los archivos, los analiza usando modelos de machine learning y reglas basadas en listas blancas.
-3. **Clasificación:** Según el resultado, mueve los archivos a `processed/phishing/`, `processed/spam/` o los deja en `suspect/` si no puede clasificarlos.
-4. **Integración:** Puede subir resultados a SharePoint si está configurado.
-5. **Registro:** El agente mantiene logs de actividad y errores.
+
+El agente sigue un flujo automatizado y supervisado para la detección y gestión de correos sospechosos:
+
+1. **Conexión y monitoreo de SharePoint:**
+  - El agente se conecta periódicamente a una carpeta de SharePoint (configurada en `config.json`) usando Microsoft Graph API.
+  - Descarga automáticamente todos los archivos `.txt` nuevos a la carpeta local `ingress/`.
+  - Además, un FileSystemWatcher monitorea en tiempo real la carpeta `ingress/` para detectar archivos copiados manualmente o por otros procesos.
+
+2. **Detección de nuevos archivos:**
+  - Cada archivo nuevo detectado en `ingress/` se encola para su análisis.
+
+3. **Análisis y clasificación:**
+  - El agente extrae los encabezados y contenido del archivo.
+  - Si el remitente está en la lista blanca (`whitelist.txt`), el archivo se clasifica automáticamente como legítimo.
+  - Si no está en la lista blanca, se aplica un modelo KNN para una clasificación rápida:
+    - Si la confianza del KNN es alta, se clasifica directamente (legítimo, spam o sospechoso).
+    - Si la confianza es baja, se realiza un análisis profundo usando un modelo LLM (por ejemplo, Ollama o Anthropic).
+
+4. **Acciones según clasificación:**
+  - **Legítimo:**
+    - El archivo se mueve a `processed/legitimo/`.
+    - Se notifica al denunciante (reporter) mediante un webhook de Power Automate.
+    - Se puede enviar un webhook adicional para registro o auditoría.
+  - **Spam:**
+    - El archivo se mueve a `processed/spam/`.
+    - Se notifica al denunciante indicando que el correo es spam y no representa riesgo.
+    - Se actualiza el modelo KNN con este ejemplo para aprendizaje activo.
+
+  - **Sospechoso (phishing):**
+    - El archivo se mueve a `processed/sospechoso/`.
+    - **Conexión y generación de caso en IRIS DFIR:**
+      - Si el análisis determina que el correo es phishing/sospechoso, el agente se conecta automáticamente a la plataforma IRIS DFIR (Digital Forensics and Incident Response) usando la API configurada en `config.json`.
+      - Se envía toda la información relevante del análisis (encabezados, remitente, score de riesgo, URLs, razones, etc.) y se crea un caso de incidente en IRIS.
+      - El ID del caso generado se registra en el informe y en los logs, permitiendo su trazabilidad y seguimiento por el equipo de respuesta a incidentes.
+      - Esta integración permite que el equipo de seguridad reciba alertas inmediatas y pueda iniciar la investigación forense de manera automatizada y documentada.
+    - Se notifica al denunciante con advertencias de seguridad.
+    - Se actualiza el modelo KNN con este ejemplo.
+
+5. **Emisión de informes y notificaciones:**
+  - Para cada archivo analizado, se genera un informe JSON con todos los detalles del análisis (clasificación, score de riesgo, razones, indicadores, URLs, etc.).
+  - El informe se guarda en la carpeta configurada (`analysis_dir`).
+  - Las notificaciones al denunciante se realizan mediante Power Automate, que envía un correo personalizado según el resultado.
+
+6. **Registro y logs:**
+  - Todas las acciones, errores y resultados se registran en archivos de log rotativos en la carpeta `logs/`.
+  - Los logs permiten auditar el funcionamiento y diagnosticar problemas.
+
+7. **Análisis de resultados:**
+  - Los archivos procesados quedan organizados en subcarpetas de `processed/` según su clasificación (`legitimo/`, `spam/`, `sospechoso/`).
+  - Los informes JSON pueden consultarse para revisar el detalle de cada caso.
+  - El archivo de log principal (`logs/agent.log`) muestra el historial de actividad, errores y notificaciones.
+  - El modelo KNN se va ajustando automáticamente con los ejemplos confirmados, mejorando la precisión con el tiempo.
+
+
+### Ejemplo de informe generado (caso phishing con integración IRIS)
+
+```json
+{
+  "mensaje_id": "<1234.5678@correo.com>",
+  "classification": "sospechoso",
+  "confidence": 0.97,
+  "reporter_email": "usuario@empresa.com",
+  "original_subject": "Alerta de seguridad bancaria",
+  "original_from": "Banco Falso <alerta@bancofalso.com>",
+  "reply_to": "soporte@bancofalso.com",
+  "sender_ip": "203.0.113.45",
+  "ip_reputation": {"abuse_score": 85, "country": "RU"},
+  "analysis_date": "2026-05-26T14:32:10",
+  "indicators": {"spf": "fail", "dkim": "none", "dmarc": "fail"},
+  "headers_raw": "...headers SMTP...",
+  "body_preview": "Estimado cliente, su cuenta ha sido bloqueada...",
+  "urls_found": [
+    "http://bancofalso.com/seguridad",
+    "http://malicioso.ru/phish"
+  ],
+  "microsoft_url_check": "http://malicioso.ru/phish",
+  "risk_score": 92,
+  "reasons": [
+    "Dominio remitente no está en whitelist",
+    "SPF fail, DKIM none, DMARC fail",
+    "URL sospechosa detectada",
+    "KNN: sospechoso (97%)"
+  ],
+  "iris_case_id": 4567
+}
+```
+
+En este ejemplo, el agente clasificó el correo como sospechoso (phishing), generó un caso en IRIS (ID 4567) y notificó al denunciante. El informe JSON contiene todos los detalles relevantes para auditoría y respuesta a incidentes.
 
 ## Personalización
 - Modifica `whitelist.txt` para agregar o quitar remitentes confiables.
