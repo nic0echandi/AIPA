@@ -31,7 +31,7 @@ from typing import Dict, Optional
 # --- Dependencias locales ---
 from sharepoint_client import SharePointClient
 from knn_classifier     import KNNClassifier, extract_features, features_to_vector, FEATURE_NAMES
-from phishing_analyzer_txt_08 import PhishingAnalyzerTXT, EmailAnalysis
+from phishingAnalizer import PhishingAnalyzerTXT, EmailAnalysis
 
 
 # ---------------------------------------------------------------------------
@@ -474,7 +474,7 @@ class PhishingAgent:
             "case_id":          analysis.mensaje_id,
         }
 
-        from phishing_analyzer_txt_08 import retry_post
+        from phishingAnalizer import retry_post
         resp = retry_post(webhook_url, payload)
         if resp:
             log.info("Reporter notificado: %s (%s)", analysis.reporter_email, classification)

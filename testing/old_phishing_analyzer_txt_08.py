@@ -1018,9 +1018,9 @@ def main():
     import sys
 
     if len(sys.argv) < 2:
-        print("Uso: python phishing_analyzer_txt_08.py <archivo.txt> [archivo2.txt ...]")
+        print("Uso: python phishingAnalizer.py <archivo.txt> [archivo2.txt ...]")
         print("\nEjemplo:")
-        print("  python phishing_analyzer_txt_08.py phishing_20260120_114646.txt")
+        print("  python phishingAnalizer.py phishing_20260120_114646.txt")
         sys.exit(1)
 
     analyzer = PhishingAnalyzerTXT()

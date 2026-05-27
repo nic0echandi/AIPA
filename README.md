@@ -6,7 +6,7 @@ AIPA es un agente automatizado diseñado para analizar archivos sospechosos de p
 ## Estructura del Proyecto
 - `agent/`: Contiene el código principal del agente y módulos auxiliares.
   - `agent.py`: Script principal para ejecutar el agente.
-  - `phishing_analyzer_txt_08.py`: Analizador de phishing basado en texto.
+  - `phishingAnalizer.py`: Analizador de phishing basado en texto.
   - `knn_classifier.py`: Clasificador KNN para detección.
   - `sharepoint_client.py`: Cliente para integración con SharePoint.
   - `whitelist.txt`: Lista blanca de remitentes o dominios confiables.

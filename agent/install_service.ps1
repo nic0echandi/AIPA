@@ -153,7 +153,7 @@ $agentFiles = @(
     "agent.py",
     "sharepoint_client.py",
     "knn_classifier.py",
-    "phishing_analyzer_txt_08.py",
+    "phishingAnalizer.py",
     "whitelist.txt"
 )
 

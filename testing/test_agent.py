@@ -22,7 +22,7 @@ from pathlib import Path
 from typing import Dict, List, Optional
 
 from knn_classifier           import KNNClassifier, FEATURE_NAMES
-from phishing_analyzer_txt_08 import PhishingAnalyzerTXT, EmailAnalysis
+from phishingAnalizer import PhishingAnalyzerTXT, EmailAnalysis
 
 
 # ---------------------------------------------------------------------------

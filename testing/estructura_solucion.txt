@@ -7,6 +7,6 @@
 ├── test_log.txt                 ← se crea/acumula automáticamente
 ├── test_agent.py
 ├── test_config.json
-├── phishing_analyzer_txt_08.py
+├── phishingAnalizer.py
 ├── knn_classifier.py
 └── whitelist.txt
