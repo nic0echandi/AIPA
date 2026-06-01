@@ -1,0 +1,39 @@
+# Whitelist de remitentes confiables
+# Los emails de estos dominios se clasifican automáticamente como LEGÍTIMOS
+# Un remitente por línea, los comentarios (líneas con #) se ignoran
+
+# Correos internos de la empresa
+user@company.com
+admin@company.com
+noreply@company.com
+alerts@company.com
+
+# Servicios confiables internos
+github@company.com
+gitlab@company.com
+jira@company.com
+
+# Dominios externos autorizados
+noreply@github.com
+alerts@github.com
+security@github.com
+
+noreply@microsoft.com
+alerts@microsoft.com
+security@microsoft.com
+
+support@aws.amazon.com
+alerts@aws.amazon.com
+
+# Servicios SaaS
+notifications@slack.com
+hello@slack.com
+
+noreply@google.com
+alerts@google.com
+
+# Instituciones confiables
+security@bank.com
+alerts@bank.com
+
+# Agregar más remitentes según sea necesario

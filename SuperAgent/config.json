@@ -1,0 +1,15 @@
+{
+  "smtp": {
+    "host": "smtp.example.com",
+    "port": 587,
+    "username": "user@example.com",
+    "password": "yourpassword",
+    "use_tls": true,
+    "from": "noreply@example.com"
+  },
+  "iris": {
+    "endpoint": "https://iris.example.com/api/cases",
+    "api_key": "your_iris_api_key"
+  },
+  "log_file": "SuperAgent/superagent.log"
+}
