@@ -478,11 +478,11 @@ class SuperAgent2:
             if smtp_cfg.get("use_tls", False):
                 with SMTP(smtp_cfg["host"], smtp_cfg["port"]) as smtp:
                     smtp.starttls()
-                    smtp.login(smtp_cfg["username"], smtp_cfg["password"])
+                    #smtp.login(smtp_cfg["username"], smtp_cfg["password"])
                     smtp.send_message(msg)
             else:
                 with SMTP_SSL(smtp_cfg["host"], smtp_cfg["port"]) as smtp:
-                    smtp.login(smtp_cfg["username"], smtp_cfg["password"])
+                    #smtp.login(smtp_cfg["username"], smtp_cfg["password"])
                     smtp.send_message(msg)
             
             log.info(f"✓ Notificación enviada a {to_addr} ({classification})")
