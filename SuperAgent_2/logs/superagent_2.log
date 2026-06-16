@@ -1,13 +1,13 @@
 2026-06-01T09:22:38 | INFO     | superagent_2.main | ======================================================================
 2026-06-01T09:22:38 | INFO     | superagent_2.main | SuperAgent_2 inicializado
-2026-06-01T09:22:38 | INFO     | superagent_2.main |   Ingress:       C:\Users\echandin\Documents\Github\AIPA\ingress
-2026-06-01T09:22:38 | INFO     | superagent_2.main |   Processed:     C:\Users\echandin\Documents\Github\AIPA\processed
-2026-06-01T09:22:38 | INFO     | superagent_2.main |   Analysis:      C:\Users\echandin\Documents\Github\AIPA\analysis_results
+2026-06-01T09:22:38 | INFO     | superagent_2.main |   Ingress:       C:\Users\nic0echandi\Documents\Github\AIPA\ingress
+2026-06-01T09:22:38 | INFO     | superagent_2.main |   Processed:     C:\Users\nic0echandi\Documents\Github\AIPA\processed
+2026-06-01T09:22:38 | INFO     | superagent_2.main |   Analysis:      C:\Users\nic0echandi\Documents\Github\AIPA\analysis_results
 2026-06-01T09:22:38 | INFO     | superagent_2.main |   KNN threshold: 85%
 2026-06-01T09:22:38 | INFO     | superagent_2.main |   LLM provider:  ollama
 2026-06-01T09:22:38 | INFO     | superagent_2.main |   Log level:     INFO
 2026-06-01T09:22:38 | INFO     | superagent_2.main | ======================================================================
-2026-06-01T09:22:38 | INFO     | superagent_2.main | FileWatcher iniciado en: C:\Users\echandin\Documents\Github\AIPA\ingress
+2026-06-01T09:22:38 | INFO     | superagent_2.main | FileWatcher iniciado en: C:\Users\nic0echandi\Documents\Github\AIPA\ingress
 2026-06-01T09:22:38 | INFO     | superagent_2.main | Worker de análisis iniciado.
 2026-06-01T09:22:38 | INFO     | superagent_2.main | SuperAgent_2 iniciado. Observando ingress/...
 2026-06-01T09:22:38 | INFO     | superagent_2.main | FileWatcher: nuevo archivo detectado: legitimate_example_001.txt
@@ -22,13 +22,13 @@
 2026-06-01T09:22:38 | INFO     | superagent_2.main | Archivo movido → processed/spam/20260601_092238_legitimate_example_001.txt
 2026-06-01T09:22:38 | INFO     | superagent_2.main | ──────────────────────────────────────────────────────────────────────
 2026-06-01T09:22:38 | INFO     | superagent_2.main | Procesando: phishing_20260120_133852.txt
-2026-06-01T09:22:38 | INFO     | superagent_2.main |   De: "trainings@zepo.app" <trainings@zepo.app>
-2026-06-01T09:22:38 | INFO     | superagent_2.main |   Para (reporter): jorge.zaffino@tmoviles.com.ar
+2026-06-01T09:22:38 | INFO     | superagent_2.main |   De: "trainings@xxx.org" <trainings@sarasa.app>
+2026-06-01T09:22:38 | INFO     | superagent_2.main |   Para (reporter): jorge.sarasao@mails.com.ar
 2026-06-01T09:22:38 | INFO     | superagent_2.main | KNN directo (100% confianza) → LEGITIMO
 2026-06-01T09:22:38 | INFO     | superagent_2.main | RESULTADO → LEGITIMO | Score: 0/100 | Confianza: 100%
 2026-06-01T09:22:38 | INFO     | superagent_2.main | → Email clasificado como LEGÍTIMO
-2026-06-01T09:22:38 | INFO     | superagent_2.main | Enviando notificación a reporter: jorge.zaffino@tmoviles.com.ar
-2026-06-01T09:22:40 | ERROR    | superagent_2.main | ✗ Error enviando email a jorge.zaffino@tmoviles.com.ar: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 71dfb90a1353d-59c92271a26sm4779177e0c.14 - gsmtp')
+2026-06-01T09:22:38 | INFO     | superagent_2.main | Enviando notificación a reporter: jorge.sarasao@mails.com.ar
+2026-06-01T09:22:40 | ERROR    | superagent_2.main | ✗ Error enviando email a jorge.sarasao@mails.com.ar: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 71dfb90a1353d-59c92271a26sm4779177e0c.14 - gsmtp')
 2026-06-01T09:22:40 | INFO     | superagent_2.main | Archivo movido → processed/legitimo/20260601_092240_phishing_20260120_133852.txt
 2026-06-01T09:22:40 | INFO     | superagent_2.main | ──────────────────────────────────────────────────────────────────────
 2026-06-01T09:22:40 | INFO     | superagent_2.main | Procesando: phishing_example_001.txt
