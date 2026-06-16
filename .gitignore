@@ -5,3 +5,4 @@ testing/*.zip
 agent/whitelist.txt
 testing/*.log
 testing/test_log.txt
+testing/phishing_analyzer.log
