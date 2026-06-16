@@ -2,3 +2,4 @@ ingress/*.txt
 suspect/*.txt
 testing/*.zip
 *.zip
+agent/whitelist.txt
