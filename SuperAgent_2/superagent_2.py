@@ -38,6 +38,7 @@ sys.path.insert(0, agent_dir)
 
 from knn_classifier import KNNClassifier, extract_features, features_to_vector, FEATURE_NAMES
 from phishingAnalizer import PhishingAnalyzerTXT, EmailAnalysis
+from usage_stats import UsageStats
 
 
 # ============================================================================
@@ -121,6 +122,20 @@ class SuperAgent2:
         # Si no, devuelve tal cual (asume que es un email)
         return address.strip()
     
+    def _print_monthly_stats(self):
+        """Imprime estadísticas mensuales en los logs."""
+        summary = self.stats.stats_summary()
+        month_data = summary["mes_actual"]
+        
+        if month_data["total"] > 0:
+            log.info("📊 Estadísticas del mes actual:")
+            log.info(f"  Total procesados: {month_data['total']}")
+            log.info(f"  • Legítimos: {month_data['by_classification'].get('legitimo', 0)}")
+            log.info(f"  • Spam: {month_data['by_classification'].get('spam', 0)}")
+            log.info(f"  • Sospechosos: {month_data['by_classification'].get('sospechoso', 0)}")
+            log.info(f"  Decisiones por: WL:{month_data['by_source'].get('whitelist', 0)} KNN:{month_data['by_source'].get('knn', 0)} LLM:{month_data['by_source'].get('llm', 0)}")
+
+    
     def __init__(self, config_path: str = "config.json"):
         self.config = load_config(config_path)
         setup_logger(
@@ -145,6 +160,7 @@ class SuperAgent2:
             confidence_threshold=float(self.config.get("knn_confidence_threshold", 0.85))
         )
         self.analyzer = PhishingAnalyzerTXT(config_path)
+        self.stats = UsageStats()  # Estadísticas de uso
         
         # Cola thread-safe
         self.file_queue: queue.Queue = queue.Queue()
@@ -162,6 +178,9 @@ class SuperAgent2:
         log.info(f"  LLM provider:  {self.config.get('llm_provider', 'ollama')}")
         log.info(f"  Log level:     {self.config.get('log_level', 'INFO')}")
         log.info("=" * 70)
+        
+        # Mostrar estadísticas mensuales iniciales
+        self._print_monthly_stats()
     
     # ========================================================================
     # Ciclo principal
@@ -290,6 +309,8 @@ class SuperAgent2:
         if self.analyzer.check_whitelist(from_email):
             log.info(f"Whitelist match: {from_email} → legítimo")
             analysis = self.analyzer.analyze_txt_file(str(file_path))
+            # Registrar estadística: whitelist
+            self.stats.record_case("legitimo", "whitelist")
             self._handle_result(file_path, analysis)
             return
         
@@ -302,6 +323,7 @@ class SuperAgent2:
                 f"{knn_result['classification'].upper()}"
             )
             analysis = self._build_analysis_from_knn(file_path, parsed, knn_result)
+            classification_source = "knn"
         else:
             log.info(
                 f"KNN inseguro ({knn_result['confidence'] * 100:.0f}%) → "
@@ -315,8 +337,9 @@ class SuperAgent2:
                     f"KNN: {knn_result['classification']} ({knn_result['confidence']:.0%}) "
                     f"→ LLM refinement"
                 ] + analysis.reasons
+            classification_source = "llm"
         
-        self._handle_result(file_path, analysis, knn_result)
+        self._handle_result(file_path, analysis, knn_result, classification_source)
     
     def _build_analysis_from_knn(
         self, file_path: Path, parsed: Dict, knn_result: Dict
@@ -366,11 +389,13 @@ class SuperAgent2:
     # Acciones post-análisis
     # ========================================================================
     
-    def _handle_result(self, file_path: Path, analysis: Optional[EmailAnalysis], knn_result: Optional[Dict] = None):
+    def _handle_result(self, file_path: Path, analysis: Optional[EmailAnalysis], knn_result: Optional[Dict] = None, classification_source: str = "llm"):
         """Ejecuta acciones según clasificación y actualiza aprendizaje del modelo."""
         if not analysis:
             log.error(f"Análisis nulo para: {file_path.name}")
             self._move_to_processed(file_path, "spam")
+            # Registrar como error (asumimos spam)
+            self.stats.record_case("spam", classification_source)
             return
         
         classification = analysis.classification
@@ -381,6 +406,21 @@ class SuperAgent2:
         
         # Guardar JSON del análisis
         self.analyzer.save_analysis(analysis)
+        
+        # Determinar si KNN acertó (para tracking de precisión)
+        knn_was_correct = None
+        if knn_result:
+            knn_predicted = knn_result["classification"]
+            knn_was_correct = (knn_predicted == classification)
+            
+            if not knn_was_correct:
+                log.warning(
+                    f"KNN feedback: predijo '{knn_predicted}' pero análisis final es '{classification}'"
+                )
+                self.knn.record_feedback(knn_predicted, classification)
+        
+        # Registrar estadística (incluir feedback si fue KNN)
+        self.stats.record_case(classification, classification_source, knn_was_correct if classification_source == "knn" else None)
         
         if classification == "sospechoso":
             log.info("→ Registrando caso en IRIS...")
@@ -398,15 +438,6 @@ class SuperAgent2:
             self._notify_reporter(analysis, "legitimo")
         
         self._move_to_processed(file_path, classification)
-        
-        # Registrar feedback: validar si KNN tuvo razón
-        if knn_result:
-            knn_predicted = knn_result["classification"]
-            if knn_predicted != classification:
-                log.warning(
-                    f"KNN feedback: predijo '{knn_predicted}' pero análisis final es '{classification}'"
-                )
-                self.knn.record_feedback(knn_predicted, classification)
     
     def _register_case_in_iris(self, analysis: EmailAnalysis):
         """Registra caso en IRIS DFIR."""
@@ -557,6 +588,23 @@ class SuperAgent2:
             )
         except Exception as exc:
             log.debug(f"No se pudo actualizar KNN: {exc}")
+    
+    def generate_stats_report(self, output_file: Optional[str] = None) -> str:
+        """
+        Genera reporte de estadísticas mensuales.
+        
+        Args:
+            output_file: si se especifica, guarda el reporte en archivo
+            
+        Returns:
+            Reporte como string
+        """
+        if output_file is None:
+            output_file = "stats_report.txt"
+        
+        report = self.stats.generate_report(output_file)
+        log.info(f"Reporte de estadísticas generado: {output_file}")
+        return report
 
 
 # ============================================================================

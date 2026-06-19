@@ -197,7 +197,132 @@ Este script demuestra:
 - Registro de feedback
 - Clasificación de nuevo email
 
-## Dependencias
+## 📊 Sistema de Estadísticas de Uso
+
+SuperAgent_2 registra automáticamente estadísticas mensuales sobre:
+
+### Datos registrados
+
+Para cada email procesado se registra:
+
+1. **Clasificación**: Legítimo, Spam, o Sospechoso
+2. **Fuente de decisión**: 
+   - `whitelist` - coincidió con whitelist
+   - `knn` - KNN lo clasificó directo (confianza > umbral)
+   - `llm` - análisis profundo con Ollama
+3. **Precisión del KNN**: Si fue usado KNN, se registra si acertó o se equivocó
+
+### Estructura de datos (stats.json)
+
+```json
+{
+  "2025": {
+    "1": {
+      "total": 156,
+      "by_classification": {
+        "legitimo": 50,
+        "spam": 60,
+        "sospechoso": 46
+      },
+      "by_source": {
+        "whitelist": 30,
+        "knn": 85,
+        "llm": 41
+      },
+      "knn_accuracy": {
+        "correct": 78,
+        "incorrect": 7
+      }
+    }
+  }
+}
+```
+
+### Ver estadísticas
+
+#### Mes actual (opción 1: desde Python)
+
+```python
+from usage_stats import UsageStats
+
+stats = UsageStats()
+summary = stats.get_month_summary()
+print(f"Total: {summary['total']}")
+print(f"Legítimos: {summary['by_classification']['legitimo']}")
+```
+
+#### Desde línea de comandos
+
+```bash
+# Mes actual (automático)
+python view_stats.py
+
+# Mes específico
+python view_stats.py --month 2025-01
+
+# Año completo
+python view_stats.py --year 2025
+
+# Reporte formateado
+python view_stats.py --report
+```
+
+#### Ejemplo de salida
+
+```
+📅 Estadísticas del 01/2025
+============================================================
+
+Total de casos procesados: 156
+
+Clasificación de emails:
+  legitimo         50 ( 32.1%) ██████████░░░░░░░░░░
+  spam             60 ( 38.5%) ███████████████░░░░░░
+  sospechoso       46 ( 29.5%) █████████░░░░░░░░░░░
+
+Decisiones por:
+  whitelist        30 ( 19.2%) ████░░░░░░░░░░░░░░░░
+  knn              85 ( 54.5%) ███████████░░░░░░░░░░
+  llm              41 ( 26.3%) █████░░░░░░░░░░░░░░░
+
+Rendimiento del KNN:
+  Aciertos: 78 / 85 (91.8%)
+  Errores:  7 / 85 (8.2%)
+```
+
+### Generar reportes
+
+```python
+from usage_stats import UsageStats
+
+stats = UsageStats()
+
+# Reporte mensual actual
+report = stats.generate_report()
+print(report)
+
+# Guardar a archivo
+stats.generate_report("reporte_enero.txt")
+```
+
+### Interpretar los datos
+
+**Tendencias útiles**:
+
+| Indicador | Buena señal | Mala señal |
+|-----------|------------|-----------|
+| KNN accuracy | > 90% | < 70% |
+| KNN usage | > 50% | < 30% |
+| LLM usage | 20-30% | > 50% |
+| Whitelist | 10-30% | > 50% (modelo no aprende) |
+| Sospechosos | Bajo | Muy alto (falsos positivos) |
+
+**Ejemplo**: Si ves:
+- ✅ 91% de aciertos en KNN → modelo está maduro
+- ✅ 55% decisiones por KNN → depende menos de Ollama
+- ✅ Solo 26% por LLM → ahorras recursos
+
+
 
 - Python 3.9+
 - scikit-learn (>=1.0.0) - modelo KNN optimizado
