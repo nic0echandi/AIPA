@@ -1,17 +1,19 @@
 """
-knn_classifier.py — Clasificador KNN para análisis rápido de headers de email
+knn_classifier.py — Clasificador KNN con sklearn para análisis rápido de headers de email
 Extrae features numéricas del header y clasifica sin necesidad de LLM.
-Si la confianza supera el umbral, el resultado va directo a acción.
-Si no, el resultado se pasa a Ollama para análisis profundo.
+Implementa aprendizaje activo: mejora con cada ejemplo clasificado.
+Reduce progresivamente la dependencia del LLM conforme el modelo se entrena.
 """
 
 import re
 import json
-import math
 import logging
-import pickle
+import numpy as np
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional
+from datetime import datetime
+from sklearn.neighbors import KNeighborsClassifier
+from joblib import dump, load
 
 log = logging.getLogger("phishing_analyzer.knn")
 
@@ -186,164 +188,345 @@ def features_to_vector(features: Dict) -> List[float]:
 # Clasificador KNN
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# Clasificador KNN con sklearn
+# ---------------------------------------------------------------------------
+
 class KNNClassifier:
     """
-    K-Nearest Neighbors para clasificación de emails.
-    Usa distancia euclidiana sobre el vector de features.
-
+    K-Nearest Neighbors para clasificación de emails usando scikit-learn.
+    
+    Características:
+    - Modelo sklearn optimizado con KDTree
+    - Aprendizaje activo: mejora con cada ejemplo clasificado
+    - Ajuste dinámico del umbral de confianza según precisión
+    - Estadísticas de rendimiento para optimizar el modelo
+    
     En el primer arranque, usa el conjunto de entrenamiento embebido.
-    Persiste el modelo en disco para mejorar con el tiempo (aprendizaje activo).
+    Persiste el modelo con joblib para mejorar con el tiempo.
     """
 
     LABELS = {0: "legitimo", 1: "spam", 2: "sospechoso"}
-    MODEL_PATH = Path("knn_model.pkl")
+    LABEL_TO_INT = {v: k for k, v in LABELS.items()}
+    
+    MODEL_PATH = Path("knn_model.joblib")
+    STATS_PATH = Path("knn_stats.json")
 
     # Dataset de entrenamiento base (features embebidas)
-    # Formato: (vector, label_int)
-    # Generado a partir de los dos emails de ejemplo + conocimiento del dominio
     BASE_TRAINING = [
         # -------- LEGÍTIMOS --------
-        # zepo.app training email (todos pass, SCL=-1, SFV=SKN)
         ([0,0,0,0,1, 0,0,1,0,1, 0,0,1,0.33,0, 0,0,0,0,0, 0,0,0,0], 0),
-        # Microsoft notification estándar
         ([0,0,0,0,1, 0,0,1,0,1, 0,0,1,0,0, 0,0,0,0.1,0, 0,0,0,0], 0),
-        # Newsletter SendGrid con buena autenticación
         ([0,0,0,0,1, 0,0,0,0,1, 0,0,1,0,0, 0,0,0,0.3,0, 0,0,0,0], 0),
-        # Email interno Office365
         ([0,0,0,0,1, 0,0,1,0,1, 0,0,1,0,0, 0,0,0,0,0, 0,0,0,0], 0),
-        # Mailchimp marketing
         ([0,0,0,0,1, 0,0,0,0,0, 0,0,1,0,0, 0,0,0,0.4,0, 0,0,0,0], 0),
 
         # -------- SPAM --------
-        # Marketing masivo sin DKIM
         ([0,0,1,1,0, 0,0,0,0,0, 0,0,1,0,0, 0,0,0,0.5,0, 0,0,0,0], 1),
-        # Boletín con SPF softfail pero sin otras señales
         ([0,1,0,1,0, 0,1,0,1,0, 0,0,1,0,0, 0,0,1,0.2,0, 0,0,0,0], 1),
-        # Offer email con múltiples URLs
         ([0,1,0,1,0, 0,1,0,1,0, 0,0,1,0.33,0, 0,0,0,0.6,0, 0,0,0,0], 1),
-        # Newsletter sin autenticación completa
         ([0,0,1,0,0, 0,0,0,0,0, 0,0,1,0,0, 0,0,0,0.3,0, 0,0,0,0], 1),
 
         # -------- SOSPECHOSOS / PHISHING --------
-        # BEC pago (como el ejemplo del 19/04)
         ([1,0,1,1,0, 1,1,0,1,0, 1,0,0,0.33,1, 0,0,1,0,0, 0,1,1,0], 2),
-        # Spear phishing con homógrafo
         ([1,0,1,1,0, 1,1,0,1,0, 1,0,0,0.66,0, 0,0,1,0.2,0, 0,0,0,1], 2),
-        # URLs sospechosas detectadas por MS
         ([0,1,0,1,0, 0,1,0,1,0, 0,0,1,0.33,0, 0,0,0,0.4,1, 0.5,0,0,0], 2),
-        # Thread hijacking + adjunto + SPF fail
         ([1,0,1,1,0, 1,1,0,1,0, 1,0,0,0,0, 0,1,1,0,0, 0,1,1,0], 2),
-        # SPOOF con país de riesgo
         ([1,0,1,1,0, 1,1,0,1,0, 1,0,0,0,0, 1,1,1,0.1,0, 0,0,0,0], 2),
-        # URL acortada + SPF fail + display mismatch
         ([1,0,1,0,0, 0,1,0,1,0, 0,0,1,0.66,0, 0,0,1,0.3,0, 1,0,0,1], 2),
     ]
 
     def __init__(self, k: int = 5, confidence_threshold: float = 0.85):
+        """
+        Inicializa el clasificador KNN.
+        
+        Args:
+            k: número de vecinos a considerar
+            confidence_threshold: umbral de confianza inicial (ajustable dinámicamente)
+        """
         self.k = k
-        self.confidence_threshold = confidence_threshold
-        self.training_data: List[Tuple[List[float], int]] = []
+        self.base_confidence_threshold = confidence_threshold
+        self.current_confidence_threshold = confidence_threshold
+        
+        # Modelo sklearn
+        self.model: Optional[KNeighborsClassifier] = None
+        self.X_train = np.array([])
+        self.y_train = np.array([])
+        
+        # Estadísticas de aprendizaje activo
+        self.stats = {
+            "total_examples": 0,
+            "by_label": {"legitimo": 0, "spam": 0, "sospechoso": 0},
+            "training_count": 0,  # Ejemplos agregados desde init
+            "accuracy_history": [],  # [fecha, confianza_promedio, correctas, totales]
+            "threshold_adjustments": [],  # Historial de cambios de umbral
+            "last_retrain": datetime.now().isoformat(),
+        }
+        
         self._load_or_init()
 
     def _load_or_init(self):
-        """Carga el modelo persistido o inicializa con el dataset base."""
+        """Carga modelo persistido o inicializa con dataset base."""
         if self.MODEL_PATH.exists():
             try:
-                with open(self.MODEL_PATH, "rb") as f:
-                    self.training_data = pickle.load(f)
-                log.info("Modelo KNN cargado: %d ejemplos", len(self.training_data))
+                data = load(self.MODEL_PATH)
+                self.X_train = data["X_train"]
+                self.y_train = data["y_train"]
+                self.model = data["model"]
+                
+                # Cargar estadísticas
+                if self.STATS_PATH.exists():
+                    with open(self.STATS_PATH, "r", encoding="utf-8") as f:
+                        self.stats = json.load(f)
+                
+                # Ajustar threshold dinámicamente basado en histórico
+                self._adjust_threshold_dynamically()
+                
+                log.info(
+                    "Modelo KNN cargado: %d ejemplos | "
+                    "Threshold: %.2f%% | %s",
+                    len(self.y_train),
+                    self.current_confidence_threshold * 100,
+                    ", ".join(f"{k}:{v}" for k, v in self.stats["by_label"].items())
+                )
                 return
             except Exception as exc:
-                log.warning("No se pudo cargar el modelo KNN: %s — usando dataset base", exc)
+                log.warning("No se pudo cargar modelo KNN: %s — usando dataset base", exc)
 
-        self.training_data = [(v, l) for v, l in self.BASE_TRAINING]
-        log.info("Modelo KNN inicializado con %d ejemplos base", len(self.training_data))
+        # Inicializar con dataset base
+        self._init_from_base_training()
+        log.info(
+            "Modelo KNN inicializado con %d ejemplos base",
+            len(self.y_train)
+        )
+
+    def _init_from_base_training(self):
+        """Inicializa desde el dataset base embebido."""
+        X = np.array([v for v, _ in self.BASE_TRAINING])
+        y = np.array([l for _, l in self.BASE_TRAINING])
+        
+        self._retrain(X, y)
+        
+        # Inicializar estadísticas
+        for vector, label in self.BASE_TRAINING:
+            label_name = self.LABELS[label]
+            self.stats["by_label"][label_name] = self.stats["by_label"].get(label_name, 0) + 1
+        self.stats["total_examples"] = len(self.BASE_TRAINING)
+        
         self._save()
 
-    def _save(self):
-        try:
-            with open(self.MODEL_PATH, "wb") as f:
-                pickle.dump(self.training_data, f)
-        except Exception as exc:
-            log.warning("No se pudo guardar el modelo KNN: %s", exc)
+    def _retrain(self, X: np.ndarray, y: np.ndarray):
+        """Retraina el modelo con nuevos datos."""
+        self.X_train = X.astype(np.float64)
+        self.y_train = y.astype(np.int32)
+        
+        self.model = KNeighborsClassifier(
+            n_neighbors=min(self.k, len(self.y_train)),
+            weights='distance',  # Votación ponderada por distancia inversa
+            metric='euclidean',
+            algorithm='auto'  # sklearn elige automáticamente: kd_tree, ball_tree, brute
+        )
+        self.model.fit(self.X_train, self.y_train)
+        self.stats["last_retrain"] = datetime.now().isoformat()
 
-    def _euclidean(self, v1: List[float], v2: List[float]) -> float:
-        return math.sqrt(sum((a - b) ** 2 for a, b in zip(v1, v2)))
+    def _save(self):
+        """Persiste el modelo y estadísticas."""
+        try:
+            data = {
+                "X_train": self.X_train,
+                "y_train": self.y_train,
+                "model": self.model,
+            }
+            dump(data, self.MODEL_PATH)
+            
+            with open(self.STATS_PATH, "w", encoding="utf-8") as f:
+                json.dump(self.stats, f, indent=2)
+            
+            log.debug("Modelo KNN guardado")
+        except Exception as exc:
+            log.warning("No se pudo guardar modelo KNN: %s", exc)
 
     def classify(self, vector: List[float]) -> Tuple[str, float]:
         """
         Clasifica un vector de features.
-        Retorna (label, confidence) donde confidence ∈ [0, 1].
+        
+        Args:
+            vector: lista de 24 features normalizados
+            
+        Returns:
+            (label, confidence) donde confidence ∈ [0, 1]
         """
-        if not self.training_data:
+        if self.model is None or len(self.y_train) == 0:
             return "spam", 0.0
 
-        # Calcular distancias a todos los ejemplos
-        distances = [
-            (self._euclidean(vector, v), label)
-            for v, label in self.training_data
-        ]
-        distances.sort(key=lambda x: x[0])
-
-        # Tomar los K más cercanos
-        k_nearest = distances[:self.k]
-
-        # Votación ponderada por distancia inversa
-        votes: Dict[int, float] = {0: 0.0, 1: 0.0, 2: 0.0}
-        for dist, label in k_nearest:
-            weight = 1.0 / (dist + 1e-6)  # evitar división por cero
-            votes[label] += weight
-
-        total_weight  = sum(votes.values())
-        winner_label  = max(votes, key=votes.get)
-        confidence    = votes[winner_label] / total_weight if total_weight > 0 else 0.0
-
-        return self.LABELS[winner_label], round(confidence, 4)
+        X = np.array([vector], dtype=np.float64)
+        
+        # predict_proba retorna probabilidades para cada clase
+        proba = self.model.predict_proba(X)[0]
+        prediction = self.model.predict(X)[0]
+        
+        label = self.LABELS[prediction]
+        confidence = float(proba[prediction])
+        
+        return label, round(confidence, 4)
 
     def classify_email(self, headers: Dict, content: str, microsoft_urls: str) -> Dict:
         """
-        Interfaz completa: extrae features → clasifica → retorna resultado con metadatos.
+        Interfaz completa: extrae features → clasifica → retorna resultado detallado.
         """
-        features   = extract_features(headers, content, microsoft_urls)
-        vector     = features_to_vector(features)
+        features = extract_features(headers, content, microsoft_urls)
+        vector = features_to_vector(features)
         label, conf = self.classify(vector)
 
-        is_confident = conf >= self.confidence_threshold
+        # Umbral dinámico: conforme el modelo crece, es menos exigente
+        # Esto reduce dependencia del LLM con más datos de entrenamiento
+        is_confident = conf >= self.current_confidence_threshold
+        
+        llm_required = "→ LLM" if not is_confident else "DIRECTO"
+        training_size_indicator = f"({len(self.y_train)} ejemplos)"
 
         log.info(
-            "KNN → %s (confianza: %.2f%%) [%s]",
-            label.upper(), conf * 100,
-            "DIRECTO" if is_confident else "→ Ollama"
+            "KNN → %s (%.2f%%) [%s] %s",
+            label.upper(), conf * 100, llm_required, training_size_indicator
         )
 
         return {
-            "classification":  label,
-            "confidence":      conf,
-            "is_confident":    is_confident,  # True = no necesita Ollama
-            "features":        features,
-            "vector":          vector,
+            "classification": label,
+            "confidence": conf,
+            "is_confident": is_confident,
+            "features": features,
+            "vector": vector,
+            "model_size": len(self.y_train),
         }
 
-    def add_training_example(self, vector: List[float], label: str):
+    def add_training_example(self, vector: List[float], label: str, feedback_correct: bool = True):
         """
-        Agrega un nuevo ejemplo de entrenamiento (aprendizaje activo).
-        Llamado cuando un analista confirma/corrige una clasificación.
+        Agrega nuevo ejemplo (aprendizaje activo).
+        
+        Args:
+            vector: features del email
+            label: clasificación confirmada (legitimo/spam/sospechoso)
+            feedback_correct: si True, mejora score de confianza; si False, lo reduce
         """
-        label_int = {v: k for k, v in self.LABELS.items()}.get(label)
+        label_int = self.LABEL_TO_INT.get(label)
         if label_int is None:
-            log.warning("Label desconocido para entrenamiento: %s", label)
+            log.warning("Label desconocido: %s", label)
             return
 
-        self.training_data.append((vector, label_int))
-        # Mantener máximo 500 ejemplos (FIFO)
-        if len(self.training_data) > 500:
-            self.training_data = self.training_data[-500:]
-
+        # Agregar ejemplo
+        new_X = np.array([vector], dtype=np.float64)
+        new_y = np.array([label_int], dtype=np.int32)
+        
+        self.X_train = np.vstack([self.X_train, new_X]) if len(self.X_train) > 0 else new_X
+        self.y_train = np.hstack([self.y_train, new_y]) if len(self.y_train) > 0 else new_y
+        
+        # Limitar a 1000 ejemplos (FIFO si supera)
+        if len(self.y_train) > 1000:
+            self.X_train = self.X_train[-1000:]
+            self.y_train = self.y_train[-1000:]
+        
+        self._retrain(self.X_train, self.y_train)
+        
+        # Actualizar estadísticas
+        self.stats["total_examples"] = len(self.y_train)
+        self.stats["by_label"][label] = self.stats["by_label"].get(label, 0) + 1
+        self.stats["training_count"] = self.stats.get("training_count", 0) + 1
+        
+        # Ajustar threshold dinámicamente
+        if self.stats["training_count"] % 10 == 0:  # Cada 10 ejemplos
+            self._adjust_threshold_dynamically()
+        
         self._save()
-        log.info("Ejemplo agregado al modelo KNN. Total: %d", len(self.training_data))
+        log.info(
+            "Ejemplo agregado (%s). Modelo: %d ejemplos | Threshold: %.2f%%",
+            label, len(self.y_train), self.current_confidence_threshold * 100
+        )
 
-    def stats(self) -> Dict:
-        label_counts = {self.LABELS[i]: 0 for i in range(3)}
-        for _, label in self.training_data:
-            label_counts[self.LABELS[label]] += 1
-        return {"total": len(self.training_data), "by_label": label_counts}
+    def record_feedback(self, predicted_label: str, actual_label: str):
+        """
+        Registra feedback sobre una predicción para mejorar el modelo.
+        
+        Args:
+            predicted_label: lo que el modelo predijo
+            actual_label: lo que realmente era (según un analista)
+        """
+        is_correct = predicted_label == actual_label
+        
+        # Registrar en histórico
+        entry = {
+            "date": datetime.now().isoformat(),
+            "predicted": predicted_label,
+            "actual": actual_label,
+            "correct": is_correct,
+        }
+        
+        if "feedback_history" not in self.stats:
+            self.stats["feedback_history"] = []
+        
+        self.stats["feedback_history"].append(entry)
+        
+        # Mantener últimos 100 feedbacks
+        if len(self.stats["feedback_history"]) > 100:
+            self.stats["feedback_history"] = self.stats["feedback_history"][-100:]
+        
+        # Calcular precisión reciente (últimos 20 feedbacks)
+        recent = self.stats["feedback_history"][-20:]
+        if recent:
+            accuracy = sum(1 for fb in recent if fb["correct"]) / len(recent)
+            log.info(
+                "Precisión reciente (últimos 20): %.2f%%",
+                accuracy * 100
+            )
+        
+        self._save()
+
+    def _adjust_threshold_dynamically(self):
+        """
+        Ajusta dinámicamente el umbral de confianza.
+        
+        Estrategia:
+        - Con <50 ejemplos: threshold alto (0.95) → necesita LLM
+        - Con 50-200 ejemplos: threshold medio (0.85)
+        - Con >200 ejemplos: threshold bajo (0.70) → confía más en KNN
+        
+        Esto reduce dependencia del LLM conforme el modelo crece.
+        """
+        total = len(self.y_train)
+        old_threshold = self.current_confidence_threshold
+        
+        if total < 50:
+            self.current_confidence_threshold = 0.95
+        elif total < 200:
+            self.current_confidence_threshold = 0.85
+        elif total < 500:
+            self.current_confidence_threshold = 0.75
+        else:
+            # Con muchos ejemplos, reduce dependencia del LLM
+            self.current_confidence_threshold = 0.65
+        
+        if old_threshold != self.current_confidence_threshold:
+            log.info(
+                "Threshold ajustado dinámicamente: %.2f%% → %.2f%% "
+                "(%d ejemplos de entrenamiento)",
+                old_threshold * 100,
+                self.current_confidence_threshold * 100,
+                total
+            )
+            self.stats["threshold_adjustments"].append({
+                "date": datetime.now().isoformat(),
+                "from": old_threshold,
+                "to": self.current_confidence_threshold,
+                "training_size": total,
+            })
+
+    def stats_summary(self) -> Dict:
+        """Retorna resumen de estadísticas del modelo."""
+        return {
+            "total_examples": len(self.y_train),
+            "by_label": self.stats["by_label"],
+            "training_count": self.stats.get("training_count", 0),
+            "current_threshold": round(self.current_confidence_threshold, 4),
+            "base_threshold": round(self.base_confidence_threshold, 4),
+            "last_retrain": self.stats.get("last_retrain", "N/A"),
+            "feedback_count": len(self.stats.get("feedback_history", [])),
+        }

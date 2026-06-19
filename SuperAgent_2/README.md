@@ -5,9 +5,14 @@ Agente de análisis de phishing sin dependencia de SharePoint. Monitorea la carp
 ## Características
 
 - **FileSystemWatcher**: Monitorea carpeta `ingress/` para nuevos archivos .txt
-- **Clasificación inteligente**: 
-  - KNN rápido con features de headers (SPF, DKIM, DMARC, URLs)
+- **Clasificación inteligente con KNN (sklearn)**:
+  - KNN rápido con features de headers (SPF, DKIM, DMARC, URLs, etc.)
+  - Optimizado con KDTree para mejor rendimiento
   - Análisis profundo con Ollama/LLM si confianza < umbral
+- **Aprendizaje Activo**: Modelo mejora automáticamente con cada email clasificado
+  - Registra feedback: identifica si KNN se equivocó
+  - Ajusta dinámicamente el umbral de confianza
+  - Reduce progresivamente la dependencia del LLM
 - **Tres categorías**: Legítimo, Spam, Sospechoso
 - **Acciones post-análisis**:
   - **Sospechoso**: Registra caso en IRIS DFIR + notifica reporter
@@ -15,7 +20,7 @@ Agente de análisis de phishing sin dependencia de SharePoint. Monitorea la carp
   - **Legítimo**: Notifica reporter
 - **Notificación por SMTP**: Envía email al destinatario del reporte (header "To:")
 - **Logging estructurado**: Registra todas las acciones en archivo rotativo
-- **Aprendizaje activo**: Actualiza modelo KNN con nuevos ejemplos
+- **Estadísticas del modelo**: Monitorea precisión y crecimiento del modelo
 
 ## Configuración
 
@@ -123,13 +128,84 @@ Niveles: INFO (predeterminado), DEBUG, WARNING, ERROR
 
 Rotación automática: máx 10MB por archivo, 5 backups
 
+## Modelo KNN y Aprendizaje Activo
+
+### Cómo funciona
+
+El modelo KNN usa **scikit-learn** con optimizaciones (KDTree) y aprende progresivamente:
+
+1. **Inicio**: Comienza con 16 ejemplos base (embebidos)
+2. **Cada email**: Se agrega como ejemplo de entrenamiento
+3. **Feedback**: Registra si el modelo se equivocó
+4. **Umbral dinámico**: Se ajusta automáticamente según cantidad de ejemplos
+
+### Umbral de Confianza (dinámico)
+
+| Ejemplos | Threshold | Comportamiento |
+|----------|-----------|-----------------|
+| < 50 | 95% | Muy exigente → usa mucho Ollama |
+| 50-200 | 85% | Estándar → balance KNN/Ollama |
+| 200-500 | 75% | Confía en KNN → menos Ollama |
+| > 500 | 65% | Experto → depende poco de Ollama |
+
+**Beneficio**: Conforme el modelo aprende, **reduce automáticamente** la dependencia del LLM.
+
+### Monitorear el modelo
+
+Archivos generados automáticamente:
+
+- `knn_model.joblib` - modelo persistido (matriz de datos + modelo sklearn)
+- `knn_stats.json` - estadísticas y histórico
+
+**Ejemplo de `knn_stats.json`:**
+```json
+{
+  "total_examples": 156,
+  "by_label": {
+    "legitimo": 50,
+    "spam": 60,
+    "sospechoso": 46
+  },
+  "training_count": 95,
+  "current_threshold": 0.75,
+  "base_threshold": 0.85,
+  "last_retrain": "2026-06-19T14:23:15...",
+  "threshold_adjustments": [
+    {
+      "date": "2026-06-19T14:15:00...",
+      "from": 0.85,
+      "to": 0.75,
+      "training_size": 200
+    }
+  ],
+  "feedback_history": [...]
+}
+```
+
+### Demo y testing
+
+Ver script `demo_knn.py`:
+
+```bash
+python SuperAgent_2/demo_knn.py
+```
+
+Este script demuestra:
+- Inicialización del modelo
+- Agregación de ejemplos
+- Ajuste dinámico de threshold
+- Registro de feedback
+- Clasificación de nuevo email
+
 ## Dependencias
 
 - Python 3.9+
+- scikit-learn (>=1.0.0) - modelo KNN optimizado
+- joblib (>=1.1.0) - persistencia de modelos
 - phishingAnalizer (en carpeta agent/)
 - knn_classifier (en carpeta agent/)
 - requests (para IRIS)
-- Ollama (opcional, para análisis profundo)
+- Ollama (opcional, para análisis profundo cuando KNN tiene baja confianza)
 
 ## Troubleshooting
 
@@ -145,6 +221,32 @@ AIPA/
 ├── SuperAgent_2/
 │   └── superagent_2.py
 ```
+
+### Error: "ImportError: No module named 'sklearn'"
+
+Instalar dependencias nuevas:
+```bash
+pip install scikit-learn>=1.0.0 joblib>=1.1.0
+```
+
+### KNN siempre necesita Ollama (umbral muy alto)
+
+Normale con pocos ejemplos de entrenamiento. Conforme agregues más emails:
+- Monitorea `knn_stats.json`
+- Verifica que `current_threshold` vaya bajando
+- A los ~200 ejemplos debería usar más directamente KNN
+
+### El modelo no mejora (siempre baja confianza)
+
+Posibles causas:
+1. **Features insuficientes**: Los headers no tienen información clara (SPF/DKIM/DMARC)
+2. **Clases desbalanceadas**: Muchos ejemplos de una clase, pocos de otras
+3. **Ruido en datos**: Emails mal clasificados al principio
+
+Solución:
+- Revisar `knn_stats.json` para ver distribución de clases
+- Registrar feedback manual cuando veas errores
+- Aumentar cantidad de ejemplos base
 
 ### SMTP falla
 

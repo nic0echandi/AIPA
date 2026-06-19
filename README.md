@@ -1,17 +1,32 @@
 # AIPA - Agente de Detección de Phishing y Spam
 
 ## Descripción
-AIPA es un agente automatizado diseñado para analizar archivos sospechosos de phishing y spam. El agente procesa archivos de texto, los clasifica y los mueve a carpetas correspondientes según el resultado del análisis. Utiliza técnicas de machine learning y listas blancas para mejorar la precisión de la detección.
+AIPA es un agente automatizado diseñado para analizar archivos sospechosos de phishing y spam. El agente procesa archivos de texto, los clasifica y los mueve a carpetas correspondientes según el resultado del análisis. Utiliza técnicas de machine learning (KNN con sklearn), aprendizaje activo y listas blancas para mejorar la precisión de la detección.
+
+## Novedad: KNN con sklearn y Aprendizaje Activo
+
+**v2.0 (Junio 2026)**: Migración a scikit-learn con optimizaciones:
+- ✅ Modelo KNN optimizado con KDTree
+- ✅ Aprendizaje activo: mejora con cada email clasificado
+- ✅ Umbral de confianza dinámico (ajusta automáticamente según datos)
+- ✅ Reduce progresivamente la dependencia del LLM
+- ✅ Estadísticas y feedback tracking
+
+[Ver detalles técnicos](SuperAgent_2/CAMBIOS_KNN.md)
 
 ## Estructura del Proyecto
 - `agent/`: Contiene el código principal del agente y módulos auxiliares.
   - `agent.py`: Script principal para ejecutar el agente.
   - `phishingAnalizer.py`: Analizador de phishing basado en texto.
-  - `knn_classifier.py`: Clasificador KNN para detección.
+  - `knn_classifier.py`: Clasificador KNN con sklearn + aprendizaje activo.
   - `sharepoint_client.py`: Cliente para integración con SharePoint.
   - `whitelist.txt`: Lista blanca de remitentes o dominios confiables.
   - `config.json`: Configuración del agente.
   - `install_service.ps1`: Script para instalar el agente como servicio en Windows.
+- `SuperAgent_2/`: Agente mejorado sin dependencia de SharePoint
+  - `superagent_2.py`: Versión optimizada con FileSystemWatcher
+  - `demo_knn.py`: Demo del modelo KNN y aprendizaje activo
+  - `CAMBIOS_KNN.md`: Documentación técnica de los cambios
 - `ingress/`: Carpeta de entrada de archivos sospechosos.
 - `suspect/`: Archivos identificados como sospechosos.
 - `processed/`: Archivos ya procesados, clasificados en `phishing/` y `spam/`.
@@ -21,33 +36,32 @@ AIPA es un agente automatizado diseñado para analizar archivos sospechosos de p
 ## Instalación y Ejecución
 
 ### 1. Requisitos
-- Python 3.8 o superior
-- Paquetes: `scikit-learn`, `pandas`, `requests`, etc. (ver requerimientos en el código)
+- Python 3.9 o superior
+- Paquetes: `scikit-learn`, `joblib`, `pandas`, `requests`, etc. (ver requirements.txt)
 
 ### 2. Instalación de dependencias
 Instala los paquetes necesarios ejecutando:
 
 ```bash
-pip install -r requirements.txt
-```
-
-Si no existe `requirements.txt`, instala manualmente:
-
-```bash
-pip install scikit-learn pandas requests
+pip install -r SuperAgent_2/requirements.txt
 ```
 
 ### 3. Configuración
-Edita el archivo `agent/config.json` para ajustar rutas, parámetros y credenciales según tu entorno.
+Edita el archivo `SuperAgent_2/config.json` para ajustar rutas, parámetros y credenciales según tu entorno.
 
-### 4. Ejecución manual
+### 4. Ejecución manual (SuperAgent_2 - RECOMENDADO)
 Desde la raíz del proyecto, ejecuta:
 
 ```bash
-python agent/agent.py
+python SuperAgent_2/superagent_2.py
 ```
 
-### 5. Instalación como servicio (Windows)
+### 5. Demo del modelo KNN
+Prueba el modelo KNN y su aprendizaje activo:
+
+```bash
+python SuperAgent_2/demo_knn.py
+```
 Ejecuta el script PowerShell con permisos de administrador:
 
 ```powershell

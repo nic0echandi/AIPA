@@ -312,10 +312,11 @@ class SuperAgent2:
                 # Sobrescribir reporter_email con el del header "To:" para consistencia
                 analysis.reporter_email = to_email
                 analysis.reasons = [
-                    f"KNN: {knn_result['classification']} ({knn_result['confidence']:.0%})"
+                    f"KNN: {knn_result['classification']} ({knn_result['confidence']:.0%}) "
+                    f"→ LLM refinement"
                 ] + analysis.reasons
         
-        self._handle_result(file_path, analysis)
+        self._handle_result(file_path, analysis, knn_result)
     
     def _build_analysis_from_knn(
         self, file_path: Path, parsed: Dict, knn_result: Dict
@@ -365,8 +366,8 @@ class SuperAgent2:
     # Acciones post-análisis
     # ========================================================================
     
-    def _handle_result(self, file_path: Path, analysis: Optional[EmailAnalysis]):
-        """Ejecuta acciones según clasificación."""
+    def _handle_result(self, file_path: Path, analysis: Optional[EmailAnalysis], knn_result: Optional[Dict] = None):
+        """Ejecuta acciones según clasificación y actualiza aprendizaje del modelo."""
         if not analysis:
             log.error(f"Análisis nulo para: {file_path.name}")
             self._move_to_processed(file_path, "spam")
@@ -385,18 +386,27 @@ class SuperAgent2:
             log.info("→ Registrando caso en IRIS...")
             self._register_case_in_iris(analysis)
             self._notify_reporter(analysis, "sospechoso")
-            self._update_knn(analysis)
+            self._update_knn(analysis, knn_result)
         
         elif classification == "spam":
             log.info("→ Email clasificado como SPAM")
             self._notify_reporter(analysis, "spam")
-            self._update_knn(analysis)
+            self._update_knn(analysis, knn_result)
         
         elif classification == "legitimo":
             log.info("→ Email clasificado como LEGÍTIMO")
             self._notify_reporter(analysis, "legitimo")
         
         self._move_to_processed(file_path, classification)
+        
+        # Registrar feedback: validar si KNN tuvo razón
+        if knn_result:
+            knn_predicted = knn_result["classification"]
+            if knn_predicted != classification:
+                log.warning(
+                    f"KNN feedback: predijo '{knn_predicted}' pero análisis final es '{classification}'"
+                )
+                self.knn.record_feedback(knn_predicted, classification)
     
     def _register_case_in_iris(self, analysis: EmailAnalysis):
         """Registra caso en IRIS DFIR."""
@@ -505,8 +515,11 @@ class SuperAgent2:
         except Exception as exc:
             log.error(f"No se pudo mover {file_path.name}: {exc}")
     
-    def _update_knn(self, analysis: EmailAnalysis):
-        """Actualiza modelo KNN con nuevo ejemplo."""
+    def _update_knn(self, analysis: EmailAnalysis, knn_result: Optional[Dict] = None):
+        """
+        Actualiza modelo KNN con nuevo ejemplo (aprendizaje activo).
+        El modelo mejora con cada ejemplo y ajusta su umbral dinámicamente.
+        """
         try:
             features = {
                 "spf_fail": 1.0 if analysis.indicators.get("spf") in ("fail", "softfail") else 0.0,
@@ -522,7 +535,26 @@ class SuperAgent2:
                 "url_count_norm": min(len(analysis.urls_found) / 10.0, 1.0),
             }
             vector = [features.get(n, 0.0) for n in FEATURE_NAMES]
-            self.knn.add_training_example(vector, analysis.classification)
+            
+            # Determinar si el feedback fue correcto
+            # Si KNN tuvo confianza y acertó, es un buen ejemplo
+            feedback_correct = True
+            if knn_result:
+                knn_predicted = knn_result["classification"]
+                feedback_correct = (knn_predicted == analysis.classification)
+            
+            self.knn.add_training_example(vector, analysis.classification, feedback_correct)
+            
+            # Log de estadísticas del modelo
+            stats = self.knn.stats_summary()
+            log.info(
+                f"KNN actualizado | "
+                f"Total: {stats['total_examples']} | "
+                f"Threshold: {stats['current_threshold']:.2%} | "
+                f"Clases: L:{stats['by_label'].get('legitimo', 0)} "
+                f"S:{stats['by_label'].get('spam', 0)} "
+                f"P:{stats['by_label'].get('sospechoso', 0)}"
+            )
         except Exception as exc:
             log.debug(f"No se pudo actualizar KNN: {exc}")
 
