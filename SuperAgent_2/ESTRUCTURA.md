@@ -86,7 +86,7 @@ Verás logs en consola y en `logs/superagent_2.log`
   │  processed/          │
   ├─ legitimo/  (emails válidos)
   ├─ spam/      (no deseados)
-  └─ sospechoso/ (phishing → IRIS)
+  └─ sospechoso/ (phishing → Alertas IRIS 2.5.0)
 ```
 
 ## 🔑 Componentes principales
@@ -101,7 +101,7 @@ Verás logs en consola y en `logs/superagent_2.log`
 - `_process_file()` - Parseo y clasificación
 - `_build_analysis_from_knn()` - Análisis desde KNN
 - `_handle_result()` - Acciones post-análisis
-- `_register_case_in_iris()` - Registra en IRIS
+- `_register_alert_in_iris()` - Registra alertas en IRIS 2.5.0
 - `_notify_reporter()` - Envía email
 - `_move_to_processed()` - Archivo a carpeta destino
 - `_update_knn()` - Aprendizaje activo
@@ -139,11 +139,14 @@ Importa desde `../agent/`:
     "from": "security-alerts@example.com"
   },
   
-  // Registro de casos de seguridad
+  // Registro de alertas de seguridad en IRIS 2.5.0
   "iris_dfir": {
-    "url": "https://iris.company.com/api/v1/cases",
+    "url": "https://iris.company.com/api/v2/alerts/create",
     "api_key": "tu_api_key",
-    "verify_ssl": true
+    "verify_ssl": true,
+    "iris_version": "2.5.0",
+    "default_customer_id": 1,
+    "default_severity": "high"
   }
 }
 ```
@@ -160,8 +163,8 @@ Ejemplo:
 2026-05-28T14:30:45 | INFO     | superagent_2.main | Procesando: phishing_20260128_013237.txt
 2026-05-28T14:30:46 | INFO     | superagent_2.main | KNN directo (92% confianza) → SOSPECHOSO
 2026-05-28T14:30:47 | INFO     | superagent_2.main | RESULTADO → SOSPECHOSO | Score: 78/100 | Confianza: 92%
-2026-05-28T14:30:47 | INFO     | superagent_2.main | → Registrando caso en IRIS...
-2026-05-28T14:30:48 | INFO     | superagent_2.main | Caso registrado en IRIS: phishing_20260128_013237
+2026-05-28T14:30:47 | INFO     | superagent_2.main | → Registrando alerta en IRIS...
+2026-05-28T14:30:48 | INFO     | superagent_2.main | Alerta registrada en IRIS 2.5.0: phishing_20260128_013237
 2026-05-28T14:30:49 | INFO     | superagent_2.main | Notificación enviada a reporter@company.com (sospechoso)
 2026-05-28T14:30:49 | INFO     | superagent_2.main | Archivo movido → processed/sospechoso/20260528_143049_phishing_20260128_013237.txt
 ```

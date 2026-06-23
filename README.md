@@ -100,10 +100,10 @@ El agente sigue un flujo automatizado y supervisado para la detección y gestió
 
   - **Sospechoso (phishing):**
     - El archivo se mueve a `processed/sospechoso/`.
-    - **Conexión y generación de caso en IRIS DFIR:**
+    - **Conexión y registro de alerta en IRIS 2.5.0:**
       - Si el análisis determina que el correo es phishing/sospechoso, el agente se conecta automáticamente a la plataforma IRIS DFIR (Digital Forensics and Incident Response) usando la API configurada en `config.json`.
-      - Se envía toda la información relevante del análisis (encabezados, remitente, score de riesgo, URLs, razones, etc.) y se crea un caso de incidente en IRIS.
-      - El ID del caso generado se registra en el informe y en los logs, permitiendo su trazabilidad y seguimiento por el equipo de respuesta a incidentes.
+      - Se envía toda la información relevante del análisis (encabezados, remitente, score de riesgo, URLs, razones, etc.) y se registra una alerta de incidente en IRIS 2.5.0.
+      - El ID de la alerta generada se registra en el informe y en los logs, permitiendo su trazabilidad y seguimiento por el equipo de respuesta a incidentes.
       - Esta integración permite que el equipo de seguridad reciba alertas inmediatas y pueda iniciar la investigación forense de manera automatizada y documentada.
     - Se notifica al denunciante con advertencias de seguridad.
     - Se actualiza el modelo KNN con este ejemplo.

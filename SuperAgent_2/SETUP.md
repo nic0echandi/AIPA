@@ -71,16 +71,17 @@ python check_config.py
 }
 ```
 
-#### IRIS DFIR (Registro de casos)
+#### IRIS DFIR (Registro de alertas en IRIS 2.5.0)
 
 ```json
 {
   "iris_dfir": {
-    "url": "https://iris.company.com/api/v1/cases",
+    "url": "https://iris.company.com/api/v2/alerts/create",
     "api_key": "tu_api_key_aqui",
     "verify_ssl": true,
+    "iris_version": "2.5.0",
     "default_customer_id": 1,
-    "default_classification": 30
+    "default_severity": "high"
   }
 }
 ```
@@ -181,7 +182,7 @@ tail -f logs/superagent_2.log
 ### Archivos procesados
 
 Los emails se mueven automáticamente a:
-- `processed/sospechoso/` - Casos de seguridad → registrados en IRIS
+- `processed/sospechoso/` - Alertas de seguridad → registradas en IRIS 2.5.0
 - `processed/spam/` - Emails no deseados
 - `processed/legitimo/` - Emails auténticos
 
@@ -219,10 +220,11 @@ Contiene:
 - Para Gmail: usar contraseña de aplicación (no contraseña normal)
 - Ver logs: `logs/superagent_2.log`
 
-### IRIS no registra casos
+### IRIS no registra alertas
 
 - Verificar endpoint y API key
 - Revisar logs para detalles del error
+- Verificar que la versión sea IRIS 2.5.0
 - Si hay problemas SSL: `"verify_ssl": false`
 
 ### El proceso se bloquea

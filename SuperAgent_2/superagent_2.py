@@ -445,9 +445,10 @@ class SuperAgent2:
         url = iris_cfg.get("url", "")
         api_key = iris_cfg.get("api_key", "")
         customer_id = iris_cfg.get("default_customer_id", 1)
+        iris_version = iris_cfg.get("iris_version", "2.5.0")
         
         if not url or not api_key:
-            log.warning("IRIS DFIR no configurado correctamente")
+            log.warning("IRIS DFIR no configurado correctamente - alerta NO registrada")
             return
         
         import requests
@@ -477,12 +478,49 @@ class SuperAgent2:
             "Content-Type": "application/json"
         }
         
+        log.info(f"Intentando registrar alerta en IRIS {iris_version} (URL: {url})")
+        
         try:
             response = requests.post(url, json=data, headers=headers, timeout=10)
             response.raise_for_status()
-            log.info(f"Alerta registrada en IRIS 2.5.0: {analysis.mensaje_id}")
+            
+            # Intentar extraer ID de alerta de la respuesta
+            alert_id = None
+            try:
+                response_json = response.json()
+                alert_id = response_json.get("alert_id") or response_json.get("id")
+            except:
+                alert_id = None
+            
+            if alert_id:
+                log.info(f"✓ ÉXITO: Alerta creada en IRIS {iris_version} | "
+                        f"Alert ID: {alert_id} | Mensaje ID: {analysis.mensaje_id} | "
+                        f"Status: {response.status_code}")
+            else:
+                log.info(f"✓ ÉXITO: Alerta registrada en IRIS {iris_version} | "
+                        f"Mensaje ID: {analysis.mensaje_id} | Status: {response.status_code}")
+        
+        except requests.exceptions.Timeout:
+            log.error(f"✗ TIMEOUT: Conexión con IRIS {iris_version} expiró después de 10s | "
+                     f"Mensaje ID: {analysis.mensaje_id}")
+        
+        except requests.exceptions.HTTPError as exc:
+            error_msg = str(exc)
+            try:
+                error_detail = exc.response.text
+            except:
+                error_detail = "Sin detalles"
+            log.error(f"✗ ERROR HTTP: No se pudo registrar alerta en IRIS {iris_version} | "
+                     f"Status: {exc.response.status_code if exc.response else 'N/A'} | "
+                     f"Detalle: {error_detail} | Mensaje ID: {analysis.mensaje_id}")
+        
+        except requests.exceptions.ConnectionError as exc:
+            log.error(f"✗ ERROR CONEXIÓN: No se puede conectar a IRIS en {url} | "
+                     f"Detalle: {exc} | Mensaje ID: {analysis.mensaje_id}")
+        
         except Exception as exc:
-            log.error(f"Error registrando alerta en IRIS 2.5.0: {exc}")
+            log.error(f"✗ ERROR: Fallo registrando alerta en IRIS {iris_version} | "
+                     f"Excepción: {type(exc).__name__}: {exc} | Mensaje ID: {analysis.mensaje_id}")
     
     def _notify_reporter(self, analysis: EmailAnalysis, classification: str):
         """Envía notificación por email al reporter (persona que reportó el email)."""

@@ -15,7 +15,7 @@ Agente de análisis de phishing sin dependencia de SharePoint. Monitorea la carp
   - Reduce progresivamente la dependencia del LLM
 - **Tres categorías**: Legítimo, Spam, Sospechoso
 - **Acciones post-análisis**:
-  - **Sospechoso**: Registra caso en IRIS DFIR + notifica reporter
+  - **Sospechoso**: Registra alerta en IRIS 2.5.0 + notifica reporter
   - **Spam**: Notifica reporter
   - **Legítimo**: Notifica reporter
 - **Notificación por SMTP**: Envía email al destinatario del reporte (header "To:")
@@ -37,9 +37,12 @@ Editar `config.json`:
     "from": "security-alerts@example.com"
   },
   "iris_dfir": {
-    "url": "https://iris.example.com/api/cases",
+    "url": "https://iris.example.com/api/v2/alerts/create",
     "api_key": "your_iris_api_key",
-    "verify_ssl": true
+    "verify_ssl": true,
+    "iris_version": "2.5.0",
+    "default_customer_id": 1,
+    "default_severity": "high"
   }
 }
 ```
@@ -109,7 +112,7 @@ ingress/ (archivo nuevo)
 [Análisis profundo Ollama] → clasificación final
     ↓
 [Acciones según clasificación]
-├─ Sospechoso → Crear caso en IRIS + email al reporter
+├─ Sospechoso → Registrar alerta en IRIS 2.5.0 + email al reporter
 ├─ Spam → Email al reporter
 └─ Legítimo → Email al reporter
     ↓
