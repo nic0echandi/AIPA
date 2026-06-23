@@ -20,7 +20,7 @@
     "from": "security-alerts@example.com"
   },
   "iris_dfir": {
-    "url": "https://iris.example.com/api/v2/alerts/create",
+    "url": "https://iris.example.com/alerts/add",
     "api_key": "your_iris_api_key",
     "verify_ssl": true,
     "iris_version": "2.5.0",

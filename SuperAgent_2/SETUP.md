@@ -76,7 +76,7 @@ python check_config.py
 ```json
 {
   "iris_dfir": {
-    "url": "https://iris.company.com/api/v2/alerts/create",
+    "url": "https://iris.company.com/alerts/add",
     "api_key": "tu_api_key_aqui",
     "verify_ssl": true,
     "iris_version": "2.5.0",
