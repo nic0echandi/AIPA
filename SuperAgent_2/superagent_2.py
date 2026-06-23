@@ -3,7 +3,7 @@
 SuperAgent_2 — Agente de análisis de phishing sin SharePoint
 Monitorea archivos .txt en ingress/ (depositados automáticamente)
 Realiza análisis completo con KNN + Ollama/LLM
-Registra casos en IRIS y notifica al reporter por SMTP
+Registra alertas en IRIS 2.5.0 y notifica al reporter por SMTP
 
 Flujo:
   1. FileSystemWatcher detecta nuevos .txt en ingress/
@@ -12,7 +12,7 @@ Flujo:
   4. Según clasificación:
      - legitimo    → mueve a processed/legitimo/, notifica reporter
      - spam        → mueve a processed/spam/, notifica reporter
-     - sospechoso  → crea caso en IRIS, mueve a processed/sospechoso/, notifica reporter
+     - sospechoso  → registra alerta en IRIS, mueve a processed/sospechoso/, notifica reporter
   5. Logging estructurado de todas las acciones
 """
 
@@ -423,8 +423,8 @@ class SuperAgent2:
         self.stats.record_case(classification, classification_source, knn_was_correct if classification_source == "knn" else None)
         
         if classification == "sospechoso":
-            log.info("→ Registrando caso en IRIS...")
-            self._register_case_in_iris(analysis)
+            log.info("→ Registrando alerta en IRIS...")
+            self._register_alert_in_iris(analysis)
             self._notify_reporter(analysis, "sospechoso")
             self._update_knn(analysis, knn_result)
         
@@ -439,11 +439,12 @@ class SuperAgent2:
         
         self._move_to_processed(file_path, classification)
     
-    def _register_case_in_iris(self, analysis: EmailAnalysis):
-        """Registra caso en IRIS DFIR."""
+    def _register_alert_in_iris(self, analysis: EmailAnalysis):
+        """Registra alerta en IRIS 2.5.0 usando endpoint de alertas."""
         iris_cfg = self.config.get("iris_dfir", {})
         url = iris_cfg.get("url", "")
         api_key = iris_cfg.get("api_key", "")
+        customer_id = iris_cfg.get("default_customer_id", 1)
         
         if not url or not api_key:
             log.warning("IRIS DFIR no configurado correctamente")
@@ -451,24 +452,37 @@ class SuperAgent2:
         
         import requests
         
+        # Estructura de alertas compatible con IRIS 2.5.0
         data = {
-            "title": f"[SuperAgent] {analysis.original_subject}",
-            "description": f"Phishing reportado: {analysis.original_from}",
-            "classification": analysis.classification,
+            "alert_title": f"[SuperAgent] {analysis.original_subject}",
+            "alert_description": f"Phishing reportado por: {analysis.reporter_email}\n"
+                                 f"Remitente: {analysis.original_from}\n"
+                                 f"Asunto: {analysis.original_subject}\n"
+                                 f"Score de riesgo: {analysis.risk_score}/100",
+            "alert_source": "SuperAgent",
+            "alert_severity": iris_cfg.get("default_severity", "high"),
+            "alert_status": "new",
+            "customer_id": customer_id,
+            "alert_type": "phishing",
+            "message_id": analysis.mensaje_id,
+            "source_email": analysis.original_from,
+            "recipient_email": analysis.reporter_email,
             "risk_score": analysis.risk_score,
-            "reporter_email": analysis.reporter_email,
-            "analysis_date": analysis.analysis_date,
-            "message_id": analysis.mensaje_id
+            "classification": analysis.classification,
+            "analysis_date": analysis.analysis_date
         }
         
-        headers = {"Authorization": f"Bearer {api_key}"}
+        headers = {
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json"
+        }
         
         try:
             response = requests.post(url, json=data, headers=headers, timeout=10)
             response.raise_for_status()
-            log.info(f"Caso registrado en IRIS: {analysis.mensaje_id}")
+            log.info(f"Alerta registrada en IRIS 2.5.0: {analysis.mensaje_id}")
         except Exception as exc:
-            log.error(f"Error registrando caso en IRIS: {exc}")
+            log.error(f"Error registrando alerta en IRIS 2.5.0: {exc}")
     
     def _notify_reporter(self, analysis: EmailAnalysis, classification: str):
         """Envía notificación por email al reporter (persona que reportó el email)."""
