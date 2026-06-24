@@ -20,6 +20,6 @@ nssm set $serviceName AppRotateSize 10485760
 # Iniciar servicio
 nssm start $serviceName
 
-Write-Host "✓ Servicio $serviceName instalado e iniciado"
+Write-Host "Servicio $serviceName instalado e iniciado"
 Write-Host "Para detener:   nssm stop $serviceName"
 Write-Host "Para desinstalar: nssm remove $serviceName confirm"
