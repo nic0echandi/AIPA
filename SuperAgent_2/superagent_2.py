@@ -569,13 +569,13 @@ class SuperAgent2:
         
         try:
             if smtp_cfg.get("use_tls", False):
+                # Usar TLS (starttls en puerto 587)
                 with SMTP(smtp_cfg["host"], smtp_cfg["port"]) as smtp:
                     smtp.starttls()
-                    #smtp.login(smtp_cfg["username"], smtp_cfg["password"])
                     smtp.send_message(msg)
             else:
-                with SMTP_SSL(smtp_cfg["host"], smtp_cfg["port"]) as smtp:
-                    #smtp.login(smtp_cfg["username"], smtp_cfg["password"])
+                # SMTP simple sin encriptación (puerto 25)
+                with SMTP(smtp_cfg["host"], smtp_cfg["port"]) as smtp:
                     smtp.send_message(msg)
             
             log.info(f"✓ Notificación enviada a {to_addr} ({classification})")
