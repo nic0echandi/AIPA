@@ -15,6 +15,7 @@ import logging
 from pathlib import Path
 from datetime import datetime
 from typing import Dict, Optional
+import sys
 
 log = logging.getLogger("superagent_2.stats")
 
@@ -57,16 +58,45 @@ class UsageStats:
     
     def _load_or_init(self):
         """Carga estadísticas del archivo o inicializa vacías."""
-        if self.STATS_FILE.exists():
-            try:
-                with open(self.STATS_FILE, "r", encoding="utf-8") as f:
-                    self.stats = json.load(f)
-                log.debug(f"Estadísticas cargadas desde {self.STATS_FILE}")
-            except Exception as exc:
-                log.warning(f"No se pudo cargar {self.STATS_FILE}: {exc}. Iniciando vacío.")
+        debug_file = Path(__file__).resolve().parent / "debug_stats.log"
+        
+        with open(debug_file, "w", encoding="utf-8") as df:
+            df.write(f"[DEBUG] Intentando cargar stats desde: {self.STATS_FILE}\n")
+            df.flush()
+            
+            if self.STATS_FILE.exists():
+                df.write(f"[DEBUG] ✓ Archivo encontrado!\n")
+                df.flush()
+                try:
+                    with open(self.STATS_FILE, "r", encoding="utf-8") as f:
+                        content = f.read()
+                        df.write(f"[DEBUG] Archivo leído: {len(content)} bytes\n")
+                        df.flush()
+                        self.stats = json.loads(content)
+                    df.write(f"[DEBUG] ✓ Stats cargados correctamente\n")
+                    df.write(f"[DEBUG] Total de años: {len(self.stats)}\n")
+                    df.flush()
+                    if self.stats:
+                        df.write(f"[DEBUG] Años encontrados: {list(self.stats.keys())}\n")
+                        df.flush()
+                        for year in self.stats:
+                            df.write(f"[DEBUG]   Año {year}: meses {list(self.stats[year].keys())}\n")
+                            for month in self.stats[year]:
+                                total = self.stats[year][month].get('total', 0)
+                                df.write(f"[DEBUG]     Mes {month}: {total} casos\n")
+                        df.flush()
+                except Exception as exc:
+                    df.write(f"[DEBUG] ✗ ERROR cargando archivo: {exc}\n")
+                    df.flush()
+                    log.warning(f"No se pudo cargar {self.STATS_FILE}: {exc}. Iniciando vacío.")
+                    self.stats = {}
+            else:
+                df.write(f"[DEBUG] ✗ Archivo NO encontrado en: {self.STATS_FILE}\n")
+                df.flush()
                 self.stats = {}
-        else:
-            self.stats = {}
+        
+        # También imprimir en consola para ver al mismo tiempo
+        print(f"\n✓ Debug guardado en: {debug_file}")
     
     def _save(self):
         """Persiste estadísticas en JSON."""
