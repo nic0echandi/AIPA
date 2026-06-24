@@ -1,0 +1,50 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from SCYPR80MB7135.lamprd80.prod.outlook.com (2603:10d6:300:a5::10) by SCYPR80MB7808.lamprd80.prod.outlook.com with HTTPS; Fri, 19 Jun 2026 11:00:27 +0000
+Received: from SJ0PR13CA0217.namprd13.prod.outlook.com (2603:10b6:a03:2c1::12) by SCYPR80MB7135.lamprd80.prod.outlook.com (2603:10d6:300:a5::10) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.113.18; Fri, 19 Jun 2026 11:00:22 +0000
+Received: from SJ1PEPF0000231B.namprd03.prod.outlook.com (2603:10b6:a03:2c1:cafe::a2) by SJ0PR13CA0217.outlook.office365.com (2603:10b6:a03:2c1::12) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.21.139.11 via Frontend Transport; Fri, 19 Jun 2026 11:00:20 +0000
+Received: from relay.movistar.com.ar (201.251.185.142) by SJ1PEPF0000231B.mail.protection.outlook.com (10.167.242.232) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.21.139.8 via Frontend Transport; Fri, 19 Jun 2026 11:00:14 +0000
+Received: from t200657.tmoviles.com.ar (unknown [10.167.174.21])	by relay.movistar.com.ar (Postfix) with ESMTP id 6132881EF2;	Fri, 19 Jun 2026 08:00:04 -0300 (-03)
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: =?utf-8?B?RGlyZWNjacOzbiBJVA==?= <no-reply@tmoviles.com.ar>
+To: =?utf-8?B?RGlyZWNjacOzbiBJVA==?= <no-reply@tmoviles.com.ar>
+Subject: Feliz Cumpleaños!!!
+Thread-Topic: Feliz Cumpleaños!!!
+Thread-Index: AQHc/9rWb1GBDgWfAU+WCIcBPo8zXg==
+Date: Fri, 19 Jun 2026 11:00:02 +0000
+Message-ID: <178186680232.91077.12091119939561444411@tmoviles.com.ar>
+Reply-To: =?utf-8?B?RGlyZWNjacOzbiBJVA==?= <no-reply@tmoviles.com.ar>
+Content-Language: es-AR
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-AuthSource: SJ1PEPF0000231B.namprd03.prod.outlook.com
+X-MS-Has-Attach: yes
+X-MS-Exchange-Organization-Network-Message-Id: cbe7462d-e536-4e2a-1f25-08decdf1f42a
+X-MS-Exchange-Organization-SCL: -1
+X-MS-TNEF-Correlator: <178186680232.91077.12091119939561444411@tmoviles.com.ar>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-ms-publictraffictype: Email
+received-spf: Pass (protection.outlook.com: domain of tmoviles.com.ar designates 201.251.185.142 as permitted sender) receiver=protection.outlook.com; client-ip=201.251.185.142; helo=relay.movistar.com.ar; pr=C
+authentication-results: spf=pass (sender IP is 201.251.185.142) smtp.mailfrom=tmoviles.com.ar; dkim=pass (signature was verified) header.d=tmoviles.com.ar;dmarc=pass action=none header.from=tmoviles.com.ar;compauth=pass reason=100
+x-forefront-antispam-report: CIP:201.251.185.142;CTRY:AR;LANG:es;SCL:-1;SRV:;IPV:CAL;SFV:SKN;H:relay.movistar.com.ar;PTR:relay.movistar.com.ar;CAT:NONE;SFS:(13230040)(6049299003)(7149299003)(6133799003)(16102099003)(4053099003)(57112099003)(19002099009)(5063699009)(6143699003)(18003699003)(8096899003)(4076899003);DIR:INB;
+x-ms-office365-filtering-correlation-id: cbe7462d-e536-4e2a-1f25-08decdf1f42a
+x-microsoft-antispam: BCL:0;ARA:13230040|6049299003|7149299003|6133799003|16102099003|4053099003|57112099003|19002099009|5063699009|6143699003|18003699003|8096899003|4076899003;
+x-ms-traffictypediagnostic: SJ1PEPF0000231B:EE_|SCYPR80MB7135:EE_|SCYPR80MB7808:EE_
+x-ms-exchange-crosstenant-originalarrivaltime: 19 Jun 2026 11:00:14.7815 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Internet
+x-ms-exchange-crosstenant-network-message-id: cbe7462d-e536-4e2a-1f25-08decdf1f42a
+x-ms-exchange-transport-crosstenantheadersstamped: SCYPR80MB7135
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-eopattributedmessage: 0
+x-eoptenantattributedmessage: 17d02e16-8b83-4168-ba0d-c61ac0d093a6:0
+x-ms-exchange-transport-endtoendlatency: 00:00:13.1766207
+x-ms-exchange-processed-by-bccfoldering: 15.21.0139.008
+x-ms-exchange-crosstenant-authsource: SJ1PEPF0000231B.namprd03.prod.outlook.com
+x-ms-exchange-crosstenant-authas: Anonymous
+dkim-signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=tmoviles.com.ar;	s=aprlyapp02; t=1781866805;	bh=PlgVgBKAV1ao326oa7dnuGnPTOCe7QIvMabnkiYVjEU=;	h=Subject:From:To:Reply-To:Date:From;	b=MsBAEuh03bqmmg+0PuRvRjvypfKJ3FcACt/IVKGA1yotjGyNAPlYJO/IJZyE/YxAb	 IXIYgflM1rWmmD2ISVf1cYX29NeywJizqvRmxzjMdKAEcwQxIanayalH2Q7EiRpWQO	 5+MS7uz5LgxvblG6tsnaqXr+xZw4NH3c1UR8LNhk=
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage

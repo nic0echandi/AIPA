@@ -1,0 +1,51 @@
+# Questionable URLs detected in message:
+None
+
+
+Received: from RO2PR80MB7948.lamprd80.prod.outlook.com (2603:10d6:10:fd::6) by RO2PR80MB6454.lamprd80.prod.outlook.com with HTTPS; Tue, 9 Jun 2026 18:10:18 +0000
+Received: from BN9PR03CA0254.namprd03.prod.outlook.com (2603:10b6:408:ff::19) by RO2PR80MB7948.lamprd80.prod.outlook.com (2603:10d6:10:fd::6) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.92.13; Tue, 9 Jun 2026 18:10:16 +0000
+Received: from BN2PEPF000044A0.namprd02.prod.outlook.com (2603:10b6:408:ff:cafe::8) by BN9PR03CA0254.outlook.office365.com (2603:10b6:408:ff::19) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.21.92.13 via Frontend Transport; Tue, 9 Jun 2026 18:10:14 +0000
+Received: from sender1.emtrck.com (185.103.37.234) by BN2PEPF000044A0.mail.protection.outlook.com (10.167.243.151) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.21.113.7 via Frontend Transport; Tue, 9 Jun 2026 18:10:13 +0000
+Received: by ip-172-31-235-236.eu-west-3.compute.internal from 15.236.0.200 with ESMTP ; Tue, 09 Jun 2026 20:10:07 +0200
+Content-Type: application/ms-tnef; name="winmail.dat"
+Content-Transfer-Encoding: binary
+From: =?utf-8?B?Tm90aWZpY2FjacOzbg==?= <noreply@movistar.support-email.info>
+To: "Varejao, Gustavo" <gustavo.varejao@tmoviles.com.ar>
+Subject: Revisión de estructura organizacional
+Thread-Topic: Revisión de estructura organizacional
+Thread-Index: AQHc+Ds6jspmBRvVFUCn0Xj1RDolmQ==
+Date: Tue, 9 Jun 2026 18:10:12 +0000
+Message-ID: <ki6VqqcrEWnu71t2Hq3RplyqSHzFjnYMu2okIQEHQkt5AThfyhA2erGz@sender1.emtrck.com>
+Reply-To: "noreply@movistar.support-email.info" <noreply@movistar.support-email.info>
+Content-Language: es-ES
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Organization-AuthSource: BN2PEPF000044A0.namprd02.prod.outlook.com
+X-MS-Exchange-Organization-ComplianceLabelId: 3dbb5f39-dc76-4916-9db3-fa9191760a55
+X-MS-Has-Attach: 
+X-MS-Exchange-Organization-Network-Message-Id: 87425ca5-915b-483c-1ed2-08dec6525a67
+X-MS-Exchange-Organization-SCL: -1
+X-MS-TNEF-Correlator: <ki6VqqcrEWnu71t2Hq3RplyqSHzFjnYMu2okIQEHQkt5AThfyhA2erGz@sender1.emtrck.com>
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-ms-publictraffictype: Email
+received-spf: Pass (protection.outlook.com: domain of sender1.emtrck.com designates 185.103.37.234 as permitted sender) receiver=protection.outlook.com; client-ip=185.103.37.234; helo=sender1.emtrck.com; pr=C
+x-forefront-antispam-report: CIP:185.103.37.234;CTRY:ES;LANG:es;SCL:-1;SRV:;IPV:CAL;SFV:NSPM;H:sender1.emtrck.com;PTR:sender1.emtrck.com;CAT:NONE;SFS:(13230040)(704160111799003)(5073199012)(7049299003)(3109299003)(7149299003)(69100299015)(5063699009)(56012099006)(6133799003)(18002099003)(16102099003)(8096899003)(4076899003)(13003099007)(43540500003);DIR:INB;
+authentication-results: spf=pass (sender IP is 185.103.37.234) smtp.mailfrom=sender1.emtrck.com; dkim=pass (signature was verified) header.d=movistar.support-email.info;dkim=pass (signature was verified) header.d=sender1.emtrck.com;dmarc=pass action=none header.from=movistar.support-email.info;compauth=pass reason=100
+x-ms-office365-filtering-correlation-id: 87425ca5-915b-483c-1ed2-08dec6525a67
+x-microsoft-antispam: BCL:0;ARA:13230040|704160111799003|5073199012|7049299003|3109299003|7149299003|69100299015|5063699009|56012099006|6133799003|18002099003|16102099003|8096899003|4076899003|13003099007|43540500003;
+x-ms-traffictypediagnostic: BN2PEPF000044A0:EE_|RO2PR80MB7948:EE_|RO2PR80MB6454:EE_
+x-ms-exchange-crosstenant-network-message-id: 87425ca5-915b-483c-1ed2-08dec6525a67
+x-ms-exchange-crosstenant-originalarrivaltime: 09 Jun 2026 18:10:13.4435 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Internet
+x-ms-exchange-crosstenant-id: 17d02e16-8b83-4168-ba0d-c61ac0d093a6
+x-ms-exchange-transport-crosstenantheadersstamped: RO2PR80MB7948
+x-ms-exchange-transport-endtoendlatency: 00:00:05.0703331
+x-eopattributedmessage: 0
+x-eoptenantattributedmessage: 17d02e16-8b83-4168-ba0d-c61ac0d093a6:0
+x-ms-exchange-processed-by-bccfoldering: 15.21.0092.005
+dkim-signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sender1.emtrck.com; i=@sender1.emtrck.com; q=dns/txt; s=s1; t=1781028612; h=subject : from : to : date : x-simulation-id : x-training-mode : x-simulation-warning : x-phishing-simulation : x-simulation-provider : x-simulation-timestamp : x-simulation-provide-sender : message-id : reply-to; bh=LzuwxNu4n+7xCkRuSwMi9htrSk95Hzx8V7tC0zmVk28=; b=hwdFpjH/H/pMeR/U2nNUepl1+vhhJxLmlQHOSJMCiR05pqAotq8C/k4SOWbbRP0gNDkkQ rzaFuNSxp0m0bBotAoC1/O7nmZa29Af7NI7zqvtkAX3Vl3gLciBeLvDPs+XZ3WLphAkMtlo htWMSlrRrKNxHNi/6HyEDzZU+H1VDtNWqk87wgUqy8JP0UYwSpBh/molj6qgHDFisdWofHY o6CIoOKm8EVKC8iajPoMtJv5Cuqz6BA7QHjmOZSM6dJfgpt9US9k91nqv6Fbh254aVJBH5C LWoYES240qqfYHkIs8g7pcXhlxJa0RuRC6yb6Hao5VTYb33dfQ4Y4O4MEldw==
+x-ms-exchange-crosstenant-authsource: BN2PEPF000044A0.namprd02.prod.outlook.com
+x-ms-exchange-crosstenant-authas: Anonymous
+MIME-Version: 1.0
+
+
+If you want such reports to go to Microsoft directly, you can change the reported message destinations from the settings at https://security.microsoft.com/userSubmissionsReportMessage
