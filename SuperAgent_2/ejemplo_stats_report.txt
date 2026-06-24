@@ -1,0 +1,42 @@
+======================================================================
+REPORTE DE ESTADÍSTICAS - SuperAgent_2
+======================================================================
+
+📊 RESUMEN ANUAL 2026
+  Total casos: 11
+
+  Clasificación:
+    • legitimo        3 ( 27.3%)
+    • spam            4 ( 36.4%)
+    • sospechoso      4 ( 36.4%)
+
+  Fuente de decisión:
+    • whitelist       3 ( 27.3%)
+    • knn             5 ( 45.5%)
+    • llm             3 ( 27.3%)
+
+📅 MES ACTUAL (June 2026)
+  Total casos: 11
+
+  Clasificación:
+    • legitimo        3 ( 27.3%)
+    • spam            4 ( 36.4%)
+    • sospechoso      4 ( 36.4%)
+
+  Fuente de decisión:
+    • whitelist       3 ( 27.3%)
+    • knn             5 ( 45.5%)
+    • llm             3 ( 27.3%)
+
+🎯 Precisión del KNN (mes actual):
+  • Correctas: 3
+  • Incorrectas: 2
+  • Tasa de acierto: 60.0%
+
+📆 HISTORIAL POR MES (últimos 6 meses)
+
+  June       | Total:   11 | L:  3 S:  4 P:  4 | WL:  3 KNN:  5 LLM:  3
+
+======================================================================
+Generado: 2026-06-24T15:26:35.674499
+======================================================================

@@ -1,0 +1,21 @@
+{
+  "2026": {
+    "06": {
+      "total": 11,
+      "by_classification": {
+        "legitimo": 3,
+        "spam": 4,
+        "sospechoso": 4
+      },
+      "by_source": {
+        "whitelist": 3,
+        "knn": 5,
+        "llm": 3
+      },
+      "knn_accuracy": {
+        "correct": 3,
+        "incorrect": 2
+      }
+    }
+  }
+}

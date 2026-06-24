@@ -47,7 +47,8 @@ class UsageStats:
     }
     """
     
-    STATS_FILE = Path("stats.json")
+    # Ruta absoluta del archivo stats.json basada en la ubicación del módulo
+    STATS_FILE = Path(__file__).resolve().parent / "stats.json"
     
     def __init__(self):
         """Inicializa estadísticas desde archivo o crea nuevas."""
