@@ -308,14 +308,23 @@ class SuperAgent2:
             self._move_to_processed(file_path, "spam")
             return
         
+        # DEBUG: Verificar headers extraídos
         headers = parsed["headers"]
-        microsoft_urls = parsed["microsoft_urls"]
-        content = parsed["raw_content"]
+        log.info(f"  [HEADERS] Extraídos: {len(headers)} cabeceras")
+        to_raw = headers.get("To", "")
+        from_raw = headers.get("From", "")
+        log.info(f"  [RAW To] '{to_raw}'")
+        log.info(f"  [RAW From] '{from_raw}'")
+        
         from_email = headers.get("From", "")
         to_email = self.extract_email_from_address(headers.get("To", ""))
         
+        log.info(f"  [EXTRACT To] → '{to_email}'")
         log.info(f"  De: {from_email}")
         log.info(f"  Para (reporter): {to_email}")
+        
+        microsoft_urls = parsed["microsoft_urls"]
+        content = parsed["raw_content"]
         
         if not to_email:
             log.warning(f"No se encontró email del reporter en header 'To:' de {file_path.name}")

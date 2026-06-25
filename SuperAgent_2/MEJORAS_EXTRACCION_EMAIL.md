@@ -126,6 +126,39 @@ python SuperAgent_2/test_email_extraction.py
 
 ---
 
+## Diagnóstico en Caso de Problemas
+
+Si los emails siguen apareciendo vacíos en los logs de SuperAgent_2:
+
+### 1. Verificar que el código está actualizado
+```bash
+python SuperAgent_2/verify_code.py
+```
+Debe mostrar:
+- ✓ Decodificación HTML presente en `parse_txt_file()`
+- ✓ Reemplazo de `<br>` presente
+- ✓ Email extraído correctamente
+
+### 2. Limpiar caché de Python
+```bash
+Get-ChildItem -Recurse -Include "*.pyc" -Force | Remove-Item -Force
+Get-ChildItem -Recurse -Include "__pycache__" -Force -Directory | Remove-Item -Force -Recurse
+```
+
+### 3. Simular procesamiento
+```bash
+python SuperAgent_2/simulate_processing.py
+```
+Debe mostrar email extraído correctamente
+
+### 4. Reiniciar SuperAgent_2
+Asegúrate de terminar el proceso anterior y reiniciar:
+```bash
+python SuperAgent_2/superagent_2.py
+```
+
+---
+
 ## Próximas Mejoras (Sugerencias)
 
 1. Considerar agregar más formatos de email parsing (RFC 5322 completo)

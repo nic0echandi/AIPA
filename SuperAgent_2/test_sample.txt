@@ -1,0 +1,27 @@
+<html><head>
+<meta name="Generator" content="Microsoft Exchange Server">
+<!-- converted from text -->
+<style><!-- .EmailQuote { margin-left: 1pt; padding-left: 4pt; border-left: #800000 2px solid; } --></style></head>
+<body>
+<div># Questionable URLs detected in message: None Received: from CPWPR80MB7238.lamprd80.prod.outlook.com (2603:10d6:103:201::13) by SCZPR80MB7380.lamprd80.prod.outlook.com with HTTPS; Thu, 25 Jun 2026 15:06:10 +0000 Received: from BL1PR13CA0278.namprd13.prod.outlook.com (2603:10b6:208:2bc::13) by CPWPR80MB7238.lamprd80.prod.outlook.com (2603:10d6:103:201::13) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.159.14; Thu, 25 Jun 2026 15:06:04 +0000 Received: from BN2PEPF000055DC.namprd21.prod.outlook.com (2603:10b6:208:2bc:cafe::27) by BL1PR13CA0278.outlook.office365.com (2603:10b6:208:2bc::13) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.21.181.7 via Frontend Transport; Thu, 25 Jun 2026 15:06:03 +0000 Received: from smtp58.yul1.qemailserver.com (98.97.251.58) by BN2PEPF000055DC.mail.protection.outlook.com (10.167.245.6) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.21.181.0 via Frontend Transport; Thu, 25 Jun 2026 15:06:03 +0000 Content-Type: application/ms-tnef; name=&quot;winmail.dat&quot; Content-Transfer-Encoding: binary From: &quot;movistar.encuesta@qualtrics.com&quot; To: Campuzano Eliana Subject: Queremos conocer tu experiencia de aprendizaje Thread-Topic: Queremos conocer tu experiencia de aprendizaje Thread-Index: AQHdBLQo0cvKcb41RU2//GyFAmiVNA== Date: Thu, 25 Jun 2026 15:05:28 +0000 Message-ID: &lt;1983478636.397566.1782399928662@jwm-84b77456f8-flw4d&gt; Reply-To: &quot;movistar.encuesta@qualtrics.com&quot; Content-Language: es-ES X-MS-Exchange-Organization-AuthAs: Anonymous X-MS-Exchange-Organization-AuthSource: BN2PEPF000055DC.namprd21.prod.outlook.com X-MS-Has-Attach: X-MS-Exchange-Organization-Network-Message-Id: d1f426fa-ef09-428e-f8ec-08ded2cb466c X-MS-Exchange-Organization-SCL: 1 X-MS-TNEF-Correlator: &lt;1983478636.397566.1782399928662@jwm-84b77456f8-flw4d&gt; X-MS-Exchange-Organization-RecordReviewCfmType: 0 x-ms-publictrafficty
+<font size="2"><span style="font-size:11pt;"><div class="PlainText"># Questionable URLs detected in message:<br>
+None<br>
+<br>
+<br>
+Received: from CPWPR80MB7238.lamprd80.prod.outlook.com (2603:10d6:103:201::13) by SCZPR80MB7380.lamprd80.prod.outlook.com with HTTPS; Thu, 25 Jun 2026 15:06:10 +0000<br>
+Received: from BL1PR13CA0278.namprd13.prod.outlook.com (2603:10b6:208:2bc::13) by CPWPR80MB7238.lamprd80.prod.outlook.com (2603:10d6:103:201::13) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.159.14; Thu, 25 Jun 2026 15:06:04 +0000<br>
+Received: from BN2PEPF000055DC.namprd21.prod.outlook.com (2603:10b6:208:2bc:cafe::27) by BL1PR13CA0278.outlook.office365.com (2603:10b6:208:2bc::13) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.21.181.7 via Frontend Transport; Thu, 25 Jun 2026 15:06:03 +0000<br>
+Received: from smtp58.yul1.qemailserver.com (98.97.251.58) by BN2PEPF000055DC.mail.protection.outlook.com (10.167.245.6) with Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.21.181.0 via Frontend Transport; Thu, 25 Jun 2026 15:06:03 +0000<br>
+Content-Type: application/ms-tnef; name=&quot;winmail.dat&quot;<br>
+Content-Transfer-Encoding: binary<br>
+From: &quot;movistar.encuesta@qualtrics.com&quot; &lt;noreply@qemailserver.com&gt;<br>
+To: Campuzano Eliana &lt;eliana.campuzano@tmoviles.com.ar&gt;<br>
+Subject: Queremos conocer tu experiencia de aprendizaje<br>
+Thread-Topic: Queremos conocer tu experiencia de aprendizaje<br>
+Thread-Index: AQHdBLQo0cvKcb41RU2//GyFAmiVNA==<br>
+Date: Thu, 25 Jun 2026 15:05:28 +0000<br>
+Message-ID: &lt;1983478636.397566.1782399928662@jwm-84b77456f8-flw4d&gt;<br>
+Reply-To: &quot;movistar.encuesta@qualtrics.com&quot; &lt;no_reply@qualtrics.com&gt;<br>
+</div></span></font>
+</body>
+</html>
