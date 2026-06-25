@@ -5,7 +5,7 @@ SuperAgent_2 no podía identificar correctamente el usuario que reportó los mai
 
 ### Archivo problemático
 ```
-To: Campuzano Eliana &lt;eliana.campuzano@tmoviles.com.ar&gt;
+To: Alguien Eliana &lt;eliana.alguien@sarasa.com.ar&gt;
 ```
 
 **Error**: La función buscaba los caracteres literales `<` y `>`, pero encontraba las entidades HTML `&lt;` y `&gt;`
@@ -90,7 +90,7 @@ def parse_txt_file(self, txt_path: str) -> Optional[Dict]:
 
 ✓ TODAS LAS PRUEBAS PASARON
 
-✓ Email extraído: eliana.campuzano@tmoviles.com.ar
+✓ Email extraído: eliana.alguien@sarasa.com.ar
 ✓ Email válido identificado
 ```
 
