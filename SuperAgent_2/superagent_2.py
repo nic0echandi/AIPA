@@ -32,12 +32,16 @@ from typing import Dict, Optional
 from smtplib import SMTP, SMTP_SSL
 from email.message import EmailMessage
 
-# --- Agregar carpeta agent/ al path para importar módulos ---
-agent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'agent'))
-sys.path.insert(0, agent_dir)
+# Importar módulos locales
+try:
+    from phishingAnalizer import PhishingAnalyzerTXT, EmailAnalysis
+    from knn_classifier import KNNClassifier, extract_features, features_to_vector, FEATURE_NAMES
+except ImportError:
+    # Fallback si están en carpeta parent/agent
+    sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'agent')))
+    from phishingAnalizer import PhishingAnalyzerTXT, EmailAnalysis
+    from knn_classifier import KNNClassifier, extract_features, features_to_vector, FEATURE_NAMES
 
-from knn_classifier import KNNClassifier, extract_features, features_to_vector, FEATURE_NAMES
-from phishingAnalizer import PhishingAnalyzerTXT, EmailAnalysis
 from usage_stats import UsageStats
 
 

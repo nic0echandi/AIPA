@@ -29,3 +29,11 @@
 2026-06-25T16:08:56 | INFO     | phishing_analyzer | Whitelist cargada: 0 dominios
 2026-06-25T16:09:47 | WARNING  | phishing_analyzer | jsonschema no instalado — validación de config omitida.
 2026-06-25T16:09:47 | INFO     | phishing_analyzer | Whitelist cargada: 0 dominios
+2026-06-25T16:40:17 | WARNING  | phishing_analyzer | jsonschema no instalado — validación de config omitida.
+2026-06-25T16:40:17 | INFO     | phishing_analyzer | Whitelist cargada: 0 dominios
+2026-06-25T16:40:24 | WARNING  | phishing_analyzer | jsonschema no instalado — validación de config omitida.
+2026-06-25T16:40:24 | INFO     | phishing_analyzer | Whitelist cargada: 0 dominios
+2026-06-25T16:46:54 | WARNING  | phishing_analyzer | jsonschema no instalado — validación de config omitida.
+2026-06-25T16:46:54 | INFO     | phishing_analyzer | Whitelist cargada: 0 dominios
+2026-06-25T16:47:01 | WARNING  | phishing_analyzer | jsonschema no instalado — validación de config omitida.
+2026-06-25T16:47:01 | INFO     | phishing_analyzer | Whitelist cargada: 0 dominios
