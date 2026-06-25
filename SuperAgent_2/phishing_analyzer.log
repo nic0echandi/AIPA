@@ -3,3 +3,11 @@
 2026-06-01T09:22:38 | INFO     | phishing_analyzer | Whitelist cargada: 21 dominios
 2026-06-01T09:22:38 | INFO     | phishing_analyzer.knn | KNN → LEGITIMO (confianza: 100.00%) [DIRECTO]
 2026-06-01T09:22:38 | INFO     | phishing_analyzer | Análisis guardado: analysis_results\analysis_20260601_092238_legitimo.json
+2026-06-25T15:12:40 | WARNING  | phishing_analyzer | jsonschema no instalado — validación de config omitida.
+2026-06-25T15:12:40 | INFO     | phishing_analyzer | Whitelist cargada: 0 dominios
+2026-06-25T15:12:40 | WARNING  | phishing_analyzer | jsonschema no instalado — validación de config omitida.
+2026-06-25T15:12:40 | INFO     | phishing_analyzer | Whitelist cargada: 0 dominios
+2026-06-25T15:13:12 | WARNING  | phishing_analyzer | jsonschema no instalado — validación de config omitida.
+2026-06-25T15:13:12 | INFO     | phishing_analyzer | Whitelist cargada: 0 dominios
+2026-06-25T15:13:12 | WARNING  | phishing_analyzer | jsonschema no instalado — validación de config omitida.
+2026-06-25T15:13:12 | INFO     | phishing_analyzer | Whitelist cargada: 0 dominios

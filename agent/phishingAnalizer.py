@@ -20,6 +20,7 @@ import os
 import re
 import json
 import time
+import html
 import hashlib
 import logging
 import logging.handlers
@@ -307,7 +308,9 @@ class PhishingAnalyzerTXT:
         headers: Dict[str, str] = {}
         microsoft_urls = "None"
 
-        lines = content.split("\n")
+        # Procesar formato HTML: reemplazar <br> con saltos de línea para parseo correcto
+        content_clean = content.replace("<br>", "\n").replace("<br/>", "\n").replace("<br />", "\n")
+        lines = content_clean.split("\n")
 
         # Extraer URLs detectadas por Microsoft
         for i, line in enumerate(lines):
@@ -317,27 +320,39 @@ class PhishingAnalyzerTXT:
                 break
 
         # Parsear headers SMTP (soporte multilinea RFC 5322)
+        # Estrategia: buscar líneas con "Header: valor" pattern
         current_header = None
         current_value: List[str] = []
-        header_start = False
 
         for line in lines:
-            if not header_start:
-                if line.strip() == "" and "Received:" in content:
-                    header_start = True
+            # Saltar líneas vacías iniciales y comentarios
+            line_stripped = line.strip()
+            
+            if not line_stripped or line_stripped.startswith("#"):
                 continue
-
+            
+            # Detectar nueva cabecera: línea que NO empieza con espacio y contiene ":"
             if line and not line[0].isspace() and ":" in line:
+                # Guardar cabecera anterior si existe
                 if current_header:
                     headers[current_header] = " ".join(current_value).strip()
+                
+                # Procesar nueva cabecera
                 parts = line.split(":", 1)
                 current_header = parts[0].strip()
                 current_value = [parts[1].strip()] if len(parts) > 1 else []
+            
+            # Línea de continuación (empieza con espacio)
             elif line and line[0].isspace() and current_header:
                 current_value.append(line.strip())
 
+        # Guardar última cabecera
         if current_header:
             headers[current_header] = " ".join(current_value).strip()
+
+        # Decodificar entidades HTML en los headers (ej: &lt; &gt; &quot;)
+        for key in headers:
+            headers[key] = html.unescape(headers[key])
 
         return {
             "headers":       headers,

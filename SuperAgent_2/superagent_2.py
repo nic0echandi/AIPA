@@ -113,13 +113,30 @@ class SuperAgent2:
     
     @staticmethod
     def extract_email_from_address(address: str) -> str:
-        """Extrae email de una dirección que puede tener formato 'Name <email@example.com>'"""
+        """Extrae email de una dirección que puede tener formato 'Name <email@example.com>'
+        Maneja entidades HTML (&lt; &gt;) y formatos sin ángulos.
+        """
+        import html
         if not address:
             return ""
-        # Si tiene formato "Name <email@example.com>", extrae el email
+        
+        # Decodificar entidades HTML (&lt; &gt; etc.)
+        address = html.unescape(address)
+        
+        # Caso 1: Formato "Name <email@example.com>"
         if '<' in address and '>' in address:
-            return address[address.find('<')+1:address.find('>')]
-        # Si no, devuelve tal cual (asume que es un email)
+            return address[address.find('<')+1:address.find('>')].strip()
+        
+        # Caso 2: Dirección simple o solo nombre + email separados
+        # Ej: "email@example.com" o "Name email@example.com"
+        parts = address.split()
+        if parts:
+            # Buscar la parte que parece un email (contiene @)
+            for part in reversed(parts):  # Empezar desde atrás
+                if '@' in part:
+                    return part.strip()
+        
+        # Caso 3: No es un email válido
         return address.strip()
     
     def _print_monthly_stats(self):
