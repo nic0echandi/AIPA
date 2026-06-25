@@ -310,28 +310,43 @@ class PhishingAnalyzerTXT:
 
         # Procesar formato HTML: reemplazar <br> con saltos de línea para parseo correcto
         content_clean = content.replace("<br>", "\n").replace("<br/>", "\n").replace("<br />", "\n")
+        
+        # ESTRATEGIA NUEVA: Insertar saltos de línea ANTES de headers conocidos
+        # para que cada header esté en su propia línea incluso si TODO estaba en una línea
+        headers_list = [
+            'From:', 'To:', 'Subject:', 'Date:', 'Message-ID:', 'Reply-To:',
+            'Content-Type:', 'Content-Transfer-Encoding:', 'Thread-Topic:', 'Thread-Index:',
+            'Accept-Language:', 'Content-Language:', 'MIME-Version:', 'Received:',
+            'X-MS-', 'x-ms-'
+        ]
+        
+        for header_keyword in headers_list:
+            # Reemplazar "word Header:" con "\nHeader:" si está al medio de una línea
+            content_clean = re.sub(
+                rf'(\S)\s+({re.escape(header_keyword)})',
+                r'\1\n\2',
+                content_clean
+            )
+        
+        # Ahora procesar como RFC 5322 estándar
         lines = content_clean.split("\n")
-
-        # Extraer URLs detectadas por Microsoft
-        for i, line in enumerate(lines):
-            if line.startswith("# Questionable URLs detected in message:"):
-                if i + 1 < len(lines):
-                    microsoft_urls = lines[i + 1].strip()
-                break
-
-        # Parsear headers SMTP (soporte multilinea RFC 5322)
-        # Estrategia: buscar líneas con "Header: valor" pattern
         current_header = None
         current_value: List[str] = []
-
+        
         for line in lines:
-            # Saltar líneas vacías iniciales y comentarios
             line_stripped = line.strip()
             
+            # Saltar líneas vacías y comentarios
             if not line_stripped or line_stripped.startswith("#"):
+                if current_header and line_stripped == "":
+                    # Una línea vacía termina el header actual
+                    if current_header:
+                        headers[current_header] = " ".join(current_value).strip()
+                        current_header = None
+                        current_value = []
                 continue
             
-            # Detectar nueva cabecera: línea que NO empieza con espacio y contiene ":"
+            # Detectar nueva cabecera: NO empieza con espacio y contiene ":"
             if line and not line[0].isspace() and ":" in line:
                 # Guardar cabecera anterior si existe
                 if current_header:
@@ -349,6 +364,11 @@ class PhishingAnalyzerTXT:
         # Guardar última cabecera
         if current_header:
             headers[current_header] = " ".join(current_value).strip()
+
+        # Extraer URLs detectadas por Microsoft
+        urls_match = re.search(r'# Questionable URLs detected in message:\s*\n?\s*(.+?)(?:\n|$)', content_clean)
+        if urls_match:
+            microsoft_urls = urls_match.group(1).strip()
 
         # Decodificar entidades HTML en los headers (ej: &lt; &gt; &quot;)
         for key in headers:
