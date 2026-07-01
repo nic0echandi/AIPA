@@ -245,6 +245,38 @@ python view_stats.py
 cat test_results/test_results.json | jq '.by_classification'
 ```
 
+### Actualizar Whitelist sin Reiniciar
+
+**✨ NUEVO**: El agente recarga automáticamente el whitelist.txt cada 5 segundos si detecta cambios.
+
+```bash
+# 1. Editar whitelist.txt (agregar/quitar dominios)
+echo "trusted-domain.com" >> whitelist.txt
+
+# 2. El agente detecta el cambio automáticamente en los siguientes 5 segundos
+# En logs verás:
+# 📋 Whitelist actualizado detectado. Recargando...
+# ✓ Whitelist recargado exitosamente (25 dominios)
+
+# 3. ¡NO necesitas reiniciar! Listo para próximos emails
+```
+
+**Cómo funciona**:
+- El agente monitorea `whitelist.txt` constantemente
+- Detecta cambios comparando timestamp (mtime) del archivo
+- Si cambia, recarga automáticamente en memoria
+- El nuevo whitelist está activo en los próximos 5 segundos
+- Sin downtime, sin interrupción de servicio
+
+**Formato del whitelist**:
+```
+# Comentarios (líneas que empiezan con #)
+trusted-domain.com
+mail.example.com
+security@company.org
+# Un dominio o email por línea
+```
+
 ---
 
 ## 4. Flujo del Sistema

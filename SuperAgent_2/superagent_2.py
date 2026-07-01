@@ -209,6 +209,14 @@ class SuperAgent2:
         self.quality_controller = DataQualityController(self.config)
         log.info("✓ Validadores cargados: LLM + Data Quality")
         
+        # ✨ Recarga automática de whitelist
+        whitelist_path = self.config.get("whitelist_path", "whitelist.txt")
+        self.whitelist_path = Path(whitelist_path)
+        self.whitelist_mtime = 0
+        if self.whitelist_path.exists():
+            self.whitelist_mtime = self.whitelist_path.stat().st_mtime
+            log.info(f"✓ Monitoreo de whitelist activado: {self.whitelist_path}")
+        
         # Mostrar estadísticas mensuales iniciales
         self._print_monthly_stats()
     
@@ -259,6 +267,27 @@ class SuperAgent2:
     # FileWatcher
     # ========================================================================
     
+    def _check_and_reload_whitelist(self):
+        """Verifica si whitelist.txt cambió y lo recarga si es necesario."""
+        if not self.whitelist_path.exists():
+            return
+        
+        try:
+            current_mtime = self.whitelist_path.stat().st_mtime
+            
+            # Si el archivo fue modificado
+            if current_mtime > self.whitelist_mtime:
+                log.info(f"📋 Whitelist actualizado detectado. Recargando...")
+                
+                # Recargar whitelist en el analyzer
+                self.analyzer.whitelist = self.analyzer._load_whitelist()
+                
+                self.whitelist_mtime = current_mtime
+                log.info(f"✓ Whitelist recargado exitosamente ({len(self.analyzer.whitelist)} dominios)")
+        
+        except Exception as exc:
+            log.error(f"Error recargando whitelist: {exc}")
+    
     def _file_watcher_loop(self):
         """Monitorea ingress/ buscando nuevos .txt."""
         seen = set()
@@ -266,6 +295,9 @@ class SuperAgent2:
         
         while self._running:
             try:
+                # Verificar y recargar whitelist si cambió
+                self._check_and_reload_whitelist()
+                
                 current = {p for p in self.ingress_dir.glob("*.txt") if p.is_file()}
                 new_files = current - seen
                 
