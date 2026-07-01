@@ -1,8 +1,0 @@
-Uso:
-
-# Copiar los .txt a la carpeta suspect/ y correr:
-python test_agent.py
-
-# Opcionales:
-python test_agent.py --suspect-dir otra_carpeta
-python test_agent.py --threshold 0.70    # bajar umbral KNN al 70%
