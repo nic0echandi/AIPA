@@ -36,11 +36,15 @@ from email.message import EmailMessage
 try:
     from phishingAnalizer import PhishingAnalyzerTXT, EmailAnalysis
     from knn_classifier import KNNClassifier, extract_features, features_to_vector, FEATURE_NAMES
+    from llm_validation import LLMValidator
+    from data_quality import DataQualityController
 except ImportError:
     # Fallback si están en carpeta parent/agent
     sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'agent')))
     from phishingAnalizer import PhishingAnalyzerTXT, EmailAnalysis
     from knn_classifier import KNNClassifier, extract_features, features_to_vector, FEATURE_NAMES
+    from llm_validation import LLMValidator
+    from data_quality import DataQualityController
 
 from usage_stats import UsageStats
 
@@ -200,6 +204,11 @@ class SuperAgent2:
         log.info(f"  Log level:     {self.config.get('log_level', 'INFO')}")
         log.info("=" * 70)
         
+        # ✨ MEJORA ETAPA 1: Validadores
+        self.llm_validator = LLMValidator(self.config)
+        self.quality_controller = DataQualityController(self.config)
+        log.info("✓ Validadores cargados: LLM + Data Quality")
+        
         # Mostrar estadísticas mensuales iniciales
         self._print_monthly_stats()
     
@@ -330,6 +339,11 @@ class SuperAgent2:
         microsoft_urls = parsed["microsoft_urls"]
         content = parsed["raw_content"]
         
+        # ✨ MEJORA ETAPA 1: Guardar datos para validación
+        self.last_email_headers = headers
+        self.last_email_content = content
+        self.current_file_path = file_path
+        
         if not to_email:
             log.warning(f"No se encontró email del reporter en header 'To:' de {file_path.name}")
             self._move_to_processed(file_path, "spam")
@@ -451,6 +465,29 @@ class SuperAgent2:
         
         # Registrar estadística (incluir feedback si fue KNN)
         self.stats.record_case(classification, classification_source, knn_was_correct if classification_source == "knn" else None)
+        
+        # ✨ MEJORA ETAPA 1: Validación LLM antes de actuar
+        if classification_source == "llm":
+            llm_result = {"classification": classification, "confidence": analysis.confidence}
+            validation = self.llm_validator.validate(
+                self.last_email_headers,
+                self.last_email_content,
+                llm_result,
+                knn_result,
+                analysis.risk_score
+            )
+            
+            log.info(f"Validación LLM: {validation['recommendation']} (confianza: {validation['confidence']:.0%})")
+            
+            if validation["recommendation"] == "REVIEW":
+                log.warning(f"⚠️  Email para revisión manual: {', '.join(validation['flags'])}")
+                self.llm_validator.save_for_review(
+                    file_path, validation, 
+                    {"headers": self.last_email_headers},
+                    llm_result
+                )
+                # Marcar en análisis
+                analysis.validation_flags = validation["flags"]
         
         if classification == "sospechoso":
             log.info("→ Registrando alerta en IRIS...")
@@ -656,7 +693,28 @@ class SuperAgent2:
                 knn_predicted = knn_result["classification"]
                 feedback_correct = (knn_predicted == analysis.classification)
             
-            self.knn.add_training_example(vector, analysis.classification, feedback_correct)
+            # ✨ MEJORA ETAPA 2: Validación data_quality antes de agregar
+            quality_check = self.quality_controller.should_add_to_training(
+                self.last_email_headers,
+                analysis.classification,
+                analysis.confidence,
+                analysis.risk_score
+            )
+            
+            if quality_check["action"] == "ADD":
+                self.knn.add_training_example(vector, analysis.classification, feedback_correct)
+                log.debug(f"✓ Ejemplo agregado a entrenamiento KNN")
+            elif quality_check["action"] == "QUARANTINE":
+                log.warning(f"⚠️  Ejemplo en cuarentena: {', '.join(quality_check['issues'])}")
+                self.quality_controller.quarantine_example(
+                    str(self.current_file_path),
+                    quality_check["issues"],
+                    analysis.classification,
+                    {"confidence": analysis.confidence, "risk_score": analysis.risk_score}
+                )
+            elif quality_check["action"] == "MANUAL_REVIEW":
+                log.info(f"📋 Ejemplo para revisión: {', '.join(quality_check['issues'])}")
+                self.knn.add_training_example(vector, analysis.classification, feedback_correct)
             
             # Log de estadísticas del modelo
             stats = self.knn.stats_summary()

@@ -149,6 +149,67 @@ def extract_features(headers: Dict, content: str, microsoft_urls: str) -> Dict:
             dn_mismatch = 1.0
     features["display_name_mismatch"] = dn_mismatch
 
+    # --- NUEVOS FEATURES (Nivel 1) ---
+    # Received hops count
+    received_headers = [h for h in headers.keys() if h.lower().startswith("received")]
+    features["received_hops"] = min(len(received_headers) / 5.0, 1.0)
+    
+    # Return-Path vs From
+    return_path = headers.get("Return-Path", "").lower()
+    return_domain = _extract_domain(return_path)
+    features["return_path_mismatch"] = (
+        1.0 if (return_domain and from_domain and return_domain != from_domain) else 0.0
+    )
+    
+    # X-Mailer sospechoso
+    x_mailer = headers.get("X-Mailer", "").strip().lower()
+    suspicious_mailers = ["", "unknown", "none", "test", "false"]
+    features["x_mailer_suspicious"] = 1.0 if x_mailer in suspicious_mailers else 0.0
+    
+    # Formularios HTML
+    form_pattern = r"<form[^>]*>"
+    features["form_in_email"] = 1.0 if re.search(form_pattern, content, re.IGNORECASE) else 0.0
+    
+    # HTML ofuscado
+    obfuscated_patterns = [
+        r"&#\d+;",          # HTML entities
+        r"\\x[0-9a-f]{2}",  # Hex encoding
+        r"btoa\(",          # Base64 encoding
+        r"eval\(",          # JavaScript eval
+    ]
+    obfuscation_count = sum(
+        1 for pattern in obfuscated_patterns 
+        if re.search(pattern, content, re.IGNORECASE)
+    )
+    features["html_obfuscation"] = min(obfuscation_count / 2.0, 1.0)
+    
+    # X-Originating-IP mismatch
+    x_orig_ip = headers.get("X-Originating-IP", "").strip()
+    x_orig_domain = _extract_domain(x_orig_ip) if x_orig_ip else ""
+    features["x_originating_ip_mismatch"] = (
+        1.0 if (x_orig_domain and from_domain and x_orig_domain != from_domain) else 0.0
+    )
+    
+    # Sender domain con caracteres sospechosos
+    suspicious_chars = ["_", "xn--", "-", "0x"]
+    sender_domain_suspicious = 0.0
+    if from_domain:
+        for char in suspicious_chars[:2]:  # "_" y "xn--" son los más sospechosos
+            if char in from_domain:
+                sender_domain_suspicious += 0.3
+    features["sender_domain_suspicious"] = min(sender_domain_suspicious, 1.0)
+    
+    # Charset/Encoding anómalo
+    content_type = headers.get("Content-Type", "").lower()
+    charset = headers.get("X-Entity-ID", "").lower()
+    features["encoding_suspicious"] = (
+        1.0 if (charset and ("utf" not in charset and "iso" not in charset)) else 0.0
+    )
+    
+    # Multiple content-transfer-encoding (típico phishing)
+    mimes_in_content = content.count("--")
+    features["multipart_suspicious"] = 1.0 if mimes_in_content > 5 else 0.0
+
     return features
 
 
@@ -171,12 +232,25 @@ def _extract_domain(addr: str) -> str:
 # ---------------------------------------------------------------------------
 
 FEATURE_NAMES = [
+    # Autenticación (6 features)
     "spf_fail", "spf_softfail", "dkim_none", "dmarc_none", "auth_all_pass",
-    "compauth_fail", "scl_high", "scl_negative", "sfv_spam", "sfv_skip",
-    "cat_spoof", "cat_phish", "cat_none", "subject_keywords", "subject_very_short",
-    "reply_to_mismatch", "high_risk_country", "ipv_nli", "url_count_norm",
-    "ms_urls_detected", "short_urls", "has_attachment", "thread_hijacking",
-    "display_name_mismatch"
+    "compauth_fail", 
+    # Microsoft SCL/SFV/CAT (7 features)
+    "scl_high", "scl_negative", "sfv_spam", "sfv_skip",
+    "cat_spoof", "cat_phish", "cat_none", 
+    # Contenido del email (2 features)
+    "subject_keywords", "subject_very_short",
+    # Infraestructura (7 features)
+    "reply_to_mismatch", "high_risk_country", "ipv_nli", 
+    "return_path_mismatch", "x_originating_ip_mismatch",
+    "sender_domain_suspicious", "encoding_suspicious",
+    # URLs y adjuntos (3 features)
+    "url_count_norm", "ms_urls_detected", "short_urls", 
+    # Otras anomalías (6 features)
+    "has_attachment", "thread_hijacking", "display_name_mismatch",
+    "form_in_email", "html_obfuscation", "multipart_suspicious",
+    # Nuevos en Nivel 1 (2 features)
+    "received_hops", "x_mailer_suspicious"
 ]
 
 
@@ -212,28 +286,28 @@ class KNNClassifier:
     MODEL_PATH = Path("knn_model.joblib")
     STATS_PATH = Path("knn_stats.json")
 
-    # Dataset de entrenamiento base (features embebidas)
+    # Dataset de entrenamiento base (features embebidas - 33 features = 24 originales + 9 nuevos)
     BASE_TRAINING = [
         # -------- LEGÍTIMOS --------
-        ([0,0,0,0,1, 0,0,1,0,1, 0,0,1,0.33,0, 0,0,0,0,0, 0,0,0,0], 0),
-        ([0,0,0,0,1, 0,0,1,0,1, 0,0,1,0,0, 0,0,0,0.1,0, 0,0,0,0], 0),
-        ([0,0,0,0,1, 0,0,0,0,1, 0,0,1,0,0, 0,0,0,0.3,0, 0,0,0,0], 0),
-        ([0,0,0,0,1, 0,0,1,0,1, 0,0,1,0,0, 0,0,0,0,0, 0,0,0,0], 0),
-        ([0,0,0,0,1, 0,0,0,0,0, 0,0,1,0,0, 0,0,0,0.4,0, 0,0,0,0], 0),
+        ([0,0,0,0,1, 0,0,1,0,1, 0,0,1,0.33,0, 0,0,0,0,0, 0,0,0,0, 0,0,0,0,0,0,0,0,0], 0),
+        ([0,0,0,0,1, 0,0,1,0,1, 0,0,1,0,0, 0,0,0,0.1,0, 0,0,0,0, 0,0,0,0,0,0,0,0,0], 0),
+        ([0,0,0,0,1, 0,0,0,0,1, 0,0,1,0,0, 0,0,0,0.3,0, 0,0,0,0, 0,0,0,0,0,0,0,0,0], 0),
+        ([0,0,0,0,1, 0,0,1,0,1, 0,0,1,0,0, 0,0,0,0,0, 0,0,0,0, 0,0,0,0,0,0,0,0,0], 0),
+        ([0,0,0,0,1, 0,0,0,0,0, 0,0,1,0,0, 0,0,0,0.4,0, 0,0,0,0, 0,0,0,0,0,0,0,0,0], 0),
 
         # -------- SPAM --------
-        ([0,0,1,1,0, 0,0,0,0,0, 0,0,1,0,0, 0,0,0,0.5,0, 0,0,0,0], 1),
-        ([0,1,0,1,0, 0,1,0,1,0, 0,0,1,0,0, 0,0,1,0.2,0, 0,0,0,0], 1),
-        ([0,1,0,1,0, 0,1,0,1,0, 0,0,1,0.33,0, 0,0,0,0.6,0, 0,0,0,0], 1),
-        ([0,0,1,0,0, 0,0,0,0,0, 0,0,1,0,0, 0,0,0,0.3,0, 0,0,0,0], 1),
+        ([0,0,1,1,0, 0,0,0,0,0, 0,0,1,0,0, 0,0,0,0.5,0, 0,0,0,0, 0,0,0,0,0,0,0,0,0], 1),
+        ([0,1,0,1,0, 0,1,0,1,0, 0,0,1,0,0, 0,0,1,0.2,0, 0,0,0,0, 0,0,0,0,0,0,0,0,0], 1),
+        ([0,1,0,1,0, 0,1,0,1,0, 0,0,1,0.33,0, 0,0,0,0.6,0, 0,0,0,0, 0,0,0,0,0,0,0,0,0], 1),
+        ([0,0,1,0,0, 0,0,0,0,0, 0,0,1,0,0, 0,0,0,0.3,0, 0,0,0,0, 0,0,0,0,0,0,0,0,0], 1),
 
         # -------- SOSPECHOSOS / PHISHING --------
-        ([1,0,1,1,0, 1,1,0,1,0, 1,0,0,0.33,1, 0,0,1,0,0, 0,1,1,0], 2),
-        ([1,0,1,1,0, 1,1,0,1,0, 1,0,0,0.66,0, 0,0,1,0.2,0, 0,0,0,1], 2),
-        ([0,1,0,1,0, 0,1,0,1,0, 0,0,1,0.33,0, 0,0,0,0.4,1, 0.5,0,0,0], 2),
-        ([1,0,1,1,0, 1,1,0,1,0, 1,0,0,0,0, 0,1,1,0,0, 0,1,1,0], 2),
-        ([1,0,1,1,0, 1,1,0,1,0, 1,0,0,0,0, 1,1,1,0.1,0, 0,0,0,0], 2),
-        ([1,0,1,0,0, 0,1,0,1,0, 0,0,1,0.66,0, 0,0,1,0.3,0, 1,0,0,1], 2),
+        ([1,0,1,1,0, 1,1,0,1,0, 1,0,0,0.33,1, 0,0,1,0,0, 0,1,1,0, 0,0,0,0,1,0,1,0,0], 2),
+        ([1,0,1,1,0, 1,1,0,1,0, 1,0,0,0.66,0, 0,0,1,0.2,0, 0,0,0,1, 0,0,0,0,1,0,1,0,0], 2),
+        ([0,1,0,1,0, 0,1,0,1,0, 0,0,1,0.33,0, 0,0,0,0.4,1, 0.5,0,0,0, 0,0,0,1,1,0,0,0,0], 2),
+        ([1,0,1,1,0, 1,1,0,1,0, 1,0,0,0,0, 0,1,1,0,0, 0,1,1,0, 0,0,0,0,1,0,1,0,0], 2),
+        ([1,0,1,1,0, 1,1,0,1,0, 1,0,0,0,0, 1,1,1,0.1,0, 0,0,0,0, 0,0,0,0,1,0,1,0,0], 2),
+        ([1,0,1,0,0, 0,1,0,1,0, 0,0,1,0.66,0, 0,0,1,0.3,0, 1,0,0,1, 0,0,0,0,1,0,1,0,0], 2),
     ]
 
     def __init__(self, k: int = 5, confidence_threshold: float = 0.85):
