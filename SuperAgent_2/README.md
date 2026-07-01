@@ -250,72 +250,72 @@ cat test_results/test_results.json | jq '.by_classification'
 ## 4. Flujo del Sistema
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│ EMAIL INGRESA (ingress/)                                        │
-└────────────────────────────┬────────────────────────────────────┘
-                             ↓
-┌─────────────────────────────────────────────────────────────────┐
-│ [1] WHITELIST CHECK                                             │
-│     ¿Email es de remitente confiable?                          │
-└────┬──────────────────────────────────┬───────────────────────┘
-     │ SÍ → LEGITIMO                    │ NO
-     ↓                                  ↓
-PROCESAR                     ┌────────────────────────┐
-                             │ [2] KNN RÁPIDO         │
-                             │ (5ms, 33 features)     │
-                             └────┬───────────┬──────┘
-                                  │           │
-                    CONFIANZA >85% │           │ CONFIANZA <85%
-                                  ↓           ↓
-                          CLASIFICACIÓN  ┌─────────────────┐
-                             RÁPIDA      │ [3] LLM PROFUNDO│
-                                         │ (Ollama/Claude) │
-                                         └────────┬────────┘
-                                                  ↓
-                          ┌─────────────────────────────────────┐
-                          │ [4] ✨ VALIDACIÓN CRUZADA (Etapa 1) │
-                          │ ¿KNN está de acuerdo?              │
-                          │ ¿Risk score alineado?              │
-                          │ ¿Heurísticas confirman?            │
-                          └────┬──────────────────┬─────────────┘
-                               │                  │
-                    CONFIANZA   │                  │ CASOS
-                    ALTA >70%   │                  │ DUDOSOS
-                               ↓                  ↓
-                          ACTUAR           GUARDAR EN
-                          DIRECTO          manual_review/
-                               │            (para auditoría)
-                               ↓                  ↓
-                          ┌────────────────────────────────┐
-                          │ [5] ACCIONES FINALES           │
-                          │ - IRIS alert (si sospechoso)  │
-                          │ - Email a reporter            │
-                          │ - Mover archivo procesado     │
-                          └────────────────┬───────────────┘
-                                          ↓
-                          ┌───────────────────────────────────────┐
-                          │ [6] ✨ DATA QUALITY CHECK (Etapa 2)   │
-                          │ ¿Confianza ≥ 65%?                    │
-                          │ ¿Risk score alineado?                │
-                          │ ¿Datos normales (no outliers)?       │
-                          └────┬──────────────────┬───────────────┘
-                               │                  │
-                    DATOS OK    │                  │ DATOS
-                               ↓                  │ PROBLEMÁTICOS
-                          AGREGAR A KNN          ↓
-                          (entrenar)        CUARENTENAR
-                                           (quarantine/)
-                               │                  │
-                               └──────┬───────────┘
-                                      ↓
-                          ┌─────────────────────────┐
-                          │ [7] ACTUALIZAR KNN      │
-                          │ (Aprendizaje activo)    │
-                          └─────────────────────────┘
-                                      ↓
-                          ┌─────────────────────────┐
-                          │ LISTO PARA PRÓX EMAIL   │
-                          └─────────────────────────┘
+┌──────────────────────────────────────────────────────────┐
+│ EMAIL INGRESA (ingress/)                                 │
+└──────────────────────────┬───────────────────────────────┘
+                           ↓
+┌──────────────────────────────────────────────────────────┐
+│ [1] WHITELIST CHECK                                      │
+│ ¿Email es de remitente confiable?                       │
+└────┬────────────────────────────────────────┬────────────┘
+     │ SÍ → LEGITIMO                          │ NO
+     ↓                                        ↓
+PROCESAR                    ┌──────────────────────────┐
+                            │ [2] KNN RÁPIDO           │
+                            │ (5ms, 33 features)       │
+                            └────┬────────────┬────────┘
+                                 │            │
+                 CONFIANZA >85%   │            │ CONFIANZA <85%
+                                 ↓            ↓
+                         CLASIFICACIÓN  ┌────────────────┐
+                            RÁPIDA      │ [3] LLM ANÁLISIS│
+                                        │ (Ollama/Claude) │
+                                        └────────┬────────┘
+                                                 ↓
+                      ┌──────────────────────────────────┐
+                      │ [4] VALIDACIÓN CRUZADA (Etapa 1) │
+                      │ ¿KNN de acuerdo?                 │
+                      │ ¿Risk score alineado?            │
+                      │ ¿Heurísticas confirman?          │
+                      └────┬──────────────────┬───────────┘
+                           │                  │
+                CONFIANZA   │                  │ CASOS
+                ALTA >70%   │                  │ DUDOSOS
+                           ↓                  ↓
+                      ACTUAR              GUARDAR EN
+                      DIRECTO             manual_review/
+                           │               (auditoría)
+                           ↓                   ↓
+                      ┌──────────────────────────────────┐
+                      │ [5] ACCIONES FINALES             │
+                      │ - IRIS alert (sospechoso)       │
+                      │ - Email a reporter              │
+                      │ - Mover archivo procesado       │
+                      └──────────────┬───────────────────┘
+                                     ↓
+                      ┌──────────────────────────────────┐
+                      │ [6] DATA QUALITY (Etapa 2)       │
+                      │ ¿Confianza ≥ 65%?              │
+                      │ ¿Risk score alineado?           │
+                      │ ¿Datos normales?                │
+                      └────┬──────────────────┬──────────┘
+                           │                  │
+                DATOS OK    │                  │ DATOS
+                           ↓                  │ PROBLEMÁTICOS
+                      AGREGAR A KNN           ↓
+                      (entrenar)          CUARENTENAR
+                                          (quarantine/)
+                           │                  │
+                           └──────┬───────────┘
+                                  ↓
+                      ┌───────────────────────┐
+                      │ [7] ACTUALIZAR KNN    │
+                      │ (Aprendizaje activo)  │
+                      └───────────────────────┘
+                                  ↓
+                      ┌───────────────────────┐
+                      │ LISTO PRÓX EMAIL      │
+                      └───────────────────────┘
 ```
 
 ---
