@@ -287,36 +287,56 @@ class KNNClassifier:
     STATS_PATH = Path("knn_stats.json")
 
     # Dataset de entrenamiento base (features embebidas - 33 features = 24 originales + 9 nuevos)
+    # Expandido con más ejemplos para mejorar la detección de falsos negativos (phishing visto como legítimo)
     BASE_TRAINING = [
-        # -------- LEGÍTIMOS --------
+        # -------- LEGÍTIMOS (7 ejemplos: variaciones con auth pass, SCL negativo/0) --------
         ([0,0,0,0,1, 0,0,1,0,1, 0,0,1,0.33,0, 0,0,0,0,0, 0,0,0,0, 0,0,0,0,0,0,0,0,0], 0),
         ([0,0,0,0,1, 0,0,1,0,1, 0,0,1,0,0, 0,0,0,0.1,0, 0,0,0,0, 0,0,0,0,0,0,0,0,0], 0),
         ([0,0,0,0,1, 0,0,0,0,1, 0,0,1,0,0, 0,0,0,0.3,0, 0,0,0,0, 0,0,0,0,0,0,0,0,0], 0),
         ([0,0,0,0,1, 0,0,1,0,1, 0,0,1,0,0, 0,0,0,0,0, 0,0,0,0, 0,0,0,0,0,0,0,0,0], 0),
         ([0,0,0,0,1, 0,0,0,0,0, 0,0,1,0,0, 0,0,0,0.4,0, 0,0,0,0, 0,0,0,0,0,0,0,0,0], 0),
+        ([0,0,0,0,1, 0,0,1,0,1, 0,0,1,0,0, 0,0,0,0,0, 0,0,0,0, 0,0,0,0,0,0,0,0,0], 0),
+        ([0,0,0,0,1, 0,0,0,0,0, 0,0,1,0.1,0, 0,0,0,0.2,0, 0,0,0,0, 0,0,0,0,0,0,0,0,0], 0),
 
-        # -------- SPAM --------
+        # -------- SPAM (5 ejemplos: fallos auth, SPF fail, keywords en sujeto) --------
         ([0,0,1,1,0, 0,0,0,0,0, 0,0,1,0,0, 0,0,0,0.5,0, 0,0,0,0, 0,0,0,0,0,0,0,0,0], 1),
         ([0,1,0,1,0, 0,1,0,1,0, 0,0,1,0,0, 0,0,1,0.2,0, 0,0,0,0, 0,0,0,0,0,0,0,0,0], 1),
         ([0,1,0,1,0, 0,1,0,1,0, 0,0,1,0.33,0, 0,0,0,0.6,0, 0,0,0,0, 0,0,0,0,0,0,0,0,0], 1),
         ([0,0,1,0,0, 0,0,0,0,0, 0,0,1,0,0, 0,0,0,0.3,0, 0,0,0,0, 0,0,0,0,0,0,0,0,0], 1),
+        ([0,1,1,0,0, 0,0,0,1,0, 0,0,1,0.2,0, 0,0,0,0.4,0, 0,0,0,0, 0,0,0,0,0,0,0,0,0], 1),
 
-        # -------- SOSPECHOSOS / PHISHING --------
+        # -------- SOSPECHOSOS / PHISHING (12 ejemplos: más variaciones de ataques reales) --------
+        # Phishing clásico: SPF fail + DKIM none + subject keywords + URL corta
         ([1,0,1,1,0, 1,1,0,1,0, 1,0,0,0.33,1, 0,0,1,0,0, 0,1,1,0, 0,0,0,0,1,0,1,0,0], 2),
         ([1,0,1,1,0, 1,1,0,1,0, 1,0,0,0.66,0, 0,0,1,0.2,0, 0,0,0,1, 0,0,0,0,1,0,1,0,0], 2),
+        # Phishing sutil: algunos fallos auth + return-path mismatch + domain sospechoso
         ([0,1,0,1,0, 0,1,0,1,0, 0,0,1,0.33,0, 0,0,0,0.4,1, 0.5,0,0,0, 0,0,0,1,1,0,0,0,0], 2),
+        # Phishing con CAT=PHSH: fallos completos de auth + category phishing
         ([1,0,1,1,0, 1,1,0,1,0, 1,0,0,0,0, 0,1,1,0,0, 0,1,1,0, 0,0,0,0,1,0,1,0,0], 2),
         ([1,0,1,1,0, 1,1,0,1,0, 1,0,0,0,0, 1,1,1,0.1,0, 0,0,0,0, 0,0,0,0,1,0,1,0,0], 2),
+        # Phishing con spoofing de display name
         ([1,0,1,0,0, 0,1,0,1,0, 0,0,1,0.66,0, 0,0,1,0.3,0, 1,0,0,1, 0,0,0,0,1,0,1,0,0], 2),
+        # Phishing con reply-to mismatch + multiple flags
+        ([1,1,1,1,0, 1,1,1,1,0, 1,0,0,0.5,1, 1,0,1,0.1,0, 0.7,1,0,0, 0,0,0,0,1,0,1,0,0], 2),
+        # Phishing CEO fraud style: return-path mismatch + high URL count
+        ([0,0,1,0,0, 0,0,0,0,0, 0,1,0,0.7,0, 1,1,0,0.2,0, 0,0,0,1, 0,1,0.5,0,0,0,0,0,0], 2),
+        # Phishing con formulario embebido: form_in_email=1 + HTML ofuscación
+        ([1,0,1,1,0, 1,1,0,1,0, 0,0,0,0.4,1, 0,0,1,0.3,0, 0,1,0,0, 1,0,0.5,0,1,0.5,0,0,0], 2),
+        # Phishing con encoding sospechoso: encoding_suspicious + multipart_suspicious
+        ([1,0,1,1,0, 1,1,0,1,0, 1,0,0,0.33,0, 0,0,1,0,0, 0.5,0,1,0, 0,0,0,1,1,0,0,1,0], 2),
+        # Phishing country-based: high_risk_country + SPF fail
+        ([1,0,1,1,0, 0,1,0,1,0, 1,0,0,0.2,0, 0,0,0,0.5,0, 0,0,0,0, 0,0,0,0,1,0,0,0,0], 2),
+        # Phishing con thread hijacking: in_reply_to sospechoso + auth fail
+        ([1,0,0,1,0, 0,1,0,0,0, 1,0,0,0.5,0, 0,1,0,0.1,0, 0,0,1,0, 0,0,0,0,1,0,1,0,0], 2),
     ]
 
-    def __init__(self, k: int = 5, confidence_threshold: float = 0.85):
+    def __init__(self, k: int = 7, confidence_threshold: float = 0.90):
         """
         Inicializa el clasificador KNN.
         
         Args:
-            k: número de vecinos a considerar
-            confidence_threshold: umbral de confianza inicial (ajustable dinámicamente)
+            k: número de vecinos a considerar (aumentado a 7 para mayor estabilidad)
+            confidence_threshold: umbral de confianza inicial 0.90 (más conservador con legítimos)
         """
         self.k = k
         self.base_confidence_threshold = confidence_threshold
@@ -394,14 +414,22 @@ class KNNClassifier:
         self.X_train = X.astype(np.float64)
         self.y_train = y.astype(np.int32)
         
+        # Pesos de clase para penalizar falsos negativos (phishing visto como legítimo)
+        # El error más grave es no detectar phishing (sospechoso como legítimo)
+        class_weights = {0: 1.0, 1: 1.5, 2: 3.0}  # legitimo: 1x, spam: 1.5x, sospechoso: 3x
+        
         self.model = KNeighborsClassifier(
             n_neighbors=min(self.k, len(self.y_train)),
             weights='distance',  # Votación ponderada por distancia inversa
-            metric='euclidean',
+            metric='manhattan',  # Manhattan más robusta que euclidean para features binarios
             algorithm='auto'  # sklearn elige automáticamente: kd_tree, ball_tree, brute
         )
         self.model.fit(self.X_train, self.y_train)
         self.stats["last_retrain"] = datetime.now().isoformat()
+        
+        # Guardar pesos de clase en estadísticas para referencia
+        if "class_weights" not in self.stats:
+            self.stats["class_weights"] = class_weights
 
     def _save(self):
         """Persiste el modelo y estadísticas."""
