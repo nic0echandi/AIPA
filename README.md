@@ -1,10 +1,16 @@
 # 📚 SuperAgent v2.0 - Documentación Completa
 
-**Última actualización**: Julio 2026  
-**Versión**: 2.0 (Etapas 1-3 completadas)  
-**Estado**: ✅ Implementación completada
+**Última actualización**: 8 de Julio 2026  
+**Versión**: 2.0.1 (Parser v0.9 - Nuevo Formato Soportado)  
+**Estado**: ✅ Implementación completada + Parser actualizado
 
 📋 **Documentación Adicional**: Ver [ARCHITECTURE.md](ARCHITECTURE.md) para detalles de la estructura del proyecto.
+
+### 🔄 Cambios Recientes (v2.0.1)
+
+- ✅ **Parser v0.9** - Nuevo formato de archivos (key-value) automáticamente detectado
+- ✅ **Detección automática** - Soporta formato nuevo Y RFC 5322 sin cambios
+- ✅ **Testado** - Script `test_new_format.py` incluido
 
 ---
 
@@ -13,6 +19,7 @@
 ### I. INICIO RÁPIDO
 - [1. Descripción General](#1-descripción-general)
 - [2. Instalación y Setup](#2-instalación-y-setup)
+- [2.1 Formatos de Entrada de Archivos](#21-formatos-de-entrada-de-archivos)
 - [3. Ejecución](#3-ejecución)
 
 ### II. ARQUITECTURA Y COMPONENTES
@@ -117,6 +124,79 @@ SuperAgent/
 ├── superagent_2.py             🔄 MODIFICADO - Integración
 ├── knn_classifier.py           🔄 MODIFICADO - 9 features nuevos
 └── config.json                 🔄 MODIFICADO - Nuevas opciones
+```
+
+### 2.1 Formatos de Entrada de Archivos
+
+El sistema soporta **dos formatos** de archivos TXT automáticamente:
+
+#### **Formato Nuevo (v0.9 - Recomendado)**
+
+Estructura de campos clave-valor con espaciado variable:
+
+```
+Subject            : Asunto del email
+SenderName         : Nombre del remitente
+SenderEmailAddress : sender@example.com
+To                 : recipient@example.com
+ReceivedTime       : 6/7/2026 12:13:27
+HTMLBody           : <!doctype html>
+                     <html>...contenido del email...</html>
+```
+
+**Características:**
+- ✅ Fácil de parsear
+- ✅ Campos claros y estructurados
+- ✅ HTMLBody contiene el email completo
+- ✅ Campo `To` identifica al reportero
+- ✅ Compatible con nuevos sistemas
+
+#### **Formato Antiguo (RFC 5322)**
+
+Headers MIME estándar:
+
+```
+From: sender@example.com
+To: recipient@example.com
+Subject: Asunto del email
+Message-ID: <id@example.com>
+Received: from mail.example.com (mail.example.com [192.168.1.1])
+  by recipient.example.com with SMTP id XXXXX;
+  
+[Body del email en formato MIME]
+```
+
+**Características:**
+- ✅ Estándar RFC 5322
+- ✅ Totalmente soportado (compatibilidad)
+- ✅ Heredado pero funcional
+
+#### **Detección Automática**
+
+El parser detecta automáticamente qué formato usar:
+
+```python
+from phishingAnalizer import PhishingAnalyzerTXT
+
+analyzer = PhishingAnalyzerTXT("config.json")
+
+# Funciona con ambos formatos
+analysis = analyzer.analyze_txt_file("email_nuevo.txt")  # v0.9 ✓
+analysis = analyzer.analyze_txt_file("email_antiguo.txt")  # RFC 5322 ✓
+```
+
+**Sin cambios necesarios en el código - es automático!**
+
+#### **Migración**
+
+```bash
+# Todos los archivos nuevos deben usar formato v0.9
+# Los archivos antiguos RFC 5322 siguen funcionando sin cambios
+# No es necesaria migración - es compatible
+
+# Probar nuevo formato:
+cd SuperAgent
+python test_new_format.py
 ```
 
 ---
@@ -1575,6 +1655,62 @@ EN 4-6 MESES:            🚀 Implementar Etapa 5 (si aplica)
 
 ## 17. FAQ
 
+### ¿Qué formato de archivo debo usar?
+
+**Respuesta corta:** Usa el **formato nuevo (v0.9)** - es más fácil y limpio.
+
+**Formato Nuevo (Recomendado):**
+```
+Subject            : Asunto
+SenderEmailAddress : sender@example.com
+To                 : recipient@example.com
+ReceivedTime       : 6/7/2026 12:13:27
+HTMLBody           : <!doctype html>...
+```
+
+**Formato Antiguo (RFC 5322 - Sigue funcionando):**
+```
+From: sender@example.com
+To: recipient@example.com
+Subject: Asunto
+Received: from mail.example.com...
+```
+
+**El sistema detecta automáticamente cuál usar - Sin cambios en el código!**
+
+### ¿Qué pasa si envío un formato incorrecto?
+
+El parser captura y registra errores:
+- Si tiene error de parseo: Retorna `None`
+- El analizador lo reporta en logs
+- Se puede investigar en `manual_review/`
+
+Prueba el formato:
+```bash
+python test_new_format.py
+```
+
+### ¿Necesito migrar archivos antiguos?
+
+**No.** El sistema es 100% compatible:
+- Archivos RFC 5322 siguen siendo procesados correctamente
+- No necesitas migrar nada
+- Los nuevos archivos pueden ser formato v0.9
+
+### ¿Cómo extraer el reportero del email?
+
+El sistema lo hace automáticamente:
+- **Formato nuevo**: Del campo `To`
+- **Formato antiguo**: Del header `To:`
+
+```python
+analyzer = PhishingAnalyzerTXT("config.json")
+analysis = analyzer.analyze_txt_file("email.txt")
+print(analysis.reporter_email)  # Email del reportero
+```
+
+---
+
 ### ¿Afectará el performance?
 
 **No significativamente**. Overhead:
@@ -1662,6 +1798,43 @@ Después de deployment:
 
 ## 19. Resumen de Cambios
 
+### Actualización del Parser v0.9 (Julio 2026)
+
+**Nuevo Formato de Archivos Soportado:**
+El sistema ahora soporta el nuevo formato de archivos TXT con estructura clave-valor, manteniendo compatibilidad total con el formato antiguo RFC 5322.
+
+#### Nuevo Formato (v0.9):
+```
+Subject            : Asunto del email
+SenderName         : Nombre del remitente
+SenderEmailAddress : sender@example.com
+To                 : recipient@example.com
+ReceivedTime       : 6/7/2026 12:13:27
+HTMLBody           : <!doctype html>... (contenido HTML)
+```
+
+#### Cambios Implementados:
+- ✅ **Detección automática** - Identifica formato automáticamente
+- ✅ **Parser nuevo** - `_parse_new_format()` para campos key-value
+- ✅ **Compatibilidad** - `_parse_rfc5322_format()` sigue soportando archivos antiguos
+- ✅ **Message-ID único** - `_generate_message_id()` basado en hash del archivo
+- ✅ **Extracción reportero** - Ahora extrae desde campo `To` correctamente
+- ✅ **Tested** - Script `test_new_format.py` incluido
+
+#### Archivos Actualizados:
+| Archivo | Cambios | Propósito |
+|---------|---------|----------|
+| `phishingAnalizer.py` | +200 líneas | Parser v0.9 con detección de formato |
+| `test_new_format.py` | 80 líneas | Validación del nuevo formato (NUEVO) |
+
+#### Flujo de Detección:
+```python
+# Automático - Sin cambios necesarios en el código
+analyzer.parse_txt_file("email.txt")  # Detecta formato → parsea correctamente
+```
+
+---
+
 ### Consolidación del Proyecto (Julio 2024)
 
 **Carpetas eliminadas:**
@@ -1680,10 +1853,11 @@ Después de deployment:
 /home/user/Documents/MyGithub/AIPA/SuperAgent/
   ├── superagent_2.py         (agente principal)
   ├── knn_classifier.py        (modelo)
-  ├── phishingAnalizer.py      (análisis)
+  ├── phishingAnalizer.py      (análisis - v0.9 con nuevo formato)
   ├── llm_validation.py        (Etapa 1)
   ├── data_quality.py          (Etapa 2)
   ├── test_superagent.py       (testing & entrenamiento)
+  ├── test_new_format.py       (validación nuevo formato)
   └── ...
 ```
 
@@ -1697,6 +1871,7 @@ Después de deployment:
 | `data_quality.py` | 190 | Control calidad (Etapa 2) |
 | `compare_algorithms.py` | 320 | Comparación algoritmos (Etapa 3) |
 | `test_superagent.py` | 280 | Script testing (NUEVO) |
+| `test_new_format.py` | 80 | Validación nuevo formato (NUEVO - v0.9) |
 | `ARCHITECTURE.md` | 380 | Documentación de arquitectura (NUEVO) |
 | Directorios: `manual_review/`, `quarantine/` | — | Almacenamiento auditoría |
 | Directorio: `test_emails/` | — | Emails de prueba (NUEVO) |
@@ -1708,6 +1883,7 @@ Después de deployment:
 |---------|---------|----------|
 | `superagent_2.py` | +80 líneas | Integración validadores + recarga whitelist |
 | `knn_classifier.py` | +150 líneas | 9 features nuevos (Etapa 3) |
+| `phishingAnalizer.py` | +200 líneas | Parser v0.9 - nuevo formato (ACTUALIZADO) |
 | `config.json` | +15 líneas | Nueva configuración |
 | `README.md` | Referencia a ARCHITECTURE.md | Documentación mejorada |
 
@@ -1729,6 +1905,8 @@ pip install scikit-learn numpy pandas joblib requests
 ✓ Testing no contamina datos de producción
 ✓ Estructura única facilita mantenimiento
 ✓ No se pierde funcionalidad en consolidación
+✓ Nuevo formato automáticamente detectado (sin cambios necesarios)
+✓ Compatibilidad total con archivos antiguos RFC 5322
 ```
 
 ---

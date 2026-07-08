@@ -294,8 +294,158 @@ class PhishingAnalyzerTXT:
         return None
 
     # ------------------------------------------------------------------
-    # Parseo del archivo .txt
+    # Parseo del archivo .txt (v0.9: soporte nuevo formato key-value)
     # ------------------------------------------------------------------
+
+    def _detect_format(self, content: str) -> str:
+        """
+        Detecta si el archivo está en formato nuevo (key-value) o antiguo (RFC 5322).
+        Formato nuevo: "SenderEmailAddress : email@example.com"
+        Formato antiguo: "From: email@example.com"
+        """
+        first_500_chars = content[:500].lower()
+        if "senderemailaddress" in first_500_chars or "htmlbody" in first_500_chars:
+            return "new_format"
+        return "rfc5322"
+
+    def _parse_new_format(self, content: str, txt_path: str) -> Dict:
+        """
+        Parsea el nuevo formato de archivos con estructura key-value.
+        Ejemplo:
+            Subject            : Asunto del email
+            SenderName         : Nombre del remitente
+            SenderEmailAddress : sender@example.com
+            To                 : recipient@example.com
+            ReceivedTime       : 6/7/2026 12:13:27
+            HTMLBody           : <!doctype html>...
+        """
+        headers: Dict[str, str] = {}
+        html_body = ""
+        in_html_body = False
+        html_body_lines: List[str] = []
+        
+        lines = content.split("\n")
+        
+        for i, line in enumerate(lines):
+            # Una vez que encontramos HTMLBody, todo lo que sigue es contenido
+            if not in_html_body and line.strip().startswith("HTMLBody"):
+                in_html_body = True
+                # Extraer el valor inicial de HTMLBody si está en la misma línea
+                parts = line.split(":", 1)
+                if len(parts) > 1:
+                    html_body_lines.append(parts[1].strip())
+                continue
+            
+            if in_html_body:
+                html_body_lines.append(line)
+            else:
+                # Parsear headers en formato key-value con espacios variables
+                if ":" in line and not in_html_body:
+                    parts = line.split(":", 1)
+                    if len(parts) == 2:
+                        key = parts[0].strip()
+                        value = parts[1].strip()
+                        if key:  # Ignorar líneas vacías o malformadas
+                            headers[key] = value
+        
+        # Unir el HTMLBody multilinea
+        html_body = "\n".join(html_body_lines).strip()
+        
+        # Mapear los campos del nuevo formato al formato esperado por el resto del código
+        normalized_headers = {
+            "From": headers.get("SenderEmailAddress", ""),
+            "To": headers.get("To", ""),
+            "Subject": headers.get("Subject", ""),
+            "Date": headers.get("ReceivedTime", ""),
+            "SenderName": headers.get("SenderName", ""),
+            "Message-ID": self._generate_message_id(txt_path),
+        }
+        
+        # Detectar si este archivo está confirmado como phishing (comienza con "_")
+        filename = Path(txt_path).name
+        is_confirmed_phishing = filename.startswith("_")
+        
+        # Incorporar el HTMLBody como el contenido del email
+        return {
+            "headers": normalized_headers,
+            "microsoft_urls": "None",
+            "raw_content": html_body if html_body else content,
+            "is_confirmed_phishing": is_confirmed_phishing,
+        }
+
+    def _parse_rfc5322_format(self, content: str) -> Dict:
+        """
+        Parsea el formato antiguo RFC 5322 de headers MIME.
+        """
+        headers: Dict[str, str] = {}
+        microsoft_urls = "None"
+        
+        # Procesar formato HTML: reemplazar <br> con saltos de línea para parseo correcto
+        content_clean = content.replace("<br>", "\n").replace("<br/>", "\n").replace("<br />", "\n")
+        
+        # ESTRATEGIA: Insertar saltos de línea ANTES de headers conocidos
+        headers_list = [
+            'From:', 'To:', 'Subject:', 'Date:', 'Message-ID:', 'Reply-To:',
+            'Content-Type:', 'Content-Transfer-Encoding:', 'Thread-Topic:', 'Thread-Index:',
+            'Accept-Language:', 'Content-Language:', 'MIME-Version:', 'Received:',
+            'X-MS-', 'x-ms-'
+        ]
+        
+        for header_keyword in headers_list:
+            content_clean = re.sub(
+                rf'(\S)\s+({re.escape(header_keyword)})',
+                r'\1\n\2',
+                content_clean
+            )
+        
+        lines = content_clean.split("\n")
+        current_header = None
+        current_value: List[str] = []
+        
+        for line in lines:
+            line_stripped = line.strip()
+            
+            if not line_stripped or line_stripped.startswith("#"):
+                if current_header and line_stripped == "":
+                    if current_header:
+                        headers[current_header] = " ".join(current_value).strip()
+                        current_header = None
+                        current_value = []
+                continue
+            
+            if line and not line[0].isspace() and ":" in line:
+                if current_header:
+                    headers[current_header] = " ".join(current_value).strip()
+                
+                parts = line.split(":", 1)
+                current_header = parts[0].strip()
+                current_value = [parts[1].strip()] if len(parts) > 1 else []
+            
+            elif line and line[0].isspace() and current_header:
+                current_value.append(line.strip())
+        
+        if current_header:
+            headers[current_header] = " ".join(current_value).strip()
+        
+        # Extraer URLs detectadas por Microsoft
+        urls_match = re.search(r'# Questionable URLs detected in message:\s*\n?\s*(.+?)(?:\n|$)', content_clean)
+        if urls_match:
+            microsoft_urls = urls_match.group(1).strip()
+        
+        # Decodificar entidades HTML en los headers
+        for key in headers:
+            headers[key] = html.unescape(headers[key])
+        
+        return {
+            "headers": headers,
+            "microsoft_urls": microsoft_urls,
+            "raw_content": content,
+            "is_confirmed_phishing": False,
+        }
+
+    def _generate_message_id(self, txt_path: str) -> str:
+        """Genera un Message-ID basado en el hash del archivo."""
+        return hashlib.md5(txt_path.encode()).hexdigest() + "@aipa.local"
 
     def parse_txt_file(self, txt_path: str) -> Optional[Dict]:
         try:
@@ -305,80 +455,15 @@ class PhishingAnalyzerTXT:
             log.error("No se pudo leer %s: %s", txt_path, exc)
             return None
 
-        headers: Dict[str, str] = {}
-        microsoft_urls = "None"
-
-        # Procesar formato HTML: reemplazar <br> con saltos de línea para parseo correcto
-        content_clean = content.replace("<br>", "\n").replace("<br/>", "\n").replace("<br />", "\n")
+        # Detectar y parsear según el formato
+        format_type = self._detect_format(content)
         
-        # ESTRATEGIA NUEVA: Insertar saltos de línea ANTES de headers conocidos
-        # para que cada header esté en su propia línea incluso si TODO estaba en una línea
-        headers_list = [
-            'From:', 'To:', 'Subject:', 'Date:', 'Message-ID:', 'Reply-To:',
-            'Content-Type:', 'Content-Transfer-Encoding:', 'Thread-Topic:', 'Thread-Index:',
-            'Accept-Language:', 'Content-Language:', 'MIME-Version:', 'Received:',
-            'X-MS-', 'x-ms-'
-        ]
-        
-        for header_keyword in headers_list:
-            # Reemplazar "word Header:" con "\nHeader:" si está al medio de una línea
-            content_clean = re.sub(
-                rf'(\S)\s+({re.escape(header_keyword)})',
-                r'\1\n\2',
-                content_clean
-            )
-        
-        # Ahora procesar como RFC 5322 estándar
-        lines = content_clean.split("\n")
-        current_header = None
-        current_value: List[str] = []
-        
-        for line in lines:
-            line_stripped = line.strip()
-            
-            # Saltar líneas vacías y comentarios
-            if not line_stripped or line_stripped.startswith("#"):
-                if current_header and line_stripped == "":
-                    # Una línea vacía termina el header actual
-                    if current_header:
-                        headers[current_header] = " ".join(current_value).strip()
-                        current_header = None
-                        current_value = []
-                continue
-            
-            # Detectar nueva cabecera: NO empieza con espacio y contiene ":"
-            if line and not line[0].isspace() and ":" in line:
-                # Guardar cabecera anterior si existe
-                if current_header:
-                    headers[current_header] = " ".join(current_value).strip()
-                
-                # Procesar nueva cabecera
-                parts = line.split(":", 1)
-                current_header = parts[0].strip()
-                current_value = [parts[1].strip()] if len(parts) > 1 else []
-            
-            # Línea de continuación (empieza con espacio)
-            elif line and line[0].isspace() and current_header:
-                current_value.append(line.strip())
-
-        # Guardar última cabecera
-        if current_header:
-            headers[current_header] = " ".join(current_value).strip()
-
-        # Extraer URLs detectadas por Microsoft
-        urls_match = re.search(r'# Questionable URLs detected in message:\s*\n?\s*(.+?)(?:\n|$)', content_clean)
-        if urls_match:
-            microsoft_urls = urls_match.group(1).strip()
-
-        # Decodificar entidades HTML en los headers (ej: &lt; &gt; &quot;)
-        for key in headers:
-            headers[key] = html.unescape(headers[key])
-
-        return {
-            "headers":       headers,
-            "microsoft_urls": microsoft_urls,
-            "raw_content":   content,
-        }
+        if format_type == "new_format":
+            log.debug("Detectado nuevo formato (key-value) para %s", txt_path)
+            return self._parse_new_format(content, txt_path)
+        else:
+            log.debug("Detectado formato RFC 5322 para %s", txt_path)
+            return self._parse_rfc5322_format(content)
 
     # ------------------------------------------------------------------
     # Extracción de datos auxiliares
@@ -388,7 +473,24 @@ class PhishingAnalyzerTXT:
         url_pattern = r"https?://[^\s<>\"{}|\\^`\[\]]+"
         return list(set(re.findall(url_pattern, content)))
 
-    def extract_reporter_from_content(self, content: str) -> str:
+    def extract_reporter_from_content(self, content: str, headers: Optional[Dict] = None) -> str:
+        """
+        Extrae el email del reportero desde los headers del email.
+        Intenta primero desde los headers normalizados, luego desde el contenido.
+        """
+        # Intentar desde headers first (soporta ambos formatos)
+        if headers and "To" in headers:
+            to_line = headers["To"].strip()
+            if to_line:
+                # Intentar extraer email entre < >
+                email_match = re.search(r"<([^>]+)>", to_line)
+                if email_match:
+                    return email_match.group(1)
+                # Si no hay < >, devolver el To directamente
+                if "@" in to_line:
+                    return to_line
+        
+        # Fallback: buscar en el contenido
         match = re.search(r"^To:\s*(.+)$", content, re.MULTILINE)
         if match:
             to_line = match.group(1)
@@ -396,6 +498,7 @@ class PhishingAnalyzerTXT:
             if email_match:
                 return email_match.group(1)
             return to_line.strip()
+        
         return "unknown@example.com"
 
     def extract_sender_ip(self, headers: Dict) -> str:
@@ -771,9 +874,16 @@ Responde ÚNICAMENTE con JSON:
         headers        = parsed["headers"]
         microsoft_urls = parsed["microsoft_urls"]
         content        = parsed["raw_content"]
+        is_confirmed_phishing = parsed.get("is_confirmed_phishing", False)
+        
         from_email     = headers.get("From", "")
         reply_to       = self.extract_reply_to(headers)
         sender_ip      = self.extract_sender_ip(headers)
+
+        # Registrar si es phishing confirmado
+        if is_confirmed_phishing:
+            log.warning("⚠️ PHISHING CONFIRMADO (archivo comienza con '_'): %s from %s", 
+                       Path(file_path).name, from_email)
 
         # --- Whitelist: clasificación rápida, pero con indicadores REALES ---
         if self.check_whitelist(from_email):
@@ -785,7 +895,7 @@ Responde ÚNICAMENTE con JSON:
                 mensaje_id          = headers.get("Message-ID", hashlib.md5(file_path.encode()).hexdigest()),
                 classification      = "legitimo",
                 confidence          = 1.0,
-                reporter_email      = self.extract_reporter_from_content(content),
+                reporter_email      = self.extract_reporter_from_content(content, headers),
                 original_subject    = headers.get("Subject", "N/A"),
                 original_from       = from_email,
                 reply_to            = reply_to,
@@ -842,7 +952,7 @@ Responde ÚNICAMENTE con JSON:
             mensaje_id          = headers.get("Message-ID", hashlib.md5(file_path.encode()).hexdigest()),
             classification      = llm_result.get("classification", "sospechoso"),
             confidence          = llm_result.get("confidence", 0.5),
-            reporter_email      = self.extract_reporter_from_content(content),
+            reporter_email      = self.extract_reporter_from_content(content, headers),
             original_subject    = headers.get("Subject", "N/A"),
             original_from       = from_email,
             reply_to            = reply_to,

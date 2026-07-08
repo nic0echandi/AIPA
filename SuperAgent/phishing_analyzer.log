@@ -37,3 +37,12 @@
 2026-06-25T16:46:54 | INFO     | phishing_analyzer | Whitelist cargada: 0 dominios
 2026-06-25T16:47:01 | WARNING  | phishing_analyzer | jsonschema no instalado — validación de config omitida.
 2026-06-25T16:47:01 | INFO     | phishing_analyzer | Whitelist cargada: 0 dominios
+2026-07-08T14:54:30 | INFO     | phishing_analyzer | config.json validado correctamente.
+2026-07-08T14:54:30 | INFO     | phishing_analyzer | Whitelist cargada: 0 dominios
+2026-07-08T14:54:53 | INFO     | phishing_analyzer | config.json validado correctamente.
+2026-07-08T14:54:53 | INFO     | phishing_analyzer | Whitelist cargada: 0 dominios
+2026-07-08T14:55:35 | INFO     | phishing_analyzer | config.json validado correctamente.
+2026-07-08T14:55:35 | INFO     | phishing_analyzer | Whitelist cargada: 0 dominios
+2026-07-08T14:56:36 | INFO     | phishing_analyzer | config.json validado correctamente.
+2026-07-08T14:56:36 | INFO     | phishing_analyzer | Whitelist cargada: 0 dominios
+2026-07-08T14:56:36 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [Errno 111] Connection refused")) — usando fallback.

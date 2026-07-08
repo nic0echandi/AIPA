@@ -7,3 +7,4 @@ testing/*.log
 testing/test_log.txt
 testing/phishing_analyzer.log
 revisar/*.*
+SuperAgent/manual_review/*.*

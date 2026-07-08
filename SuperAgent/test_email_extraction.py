@@ -27,13 +27,13 @@ def test_email_extraction():
     # Casos de prueba
     test_cases = [
         # (entrada, descripción, email_esperado)
-        ("Campuzano Eliana &lt;eliana.campuzano@tmoviles.com.ar&gt;", 
+        ("Campuzano Eliana &lt;email.test@company.com&gt;", 
          "HTML entities (real case)", 
-         "eliana.campuzano@tmoviles.com.ar"),
+         "email.test@company.com"),
         
-        ("Campuzano Eliana <eliana.campuzano@tmoviles.com.ar>", 
+        ("Campuzano Eliana <email.test@company.com>", 
          "Formato estándar con < >", 
-         "eliana.campuzano@tmoviles.com.ar"),
+         "email.test@company.com"),
         
         ("user@example.com", 
          "Solo email", 
