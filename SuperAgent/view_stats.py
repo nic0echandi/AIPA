@@ -109,6 +109,32 @@ def print_year_summary(stats_obj, year):
     print()
 
 
+def get_latest_month_with_data(stats_obj) -> tuple:
+    """Encuentra el mes más reciente que tiene datos."""
+    # Recorrer desde mes actual hacia atrás
+    now = datetime.now()
+    current_year = now.year
+    current_month = now.month
+    
+    # Buscar en los últimos 12 meses
+    for months_back in range(0, 13):
+        year = current_year
+        month = current_month - months_back
+        
+        if month <= 0:
+            year -= 1
+            month += 12
+        
+        year_str = str(year)
+        month_str = f"{month:02d}"
+        
+        if year_str in stats_obj.stats and month_str in stats_obj.stats[year_str]:
+            if stats_obj.stats[year_str][month_str].get("total", 0) > 0:
+                return (year, month)
+    
+    # Si no hay datos, retornar mes actual
+    return (current_year, current_month)
+
 def main():
     parser = argparse.ArgumentParser(
         description="Visualizador de estadísticas de SuperAgent"
@@ -152,8 +178,17 @@ def main():
         # Año completo
         print_year_summary(stats, args.year)
     else:
-        # Mes actual por defecto
-        print_month_summary(stats, now.year, now.month)
+        # Mostrar mes actual si tiene datos, sino el mes más reciente
+        summary = stats.get_month_summary(str(now.year), f"{now.month:02d}")
+        
+        if summary['total'] == 0:
+            # No hay datos del mes actual, buscar mes más reciente
+            latest_year, latest_month = get_latest_month_with_data(stats)
+            if (latest_year, latest_month) != (now.year, now.month):
+                print(f"ℹ️  No hay datos para {now.month:02d}/{now.year}. Mostrando mes más reciente con datos:\n")
+            print_month_summary(stats, latest_year, latest_month)
+        else:
+            print_month_summary(stats, now.year, now.month)
 
 
 if __name__ == "__main__":
