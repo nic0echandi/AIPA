@@ -186,11 +186,15 @@ class UsageStats:
             "knn_accuracy": data["knn_accuracy"],
         }
         
-        # Precisión del KNN
-        knn_total = data["knn_accuracy"]["correct"] + data["knn_accuracy"]["incorrect"]
+        # Precisión del KNN (con acceso defensivo)
+        knn_data = data.get("knn_accuracy", {})
+        knn_correct = knn_data.get("correct", 0)
+        knn_incorrect = knn_data.get("incorrect", 0)
+        knn_total = knn_correct + knn_incorrect
+        
         if knn_total > 0:
             summary["knn_accuracy_pct"] = round(
-                data["knn_accuracy"]["correct"] / knn_total * 100, 1
+                knn_correct / knn_total * 100, 1
             )
         else:
             summary["knn_accuracy_pct"] = 0
@@ -309,11 +313,18 @@ class UsageStats:
         report.append("")
         
         # KNN Accuracy
-        knn_acc = month_summary["knn_accuracy"]
+        knn_acc = month_summary.get("knn_accuracy", {})
+        knn_correct = knn_acc.get("correct", 0)
+        knn_incorrect = knn_acc.get("incorrect", 0)
+        knn_acc_pct = month_summary.get("knn_accuracy_pct", 0)
+        
         report.append("🎯 Precisión del KNN (mes actual):")
-        report.append(f"  • Correctas: {knn_acc['correct']}")
-        report.append(f"  • Incorrectas: {knn_acc['incorrect']}")
-        report.append(f"  • Tasa de acierto: {month_summary['knn_accuracy_pct']:.1f}%")
+        if knn_correct + knn_incorrect > 0:
+            report.append(f"  • Correctas: {knn_correct}")
+            report.append(f"  • Incorrectas: {knn_incorrect}")
+            report.append(f"  • Tasa de acierto: {knn_acc_pct:.1f}%")
+        else:
+            report.append("  • Sin datos de KNN para este mes")
         report.append("")
         
         # Historial por mes
