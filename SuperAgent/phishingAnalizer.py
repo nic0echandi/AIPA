@@ -294,6 +294,48 @@ class PhishingAnalyzerTXT:
         return None
 
     # ------------------------------------------------------------------
+    # Extracción de email del remitente (maneja X.500 / LDAP DN)
+    # ------------------------------------------------------------------
+
+    def extract_sender_email(self, from_header: str) -> str:
+        """
+        Extrae email del remitente desde varios formatos:
+        - Formato X.500: '/O=EXCHANGELABS/OU=.../.../SMTP:email@example.com'
+        - Formato RFC 5322: 'Name <email@example.com>'
+        - Email simple: 'email@example.com'
+        - Con entidades HTML: '&lt;email@example.com&gt;'
+        Retorna el email limpio o 'unknown@exchange.local' si no se encuentra.
+        """
+        if not from_header or not isinstance(from_header, str):
+            return "unknown@exchange.local"
+        
+        from_header = from_header.strip()
+        from_header = html.unescape(from_header)
+        
+        # Caso 1: Formato X.500 con SMTP - buscar SMTP: o smtp:
+        # Patrón: "... SMTP:email@example.com" o "SMTP:email@example.com"
+        smtp_match = re.search(r'[Ss][Mm][Tt][Pp]:([^/\s,;]+@[^/\s,;]+)', from_header)
+        if smtp_match:
+            email = smtp_match.group(1).strip()
+            if email and '@' in email:
+                return email
+        
+        # Caso 2: Formato "Name <email@example.com>"
+        if '<' in from_header and '>' in from_header:
+            email = from_header[from_header.find('<')+1:from_header.find('>')].strip()
+            if email and '@' in email:
+                return email
+        
+        # Caso 3: Búsqueda simple de email (contiene @)
+        # Extraer parte con @ y evitar caracteres inválidos
+        email_match = re.search(r'([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})', from_header)
+        if email_match:
+            return email_match.group(1).strip()
+        
+        # Caso 4: No se encontró email válido
+        return "unknown@exchange.local"
+
+    # ------------------------------------------------------------------
     # Parseo del archivo .txt (v0.9: soporte nuevo formato key-value)
     # ------------------------------------------------------------------
 
@@ -897,7 +939,7 @@ Responde ÚNICAMENTE con JSON:
                 confidence          = 1.0,
                 reporter_email      = self.extract_reporter_from_content(content, headers),
                 original_subject    = headers.get("Subject", "N/A"),
-                original_from       = from_email,
+                original_from       = self.extract_sender_email(from_email),
                 reply_to            = reply_to,
                 sender_ip           = sender_ip,
                 ip_reputation       = ip_rep,
@@ -954,7 +996,7 @@ Responde ÚNICAMENTE con JSON:
             confidence          = llm_result.get("confidence", 0.5),
             reporter_email      = self.extract_reporter_from_content(content, headers),
             original_subject    = headers.get("Subject", "N/A"),
-            original_from       = from_email,
+            original_from       = self.extract_sender_email(from_email),
             reply_to            = reply_to,
             sender_ip           = sender_ip,
             ip_reputation       = ip_rep,

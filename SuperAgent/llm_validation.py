@@ -205,21 +205,29 @@ class LLMValidator:
         if validation_result["recommendation"] != "REVIEW":
             return
         
+        headers = email_data.get("headers", {})
+        
         review_file = (
             self.manual_review_dir /
             f"{file_path.stem}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
         )
         
+        review_data = {
+            "original_file": str(file_path),
+            "from": headers.get("From", ""),
+            "subject": headers.get("Subject", ""),
+            "to": headers.get("To", ""),
+            "message_id": headers.get("Message-ID", ""),
+            "classification_llm": llm_result.get("classification"),
+            "confidence_llm": llm_result.get("confidence"),
+            "risk_score": llm_result.get("risk_score", "N/A"),
+            "validation": validation_result,
+            "reasons": llm_result.get("reasons", [])[:5],  # Primeras 5 razones
+            "timestamp": datetime.now().isoformat()
+        }
+        
         with open(review_file, "w") as f:
-            json.dump({
-                "original_file": str(file_path),
-                "from": email_data.get("headers", {}).get("From", ""),
-                "subject": email_data.get("headers", {}).get("Subject", ""),
-                "classification_llm": llm_result.get("classification"),
-                "confidence_llm": llm_result.get("confidence"),
-                "validation": validation_result,
-                "timestamp": datetime.now().isoformat()
-            }, f, indent=2)
+            json.dump(review_data, f, indent=2, ensure_ascii=False)
         
         log.warning(f"📋 Email para revisión manual: {review_file}")
         return review_file

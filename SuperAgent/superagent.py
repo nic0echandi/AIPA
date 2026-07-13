@@ -111,32 +111,53 @@ class SuperAgent2:
     """
     
     @staticmethod
+    @staticmethod
     def extract_email_from_address(address: str) -> str:
-        """Extrae email de una dirección que puede tener formato 'Name <email@example.com>'
-        Maneja entidades HTML (&lt; &gt;) y formatos sin ángulos.
+        """Extrae email de una dirección que puede tener múltiples formatos:
+        - 'Name <email@example.com>' (RFC 5322)
+        - 'SMTP:email@example.com' (X.500 Exchange)
+        - '/O=ORG/OU=UNIT/.../SMTP:email@example.com' (LDAP DN)
+        - 'email@example.com' (simple)
+        - 'Name email@example.com' (separados)
         """
         import html
-        if not address:
-            return ""
+        import re
+        
+        if not address or not isinstance(address, str):
+            return "unknown@exchange.local"
+        
+        address = address.strip()
         
         # Decodificar entidades HTML (&lt; &gt; etc.)
         address = html.unescape(address)
         
-        # Caso 1: Formato "Name <email@example.com>"
+        # Caso 1: Formato X.500 con SMTP - buscar SMTP: o smtp:
+        # Patrón: "... SMTP:email@example.com" o "SMTP:email@example.com"
+        smtp_match = re.search(r'[Ss][Mm][Tt][Pp]:([^/\s,;]+@[^/\s,;]+)', address)
+        if smtp_match:
+            email = smtp_match.group(1).strip()
+            if email and '@' in email:
+                return email
+        
+        # Caso 2: Formato "Name <email@example.com>"
         if '<' in address and '>' in address:
-            return address[address.find('<')+1:address.find('>')].strip()
+            email = address[address.find('<')+1:address.find('>')].strip()
+            if email and '@' in email:
+                return email
         
-        # Caso 2: Dirección simple o solo nombre + email separados
-        # Ej: "email@example.com" o "Name email@example.com"
-        parts = address.split()
-        if parts:
-            # Buscar la parte que parece un email (contiene @)
-            for part in reversed(parts):  # Empezar desde atrás
-                if '@' in part:
-                    return part.strip()
+        # Caso 3: Búsqueda simple de email (contiene @)
+        # Extraer parte con @ y evitar caracteres inválidos
+        email_match = re.search(r'([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})', address)
+        if email_match:
+            return email_match.group(1).strip()
         
-        # Caso 3: No es un email válido
-        return address.strip()
+        # Caso 4: No se encontró email válido
+        # Devolver "unknown" + dominio si está disponible o fallback genérico
+        if address and not address.startswith('/O='):
+            # Si no es LDAP DN, devolver lo que sea (podría ser un nombre)
+            return "unknown@exchange.local"
+        
+        return "unknown@exchange.local"
     
     def _print_monthly_stats(self):
         """Imprime estadísticas mensuales en los logs."""
@@ -352,10 +373,12 @@ class SuperAgent2:
         log.info(f"  [RAW To] '{to_raw}'")
         log.info(f"  [RAW From] '{from_raw}'")
         
-        from_email = headers.get("From", "")
+        # Extraer emails limpiando formatos X.500, HTML entities, etc.
+        from_email = self.extract_email_from_address(headers.get("From", ""))
         to_email = self.extract_email_from_address(headers.get("To", ""))
         
         log.info(f"  [EXTRACT To] → '{to_email}'")
+        log.info(f"  [EXTRACT From] → '{from_email}'")
         log.info(f"  De: {from_email}")
         log.info(f"  Para (reporter): {to_email}")
         
@@ -436,7 +459,7 @@ class SuperAgent2:
             confidence=knn_result["confidence"],
             reporter_email=self.extract_email_from_address(headers.get("To", "")),
             original_subject=headers.get("Subject", "N/A"),
-            original_from=headers.get("From", "N/A"),
+            original_from=self.extract_email_from_address(headers.get("From", "")),
             reply_to=self.analyzer.extract_reply_to(headers),
             sender_ip=sender_ip,
             ip_reputation=ip_rep,
@@ -491,7 +514,12 @@ class SuperAgent2:
         
         # ✨ MEJORA ETAPA 1: Validación LLM antes de actuar
         if classification_source == "llm":
-            llm_result = {"classification": classification, "confidence": analysis.confidence}
+            llm_result = {
+                "classification": classification,
+                "confidence": analysis.confidence,
+                "risk_score": analysis.risk_score,
+                "reasons": analysis.reasons
+            }
             validation = self.llm_validator.validate(
                 self.last_email_headers,
                 self.last_email_content,
