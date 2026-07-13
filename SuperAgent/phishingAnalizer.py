@@ -1004,72 +1004,13 @@ Responde ÚNICAMENTE con JSON:
             log.error("Webhook falló definitivamente (%s)", webhook_type)
 
     def create_iris_case(self, analysis: EmailAnalysis):
-        iris_cfg = self.config.get("iris_dfir", {})
-        iris_url = iris_cfg.get("url", "")
-        iris_key = iris_cfg.get("api_key", "")
-
-        if not iris_url or not iris_key:
-            log.warning("IRIS DFIR no configurado — caso no creado.")
-            return None
-
-        verify_ssl = iris_cfg.get("verify_ssl", True)
-        if not verify_ssl:
-            import urllib3
-            urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
-        case_data = {
-            "case_name": f"Phishing: {analysis.original_subject[:50]}",
-            "case_description": (
-                f"**From:** {analysis.original_from}\n"
-                f"**Reply-To:** {analysis.reply_to or 'N/A'}\n"
-                f"**Subject:** {analysis.original_subject}\n"
-                f"**Reporter:** {analysis.reporter_email}\n"
-                f"**Risk Score:** {analysis.risk_score}/100\n"
-                f"**Confidence:** {analysis.confidence:.0%}\n\n"
-                f"**IP Origen:** {analysis.sender_ip} "
-                f"(AbuseScore: {analysis.ip_reputation.get('abuse_score', 'N/A')})\n\n"
-                f"**Microsoft URL Check:** {analysis.microsoft_url_check}\n\n"
-                f"**Indicadores:**\n"
-                f"- SPF: {analysis.indicators.get('spf', 'unknown')}\n"
-                f"- DKIM: {analysis.indicators.get('dkim', 'unknown')}\n"
-                f"- DMARC: {analysis.indicators.get('dmarc', 'unknown')}\n\n"
-                f"**Razones de sospecha:**\n"
-                + "\n".join(f"- {r}" for r in analysis.reasons[:10]) +
-                f"\n\n**URLs encontradas:**\n"
-                + "\n".join(f"- {u}" for u in analysis.urls_found)
-            ),
-            "case_customer":       iris_cfg.get("default_customer_id", 1),
-            "classification_id":   iris_cfg.get("default_classification", 30),
-            "case_soc_id":         "",
-            "case_tags":           "phishing,email-security,automated",
-            "custom_attributes": {
-                "risk_score":          analysis.risk_score,
-                "reporter":            analysis.reporter_email,
-                "sender_ip":           analysis.sender_ip,
-                "ip_abuse_score":      analysis.ip_reputation.get("abuse_score", -1),
-                "microsoft_url_check": analysis.microsoft_url_check,
-            }
-        }
-
-        auth_headers = {
-            "Authorization": f"Bearer {iris_key}",
-            "Content-Type":  "application/json",
-        }
-
-        resp = retry_post(
-            f"{iris_url}/api/v2/cases",
-            case_data,
-            headers=auth_headers,
-            verify_ssl=verify_ssl
-        )
-
-        if resp:
-            case_id = resp.json().get("data", {}).get("case_id", "?")
-            log.info("Caso IRIS creado: #%s", case_id)
-            return case_id
-        else:
-            log.error("No se pudo crear caso IRIS para: %s", analysis.original_subject)
-            return None
+        """
+        Registro de alerta en IRIS - DEPRECADO
+        Usar _register_alert_in_iris en superagent.py en su lugar.
+        Este método se mantiene por compatibilidad hacia atrás.
+        """
+        log.warning("create_iris_case está DEPRECADO - use _register_alert_in_iris de superagent.py")
+        return None
 
     def save_analysis(self, analysis: EmailAnalysis):
         output_dir = Path("analysis_results")

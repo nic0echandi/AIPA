@@ -37,11 +37,11 @@
     "from": "security-alerts@example.com"
   },
   "iris_dfir": {
-    "url": "https://iris.example.com/alerts/add",
+    "url": "http://ejemploiris:8000/alerts/add",
     "api_key": "your_iris_api_key",
-    "verify_ssl": true,
+    "verify_ssl": false,
     "iris_version": "2.5.0",
     "default_customer_id": 1,
-    "default_severity": "high"
+    "source_link_template": "http://ejemploiris:8000/alerts?msg_id={msg_id}"
   }
 }

@@ -530,37 +530,54 @@ class SuperAgent2:
         self._move_to_processed(file_path, classification)
     
     def _register_alert_in_iris(self, analysis: EmailAnalysis):
-        """Registra alerta en IRIS 2.5.0 usando endpoint de alertas."""
+        """Registra alerta en IRIS usando endpoint /alerts/add."""
         iris_cfg = self.config.get("iris_dfir", {})
         url = iris_cfg.get("url", "")
         api_key = iris_cfg.get("api_key", "")
         customer_id = iris_cfg.get("default_customer_id", 1)
-        iris_version = iris_cfg.get("iris_version", "2.5.0")
         
         if not url or not api_key:
             log.warning("IRIS DFIR no configurado correctamente - alerta NO registrada")
             return
         
         import requests
+        from datetime import datetime
         
-        # Estructura de alertas compatible con IRIS 2.5.0
+        # Estructura de alertas compatible con IRIS (basada en ejemplo verificado)
         data = {
-            "alert_title": f"[SuperAgent] {analysis.original_subject}",
-            "alert_description": f"Phishing reportado por: {analysis.reporter_email}\n"
-                                 f"Remitente: {analysis.original_from}\n"
-                                 f"Asunto: {analysis.original_subject}\n"
-                                 f"Score de riesgo: {analysis.risk_score}/100",
-            "alert_source": "SuperAgent",
-            "alert_severity": iris_cfg.get("default_severity", "high"),
-            "alert_status": "new",
-            "customer_id": customer_id,
-            "alert_type": "phishing",
-            "message_id": analysis.mensaje_id,
-            "source_email": analysis.original_from,
-            "recipient_email": analysis.reporter_email,
-            "risk_score": analysis.risk_score,
-            "classification": analysis.classification,
-            "analysis_date": analysis.analysis_date
+            "alert_title": "Alertas AIPA - Posible Phishing",
+            "alert_severity_id": 1,  # 1=Critical, 2=High, 3=Medium, 4=Low
+            "alert_status_id": 3,     # Estado nuevo/sin procesar
+            "alert_customer_id": customer_id,
+            "alert_source_event_time": analysis.analysis_date or datetime.utcnow().isoformat() + "Z",
+            "alert_source_link": iris_cfg.get("source_link_template", "").format(msg_id=analysis.mensaje_id),
+            "alert_source_content": {
+                "id": analysis.mensaje_id,
+                "muid": analysis.mensaje_id,
+                "timeStamp": analysis.analysis_date or datetime.utcnow().isoformat() + "Z",
+                "machineName": "AIPA-SERVER",
+                "clientId": "email-security",
+                "alertDateTime": analysis.analysis_date or datetime.utcnow().isoformat() + "Z",
+                "aipaAlertId": f"AIPA-{analysis.risk_score}-PHISHING",
+                "directLink": iris_cfg.get("source_link_template", "").format(msg_id=analysis.mensaje_id),
+                "details": {
+                    "mensaje_id": analysis.mensaje_id,
+                    "remitente": analysis.original_from,
+                    "asunto": analysis.original_subject,
+                    "reportero": analysis.reporter_email,
+                    "reply_to": analysis.reply_to or "N/A",
+                    "clasificacion": analysis.classification,
+                    "risk_score": analysis.risk_score,
+                    "confianza": f"{analysis.confidence:.0%}",
+                    "ip_origen": analysis.sender_ip or "N/A",
+                    "abuse_score": analysis.ip_reputation.get("abuse_score", -1) if analysis.ip_reputation else -1,
+                    "spf": analysis.indicators.get("spf", "unknown"),
+                    "dkim": analysis.indicators.get("dkim", "unknown"),
+                    "dmarc": analysis.indicators.get("dmarc", "unknown"),
+                    "urls_encontradas": analysis.urls_found or [],
+                    "razones": analysis.reasons[:10] or []  # Primeras 10 razones
+                }
+            }
         }
         
         headers = {
@@ -568,49 +585,33 @@ class SuperAgent2:
             "Content-Type": "application/json"
         }
         
-        log.info(f"Intentando registrar alerta en IRIS {iris_version} (URL: {url})")
+        log.info(f"Registrando alerta en IRIS: {url}")
         
         try:
-            response = requests.post(url, json=data, headers=headers, timeout=10)
-            response.raise_for_status()
+            response = requests.post(url, json=data, headers=headers, timeout=10, verify=False)
             
-            # Intentar extraer ID de alerta de la respuesta
-            alert_id = None
-            try:
-                response_json = response.json()
-                alert_id = response_json.get("alert_id") or response_json.get("id")
-            except:
-                alert_id = None
-            
-            if alert_id:
-                log.info(f"✓ ÉXITO: Alerta creada en IRIS {iris_version} | "
-                        f"Alert ID: {alert_id} | Mensaje ID: {analysis.mensaje_id} | "
-                        f"Status: {response.status_code}")
+            if response.status_code in (200, 201):
+                try:
+                    response_json = response.json()
+                    alert_id = response_json.get("alert_id") or response_json.get("id") or response_json.get("data", {}).get("id")
+                    if alert_id:
+                        log.info(f"✓ ÉXITO: Alerta registrada en IRIS | Alert ID: {alert_id} | Mensaje: {analysis.mensaje_id}")
+                    else:
+                        log.info(f"✓ ÉXITO: Alerta registrada en IRIS | Status: {response.status_code} | Mensaje: {analysis.mensaje_id}")
+                except:
+                    log.info(f"✓ ÉXITO: Alerta registrada en IRIS | Status: {response.status_code}")
             else:
-                log.info(f"✓ ÉXITO: Alerta registrada en IRIS {iris_version} | "
-                        f"Mensaje ID: {analysis.mensaje_id} | Status: {response.status_code}")
+                error_detail = response.text[:200] if response.text else "Sin detalles"
+                log.error(f"✗ ERROR HTTP {response.status_code}: {error_detail} | Mensaje: {analysis.mensaje_id}")
         
         except requests.exceptions.Timeout:
-            log.error(f"✗ TIMEOUT: Conexión con IRIS {iris_version} expiró después de 10s | "
-                     f"Mensaje ID: {analysis.mensaje_id}")
-        
-        except requests.exceptions.HTTPError as exc:
-            error_msg = str(exc)
-            try:
-                error_detail = exc.response.text
-            except:
-                error_detail = "Sin detalles"
-            log.error(f"✗ ERROR HTTP: No se pudo registrar alerta en IRIS {iris_version} | "
-                     f"Status: {exc.response.status_code if exc.response else 'N/A'} | "
-                     f"Detalle: {error_detail} | Mensaje ID: {analysis.mensaje_id}")
+            log.error(f"✗ TIMEOUT: Conexión con IRIS expiró | Mensaje: {analysis.mensaje_id}")
         
         except requests.exceptions.ConnectionError as exc:
-            log.error(f"✗ ERROR CONEXIÓN: No se puede conectar a IRIS en {url} | "
-                     f"Detalle: {exc} | Mensaje ID: {analysis.mensaje_id}")
+            log.error(f"✗ ERROR CONEXIÓN: No se puede conectar a {url} | Detalles: {exc}")
         
         except Exception as exc:
-            log.error(f"✗ ERROR: Fallo registrando alerta en IRIS {iris_version} | "
-                     f"Excepción: {type(exc).__name__}: {exc} | Mensaje ID: {analysis.mensaje_id}")
+            log.error(f"✗ ERROR: {type(exc).__name__}: {exc} | Mensaje: {analysis.mensaje_id}")
     
     def _notify_reporter(self, analysis: EmailAnalysis, classification: str):
         """Envía notificación por email al reporter (persona que reportó el email)."""
