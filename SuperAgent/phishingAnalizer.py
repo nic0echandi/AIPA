@@ -924,7 +924,7 @@ Responde ÚNICAMENTE con JSON:
 
         # Registrar si es phishing confirmado
         if is_confirmed_phishing:
-            log.warning("⚠️ PHISHING CONFIRMADO (archivo comienza con '_'): %s from %s", 
+            log.warning("[CONFIRMED] PHISHING CONFIRMADO (archivo comienza con '_'): %s from %s", 
                        Path(file_path).name, from_email)
 
         # --- Whitelist: clasificación rápida, pero con indicadores REALES ---

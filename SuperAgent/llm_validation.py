@@ -229,5 +229,5 @@ class LLMValidator:
         with open(review_file, "w") as f:
             json.dump(review_data, f, indent=2, ensure_ascii=False)
         
-        log.warning(f"📋 Email para revisión manual: {review_file}")
+        log.warning(f"[REVIEW] Email para revisión manual: {review_file}")
         return review_file

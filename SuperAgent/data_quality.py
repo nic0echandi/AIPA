@@ -155,7 +155,7 @@ class DataQualityController:
         with open(self.quarantine_log, "a") as f:
             f.write(json.dumps(record) + "\n")
         
-        log.warning(f"⚠️  Ejemplo en cuarentena: {quarantine_file}")
+        log.warning(f"[QUARANTINE] Ejemplo en cuarentena: {quarantine_file}")
         return quarantine_file
     
     def get_quarantine_summary(self) -> Dict:

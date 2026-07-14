@@ -165,11 +165,11 @@ class SuperAgent2:
         month_data = summary["mes_actual"]
         
         if month_data["total"] > 0:
-            log.info("📊 Estadísticas del mes actual:")
+            log.info("[STATS] Estadísticas del mes actual:")
             log.info(f"  Total procesados: {month_data['total']}")
-            log.info(f"  • Legítimos: {month_data['by_classification'].get('legitimo', 0)}")
-            log.info(f"  • Spam: {month_data['by_classification'].get('spam', 0)}")
-            log.info(f"  • Sospechosos: {month_data['by_classification'].get('sospechoso', 0)}")
+            log.info(f"  - Legítimos: {month_data['by_classification'].get('legitimo', 0)}")
+            log.info(f"  - Spam: {month_data['by_classification'].get('spam', 0)}")
+            log.info(f"  - Sospechosos: {month_data['by_classification'].get('sospechoso', 0)}")
             log.info(f"  Decisiones por: WL:{month_data['by_source'].get('whitelist', 0)} KNN:{month_data['by_source'].get('knn', 0)} LLM:{month_data['by_source'].get('llm', 0)}")
 
     
@@ -216,18 +216,18 @@ class SuperAgent2:
         log.info(f"  Log level:     {self.config.get('log_level', 'INFO')}")
         log.info("=" * 70)
         
-        # ✨ MEJORA ETAPA 1: Validadores
+        # Mejoras etapa 1: Validadores
         self.llm_validator = LLMValidator(self.config)
         self.quality_controller = DataQualityController(self.config)
-        log.info("✓ Validadores cargados: LLM + Data Quality")
+        log.info("[OK] Validadores cargados: LLM + Data Quality")
         
-        # ✨ Recarga automática de whitelist
+        # Recarga automática de whitelist
         whitelist_path = self.config.get("whitelist_path", "whitelist.txt")
         self.whitelist_path = Path(whitelist_path)
         self.whitelist_mtime = 0
         if self.whitelist_path.exists():
             self.whitelist_mtime = self.whitelist_path.stat().st_mtime
-            log.info(f"✓ Monitoreo de whitelist activado: {self.whitelist_path}")
+            log.info(f"[OK] Monitoreo de whitelist activado: {self.whitelist_path}")
         
         # Mostrar estadísticas mensuales iniciales
         self._print_monthly_stats()
@@ -289,13 +289,13 @@ class SuperAgent2:
             
             # Si el archivo fue modificado
             if current_mtime > self.whitelist_mtime:
-                log.info(f"📋 Whitelist actualizado detectado. Recargando...")
+                log.info(f"[WATCH] Whitelist actualizado detectado. Recargando...")
                 
                 # Recargar whitelist en el analyzer
                 self.analyzer.whitelist = self.analyzer._load_whitelist()
                 
                 self.whitelist_mtime = current_mtime
-                log.info(f"✓ Whitelist recargado exitosamente ({len(self.analyzer.whitelist)} dominios)")
+                log.info(f"[OK] Whitelist recargado exitosamente ({len(self.analyzer.whitelist)} dominios)")
         
         except Exception as exc:
             log.error(f"Error recargando whitelist: {exc}")
@@ -416,7 +416,7 @@ class SuperAgent2:
             classification_source = "knn"
         else:
             log.info(
-                f"KNN inseguro ({knn_result['confidence'] * 100:.0f}%) → "
+                f"KNN inseguro ({knn_result['confidence'] * 100:.0f}%) - "
                 f"escalando a análisis profundo..."
             )
             analysis = self.analyzer.analyze_txt_file(str(file_path))
@@ -425,7 +425,7 @@ class SuperAgent2:
                 analysis.reporter_email = to_email
                 analysis.reasons = [
                     f"KNN: {knn_result['classification']} ({knn_result['confidence']:.0%}) "
-                    f"→ LLM refinement"
+                    f"-> LLM refinement"
                 ] + analysis.reasons
             classification_source = "llm"
         
@@ -490,7 +490,7 @@ class SuperAgent2:
         
         classification = analysis.classification
         log.info(
-            f"RESULTADO → {classification.upper()} | Score: {analysis.risk_score}/100 | "
+            f"RESULTADO: {classification.upper()} | Score: {analysis.risk_score}/100 | "
             f"Confianza: {analysis.confidence * 100:.0f}%"
         )
         
@@ -531,7 +531,7 @@ class SuperAgent2:
             log.info(f"Validación LLM: {validation['recommendation']} (confianza: {validation['confidence']:.0%})")
             
             if validation["recommendation"] == "REVIEW":
-                log.warning(f"⚠️  Email para revisión manual: {', '.join(validation['flags'])}")
+                log.warning(f"[REVIEW] Email para revisión manual: {', '.join(validation['flags'])}")
                 self.llm_validator.save_for_review(
                     file_path, validation, 
                     {"headers": self.last_email_headers},
@@ -541,18 +541,18 @@ class SuperAgent2:
                 analysis.validation_flags = validation["flags"]
         
         if classification == "sospechoso":
-            log.info("→ Registrando alerta en IRIS...")
+            log.info("[IRIS] Registrando alerta en IRIS...")
             self._register_alert_in_iris(analysis)
             self._notify_reporter(analysis, "sospechoso")
             self._update_knn(analysis, knn_result)
         
         elif classification == "spam":
-            log.info("→ Email clasificado como SPAM")
+            log.info("[SPAM] Email clasificado como SPAM")
             self._notify_reporter(analysis, "spam")
             self._update_knn(analysis, knn_result)
         
         elif classification == "legitimo":
-            log.info("→ Email clasificado como LEGÍTIMO")
+            log.info("[LEGIT] Email clasificado como LEGÍTIMO")
             self._notify_reporter(analysis, "legitimo")
         
         self._move_to_processed(file_path, classification)
@@ -623,23 +623,23 @@ class SuperAgent2:
                     response_json = response.json()
                     alert_id = response_json.get("alert_id") or response_json.get("id") or response_json.get("data", {}).get("id")
                     if alert_id:
-                        log.info(f"✓ ÉXITO: Alerta registrada en IRIS | Alert ID: {alert_id} | Mensaje: {analysis.mensaje_id}")
+                        log.info(f"[OK] ÉXITO: Alerta registrada en IRIS | Alert ID: {alert_id} | Mensaje: {analysis.mensaje_id}")
                     else:
-                        log.info(f"✓ ÉXITO: Alerta registrada en IRIS | Status: {response.status_code} | Mensaje: {analysis.mensaje_id}")
-                except:
-                    log.info(f"✓ ÉXITO: Alerta registrada en IRIS | Status: {response.status_code}")
+                        log.info(f"[OK] ÉXITO: Alerta registrada en IRIS | Status: {response.status_code} | Mensaje: {analysis.mensaje_id}")
+                except (ValueError, KeyError):
+                    log.info(f"[OK] ÉXITO: Alerta registrada en IRIS | Status: {response.status_code}")
             else:
                 error_detail = response.text[:200] if response.text else "Sin detalles"
-                log.error(f"✗ ERROR HTTP {response.status_code}: {error_detail} | Mensaje: {analysis.mensaje_id}")
+                log.error(f"[ERROR] HTTP {response.status_code}: {error_detail} | Mensaje: {analysis.mensaje_id}")
         
         except requests.exceptions.Timeout:
-            log.error(f"✗ TIMEOUT: Conexión con IRIS expiró | Mensaje: {analysis.mensaje_id}")
+            log.error(f"[ERROR] TIMEOUT: Conexión con IRIS expiró | Mensaje: {analysis.mensaje_id}")
         
         except requests.exceptions.ConnectionError as exc:
-            log.error(f"✗ ERROR CONEXIÓN: No se puede conectar a {url} | Detalles: {exc}")
+            log.error(f"[ERROR] CONEXIÓN: No se puede conectar a {url} | Detalles: {exc}")
         
         except Exception as exc:
-            log.error(f"✗ ERROR: {type(exc).__name__}: {exc} | Mensaje: {analysis.mensaje_id}")
+            log.error(f"[ERROR] {type(exc).__name__}: {exc} | Mensaje: {analysis.mensaje_id}")
     
     def _notify_reporter(self, analysis: EmailAnalysis, classification: str):
         """Envía notificación por email al reporter (persona que reportó el email)."""
@@ -659,19 +659,19 @@ class SuperAgent2:
         # Mensajes según clasificación
         messages = {
             "legitimo": (
-                f"✅ El email que reportaste fue revisado y clasificado como LEGÍTIMO.\n"
+                f"[LEGÍTIMO] El email que reportaste fue revisado y clasificado como LEGÍTIMO.\n"
                 f"Remitente: {analysis.original_from}\n"
                 f"Asunto: {analysis.original_subject}\n"
                 f"No se requiere ninguna acción adicional."
             ),
             "spam": (
-                f"📧 El email fue clasificado como SPAM.\n"
+                f"[SPAM] El email fue clasificado como SPAM.\n"
                 f"Remitente: {analysis.original_from}\n"
                 f"Asunto: {analysis.original_subject}\n"
                 f"Ha sido registrado para mejorar los filtros. No hay riesgo de seguridad."
             ),
             "sospechoso": (
-                f"⚠️ El email fue identificado como SOSPECHOSO / PHISHING.\n"
+                f"[ALERTA] El email fue identificado como SOSPECHOSO / PHISHING.\n"
                 f"Remitente: {analysis.original_from}\n"
                 f"Asunto: {analysis.original_subject}\n"
                 f"Score de riesgo: {analysis.risk_score}/100\n"
@@ -697,7 +697,7 @@ class SuperAgent2:
                 with SMTP(smtp_cfg["host"], smtp_cfg["port"]) as smtp:
                     smtp.send_message(msg)
             
-            log.info(f"✓ Notificación enviada a {to_addr} ({classification})")
+            log.info(f"[OK] Notificación enviada a {to_addr} ({classification})")
         
         except Exception as exc:
             log.error(f"✗ Error enviando email a {to_addr}: {exc}")
@@ -755,9 +755,9 @@ class SuperAgent2:
             
             if quality_check["action"] == "ADD":
                 self.knn.add_training_example(vector, analysis.classification, feedback_correct)
-                log.debug(f"✓ Ejemplo agregado a entrenamiento KNN")
+                log.debug(f"[OK] Ejemplo agregado a entrenamiento KNN")
             elif quality_check["action"] == "QUARANTINE":
-                log.warning(f"⚠️  Ejemplo en cuarentena: {', '.join(quality_check['issues'])}")
+                log.warning(f"[QUARANTINE] Ejemplo en cuarentena: {', '.join(quality_check['issues'])}")
                 self.quality_controller.quarantine_example(
                     str(self.current_file_path),
                     quality_check["issues"],

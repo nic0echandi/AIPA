@@ -144,7 +144,7 @@ class UsageStats:
         
         log.debug(
             f"Caso registrado: {classification} via {source} "
-            f"(KNN {'✓' if knn_was_correct else '✗' if knn_was_correct is False else 'N/A'})"
+            f"(KNN {'OK' if knn_was_correct else 'ERR' if knn_was_correct is False else 'N/A'})"
         )
     
     def get_month_summary(self, year: Optional[str] = None, month: Optional[str] = None) -> Dict:
@@ -280,7 +280,7 @@ class UsageStats:
         
         # Resumen anual
         year_summary = self.get_year_summary(year)
-        report.append(f"📊 RESUMEN ANUAL {year}")
+        report.append(f"[ANNUAL REPORT] RESUMEN ANUAL {year}")
         report.append(f"  Total casos: {year_summary['total']}")
         report.append("")
         report.append("  Clasificación:")
@@ -298,7 +298,7 @@ class UsageStats:
         month_summary = self.get_month_summary(year, month)
         month_name = datetime.strptime(month, "%m").strftime("%B")
         
-        report.append(f"📅 MES ACTUAL ({month_name} {year})")
+        report.append(f"[CURRENT MONTH] MES ACTUAL ({month_name} {year})")
         report.append(f"  Total casos: {month_summary['total']}")
         report.append("")
         report.append("  Clasificación:")
@@ -318,7 +318,7 @@ class UsageStats:
         knn_incorrect = knn_acc.get("incorrect", 0)
         knn_acc_pct = month_summary.get("knn_accuracy_pct", 0)
         
-        report.append("🎯 Precisión del KNN (mes actual):")
+        report.append("[KNN] Precisión del KNN (mes actual):")
         if knn_correct + knn_incorrect > 0:
             report.append(f"  • Correctas: {knn_correct}")
             report.append(f"  • Incorrectas: {knn_incorrect}")
@@ -328,7 +328,7 @@ class UsageStats:
         report.append("")
         
         # Historial por mes
-        report.append("📆 HISTORIAL POR MES (últimos 6 meses)")
+        report.append("[HISTORY] HISTORIAL POR MES (últimos 6 meses)")
         report.append("")
         
         months_to_show = sorted(year_summary["by_month"].keys(), reverse=True)[:6]
