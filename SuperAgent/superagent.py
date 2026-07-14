@@ -52,51 +52,71 @@ class CP1252SafeFilter(logging.Filter):
     def filter(self, record: logging.LogRecord) -> bool:
         """Sanitiza el mensaje del log para remover caracteres no-cp1252."""
         try:
-            # Intentar sanitizar el mensaje
+            # Obtener el mensaje completo con argumentos interpolados
             msg = record.getMessage()
             
-            # Remover emojis y caracteres Unicode problemáticos
+            # Remover emojis y caracteres Unicode problemáticos AGRESIVAMENTE
             sanitized = self._sanitize_message(msg)
             
             # Reemplazar el mensaje sanitizado
             record.msg = sanitized
             record.args = ()  # Limpiamos args para evitar interpolación doble
             
+            # EXTRA: Codificar el mensaje final para asegurar cp1252 compatibility
+            try:
+                sanitized.encode('cp1252')
+            except UnicodeEncodeError:
+                # Si aún hay problemas, hacer una limpieza final
+                record.msg = sanitized.encode('cp1252', errors='replace').decode('cp1252')
+            
             return True
         except Exception as e:
-            # Si algo falla, intentar al menos una versión simplificada
-            try:
-                msg = str(record.msg).encode('cp1252', errors='replace').decode('cp1252')
-                record.msg = msg
-                record.args = ()
-                return True
-            except:
-                return True
+            # Si algo falla, registrar el error de forma segura
+            record.msg = f"[ENCODING ERROR] {str(type(e).__name__)}: {str(e)[:100]}"
+            record.args = ()
+            return True
     
     @staticmethod
     def _sanitize_message(msg: str) -> str:
-        """Remueve emojis y caracteres no-cp1252 del mensaje."""
+        """Remueve agresivamente emojis y caracteres no-cp1252."""
         if not msg:
             return msg
         
-        # Paso 1: Remover emojis (Unicode ranges)
-        # Emojis están principalmente en U+1F300-U+1F9FF
-        msg = re.sub(r'[\U0001F300-\U0001F9FF]', '', msg)  # Emojis
-        msg = re.sub(r'[\U0001F000-\U0001F02F]', '', msg)  # Emoji del juego
-        msg = re.sub(r'[\U0001F0A0-\U0001F0FF]', '', msg)  # Emoji de objetos
-        msg = re.sub(r'[\U0001F100-\U0001F64F]', '', msg)  # Emoji de símbolos
-        msg = re.sub(r'[\U0001F680-\U0001F6FF]', '', msg)  # Emoji de transporte
-        msg = re.sub(r'[\U0001F700-\U0001F77F]', '', msg)  # Emoji de alquimia
+        # PASO 1: Remover TODOS los emojis (rangos Unicode altos)
+        # Todos los emojis estándar
+        msg = re.sub(r'[\U0001F000-\U0001F9FF]', '', msg)  # Rango principal de emojis
+        msg = re.sub(r'[\U0001F600-\U0001F64F]', '', msg)  # Emoticones
+        msg = re.sub(r'[\U0001F900-\U0001F9FF]', '', msg)  # Emojis suplementarios
+        msg = re.sub(r'[\U0001F300-\U0001F5FF]', '', msg)  # Símbolos y pictogramas
+        msg = re.sub(r'[\U0001F680-\U0001F6FF]', '', msg)  # Transporte
+        msg = re.sub(r'[\U0001F700-\U0001F77F]', '', msg)  # Alquimia
+        msg = re.sub(r'[\U0001F780-\U0001F7FF]', '', msg)  # Caracteres geométricos
         
-        # Paso 2: Remover caracteres de control y símbolos problemáticos
-        msg = re.sub(r'[\U00002600-\U000027BF]', '', msg)  # Símbolos varios
-        msg = re.sub(r'[\U00002300-\U0000243F]', '', msg)  # Caracteres misceláneos
+        # PASO 2: Remover símbolos Unicode problemáticos
+        msg = re.sub(r'[\u2600-\u27BF]', '', msg)  # Símbolos varios (incluye flechas)
+        msg = re.sub(r'[\u2300-\u243F]', '', msg)  # Caracteres misceláneos
+        msg = re.sub(r'[\u2190-\u21FF]', '', msg)  # Flechas (incluye →)
+        msg = re.sub(r'[\u2700-\u27BF]', '', msg)  # Dingbats
+        msg = re.sub(r'[\u2000-\u206F]', '', msg)  # Espacio general de puntuación
         
-        # Paso 3: Intentar encode/decode con cp1252 para remover characters problemáticos
+        # PASO 3: Remover caracteres de controles Unicode
+        msg = re.sub(r'[\u0080-\u009F]', '', msg)  # Control characters
+        
+        # PASO 4: Reemplazar caracteres especiales problemáticos
+        msg = msg.replace('→', '->').replace('←', '<-')
+        msg = msg.replace('✓', '[OK]').replace('✗', '[FAIL]')
+        msg = msg.replace('─', '-').replace('━', '=').replace('═', '=')
+        
+        # PASO 5: Codificar a cp1252 y redecodificar para remover caracteres incompatibles
         try:
+            # Esto removerá/reemplazará cualquier carácter que no sea cp1252-encodable
             msg = msg.encode('cp1252', errors='replace').decode('cp1252')
         except:
-            pass
+            # Si todo falla, al menos intentar ISO-8859-1
+            try:
+                msg = msg.encode('iso-8859-1', errors='replace').decode('iso-8859-1')
+            except:
+                pass
         
         return msg
 
@@ -153,6 +173,27 @@ def setup_logger(log_level: str = "INFO", log_dir: str = "logs") -> logging.Logg
 
 
 log = logging.getLogger("superagent.main")
+
+
+# ============================================================================
+# Funciones auxiliares de sanitización
+# ============================================================================
+
+def sanitize_for_cp1252(text: str) -> str:
+    """Sanitiza un string para que sea encodable a cp1252 (Windows production)."""
+    if not text:
+        return text
+    
+    # Remover emojis y caracteres Unicode problemáticos
+    text = re.sub(r'[\U0001F000-\U0001F9FF]', '', text)  # Emojis principales
+    text = re.sub(r'[\u2600-\u27BF]', '', text)  # Símbolos varios
+    text = re.sub(r'[\u2300-\u243F]', '', text)  # Caracteres misceláneos
+    text = re.sub(r'[\u2190-\u21FF]', '', text)  # Flechas
+    
+    # Codificar a cp1252 removiendo caracteres no-compatibles
+    text = text.encode('cp1252', errors='replace').decode('cp1252')
+    
+    return text
 
 
 # ============================================================================
@@ -344,7 +385,9 @@ class SuperAgent2:
             try:
                 self._stop_evt.wait(timeout=1)
             except Exception as exc:
-                log.error(f"Error en loop principal: {exc}")
+                # Sanitizar la excepción ANTES de loguearla
+                exc_str = str(exc).encode('cp1252', errors='replace').decode('cp1252')
+                log.error(f"Error en loop principal: {exc_str}")
         
         log.info("SuperAgent detenido.")
     
@@ -377,7 +420,8 @@ class SuperAgent2:
                 log.info(f"[OK] Whitelist recargado exitosamente ({len(self.analyzer.whitelist)} dominios)")
         
         except Exception as exc:
-            log.error(f"Error recargando whitelist: {exc}")
+            exc_str = str(exc).encode('cp1252', errors='replace').decode('cp1252')
+            log.error(f"Error recargando whitelist: {exc_str}")
     
     def _file_watcher_loop(self):
         """Monitorea ingress/ buscando nuevos .txt."""
@@ -400,7 +444,8 @@ class SuperAgent2:
                 seen = seen & current
                 
             except Exception as exc:
-                log.error(f"Error en FileWatcher: {exc}")
+                exc_str = str(exc).encode('cp1252', errors='replace').decode('cp1252')
+                log.error(f"Error en FileWatcher: {exc_str}")
             
             time.sleep(5)
     
@@ -422,7 +467,9 @@ class SuperAgent2:
             except queue.Empty:
                 continue
             except Exception as exc:
-                log.error(f"Error en worker: {exc}")
+                # Sanitizar la excepción ANTES de loguearla
+                exc_str = str(exc).encode('cp1252', errors='replace').decode('cp1252')
+                log.error(f"Error en worker: {exc_str}")
     
     # ========================================================================
     # Procesamiento de archivo
@@ -430,7 +477,7 @@ class SuperAgent2:
     
     def _process_file(self, file_path: Path):
         """Procesa un archivo: parseo, clasificación, acciones."""
-        log.info("─" * 70)
+        log.info("=" * 70)
         log.info(f"Procesando: {file_path.name}")
         
         if not file_path.exists():
@@ -464,9 +511,9 @@ class SuperAgent2:
         microsoft_urls = parsed["microsoft_urls"]
         content = parsed["raw_content"]
         
-        # ✨ MEJORA ETAPA 1: Guardar datos para validación
-        self.last_email_headers = headers
-        self.last_email_content = content
+        # ✨ MEJORA ETAPA 1: Guardar datos para validación (sanitizados)
+        self.last_email_headers = {k: sanitize_for_cp1252(str(v)) for k, v in headers.items()}
+        self.last_email_content = sanitize_for_cp1252(content)
         self.current_file_path = file_path
         
         if not to_email:
@@ -533,19 +580,19 @@ class SuperAgent2:
         ]
         
         return EmailAnalysis(
-            mensaje_id=headers.get("Message-ID", file_path.stem),
+            mensaje_id=sanitize_for_cp1252(headers.get("Message-ID", file_path.stem)),
             classification=knn_result["classification"],
             confidence=knn_result["confidence"],
             reporter_email=self.extract_email_from_address(headers.get("To", "")),
-            original_subject=headers.get("Subject", "N/A"),
-            original_from=self.extract_email_from_address(headers.get("From", "")),
-            reply_to=self.analyzer.extract_reply_to(headers),
+            original_subject=sanitize_for_cp1252(headers.get("Subject", "N/A")),
+            original_from=sanitize_for_cp1252(self.extract_email_from_address(headers.get("From", ""))),
+            reply_to=sanitize_for_cp1252(self.analyzer.extract_reply_to(headers) or ""),
             sender_ip=sender_ip,
             ip_reputation=ip_rep,
             analysis_date=datetime.now().isoformat(),
             indicators=auth,
-            headers_raw=str(headers),
-            body_preview=content[:500],
+            headers_raw=sanitize_for_cp1252(str(headers)),
+            body_preview=sanitize_for_cp1252(content[:500]),
             urls_found=urls[:10],
             microsoft_url_check=microsoft_urls,
             risk_score=risk_score,
@@ -715,10 +762,12 @@ class SuperAgent2:
             log.error(f"[ERROR] TIMEOUT: Conexión con IRIS expiró | Mensaje: {analysis.mensaje_id}")
         
         except requests.exceptions.ConnectionError as exc:
-            log.error(f"[ERROR] CONEXIÓN: No se puede conectar a {url} | Detalles: {exc}")
+            exc_str = str(exc).encode('cp1252', errors='replace').decode('cp1252')
+            log.error(f"[ERROR] CONEXIÓN: No se puede conectar a {url} | Detalles: {exc_str}")
         
         except Exception as exc:
-            log.error(f"[ERROR] {type(exc).__name__}: {exc} | Mensaje: {analysis.mensaje_id}")
+            exc_str = str(exc).encode('cp1252', errors='replace').decode('cp1252')
+            log.error(f"[ERROR] {type(exc).__name__}: {exc_str} | Mensaje: {analysis.mensaje_id}")
     
     def _notify_reporter(self, analysis: EmailAnalysis, classification: str):
         """Envía notificación por email al reporter (persona que reportó el email)."""
@@ -779,7 +828,8 @@ class SuperAgent2:
             log.info(f"[OK] Notificación enviada a {to_addr} ({classification})")
         
         except Exception as exc:
-            log.error(f"[ERROR] Error enviando email a {to_addr}: {exc}")
+            exc_str = str(exc).encode('cp1252', errors='replace').decode('cp1252')
+            log.error(f"[ERROR] Error enviando email a {to_addr}: {exc_str}")
     
     def _move_to_processed(self, file_path: Path, classification: str):
         """Mueve archivo a processed/<clasificación>/."""
@@ -794,7 +844,8 @@ class SuperAgent2:
             shutil.move(str(file_path), str(dest_path))
             log.info(f"Archivo movido: processed/{classification}/{dest_name}")
         except Exception as exc:
-            log.error(f"No se pudo mover {file_path.name}: {exc}")
+            exc_str = str(exc).encode('cp1252', errors='replace').decode('cp1252')
+            log.error(f"No se pudo mover {file_path.name}: {exc_str}")
     
     def _update_knn(self, analysis: EmailAnalysis, knn_result: Optional[Dict] = None):
         """
