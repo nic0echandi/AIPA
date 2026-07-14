@@ -29,19 +29,19 @@
     "suspicious_header_flags": ["blank_values", "missing_critical", "unusual_encoding"]
   },
   "smtp": {
-    "host": "relay.anonbimo.com.ar",
+    "host": "relay.tmoviles.com.ar",
     "port": 25,
-    "username": "your_email@gmail.com",
-    "password": "your_app_password",
+    "username": "cybersec.ar@tmoviles.com.ar",
+    "password": "",
     "use_tls": false,
-    "from": "security-alerts@example.com"
+    "from": "cybersec.ar@tmoviles.com.ar"
   },
   "iris_dfir": {
-    "url": "http://ejemploiris:8000/alerts/add",
+    "url": "http://10.167.253.166:8000/alerts/add",
     "api_key": "your_iris_api_key",
     "verify_ssl": false,
     "iris_version": "2.5.0",
     "default_customer_id": 1,
-    "source_link_template": "http://ejemploiris:8000/alerts?msg_id={msg_id}"
+    "source_link_template": "http://10.167.253.166:8000/alerts?msg_id={msg_id}"
   }
 }

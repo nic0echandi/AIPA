@@ -700,7 +700,7 @@ class SuperAgent2:
             log.info(f"[OK] Notificación enviada a {to_addr} ({classification})")
         
         except Exception as exc:
-            log.error(f"✗ Error enviando email a {to_addr}: {exc}")
+            log.error(f"[ERROR] Error enviando email a {to_addr}: {exc}")
     
     def _move_to_processed(self, file_path: Path, classification: str):
         """Mueve archivo a processed/<clasificación>/."""
