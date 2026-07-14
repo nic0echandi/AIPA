@@ -389,8 +389,8 @@ class SuperAgent2:
         from_email = self.extract_email_from_address(headers.get("From", ""))
         to_email = self.extract_email_from_address(headers.get("To", ""))
         
-        log.info(f"  [EXTRACT To] → '{to_email}'")
-        log.info(f"  [EXTRACT From] → '{from_email}'")
+        log.info(f"  [EXTRACT To] '{to_email}'")
+        log.info(f"  [EXTRACT From] '{from_email}'")
         log.info(f"  De: {from_email}")
         log.info(f"  Para (reporter): {to_email}")
         
@@ -409,7 +409,7 @@ class SuperAgent2:
         
         # 2. Whitelist check
         if self.analyzer.check_whitelist(from_email):
-            log.info(f"Whitelist match: {from_email} → legítimo")
+            log.info(f"Whitelist match: {from_email} [LEGIT]")
             analysis = self.analyzer.analyze_txt_file(str(file_path))
             # Registrar estadística: whitelist
             self.stats.record_case("legitimo", "whitelist")
@@ -421,7 +421,7 @@ class SuperAgent2:
         
         if knn_result["is_confident"]:
             log.info(
-                f"KNN directo ({knn_result['confidence'] * 100:.0f}% confianza) → "
+                f"KNN directo ({knn_result['confidence'] * 100:.0f}% confianza) - "
                 f"{knn_result['classification'].upper()}"
             )
             analysis = self._build_analysis_from_knn(file_path, parsed, knn_result)
@@ -725,7 +725,7 @@ class SuperAgent2:
         
         try:
             shutil.move(str(file_path), str(dest_path))
-            log.info(f"Archivo movido → processed/{classification}/{dest_name}")
+            log.info(f"Archivo movido: processed/{classification}/{dest_name}")
         except Exception as exc:
             log.error(f"No se pudo mover {file_path.name}: {exc}")
     
