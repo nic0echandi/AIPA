@@ -26,6 +26,8 @@ import logging
 import logging.handlers
 import threading
 import queue
+import re
+import unicodedata
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, Optional
@@ -38,6 +40,65 @@ from knn_classifier import KNNClassifier, extract_features, features_to_vector, 
 from llm_validation import LLMValidator
 from data_quality import DataQualityController
 from usage_stats import UsageStats
+
+
+# ============================================================================
+# Filtro de encoding para logs
+# ============================================================================
+
+class CP1252SafeFilter(logging.Filter):
+    """Filtra y sanitiza mensajes de log para que sean cp1252-compatibles."""
+    
+    def filter(self, record: logging.LogRecord) -> bool:
+        """Sanitiza el mensaje del log para remover caracteres no-cp1252."""
+        try:
+            # Intentar sanitizar el mensaje
+            msg = record.getMessage()
+            
+            # Remover emojis y caracteres Unicode problemáticos
+            sanitized = self._sanitize_message(msg)
+            
+            # Reemplazar el mensaje sanitizado
+            record.msg = sanitized
+            record.args = ()  # Limpiamos args para evitar interpolación doble
+            
+            return True
+        except Exception as e:
+            # Si algo falla, intentar al menos una versión simplificada
+            try:
+                msg = str(record.msg).encode('cp1252', errors='replace').decode('cp1252')
+                record.msg = msg
+                record.args = ()
+                return True
+            except:
+                return True
+    
+    @staticmethod
+    def _sanitize_message(msg: str) -> str:
+        """Remueve emojis y caracteres no-cp1252 del mensaje."""
+        if not msg:
+            return msg
+        
+        # Paso 1: Remover emojis (Unicode ranges)
+        # Emojis están principalmente en U+1F300-U+1F9FF
+        msg = re.sub(r'[\U0001F300-\U0001F9FF]', '', msg)  # Emojis
+        msg = re.sub(r'[\U0001F000-\U0001F02F]', '', msg)  # Emoji del juego
+        msg = re.sub(r'[\U0001F0A0-\U0001F0FF]', '', msg)  # Emoji de objetos
+        msg = re.sub(r'[\U0001F100-\U0001F64F]', '', msg)  # Emoji de símbolos
+        msg = re.sub(r'[\U0001F680-\U0001F6FF]', '', msg)  # Emoji de transporte
+        msg = re.sub(r'[\U0001F700-\U0001F77F]', '', msg)  # Emoji de alquimia
+        
+        # Paso 2: Remover caracteres de control y símbolos problemáticos
+        msg = re.sub(r'[\U00002600-\U000027BF]', '', msg)  # Símbolos varios
+        msg = re.sub(r'[\U00002300-\U0000243F]', '', msg)  # Caracteres misceláneos
+        
+        # Paso 3: Intentar encode/decode con cp1252 para remover characters problemáticos
+        try:
+            msg = msg.encode('cp1252', errors='replace').decode('cp1252')
+        except:
+            pass
+        
+        return msg
 
 
 # ============================================================================
@@ -59,9 +120,13 @@ def setup_logger(log_level: str = "INFO", log_dir: str = "logs") -> logging.Logg
         datefmt="%Y-%m-%dT%H:%M:%S"
     )
     
+    # Crear el filtro CP1252-safe (aplicable a todos los handlers)
+    safe_filter = CP1252SafeFilter()
+    
     # Consola
     ch = logging.StreamHandler(sys.stdout)
     ch.setFormatter(fmt)
+    ch.addFilter(safe_filter)
     logger.addHandler(ch)
     
     # Archivo rotativo
@@ -71,9 +136,11 @@ def setup_logger(log_level: str = "INFO", log_dir: str = "logs") -> logging.Logg
             Path(log_dir) / "superagent.log",
             maxBytes=10 * 1024 * 1024,
             backupCount=5,
-            encoding="utf-8"
+            encoding="cp1252",
+            errors="replace"
         )
         fh.setFormatter(fmt)
+        fh.addFilter(safe_filter)
         logger.addHandler(fh)
     except PermissionError as e:
         print(f"[WARNING] No se puede escribir a {log_dir}/superagent.log: {e}")
