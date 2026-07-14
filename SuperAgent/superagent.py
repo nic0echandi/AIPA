@@ -46,8 +46,12 @@ from usage_stats import UsageStats
 
 def setup_logger(log_level: str = "INFO", log_dir: str = "logs") -> logging.Logger:
     """Configura logger con salida a consola y archivo rotativo."""
-    Path(log_dir).mkdir(exist_ok=True, parents=True)
     logger = logging.getLogger("superagent")
+    
+    # Evitar agregar handlers múltiples
+    if logger.handlers:
+        return logger
+    
     logger.setLevel(getattr(logging, log_level.upper(), logging.INFO))
     
     fmt = logging.Formatter(
@@ -61,14 +65,22 @@ def setup_logger(log_level: str = "INFO", log_dir: str = "logs") -> logging.Logg
     logger.addHandler(ch)
     
     # Archivo rotativo
-    fh = logging.handlers.RotatingFileHandler(
-        Path(log_dir) / "superagent.log",
-        maxBytes=10 * 1024 * 1024,
-        backupCount=5,
-        encoding="utf-8"
-    )
-    fh.setFormatter(fmt)
-    logger.addHandler(fh)
+    try:
+        Path(log_dir).mkdir(exist_ok=True, parents=True)
+        fh = logging.handlers.RotatingFileHandler(
+            Path(log_dir) / "superagent.log",
+            maxBytes=10 * 1024 * 1024,
+            backupCount=5,
+            encoding="utf-8"
+        )
+        fh.setFormatter(fmt)
+        logger.addHandler(fh)
+    except PermissionError as e:
+        print(f"[WARNING] No se puede escribir a {log_dir}/superagent.log: {e}")
+        print(f"[WARNING] Usando solo logging a consola")
+    except Exception as e:
+        print(f"[WARNING] Error configurando archivo de log: {e}")
+        print(f"[WARNING] Usando solo logging a consola")
     
     return logger
 
