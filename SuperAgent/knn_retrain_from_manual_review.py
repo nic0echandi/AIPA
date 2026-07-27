@@ -56,9 +56,23 @@ def process_manual_review_emails(manual_review_dir: Path = Path("manual_review")
     errors = []
     processed = 0
     
-    # Obtener todos los archivos .txt
-    email_files = sorted(manual_review_dir.glob("*.txt"))
+    # Obtener todos los archivos (sin extensión .txt también)
+    email_files = sorted(manual_review_dir.glob("*"))
+    # Filtrar solo archivos (no directorios) que sean texto
+    email_files = [f for f in email_files if f.is_file() and not f.name.startswith('.')]
     total = len(email_files)
+    
+    # Debug: mostrar qué encontramos
+    if total == 0:
+        print(f"⚠️  No se encontraron archivos en {manual_review_dir}")
+        print(f"   Directorio actual: {Path.cwd()}")
+        print(f"   Ruta absoluta de manual_review: {manual_review_dir.absolute()}")
+        if manual_review_dir.exists():
+            contents = list(manual_review_dir.iterdir())
+            print(f"   Contenido del directorio ({len(contents)} items):")
+            for item in contents[:10]:
+                print(f"     - {item.name} ({'DIR' if item.is_dir() else 'FILE'})")
+        return [], [], 0
     
     print(f"\n📧 Procesando {total} emails en {manual_review_dir}...\n")
     
