@@ -12,7 +12,7 @@ import numpy as np
 
 # Importar módulos locales
 from knn_classifier import KNNClassifier, extract_features, features_to_vector, FEATURE_NAMES
-from phishingAnalizer import parse_email_txt
+from phishingAnalizer import PhishingAnalyzerTXT
 
 def extract_classification_from_filename(filename: str) -> str:
     """
@@ -63,6 +63,7 @@ def process_manual_review_emails(manual_review_dir: Path = Path("manual_review")
     print(f"\n📧 Procesando {total} emails en {manual_review_dir}...\n")
     
     knn = KNNClassifier()
+    parser = PhishingAnalyzerTXT()
     
     for i, email_file in enumerate(email_files, 1):
         try:
@@ -80,7 +81,7 @@ def process_manual_review_emails(manual_review_dir: Path = Path("manual_review")
             
             # Parsear email
             try:
-                parsed = parse_email_txt(str(email_file))
+                parsed = parser.parse_txt_file(str(email_file))
             except Exception as e:
                 errors.append(f"{email_file.name}: parse error - {str(e)[:60]}")
                 continue
