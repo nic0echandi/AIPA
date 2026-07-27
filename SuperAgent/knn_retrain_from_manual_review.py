@@ -178,9 +178,19 @@ def retrain_knn_with_manual_review(vectors: List[np.ndarray], labels: List[int])
         "sospechoso": int(counts[unique == 2].sum() if (unique == 2).any() else 0),
     }
     knn.stats["total_examples"] = int(len(y_combined))
-    knn._save()
     
-    print(f"\n✅ Modelo reentrainado y guardado")
+    # Intentar guardar el modelo
+    try:
+        knn._save()
+        print(f"\n✅ Modelo reentrainado y guardado en {knn.MODEL_PATH}")
+    except PermissionError:
+        print(f"\n⚠️  Permiso denegado para escribir en {knn.MODEL_PATH}")
+        print(f"   Asegúrate de que SuperAgent no esté corriendo")
+        print(f"   Intenta: taskkill /F /IM python.exe")
+        return None
+    except Exception as e:
+        print(f"\n❌ Error guardando modelo: {e}")
+        return None
     return knn
 
 def lower_confidence_threshold():
