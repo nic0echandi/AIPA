@@ -29,19 +29,19 @@
     "suspicious_header_flags": ["blank_values", "missing_critical", "unusual_encoding"]
   },
   "smtp": {
-    "host": "relay.tmoviles.com.ar",
+    "host": "relay.sarasa.com.ar",
     "port": 25,
-    "username": "cybersec.ar@tmoviles.com.ar",
+    "username": "cybersec.ar@sarasa.com.ar",
     "password": "",
     "use_tls": false,
-    "from": "cybersec.ar@tmoviles.com.ar"
+    "from": "cybersec.ar@sarasa.com.ar"
   },
   "iris_dfir": {
-    "url": "http://10.167.253.166:8000/alerts/add",
+    "url": "http://10.10.10:8000/alerts/add",
     "api_key": "your_iris_api_key",
     "verify_ssl": false,
     "iris_version": "2.5.0",
     "default_customer_id": 1,
-    "source_link_template": "http://10.167.253.166:8000/alerts?msg_id={msg_id}"
+    "source_link_template": "http://10.10.10.10:8000/alerts?msg_id={msg_id}"
   }
 }
