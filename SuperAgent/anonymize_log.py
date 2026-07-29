@@ -24,7 +24,7 @@ def anonymize_log(input_file, output_file):
     
     # Domain replacements
     DOMAIN_MAP = {
-        'tmoviles.com.ar': 'company.com',
+        'movi.com.ar': 'company.com',
         'gmail.com': 'mail.example.com',
         'andeshosting.net': 'hosting.example.com',
         'magnificentminds.org': 'org.example.com',
