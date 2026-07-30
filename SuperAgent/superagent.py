@@ -231,7 +231,6 @@ class SuperAgent2:
     """
     
     @staticmethod
-    @staticmethod
     def extract_email_from_address(address: str) -> str:
         """Extrae email de una dirección que puede tener múltiples formatos:
         - 'Name <email@example.com>' (RFC 5322)
@@ -684,7 +683,7 @@ class SuperAgent2:
         self._move_to_processed(file_path, classification)
     
     def _register_alert_in_iris(self, analysis: EmailAnalysis):
-        """Registra alerta en IRIS usando endpoint /alerts/add."""
+        """Registra alerta en IRIS usando endpoint /alerts/add (en thread separado)."""
         iris_cfg = self.config.get("iris_dfir", {})
         url = iris_cfg.get("url", "")
         api_key = iris_cfg.get("api_key", "")
@@ -694,43 +693,62 @@ class SuperAgent2:
             log.warning("IRIS DFIR no configurado correctamente - alerta NO registrada")
             return
         
+        # Ejecutar en thread separado para no bloquear
+        thread = threading.Thread(
+            target=self._iris_post_worker,
+            args=(url, api_key, customer_id, analysis),
+            daemon=True,
+            name=f"iris-{analysis.mensaje_id[:8]}"
+        )
+        thread.start()
+    
+    def _iris_post_worker(self, url: str, api_key: str, customer_id: int, analysis: EmailAnalysis):
+        """Worker thread que envía alertas a IRIS con reintentos."""
         import requests
         from datetime import datetime
+        import json
         
-        # Estructura de alertas compatible con IRIS (basada en ejemplo verificado)
+        iris_cfg = self.config.get("iris_dfir", {})
+        max_retries = 3
+        retry_delay = 2  # segundos
+        
+        # FUNCIÓN: Sanitizar strings para IRIS (remover caracteres especiales)
+        def sanitize_for_iris(text: str) -> str:
+            """Limpia texto para IRIS: ASCII-only, sin caracteres especiales problemáticos."""
+            if not isinstance(text, str):
+                text = str(text)
+            
+            # Convertir a ASCII, removiendo acentos y caracteres especiales
+            text = unicodedata.normalize('NFKD', text)
+            text = text.encode('ascii', 'ignore').decode('ascii')
+            
+            # Remover comillas problemáticas y saltos de línea
+            text = text.replace('"', "'").replace('\n', ' ').replace('\r', ' ')
+            
+            return text.strip()
+        
+        # Estructura de alertas compatible con IRIS 2.5.0
+        # alert_source_content es un OBJETO JSON, no un string
         data = {
-            "alert_title": "Alertas AIPA - Posible Phishing",
-            "alert_severity_id": 1,  # 1=Critical, 2=High, 3=Medium, 4=Low
-            "alert_status_id": 3,     # Estado nuevo/sin procesar
-            "alert_customer_id": customer_id,
-            "alert_source_event_time": analysis.analysis_date or datetime.utcnow().isoformat() + "Z",
-            "alert_source_link": iris_cfg.get("source_link_template", "").format(msg_id=analysis.mensaje_id),
+            "alert_title": sanitize_for_iris("AIPA - Posible Phishing"),
+            "alert_severity_id": 1,
+            "alert_status_id": 3,
+            "alert_customer_id": customer_id,  # ← REQUERIDO: customer_id=1 (CSIRT - SOC)
+            "alert_source_event_time": sanitize_for_iris(analysis.analysis_date or datetime.utcnow().isoformat() + "Z"),
+            "alert_source_link": sanitize_for_iris(iris_cfg.get("source_link_template", "").format(msg_id=analysis.mensaje_id)),
+            # alert_source_content es un OBJETO JSON anidado (no string)
             "alert_source_content": {
-                "id": analysis.mensaje_id,
-                "muid": analysis.mensaje_id,
-                "timeStamp": analysis.analysis_date or datetime.utcnow().isoformat() + "Z",
-                "machineName": "AIPA-SERVER",
-                "clientId": "email-security",
-                "alertDateTime": analysis.analysis_date or datetime.utcnow().isoformat() + "Z",
-                "aipaAlertId": f"AIPA-{analysis.risk_score}-PHISHING",
-                "directLink": iris_cfg.get("source_link_template", "").format(msg_id=analysis.mensaje_id),
-                "details": {
-                    "mensaje_id": analysis.mensaje_id,
-                    "remitente": analysis.original_from,
-                    "asunto": analysis.original_subject,
-                    "reportero": analysis.reporter_email,
-                    "reply_to": analysis.reply_to or "N/A",
-                    "clasificacion": analysis.classification,
-                    "risk_score": analysis.risk_score,
-                    "confianza": f"{analysis.confidence:.0%}",
-                    "ip_origen": analysis.sender_ip or "N/A",
-                    "abuse_score": analysis.ip_reputation.get("abuse_score", -1) if analysis.ip_reputation else -1,
-                    "spf": analysis.indicators.get("spf", "unknown"),
-                    "dkim": analysis.indicators.get("dkim", "unknown"),
-                    "dmarc": analysis.indicators.get("dmarc", "unknown"),
-                    "urls_encontradas": analysis.urls_found or [],
-                    "razones": analysis.reasons[:10] or []  # Primeras 10 razones
-                }
+                "id": sanitize_for_iris(analysis.mensaje_id),
+                "remitente": sanitize_for_iris(analysis.original_from),
+                "asunto": sanitize_for_iris(analysis.original_subject),
+                "reportero": sanitize_for_iris(analysis.reporter_email),
+                "clasificacion": sanitize_for_iris(analysis.classification),
+                "risk_score": analysis.risk_score,
+                "confianza": f"{analysis.confidence:.0%}",
+                "ip_origen": sanitize_for_iris(analysis.sender_ip or "N/A"),
+                "spf": sanitize_for_iris(analysis.indicators.get("spf", "unknown")),
+                "dkim": sanitize_for_iris(analysis.indicators.get("dkim", "unknown")),
+                "dmarc": sanitize_for_iris(analysis.indicators.get("dmarc", "unknown")),
             }
         }
         
@@ -739,35 +757,60 @@ class SuperAgent2:
             "Content-Type": "application/json"
         }
         
-        log.info(f"Registrando alerta en IRIS: {url}")
+        log.info(f"[IRIS-QUEUE] Alerta encolada para IRIS: {analysis.mensaje_id}")
         
-        try:
-            response = requests.post(url, json=data, headers=headers, timeout=10, verify=False)
-            
-            if response.status_code in (200, 201):
-                try:
-                    response_json = response.json()
-                    alert_id = response_json.get("alert_id") or response_json.get("id") or response_json.get("data", {}).get("id")
-                    if alert_id:
-                        log.info(f"[OK] ÉXITO: Alerta registrada en IRIS | Alert ID: {alert_id} | Mensaje: {analysis.mensaje_id}")
+        for attempt in range(1, max_retries + 1):
+            try:
+                log.debug(f"[IRIS] Intento {attempt}/{max_retries} para {analysis.mensaje_id}")
+                
+                # TIMEOUT AUMENTADO A 30 SEGUNDOS (IRIS puede ser lento)
+                response = requests.post(
+                    url, 
+                    json=data, 
+                    headers=headers, 
+                    timeout=30,  # ← 30 SEGUNDOS
+                    verify=False  # SSL auto-firmado
+                )
+                
+                if response.status_code in (200, 201):
+                    try:
+                        response_json = response.json()
+                        alert_id = response_json.get("data", {}).get("alert_id") or response_json.get("alert_id")
+                        if alert_id:
+                            log.info(f"[OK] IRIS: Alert ID {alert_id} | Msg: {analysis.mensaje_id}")
+                        else:
+                            log.info(f"[OK] IRIS: HTTP {response.status_code} | Msg: {analysis.mensaje_id}")
+                    except (ValueError, KeyError):
+                        log.info(f"[OK] IRIS: HTTP {response.status_code} | Msg: {analysis.mensaje_id}")
+                    return  # Éxito - salir
+                
+                else:
+                    error_detail = response.text[:200] if response.text else "Sin detalles"
+                    log.warning(f"[IRIS] HTTP {response.status_code}: {error_detail} (intento {attempt}/{max_retries})")
+                    
+                    if attempt < max_retries:
+                        time.sleep(retry_delay)
                     else:
-                        log.info(f"[OK] ÉXITO: Alerta registrada en IRIS | Status: {response.status_code} | Mensaje: {analysis.mensaje_id}")
-                except (ValueError, KeyError):
-                    log.info(f"[OK] ÉXITO: Alerta registrada en IRIS | Status: {response.status_code}")
-            else:
-                error_detail = response.text[:200] if response.text else "Sin detalles"
-                log.error(f"[ERROR] HTTP {response.status_code}: {error_detail} | Mensaje: {analysis.mensaje_id}")
-        
-        except requests.exceptions.Timeout:
-            log.error(f"[ERROR] TIMEOUT: Conexión con IRIS expiró | Mensaje: {analysis.mensaje_id}")
-        
-        except requests.exceptions.ConnectionError as exc:
-            exc_str = str(exc).encode('cp1252', errors='replace').decode('cp1252')
-            log.error(f"[ERROR] CONEXIÓN: No se puede conectar a {url} | Detalles: {exc_str}")
-        
-        except Exception as exc:
-            exc_str = str(exc).encode('cp1252', errors='replace').decode('cp1252')
-            log.error(f"[ERROR] {type(exc).__name__}: {exc_str} | Mensaje: {analysis.mensaje_id}")
+                        log.error(f"[ERROR] IRIS: HTTP {response.status_code} después de {max_retries} intentos | Msg: {analysis.mensaje_id}")
+            
+            except requests.exceptions.Timeout:
+                log.warning(f"[IRIS] TIMEOUT en intento {attempt}/{max_retries}")
+                if attempt < max_retries:
+                    time.sleep(retry_delay)
+                else:
+                    log.error(f"[ERROR] IRIS: TIMEOUT después de {max_retries} intentos | Msg: {analysis.mensaje_id}")
+            
+            except requests.exceptions.ConnectionError as exc:
+                exc_str = str(exc).encode('cp1252', errors='replace').decode('cp1252')
+                log.warning(f"[IRIS] CONEXIÓN ERROR en intento {attempt}/{max_retries}: {exc_str[:100]}")
+                if attempt < max_retries:
+                    time.sleep(retry_delay)
+                else:
+                    log.error(f"[ERROR] IRIS: No se puede conectar después de {max_retries} intentos | {url}")
+            
+            except Exception as exc:
+                exc_str = str(exc).encode('cp1252', errors='replace').decode('cp1252')
+                log.error(f"[ERROR] IRIS: {type(exc).__name__}: {exc_str} | Msg: {analysis.mensaje_id}")
     
     def _notify_reporter(self, analysis: EmailAnalysis, classification: str):
         """Envía notificación por email al reporter (persona que reportó el email)."""
