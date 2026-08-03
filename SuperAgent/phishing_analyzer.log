@@ -46,3 +46,6 @@
 2026-07-08T14:56:36 | INFO     | phishing_analyzer | config.json validado correctamente.
 2026-07-08T14:56:36 | INFO     | phishing_analyzer | Whitelist cargada: 0 dominios
 2026-07-08T14:56:36 | ERROR    | phishing_analyzer | Error con Ollama: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [Errno 111] Connection refused")) — usando fallback.
+2026-08-03T09:54:17 | INFO     | phishing_analyzer | config.json validado correctamente.
+2026-08-03T09:54:17 | INFO     | phishing_analyzer | Whitelist cargada: 0 dominios
+2026-08-03T09:54:17 | INFO     | phishing_analyzer | Spam domains cargado: 15 dominios

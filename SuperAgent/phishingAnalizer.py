@@ -81,6 +81,7 @@ CONFIG_SCHEMA = {
         "ollama_url":    {"type": "string"},
         "ollama_model":  {"type": "string"},
         "whitelist_path": {"type": "string"},
+        "spam_domains_path": {"type": "string"},
         "llm_provider":  {"type": "string", "enum": ["ollama", "anthropic"]},
         "anthropic_api_key": {"type": "string"},
         "webhook_spam":  {"type": "string"},
@@ -198,6 +199,7 @@ class PhishingAnalyzerTXT:
         self.abuseipdb_key   = self.config.get("abuseipdb_api_key", "")
         self.max_workers     = self.config.get("max_workers", 4)
         self.whitelist       = self._load_whitelist()
+        self.spam_domains    = self._load_spam_domains()
 
     # ------------------------------------------------------------------
     # Configuración
@@ -244,6 +246,50 @@ class PhishingAnalyzerTXT:
         except Exception as exc:
             log.error("Error cargando whitelist: %s", exc)
         return domains
+
+    def _load_spam_domains(self) -> set:
+        """Cargar blacklist de dominios de spam conocidos."""
+        spam_path = self.config.get("spam_domains_path", "spam_domains.txt")
+        domains = set()
+        if not os.path.exists(spam_path):
+            log.warning("Spam domains no encontrado: %s", spam_path)
+            return domains
+        try:
+            with open(spam_path, "r", encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if line and not line.startswith("#"):
+                        domains.add(line.lower())
+            log.info("Spam domains cargado: %d dominios", len(domains))
+        except Exception as exc:
+            log.error("Error cargando spam_domains: %s", exc)
+        return domains
+
+    # ------------------------------------------------------------------
+    # Spam domains check
+    # ------------------------------------------------------------------
+
+    def check_spam_domains(self, from_email: str) -> bool:
+        """Verifica si el remitente pertenece a un dominio de spam conocido."""
+        if not from_email or not self.spam_domains:
+            return False
+        match = re.search(r"@([a-zA-Z0-9.-]+)", from_email.lower())
+        if not match:
+            return False
+        domain = match.group(1)
+
+        # Verificar dominio exacto
+        if domain in self.spam_domains:
+            return True
+
+        # Verificar subdominios (cualquier subdominio de un dominio en spam_domains)
+        parts = domain.split(".")
+        for i in range(1, len(parts)):
+            parent = ".".join(parts[i:])
+            if len(parent.split(".")) >= 2 and parent in self.spam_domains:
+                return True
+
+        return False
 
     # ------------------------------------------------------------------
     # Whitelist con protección contra subdomain spoofing
@@ -951,6 +997,30 @@ Responde ÚNICAMENTE con JSON:
                 microsoft_url_check = microsoft_urls,
                 risk_score          = 0,
                 reasons             = ["Dominio en whitelist — clasificado automáticamente como legítimo"]
+            )
+
+        # --- Spam domains: clasificación rápida para dominios de spam conocido ---
+        if self.check_spam_domains(from_email):
+            urls_spam = self.extract_urls_from_content(content)[:10]
+            log.info("Dominio en spam_domains → clasificado como SPAM: %s", from_email)
+            return EmailAnalysis(
+                mensaje_id          = headers.get("Message-ID", hashlib.md5(file_path.encode()).hexdigest()),
+                classification      = "spam",
+                confidence          = 0.95,
+                reporter_email      = self.extract_reporter_from_content(content, headers),
+                original_subject    = headers.get("Subject", "N/A"),
+                original_from       = self.extract_sender_email(from_email),
+                reply_to            = reply_to,
+                sender_ip           = self.extract_sender_ip(headers),
+                ip_reputation       = self.check_ip_reputation(sender_ip),
+                analysis_date       = datetime.now().isoformat(),
+                indicators          = self.check_authentication(headers),
+                headers_raw         = str(headers),
+                body_preview        = content[:500],
+                urls_found          = urls_spam,
+                microsoft_url_check = microsoft_urls,
+                risk_score          = 85,
+                reasons             = ["Dominio en spam_domains — clasificado automáticamente como SPAM"]
             )
 
         # --- Detección de homógrafo ---

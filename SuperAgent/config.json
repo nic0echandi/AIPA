@@ -13,6 +13,7 @@
   "anthropic_api_key": "",
   "abuseipdb_api_key": "",
   "whitelist_path": "whitelist.txt",
+  "spam_domains_path": "spam_domains.txt",
   "llm_validator": {
     "knn_agreement_weight": 0.25,
     "heuristic_agreement_weight": 0.25,

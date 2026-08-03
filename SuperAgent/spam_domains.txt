@@ -1,0 +1,28 @@
+# Blacklist de dominios conocidos de SPAM
+# Los emails de estos dominios se clasifican automáticamente como SPAM
+# Un dominio por línea, los comentarios (líneas con #) se ignoran
+
+# Promotores de promociones y marketing agresivo
+gympass.com
+getfit.app
+fitpass.com
+smartfit.com
+
+# Servicios financieros maliciosos/dudosos
+creditoexpress.net
+instantcredit.biz
+rápidocredit.top
+
+# Phishing conocido y fraude
+paypal-security.net
+paypal-verify.top
+amazon-confirm.xyz
+apple-id-verify.com
+microsoft-account-verify.com
+
+# Marketing spam persistente
+newsletter.spam.com
+promociones-diarias.net
+ofertas-clickbait.xyz
+
+# Agregar más dominios según sea necesario

@@ -28,6 +28,7 @@ SuperAgent/
 ├── 📄 DOCUMENTACIÓN
 │   ├── README.md                    ← Documento principal (45KB, índice completo)
 │   ├── ARCHITECTURE.md              ← Esta arquitectura
+│   ├── SPAM_DOMAINS_GUIDE.md        ← Guía de blacklist de spam
 │   └── requirements.txt
 │
 ├── 🔧 CORE COMPONENTS
@@ -62,7 +63,8 @@ SuperAgent/
 │
 ├── ⚙️ CONFIGURACIÓN
 │   ├── config.json                  ← Configuración principal
-│   └── whitelist.txt                ← Dominios de confianza (recarga automática)
+│   ├── whitelist.txt                ← Dominios de confianza (recarga automática)
+│   └── spam_domains.txt             ← Dominios de spam conocido (recarga automática)
 │
 ├── 💾 DATOS & LOGS
 │   ├── logs/                        ← Logs del sistema
@@ -97,45 +99,54 @@ SuperAgent/
 ┌─────────────────────────────────────────────────────────┐
 │ 2. WHITELIST CHECK (superagent_2.py)                    │
 │    - Recarga automática cada 5 segundos                 │
+│    - Si match → LEGÍTIMO (confianza 100%)              │
+└────────────┬──────────────────────────────────────────┘
+             │
+             ↓ (No encontrado)
+┌─────────────────────────────────────────────────────────┐
+│ 2B. SPAM DOMAINS CHECK (NUEVO - v2.0.2)                │
+│    - Blacklist de dominios spam/phishing conocidos     │
+│    - Si match → SPAM (confianza 95%, risk_score: 85)   │
+│    - Recarga automática cada 5 segundos                │
 └────────────┬──────────────────────────────────────────┘
              │
     ┌────────┴─────────┐
     │                  │
     ↓                  ↓
-✓ WHITELISTED    ┌──────────────────┐
-│                │ 3. KNN RÁPIDO    │
-│                │ (5ms, 33 features)
-│                └─────┬────────────┘
-│                      │
-│               ┌──────┴──────┐
-│               ↓             ↓
-│        CONFIANZA >85%  <85%
-│               │             ↓
-└───→ LEGITIMO  │       ┌──────────────┐
-                │       │ 4. LLM ANÁLISIS
-                │       │ (Ollama/Claude)
-                └───────┤       │
-                        └─┬─────┘
-                          ↓
-        ┌─────────────────────────────────┐
-        │ 5. ETAPA 1: VALIDACIÓN CRUZADA  │
-        │ llm_validation.py               │
-        │ - KNN alineado?                 │
-        │ - Risk score alineado?          │
-        │ - Heurísticas confirman?        │
-        └────┬──────────────────┬─────────┘
-             │                  │
-    ALTO >70%│                  │DUDOSO
-             ↓                  ↓
-        ACTUAR DIRECTO    manual_review/
-             │                  │
-             └──────┬───────────┘
-                    ↓
-        ┌─────────────────────────────────┐
-        │ 6. ETAPA 2: DATA QUALITY        │
-        │ data_quality.py                 │
-        │ - Confianza ≥ 65%?              │
-        │ - Risk score alineado?          │
+  SPAM            ┌──────────────────┐
+  (confianza      │ 3. KNN RÁPIDO    │
+   95%)           │ (5ms, 33 features)
+  │               └─────┬────────────┘
+  │                     │
+  │              ┌──────┴──────┐
+  │              ↓             ↓
+  │       CONFIANZA >85%  <85%
+  │              │             ↓
+  │              │       ┌──────────────┐
+  │              │       │ 4. LLM ANÁLISIS
+  │              │       │ (Ollama/Claude)
+  │              └───────┤       │
+  │                      └─┬─────┘
+  │                        ↓
+  │     ┌─────────────────────────────────┐
+  │     │ 5. ETAPA 1: VALIDACIÓN CRUZADA  │
+  │     │ llm_validation.py               │
+  │     │ - KNN alineado?                 │
+  │     │ - Risk score alineado?          │
+  │     │ - Heurísticas confirman?        │
+  │     └────┬──────────────────┬─────────┘
+  │          │                  │
+  │   ALTO >70%│                  │DUDOSO
+  │          ↓                  ↓
+  │     ACTUAR DIRECTO    manual_review/
+  │          │                  │
+  └──────┬───┴──────────────────┘
+         ↓
+     ┌────────────────────────────────────┐
+     │ 6. ETAPA 2: DATA QUALITY           │
+     │ data_quality.py                    │
+     │ - Confianza ≥ 65%?                 │
+     │ - Risk score alineado?             │
         │ - Headers completos?            │
         └────┬──────────────────┬─────────┘
              │                  │
@@ -161,11 +172,25 @@ SuperAgent/
 - **Características**:
   - FileSystemWatcher: Monitorea ingress/
   - Thread-safe con cola de procesamiento
-  - Recarga automática de whitelist (cada 5s)
+  - Recarga automática de whitelist y spam_domains (cada 5s)
   - Integración con 3 etapas de validación
   - Logging estructurado
 
-### 2. **knn_classifier.py** (Modelo Rápido)
+### 2. **spam_domains.txt & SPAM_DOMAINS_GUIDE.md** (Blacklist de Spam) ✨ NUEVO v2.0.2
+- **Función**: Clasificación automática rápida de dominios spam/phishing conocidos
+- **Características**:
+  - Uno dominio por línea (fácil mantenimiento)
+  - Recarga automática en tiempo real (< 5s)
+  - Captura dominios + subdominios automáticamente
+  - Clasificación inmediata (<100ms) sin necesidad de LLM
+  - Confianza: 95% | Risk score: 85
+- **Ejemplos**:
+  - Promotores agresivos: `gympass.com`, `smartfit.com`
+  - Phishing conocido: `paypal-security.net`, `amazon-confirm.xyz`
+  - Financieros dudosos: `creditoexpress.net`
+- **Recargas**: Monitoreadas automáticamente en superagent_2.py
+
+### 3. **knn_classifier.py** (Modelo Rápido)
 - **Función**: Clasificación rápida (5ms)
 - **Features**: 33 (24 originales + 9 nuevos)
 - **Características**:

@@ -348,6 +348,14 @@ class SuperAgent2:
             self.whitelist_mtime = self.whitelist_path.stat().st_mtime
             log.info(f"[OK] Monitoreo de whitelist activado: {self.whitelist_path}")
         
+        # Recarga automática de spam_domains
+        spam_domains_path = self.config.get("spam_domains_path", "spam_domains.txt")
+        self.spam_domains_path = Path(spam_domains_path)
+        self.spam_domains_mtime = 0
+        if self.spam_domains_path.exists():
+            self.spam_domains_mtime = self.spam_domains_path.stat().st_mtime
+            log.info(f"[OK] Monitoreo de spam_domains activado: {self.spam_domains_path}")
+        
         # Mostrar estadísticas mensuales iniciales
         self._print_monthly_stats()
     
@@ -421,6 +429,28 @@ class SuperAgent2:
         except Exception as exc:
             exc_str = str(exc).encode('cp1252', errors='replace').decode('cp1252')
             log.error(f"Error recargando whitelist: {exc_str}")
+
+    def _check_and_reload_spam_domains(self):
+        """Verifica si spam_domains.txt cambió y lo recarga si es necesario."""
+        if not self.spam_domains_path.exists():
+            return
+        
+        try:
+            current_mtime = self.spam_domains_path.stat().st_mtime
+            
+            # Si el archivo fue modificado
+            if current_mtime > self.spam_domains_mtime:
+                log.info(f"[WATCH] Spam domains actualizado detectado. Recargando...")
+                
+                # Recargar spam_domains en el analyzer
+                self.analyzer.spam_domains = self.analyzer._load_spam_domains()
+                
+                self.spam_domains_mtime = current_mtime
+                log.info(f"[OK] Spam domains recargado exitosamente ({len(self.analyzer.spam_domains)} dominios)")
+        
+        except Exception as exc:
+            exc_str = str(exc).encode('cp1252', errors='replace').decode('cp1252')
+            log.error(f"Error recargando spam_domains: {exc_str}")
     
     def _file_watcher_loop(self):
         """Monitorea ingress/ buscando nuevos .txt."""
@@ -431,6 +461,9 @@ class SuperAgent2:
             try:
                 # Verificar y recargar whitelist si cambió
                 self._check_and_reload_whitelist()
+                
+                # Verificar y recargar spam_domains si cambió
+                self._check_and_reload_spam_domains()
                 
                 current = {p for p in self.ingress_dir.glob("*.txt") if p.is_file()}
                 new_files = current - seen
