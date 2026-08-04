@@ -1,8 +1,34 @@
+```
+██        █████  ███████
+██       ██   ██ ██     
+██       ███████ ███████
+██       ██   ██      ██
+███████  ██   ██ ███████
+
+███    ███  █████  ██      ██    ██ ███████ ███    ██  █████  ███████
+████  ████ ██   ██ ██      ██    ██   ██    ████   ██ ██   ██ ██     
+██ ████ ██ ███████ ██      ██    ██   ██    ██ ██  ██ ███████ ███████
+██  ██  ██ ██   ██ ██       ██  ██    ██    ██  ██ ██ ██   ██      ██
+██      ██ ██   ██ ███████   ████   ███████ ██   ████ ██   ██ ███████
+
+               ███████  ██████  ███    ██
+               ██      ██    ██ ████   ██
+               ███████ ██    ██ ██ ██  ██
+                    ██ ██    ██ ██  ██ ██
+               ███████  ██████  ██   ████
+
+ █████  ██████   ██████  ███████ ███    ██ ████████ ███████ ███    ██  █████  ███████
+██   ██ ██   ██ ██       ██      ████   ██    ██       ██   ████   ██ ██   ██ ██     
+███████ ██████  ██   ███ █████   ██ ██  ██    ██       ██   ██ ██  ██ ███████ ███████
+██   ██ ██   ██ ██    ██ ██      ██  ██ ██    ██       ██   ██  ██ ██ ██   ██      ██
+██   ██ ██   ██  ██████  ███████ ██   ████    ██    ███████ ██   ████ ██   ██ ███████
+```
+
 # 📚 SuperAgent v2.0 - Documentación Completa
 
-**Última actualización**: 8 de Julio 2026  
-**Versión**: 2.0.1 (Parser v0.9 - Nuevo Formato Soportado)  
-**Estado**: ✅ Implementación completada + Parser actualizado
+**Última actualización**: 4 de Agosto 2026  
+**Versión**: 2.0.2 (Sistema de Spam Domains - Blacklist Automática)  
+**Estado**: ✅ Implementación completada + Sistema de Spam Domains integrado
 
 📋 **Documentación Adicional**: 
 - [ARCHITECTURE.md](ARCHITECTURE.md) - Estructura del proyecto
