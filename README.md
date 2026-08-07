@@ -2211,3 +2211,14 @@ pip install scikit-learn numpy pandas joblib requests
 **Versión**: 2.0 (Consolidada)  
 **Última actualización**: Julio 2024  
 **Estado**: ✅ Etapas 1-3 Completadas + Consolidación de Proyecto
+
+---
+
+## Autor
+
+**Nicolás Echandi**
+
+Desarrollador de **SuperAgent**, un agente de detección y respuesta automatizada ante Phishing (clasificación KNN + LLM, integración con IRIS DFIR) orientado a equipos de seguridad (SOC/CSIRT).
+
+🔗 LinkedIn: [linkedin.com/in/nicolasechandi](https://www.linkedin.com/in/nicolasechandi/)
+
