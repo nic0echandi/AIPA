@@ -26,15 +26,20 @@
 
 # 📚 SuperAgent v2.0 - Documentación Completa
 
-**Última actualización**: 4 de Agosto 2026  
-**Versión**: 2.0.2 (Sistema de Spam Domains - Blacklist Automática)  
-**Estado**: ✅ Implementación completada + Sistema de Spam Domains integrado
+**Última actualización**: 7 de Agosto 2026  
+**Versión**: 2.1.0 (Campañas de Simulacro de Phishing + Reporte Mensual por Email)  
+**Estado**: ✅ Implementación completada + Sistema de Spam Domains + Campañas de Simulacro integrados
 
 📋 **Documentación Adicional**: 
 - [ARCHITECTURE.md](ARCHITECTURE.md) - Estructura del proyecto
 - [SPAM_DOMAINS_GUIDE.md](SuperAgent/SPAM_DOMAINS_GUIDE.md) - Guía de blacklist de spam
 
-### 🔄 Cambios Recientes (v2.0.2)
+### 🔄 Cambios Recientes (v2.1.0)
+
+- ✅ **Campañas de Simulacro de Phishing** - Identificación de remitentes de campañas (`campaign_senders.txt`), sin alerta en IRIS, auto-respuesta al reporter y nueva categoría "Campaña" en estadísticas
+- ✅ **Reporte mensual por email** - El día 1 de cada mes se envía por SMTP un resumen de estadísticas del mes anterior a los destinatarios configurados en `config.json`
+
+### 🔄 Cambios Anteriores (v2.0.2)
 
 - ✅ **Sistema de Spam Domains** - Blacklist de dominios conocidos de spam/phishing
 - ✅ **Recarga automática** - spam_domains.txt se monitorea en tiempo real
@@ -59,6 +64,10 @@
 ### II.B. SISTEMA DE SPAM DOMAINS (v2.0.2) ✨ NUEVO
 - [6B. Sistema de Blacklist de Spam](#6b-sistema-de-blacklist-de-spam-v202-nuevo)
 - [Guía: SPAM_DOMAINS_GUIDE.md](SuperAgent/SPAM_DOMAINS_GUIDE.md)
+
+### II.C. CAMPAÑAS DE SIMULACRO DE PHISHING (v2.1.0) ✨ NUEVO
+- [6C. Sistema de Campañas de Simulacro de Phishing](#6c-sistema-de-campañas-de-simulacro-de-phishing-v210-nuevo)
+- [6D. Reporte Mensual por Email](#6d-reporte-mensual-por-email-v210-nuevo)
 
 ### III. IMPLEMENTACIÓN (ETAPAS 1-3)
 - [7. Etapa 1: Validación Cruzada de LLM](#7-etapa-1-validación-cruzada-de-llm)
@@ -87,16 +96,19 @@
 
 ### ¿Qué es SuperAgent?
 
-**SuperAgent** es un agente automático de análisis de phishing que procesa emails en tiempo real y los clasifica en 3 categorías:
+**SuperAgent** es un agente automático de análisis de phishing que procesa emails en tiempo real y los clasifica en 4 categorías:
 
 - **`legitimo`** - Email de confianza
 - **`spam`** - Email no deseado pero no peligroso
 - **`sospechoso`** - Posible phishing/ataque
+- **`campana`** - Simulacro de Phishing (campaña interna), no genera alerta en IRIS
 
 ### Características principales
 
-✅ **Clasificación automática** en 3 categorías  
+✅ **Clasificación automática** en 4 categorías  
 ✅ **Whitelist + Spam Domains** - Detección rápida de dominios conocidos  
+✅ **Campañas de simulacro de Phishing** - Sin alertas en IRIS, auto-respuesta al reporter  
+✅ **Reporte mensual por email** - Estadísticas del mes anterior enviadas automáticamente  
 ✅ **Validación cruzada** - No confía ciegamente en LLM  
 ✅ **Control de calidad** - Protege el modelo de datos corruptos  
 ✅ **Aprendizaje activo** - Mejora continuamente  
@@ -840,6 +852,99 @@ instantcredit.biz
 
 ---
 
+## 6C. Sistema de Campañas de Simulacro de Phishing (v2.1.0) ✨ NUEVO
+
+### Descripción General
+
+Cuando el equipo de seguridad lanza una **campaña de simulacro de Phishing** (ej. con KnowBe4, Proofpoint o un envío propio), es esperable que los usuarios reporten esos emails como sospechosos. El sistema identifica automáticamente los reportes que corresponden a la campaña para que:
+
+- **No generen alerta en IRIS** (no es un incidente real).
+- **No entrenen al modelo KNN** (no son ejemplos representativos de phishing real).
+- **Se responda al reporter** agradeciéndole el reporte.
+- **Se contabilicen aparte** en las estadísticas, bajo la categoría `campana`.
+
+### Archivo: `campaign_senders.txt`
+
+Igual que `whitelist.txt`, un remitente (email completo o dominio) por línea; las líneas con `#` se ignoran:
+
+```txt
+# Remitentes de campañas de simulacro de Phishing
+simulacro@proveedor-phishing.com
+campanias.simulacro.com
+```
+
+Se recarga automáticamente cada 5 segundos si el archivo cambia (sin reiniciar el servicio).
+
+### Flujo de Clasificación
+
+```
+Email entra
+    ↓
+¿Remitente en campaign_senders.txt?
+  Sí → CAMPAÑA (sin alerta IRIS) ⚡ + respuesta automática al reporter
+  No ↓
+¿En whitelist.txt?
+  Sí → LEGÍTIMO (100% confianza) ✅
+  No ↓
+¿En spam_domains.txt?
+  Sí → SPAM (95% confianza) ⚡ <100ms
+  No ↓
+KNN + LLM (análisis profundo)
+```
+
+> El chequeo de campaña tiene **máxima prioridad**: se evalúa antes que whitelist y KNN, ya que los emails de un simulacro suelen estar diseñados para parecer maliciosos.
+
+### Respuesta automática al reporter
+
+El mensaje enviado es configurable en `config.json` mediante `campaign_reply_message` (por defecto):
+
+```
+El email que reportaste era un simulacro de Phishing. Gracias por reportarlo!!
+```
+
+### Estadísticas
+
+Cada caso identificado como campaña se registra en `stats.json` bajo `by_classification.campana` (fuente `by_source.campaign`), visible en los reportes generados por `usage_stats.py` (`generate_report()`).
+
+### Integración con config.json
+
+```json
+{
+  "campaign_senders_path": "campaign_senders.txt",
+  "campaign_reply_message": "El email que reportaste era un simulacro de Phishing. Gracias por reportarlo!!"
+}
+```
+
+---
+
+## 6D. Reporte Mensual por Email (v2.1.0) ✨ NUEVO
+
+### Descripción General
+
+El día 1 de cada mes, SuperAgent envía automáticamente por SMTP un reporte con las estadísticas del **mes anterior** (totales por clasificación, por fuente de decisión y precisión del KNN) a una lista de destinatarios configurable.
+
+### Configuración
+
+```json
+{
+  "monthly_report": {
+    "enabled": true,
+    "recipients": "seguridad@empresa.com,soc@empresa.com"
+  }
+}
+```
+
+- `recipients`: lista de destinatarios separados por coma (string único).
+- `enabled`: permite desactivar el envío sin quitar la configuración.
+
+### Comportamiento
+
+- Se verifica dentro del loop del FileWatcher (cada 5 segundos): si `hoy.day == 1` y todavía no se envió el reporte hoy, se genera y envía.
+- El estado del último envío se persiste en `SuperAgent/monthly_report_state.json` (`{"last_sent": "YYYY-MM-DD"}`) para evitar reenvíos duplicados si el proceso se reinicia el mismo día.
+- Si no hay `recipients` configurados o `smtp.host` está vacío, el envío se omite y se registra un warning en el log.
+
+---
+
 ## 7. Etapa 1: Validación Cruzada de LLM
 
 ### Problema que resuelve
@@ -1254,6 +1359,13 @@ RECOMENDACIÓN: Use Random Forest para >1000 emails/día
   },
   
   "whitelist_path": "whitelist.txt",
+  "spam_domains_path": "spam_domains.txt",
+  "campaign_senders_path": "campaign_senders.txt",
+  "campaign_reply_message": "El email que reportaste era un simulacro de Phishing. Gracias por reportarlo!!",
+  "monthly_report": {
+    "enabled": true,
+    "recipients": "seguridad@empresa.com,soc@empresa.com"
+  },
   "abuseipdb_api_key": ""
 }
 ```
@@ -1526,12 +1638,16 @@ SuperAgent/
 ├── ../processed/                 Emails procesados (salida PRODUCCIÓN)
 │   ├── legitimo/
 │   ├── spam/
-│   └── sospechoso/
+│   ├── sospechoso/
+│   └── campana/                  Simulacros de Phishing (v2.1.0)
 └── ../analysis_results/          Análisis en JSON
 
 📋 CONFIGURACIÓN Y DOCUMENTACIÓN
 ├── config.json                   Configuración principal
 ├── whitelist.txt                 Emails de confianza
+├── spam_domains.txt              Dominios de spam/phishing conocidos
+├── campaign_senders.txt          Remitentes de campañas de simulacro (v2.1.0)
+├── monthly_report_state.json     Estado del último reporte mensual enviado (v2.1.0)
 ├── README_COMPLETO.md            ← DOCUMENTACIÓN ÚNICA
 └── requirements.txt              Dependencias Python
 ```
@@ -1939,6 +2055,26 @@ Después de deployment:
 ---
 
 ## 19. Resumen de Cambios
+
+### Campañas de Simulacro de Phishing + Reporte Mensual (v2.1.0 - Agosto 2026)
+
+**Nuevas funcionalidades:**
+- ✅ **`campaign_senders.txt`** - Lista de remitentes (email o dominio) de campañas de simulacro de Phishing, con recarga automática igual que `whitelist.txt`/`spam_domains.txt`
+- ✅ **Nueva clasificación `campana`** - Máxima prioridad en el pipeline (antes de whitelist/KNN), no genera alerta en IRIS y no entrena al KNN
+- ✅ **Auto-respuesta al reporter** - Mensaje configurable vía `campaign_reply_message` (default: "El email que reportaste era un simulacro de Phishing. Gracias por reportarlo!!")
+- ✅ **Nueva categoría en estadísticas** - `by_classification.campana` / `by_source.campaign` en `stats.json`
+- ✅ **Reporte mensual automático** - El día 1 de cada mes se envía por SMTP un resumen del mes anterior a `monthly_report.recipients` (lista separada por coma), con estado persistido en `monthly_report_state.json` para evitar reenvíos duplicados
+
+#### Archivos Actualizados:
+| Archivo | Cambios | Propósito |
+|---------|---------|----------|
+| `superagent.py` | Chequeo de campaña + reporte mensual | Prioriza detección de simulacro y agenda el envío mensual |
+| `phishingAnalizer.py` | `check_campaign_sender()` + `_load_campaign_senders()` | Carga y matchea remitentes de campaña (email o dominio) |
+| `usage_stats.py` | Categoría `campana`/`campaign` | Contabiliza y reporta los casos de campaña |
+| `campaign_senders.txt` | Nuevo archivo | Lista de remitentes de campaña (editable en caliente) |
+| `config.json` | +`campaign_senders_path`, `campaign_reply_message`, `monthly_report` | Configuración de las nuevas funcionalidades |
+
+---
 
 ### Actualización del Parser v0.9 (Julio 2026)
 
