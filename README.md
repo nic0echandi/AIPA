@@ -1438,7 +1438,7 @@ summary = controller.get_quarantine_summary()
 
 ---
 
-## 11. Testing e Reentrenamiento
+## 11. Testing y Reentrenamiento
 
 ### Objetivo
 
