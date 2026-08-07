@@ -92,12 +92,14 @@ class UsageStats:
                 "by_classification": {
                     "legitimo": 0,
                     "spam": 0,
-                    "sospechoso": 0
+                    "sospechoso": 0,
+                    "campana": 0
                 },
                 "by_source": {
                     "whitelist": 0,
                     "knn": 0,
-                    "llm": 0
+                    "llm": 0,
+                    "campaign": 0
                 },
                 "knn_accuracy": {
                     "correct": 0,
@@ -220,16 +222,16 @@ class UsageStats:
         
         totals = {
             "total": 0,
-            "by_classification": {"legitimo": 0, "spam": 0, "sospechoso": 0},
-            "by_source": {"whitelist": 0, "knn": 0, "llm": 0},
+            "by_classification": {"legitimo": 0, "spam": 0, "sospechoso": 0, "campana": 0},
+            "by_source": {"whitelist": 0, "knn": 0, "llm": 0, "campaign": 0},
         }
         
         for month, month_data in year_data.items():
             totals["total"] += month_data["total"]
             for cls, count in month_data["by_classification"].items():
-                totals["by_classification"][cls] += count
+                totals["by_classification"][cls] = totals["by_classification"].get(cls, 0) + count
             for src, count in month_data["by_source"].items():
-                totals["by_source"][src] += count
+                totals["by_source"][src] = totals["by_source"].get(src, 0) + count
         
         # Calcular porcentajes
         total = totals["total"]
@@ -336,12 +338,13 @@ class UsageStats:
             m_summary = year_summary["by_month"][m]
             m_name = datetime.strptime(m, "%m").strftime("%B")
             report.append(f"  {m_name:10} | Total: {m_summary['total']:4} | "
-                         f"L:{m_summary['by_classification']['legitimo']:3} "
-                         f"S:{m_summary['by_classification']['spam']:3} "
-                         f"P:{m_summary['by_classification']['sospechoso']:3} | "
-                         f"WL:{m_summary['by_source']['whitelist']:3} "
-                         f"KNN:{m_summary['by_source']['knn']:3} "
-                         f"LLM:{m_summary['by_source']['llm']:3}")
+                         f"L:{m_summary['by_classification'].get('legitimo', 0):3} "
+                         f"S:{m_summary['by_classification'].get('spam', 0):3} "
+                         f"P:{m_summary['by_classification'].get('sospechoso', 0):3} "
+                         f"C:{m_summary['by_classification'].get('campana', 0):3} | "
+                         f"WL:{m_summary['by_source'].get('whitelist', 0):3} "
+                         f"KNN:{m_summary['by_source'].get('knn', 0):3} "
+                         f"LLM:{m_summary['by_source'].get('llm', 0):3}")
         
         report.append("")
         report.append("=" * 70)

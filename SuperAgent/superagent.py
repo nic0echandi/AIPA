@@ -28,9 +28,9 @@ import threading
 import queue
 import re
 import unicodedata
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Dict, Optional
+from typing import Dict, List, Optional
 from smtplib import SMTP, SMTP_SSL
 from email.message import EmailMessage
 
@@ -305,7 +305,7 @@ class SuperAgent2:
         self.analysis_dir = Path(self.config["analysis_dir"]).resolve()
         
         # Crear estructura
-        for sub in ("legitimo", "spam", "sospechoso"):
+        for sub in ("legitimo", "spam", "sospechoso", "campana"):
             (self.processed_dir / sub).mkdir(parents=True, exist_ok=True)
         self.ingress_dir.mkdir(parents=True, exist_ok=True)
         self.analysis_dir.mkdir(parents=True, exist_ok=True)
@@ -355,6 +355,18 @@ class SuperAgent2:
         if self.spam_domains_path.exists():
             self.spam_domains_mtime = self.spam_domains_path.stat().st_mtime
             log.info(f"[OK] Monitoreo de spam_domains activado: {self.spam_domains_path}")
+        
+        # Recarga automática de campaign_senders (simulacros de Phishing)
+        campaign_senders_path = self.config.get("campaign_senders_path", "campaign_senders.txt")
+        self.campaign_senders_path = Path(campaign_senders_path)
+        self.campaign_senders_mtime = 0
+        if self.campaign_senders_path.exists():
+            self.campaign_senders_mtime = self.campaign_senders_path.stat().st_mtime
+            log.info(f"[OK] Monitoreo de campaign_senders activado: {self.campaign_senders_path}")
+        
+        # Estado del reporte mensual (evita reenvíos duplicados el mismo día)
+        self.monthly_report_state_path = Path(__file__).resolve().parent / "monthly_report_state.json"
+        self._monthly_report_last_sent = self._load_monthly_report_state()
         
         # Mostrar estadísticas mensuales iniciales
         self._print_monthly_stats()
@@ -452,6 +464,28 @@ class SuperAgent2:
             exc_str = str(exc).encode('cp1252', errors='replace').decode('cp1252')
             log.error(f"Error recargando spam_domains: {exc_str}")
     
+    def _check_and_reload_campaign_senders(self):
+        """Verifica si campaign_senders.txt cambió y lo recarga si es necesario."""
+        if not self.campaign_senders_path.exists():
+            return
+        
+        try:
+            current_mtime = self.campaign_senders_path.stat().st_mtime
+            
+            # Si el archivo fue modificado
+            if current_mtime > self.campaign_senders_mtime:
+                log.info(f"[WATCH] Campaign senders actualizado detectado. Recargando...")
+                
+                # Recargar campaign_senders en el analyzer
+                self.analyzer.campaign_senders = self.analyzer._load_campaign_senders()
+                
+                self.campaign_senders_mtime = current_mtime
+                log.info(f"[OK] Campaign senders recargado exitosamente ({len(self.analyzer.campaign_senders)} entradas)")
+        
+        except Exception as exc:
+            exc_str = str(exc).encode('cp1252', errors='replace').decode('cp1252')
+            log.error(f"Error recargando campaign_senders: {exc_str}")
+    
     def _file_watcher_loop(self):
         """Monitorea ingress/ buscando nuevos .txt."""
         seen = set()
@@ -464,6 +498,12 @@ class SuperAgent2:
                 
                 # Verificar y recargar spam_domains si cambió
                 self._check_and_reload_spam_domains()
+                
+                # Verificar y recargar campaign_senders si cambió
+                self._check_and_reload_campaign_senders()
+                
+                # Verificar si corresponde enviar el reporte mensual (día 1 de cada mes)
+                self._check_and_send_monthly_report()
                 
                 current = {p for p in self.ingress_dir.glob("*.txt") if p.is_file()}
                 new_files = current - seen
@@ -553,7 +593,14 @@ class SuperAgent2:
             self._move_to_processed(file_path, "spam")
             return
         
-        # 2. Whitelist check
+        # 2. Campaign check — simulacro de Phishing, máxima prioridad (no genera alertas en IRIS)
+        if self.analyzer.check_campaign_sender(from_email):
+            log.info(f"Campaign match: {from_email} [SIMULACRO DE PHISHING]")
+            analysis = self._build_campaign_analysis(file_path, parsed, from_email, to_email)
+            self._handle_result(file_path, analysis, classification_source="campaign")
+            return
+        
+        # 3. Whitelist check
         if self.analyzer.check_whitelist(from_email):
             log.info(f"Whitelist match: {from_email} [LEGIT]")
             analysis = self.analyzer.analyze_txt_file(str(file_path))
@@ -562,7 +609,7 @@ class SuperAgent2:
             self._handle_result(file_path, analysis)
             return
         
-        # 3. KNN rápido
+        # 4. KNN rápido
         knn_result = self.knn.classify_email(headers, content, microsoft_urls)
         
         if knn_result["is_confident"]:
@@ -631,6 +678,34 @@ class SuperAgent2:
             reasons=reasons + [
                 f"KNN features activas: {', '.join(active_features[:8])}"
             ]
+        )
+    
+    def _build_campaign_analysis(
+        self, file_path: Path, parsed: Dict, from_email: str, to_email: str
+    ) -> EmailAnalysis:
+        """Construye EmailAnalysis para un remitente identificado como campaña de simulacro de Phishing."""
+        headers = parsed["headers"]
+        content = parsed["raw_content"]
+        microsoft_urls = parsed["microsoft_urls"]
+        
+        return EmailAnalysis(
+            mensaje_id=sanitize_for_cp1252(headers.get("Message-ID", file_path.stem)),
+            classification="campana",
+            confidence=1.0,
+            reporter_email=to_email,
+            original_subject=sanitize_for_cp1252(headers.get("Subject", "N/A")),
+            original_from=sanitize_for_cp1252(from_email),
+            reply_to=sanitize_for_cp1252(self.analyzer.extract_reply_to(headers) or ""),
+            sender_ip=self.analyzer.extract_sender_ip(headers),
+            ip_reputation={},
+            analysis_date=datetime.now().isoformat(),
+            indicators=self.analyzer.check_authentication(headers),
+            headers_raw=sanitize_for_cp1252(str(headers)),
+            body_preview=sanitize_for_cp1252(content[:500]),
+            urls_found=[],
+            microsoft_url_check=microsoft_urls,
+            risk_score=0,
+            reasons=["Remitente identificado en campaign_senders.txt — simulacro de Phishing"]
         )
     
     # ========================================================================
@@ -708,6 +783,10 @@ class SuperAgent2:
             log.info("[SPAM] Email clasificado como SPAM")
             self._notify_reporter(analysis, "spam")
             self._update_knn(analysis, knn_result)
+        
+        elif classification == "campana":
+            log.info("[CAMPAÑA] Email identificado como simulacro de Phishing — sin alerta en IRIS")
+            self._notify_reporter(analysis, "campana")
         
         elif classification == "legitimo":
             log.info("[LEGIT] Email clasificado como LEGÍTIMO")
@@ -882,6 +961,10 @@ class SuperAgent2:
                 f"Nuestro equipo de seguridad ya fue notificado. "
                 f"POR FAVOR NO hagas clic en enlaces ni descargues archivos de ese email."
             ),
+            "campana": self.config.get(
+                "campaign_reply_message",
+                "El email que reportaste era un simulacro de Phishing. Gracias por reportarlo!!"
+            ),
         }
         
         msg = EmailMessage()
@@ -922,6 +1005,109 @@ class SuperAgent2:
         except Exception as exc:
             exc_str = str(exc).encode('cp1252', errors='replace').decode('cp1252')
             log.error(f"No se pudo mover {file_path.name}: {exc_str}")
+    
+    # ========================================================================
+    # Reporte mensual por email (día 1 de cada mes, estadísticas del mes anterior)
+    # ========================================================================
+    
+    def _load_monthly_report_state(self) -> Optional[str]:
+        """Carga la fecha (YYYY-MM-DD) del último envío del reporte mensual."""
+        try:
+            if self.monthly_report_state_path.exists():
+                with open(self.monthly_report_state_path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    return data.get("last_sent")
+        except Exception as exc:
+            log.error(f"Error cargando estado de reporte mensual: {exc}")
+        return None
+    
+    def _save_monthly_report_state(self, date_str: str):
+        """Persiste la fecha del último envío del reporte mensual."""
+        try:
+            with open(self.monthly_report_state_path, "w", encoding="utf-8") as f:
+                json.dump({"last_sent": date_str}, f)
+        except Exception as exc:
+            log.error(f"Error guardando estado de reporte mensual: {exc}")
+    
+    def _check_and_send_monthly_report(self):
+        """Si es día 1 del mes y no se envió hoy, envía por email el reporte del mes anterior."""
+        now = datetime.now()
+        if now.day != 1:
+            return
+        
+        today_key = now.strftime("%Y-%m-%d")
+        if self._monthly_report_last_sent == today_key:
+            return
+        
+        report_cfg = self.config.get("monthly_report", {})
+        if not report_cfg.get("enabled", True):
+            return
+        
+        recipients = [r.strip() for r in report_cfg.get("recipients", "").split(",") if r.strip()]
+        if not recipients:
+            log.warning("Reporte mensual: no hay destinatarios configurados (monthly_report.recipients)")
+            self._monthly_report_last_sent = today_key
+            self._save_monthly_report_state(today_key)
+            return
+        
+        # Mes anterior al actual
+        last_month_date = now.replace(day=1) - timedelta(days=1)
+        year = str(last_month_date.year)
+        month = f"{last_month_date.month:02d}"
+        
+        self._send_monthly_report_email(year, month, recipients)
+        
+        self._monthly_report_last_sent = today_key
+        self._save_monthly_report_state(today_key)
+    
+    def _send_monthly_report_email(self, year: str, month: str, recipients: List[str]):
+        """Envía por email el resumen de estadísticas de un mes a la lista de destinatarios."""
+        smtp_cfg = self.config.get("smtp", {})
+        if not smtp_cfg.get("host"):
+            log.warning("SMTP no configurado — reporte mensual omitido")
+            return
+        
+        summary = self.stats.get_month_summary(year, month)
+        month_name = datetime.strptime(month, "%m").strftime("%B")
+        
+        lines = [
+            f"Reporte mensual de SuperAgent — {month_name} {year}",
+            "=" * 50,
+            f"Total de casos procesados: {summary['total']}",
+            "",
+            "Por clasificación:",
+        ]
+        for cls, count in summary["by_classification"].items():
+            pct = summary["by_classification_pct"].get(cls, 0)
+            lines.append(f"  - {cls}: {count} ({pct}%)")
+        lines.append("")
+        lines.append("Por fuente de decisión:")
+        for src, count in summary["by_source"].items():
+            pct = summary["by_source_pct"].get(src, 0)
+            lines.append(f"  - {src}: {count} ({pct}%)")
+        lines.append("")
+        lines.append(f"Precisión KNN: {summary.get('knn_accuracy_pct', 0)}%")
+        
+        msg = EmailMessage()
+        msg["Subject"] = f"[SuperAgent] Reporte mensual de estadísticas — {month_name} {year}"
+        msg["From"] = smtp_cfg.get("from", "noreply@example.com")
+        msg["To"] = ", ".join(recipients)
+        msg.set_content("\n".join(lines))
+        
+        try:
+            if smtp_cfg.get("use_tls", False):
+                with SMTP(smtp_cfg["host"], smtp_cfg["port"]) as smtp:
+                    smtp.starttls()
+                    smtp.send_message(msg)
+            else:
+                with SMTP(smtp_cfg["host"], smtp_cfg["port"]) as smtp:
+                    smtp.send_message(msg)
+            
+            log.info(f"[OK] Reporte mensual enviado a: {', '.join(recipients)}")
+        
+        except Exception as exc:
+            exc_str = str(exc).encode('cp1252', errors='replace').decode('cp1252')
+            log.error(f"[ERROR] Error enviando reporte mensual: {exc_str}")
     
     def _update_knn(self, analysis: EmailAnalysis, knn_result: Optional[Dict] = None):
         """

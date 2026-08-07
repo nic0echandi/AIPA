@@ -82,6 +82,15 @@ CONFIG_SCHEMA = {
         "ollama_model":  {"type": "string"},
         "whitelist_path": {"type": "string"},
         "spam_domains_path": {"type": "string"},
+        "campaign_senders_path": {"type": "string"},
+        "campaign_reply_message": {"type": "string"},
+        "monthly_report": {
+            "type": "object",
+            "properties": {
+                "enabled":    {"type": "boolean"},
+                "recipients": {"type": "string"}
+            }
+        },
         "llm_provider":  {"type": "string", "enum": ["ollama", "anthropic"]},
         "anthropic_api_key": {"type": "string"},
         "webhook_spam":  {"type": "string"},
@@ -112,7 +121,7 @@ CONFIG_SCHEMA = {
 class EmailAnalysis:
     """Resultado del análisis de un email."""
     mensaje_id:          str
-    classification:      str   # 'legitimo', 'spam', 'sospechoso'
+    classification:      str   # 'legitimo', 'spam', 'sospechoso', 'campana'
     confidence:          float
     reporter_email:      str
     original_subject:    str
@@ -200,6 +209,7 @@ class PhishingAnalyzerTXT:
         self.max_workers     = self.config.get("max_workers", 4)
         self.whitelist       = self._load_whitelist()
         self.spam_domains    = self._load_spam_domains()
+        self.campaign_senders = self._load_campaign_senders()
 
     # ------------------------------------------------------------------
     # Configuración
@@ -265,6 +275,24 @@ class PhishingAnalyzerTXT:
             log.error("Error cargando spam_domains: %s", exc)
         return domains
 
+    def _load_campaign_senders(self) -> set:
+        """Carga remitentes (emails o dominios) usados en campañas de simulacro de Phishing."""
+        campaign_path = self.config.get("campaign_senders_path", "campaign_senders.txt")
+        senders = set()
+        if not os.path.exists(campaign_path):
+            log.warning("Campaign senders no encontrado: %s", campaign_path)
+            return senders
+        try:
+            with open(campaign_path, "r", encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if line and not line.startswith("#"):
+                        senders.add(line.lower())
+            log.info("Campaign senders cargado: %d entradas", len(senders))
+        except Exception as exc:
+            log.error("Error cargando campaign_senders: %s", exc)
+        return senders
+
     # ------------------------------------------------------------------
     # Spam domains check
     # ------------------------------------------------------------------
@@ -287,6 +315,38 @@ class PhishingAnalyzerTXT:
         for i in range(1, len(parts)):
             parent = ".".join(parts[i:])
             if len(parent.split(".")) >= 2 and parent in self.spam_domains:
+                return True
+
+        return False
+
+    # ------------------------------------------------------------------
+    # Campaign senders (simulacros de Phishing) — match por email exacto o dominio
+    # ------------------------------------------------------------------
+
+    def check_campaign_sender(self, from_email: str) -> bool:
+        """Verifica si el remitente corresponde a una campaña de simulacro de Phishing."""
+        if not from_email or not self.campaign_senders:
+            return False
+        from_email_lower = from_email.lower()
+
+        # Match por dirección de email completa
+        if from_email_lower in self.campaign_senders:
+            return True
+
+        match = re.search(r"@([a-zA-Z0-9.-]+)", from_email_lower)
+        if not match:
+            return False
+        domain = match.group(1)
+
+        # Match por dominio exacto
+        if domain in self.campaign_senders:
+            return True
+
+        # Match por subdominio (parent con al menos 2 partes)
+        parts = domain.split(".")
+        for i in range(1, len(parts)):
+            parent = ".".join(parts[i:])
+            if len(parent.split(".")) >= 2 and parent in self.campaign_senders:
                 return True
 
         return False
@@ -973,6 +1033,30 @@ Responde ÚNICAMENTE con JSON:
             log.warning("[CONFIRMED] PHISHING CONFIRMADO (archivo comienza con '_'): %s from %s", 
                        Path(file_path).name, from_email)
 
+        # --- Campaign senders: simulacro de Phishing, máxima prioridad (no genera alertas) ---
+        if self.check_campaign_sender(from_email):
+            urls_camp = self.extract_urls_from_content(content)[:10]
+            log.info("Remitente de campaña de simulacro detectado: %s", from_email)
+            return EmailAnalysis(
+                mensaje_id          = headers.get("Message-ID", hashlib.md5(file_path.encode()).hexdigest()),
+                classification      = "campana",
+                confidence          = 1.0,
+                reporter_email      = self.extract_reporter_from_content(content, headers),
+                original_subject    = headers.get("Subject", "N/A"),
+                original_from       = self.extract_sender_email(from_email),
+                reply_to            = reply_to,
+                sender_ip           = sender_ip,
+                ip_reputation       = {},
+                analysis_date       = datetime.now().isoformat(),
+                indicators          = self.check_authentication(headers),
+                headers_raw         = str(headers),
+                body_preview        = content[:500],
+                urls_found          = urls_camp,
+                microsoft_url_check = microsoft_urls,
+                risk_score          = 0,
+                reasons             = ["Remitente identificado en campaign_senders.txt — simulacro de Phishing"]
+            )
+
         # --- Whitelist: clasificación rápida, pero con indicadores REALES ---
         if self.check_whitelist(from_email):
             auth     = self.check_authentication(headers)
@@ -1171,6 +1255,9 @@ Responde ÚNICAMENTE con JSON:
         elif analysis.classification == "legitimo":
             log.info("→ Notificando reporter (legítimo)...")
             self.send_to_powerautomate(analysis, "legitimo")
+        elif analysis.classification == "campana":
+            log.info("→ Simulacro de Phishing detectado, sin alerta en IRIS...")
+            self.send_to_powerautomate(analysis, "campana")
 
         self.save_analysis(analysis)
         return analysis

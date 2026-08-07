@@ -1,0 +1,13 @@
+# Remitentes de campañas de simulacro de Phishing
+# Los emails reportados desde estos remitentes (o dominios) se identifican
+# automáticamente como parte de una campaña de simulacro y:
+#   - NO generan alerta en IRIS
+#   - Se responde al reporter agradeciendo el reporte
+#   - Se contabilizan en las estadísticas bajo la categoría "Campaña"
+#
+# Un remitente por línea. Puede ser un email completo (ej: phishing-sim@proveedor.com)
+# o un dominio completo (ej: proveedor-simulacros.com). Las líneas con # se ignoran.
+
+# Ejemplo:
+# simulacro@proveedor-phishing.com
+# campanias.simulacro.com

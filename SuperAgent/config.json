@@ -14,6 +14,12 @@
   "abuseipdb_api_key": "",
   "whitelist_path": "whitelist.txt",
   "spam_domains_path": "spam_domains.txt",
+  "campaign_senders_path": "campaign_senders.txt",
+  "campaign_reply_message": "El email que reportaste era un simulacro de Phishing. Gracias por reportarlo!!",
+  "monthly_report": {
+    "enabled": true,
+    "recipients": "cybersec.ar@sarasa.com.ar"
+  },
   "llm_validator": {
     "knn_agreement_weight": 0.25,
     "heuristic_agreement_weight": 0.25,
