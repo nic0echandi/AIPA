@@ -49,3 +49,11 @@
 2026-08-03T09:54:17 | INFO     | phishing_analyzer | config.json validado correctamente.
 2026-08-03T09:54:17 | INFO     | phishing_analyzer | Whitelist cargada: 0 dominios
 2026-08-03T09:54:17 | INFO     | phishing_analyzer | Spam domains cargado: 15 dominios
+2026-08-07T13:20:57 | INFO     | phishing_analyzer | config.json validado correctamente.
+2026-08-07T13:20:57 | INFO     | phishing_analyzer | Whitelist cargada: 0 dominios
+2026-08-07T13:20:57 | INFO     | phishing_analyzer | Spam domains cargado: 15 dominios
+2026-08-07T13:20:57 | INFO     | phishing_analyzer | Campaign senders cargado: 0 entradas
+2026-08-07T13:24:11 | INFO     | phishing_analyzer | config.json validado correctamente.
+2026-08-07T13:24:11 | INFO     | phishing_analyzer | Whitelist cargada: 1 dominios
+2026-08-07T13:24:11 | INFO     | phishing_analyzer | Spam domains cargado: 15 dominios
+2026-08-07T13:24:11 | INFO     | phishing_analyzer | Campaign senders cargado: 0 entradas

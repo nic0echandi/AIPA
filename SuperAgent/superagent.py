@@ -231,19 +231,24 @@ class SuperAgent2:
     """
     
     @staticmethod
-    def extract_email_from_address(address: str) -> str:
+    def extract_email_from_address(address: str, fallback_domain: str = "exchange.local") -> str:
         """Extrae email de una dirección que puede tener múltiples formatos:
         - 'Name <email@example.com>' (RFC 5322)
         - 'SMTP:email@example.com' (X.500 Exchange)
         - '/O=ORG/OU=UNIT/.../SMTP:email@example.com' (LDAP DN)
         - 'email@example.com' (simple)
         - 'Name email@example.com' (separados)
+
+        Si no se puede resolver una dirección real (ej. remitente interno sin SMTP:
+        expuesto, o un nombre de sistema/servicio sin '@'), se usa `fallback_domain`
+        (normalmente el dominio del destinatario/reporter) en lugar de un dominio
+        inventado, para que remitentes internos puedan matchear la whitelist.
         """
         import html
         import re
         
         if not address or not isinstance(address, str):
-            return "unknown@exchange.local"
+            return f"unknown@{fallback_domain}"
         
         address = address.strip()
         
@@ -270,13 +275,15 @@ class SuperAgent2:
         if email_match:
             return email_match.group(1).strip()
         
-        # Caso 4: No se encontró email válido
-        # Devolver "unknown" + dominio si está disponible o fallback genérico
-        if address and not address.startswith('/O='):
-            # Si no es LDAP DN, devolver lo que sea (podría ser un nombre)
-            return "unknown@exchange.local"
+        # Caso 4: LDAP DN sin SMTP resuelto (ej. '/O=EXCHANGELABS/OU=...') — remitente
+        # interno del mismo org que el destinatario, pero sin dirección resoluble
+        if address.startswith('/O='):
+            return f"unknown@{fallback_domain}"
         
-        return "unknown@exchange.local"
+        # Caso 5: Nombre/sistema sin '@' (ej. 'MMALARMA') — preservar como local-part
+        # para mantener trazabilidad y permitir whitelisting específico
+        local_part = re.sub(r'[^a-zA-Z0-9._-]', '', address.lower()) or "unknown"
+        return f"{local_part}@{fallback_domain}"
     
     def _print_monthly_stats(self):
         """Imprime estadísticas mensuales en los logs."""
@@ -572,8 +579,13 @@ class SuperAgent2:
         log.info(f"  [RAW From] '{from_raw}'")
         
         # Extraer emails limpiando formatos X.500, HTML entities, etc.
-        from_email = self.extract_email_from_address(headers.get("From", ""))
+        # El destinatario (reporter) se resuelve primero: su dominio se usa como
+        # fallback para el remitente cuando no se puede resolver una dirección real
+        # (remitente interno / sistema local sin SMTP: expuesto), evitando el
+        # placeholder ficticio 'exchange.local' y permitiendo matchear whitelist.
         to_email = self.extract_email_from_address(headers.get("To", ""))
+        to_domain = to_email.split("@")[-1] if to_email and "@" in to_email else "exchange.local"
+        from_email = self.extract_email_from_address(headers.get("From", ""), fallback_domain=to_domain)
         
         log.info(f"  [EXTRACT To] '{to_email}'")
         log.info(f"  [EXTRACT From] '{from_email}'")
@@ -617,7 +629,7 @@ class SuperAgent2:
                 f"KNN directo ({knn_result['confidence'] * 100:.0f}% confianza) - "
                 f"{knn_result['classification'].upper()}"
             )
-            analysis = self._build_analysis_from_knn(file_path, parsed, knn_result)
+            analysis = self._build_analysis_from_knn(file_path, parsed, knn_result, from_email, to_email)
             classification_source = "knn"
         else:
             log.info(
@@ -637,7 +649,7 @@ class SuperAgent2:
         self._handle_result(file_path, analysis, knn_result, classification_source)
     
     def _build_analysis_from_knn(
-        self, file_path: Path, parsed: Dict, knn_result: Dict
+        self, file_path: Path, parsed: Dict, knn_result: Dict, from_email: str, to_email: str
     ) -> EmailAnalysis:
         """Construye EmailAnalysis desde KNN sin Ollama."""
         headers = parsed["headers"]
@@ -662,9 +674,9 @@ class SuperAgent2:
             mensaje_id=sanitize_for_cp1252(headers.get("Message-ID", file_path.stem)),
             classification=knn_result["classification"],
             confidence=knn_result["confidence"],
-            reporter_email=self.extract_email_from_address(headers.get("To", "")),
+            reporter_email=to_email,
             original_subject=sanitize_for_cp1252(headers.get("Subject", "N/A")),
-            original_from=sanitize_for_cp1252(self.extract_email_from_address(headers.get("From", ""))),
+            original_from=sanitize_for_cp1252(from_email),
             reply_to=sanitize_for_cp1252(self.analyzer.extract_reply_to(headers) or ""),
             sender_ip=sender_ip,
             ip_reputation=ip_rep,
