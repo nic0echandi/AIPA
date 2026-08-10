@@ -615,10 +615,14 @@ class SuperAgent2:
         # 3. Whitelist check
         if self.analyzer.check_whitelist(from_email):
             log.info(f"Whitelist match: {from_email} [LEGIT]")
-            analysis = self.analyzer.analyze_txt_file(str(file_path))
-            # Registrar estadística: whitelist
-            self.stats.record_case("legitimo", "whitelist")
-            self._handle_result(file_path, analysis)
+            # Construir el análisis con el from_email/to_email ya resueltos (con
+            # fallback_domain) en lugar de volver a llamar a analyze_txt_file(), que
+            # re-extrae el From crudo de los headers (p.ej. 'MMALARMA' o un DN LDAP
+            # sin '@') y por lo tanto su check_whitelist interno siempre falla,
+            # haciendo caer el análisis al pipeline LLM completo y devolviendo SPAM
+            # pese al match de whitelist ya confirmado aquí.
+            analysis = self._build_whitelist_analysis(file_path, parsed, from_email, to_email)
+            self._handle_result(file_path, analysis, classification_source="whitelist")
             return
         
         # 4. KNN rápido
@@ -692,6 +696,40 @@ class SuperAgent2:
             ]
         )
     
+    def _build_whitelist_analysis(
+        self, file_path: Path, parsed: Dict, from_email: str, to_email: str
+    ) -> EmailAnalysis:
+        """Construye EmailAnalysis para un remitente en whitelist, con indicadores reales
+        pero sin re-parsear el From crudo (ver comentario en el llamador)."""
+        headers = parsed["headers"]
+        content = parsed["raw_content"]
+        microsoft_urls = parsed["microsoft_urls"]
+
+        auth = self.analyzer.check_authentication(headers)
+        urls = self.analyzer.extract_urls_from_content(content)[:10]
+        sender_ip = self.analyzer.extract_sender_ip(headers)
+        ip_rep = self.analyzer.check_ip_reputation(sender_ip)
+
+        return EmailAnalysis(
+            mensaje_id=sanitize_for_cp1252(headers.get("Message-ID", file_path.stem)),
+            classification="legitimo",
+            confidence=1.0,
+            reporter_email=to_email,
+            original_subject=sanitize_for_cp1252(headers.get("Subject", "N/A")),
+            original_from=sanitize_for_cp1252(from_email),
+            reply_to=sanitize_for_cp1252(self.analyzer.extract_reply_to(headers) or ""),
+            sender_ip=sender_ip,
+            ip_reputation=ip_rep,
+            analysis_date=datetime.now().isoformat(),
+            indicators=auth,
+            headers_raw=sanitize_for_cp1252(str(headers)),
+            body_preview=sanitize_for_cp1252(content[:500]),
+            urls_found=urls,
+            microsoft_url_check=microsoft_urls,
+            risk_score=0,
+            reasons=["Dominio en whitelist — clasificado automáticamente como legítimo"]
+        )
+
     def _build_campaign_analysis(
         self, file_path: Path, parsed: Dict, from_email: str, to_email: str
     ) -> EmailAnalysis:
