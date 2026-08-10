@@ -693,7 +693,8 @@ class SuperAgent2:
             risk_score=risk_score,
             reasons=reasons + [
                 f"KNN features activas: {', '.join(active_features[:8])}"
-            ]
+            ],
+            subject_phishing=sanitize_for_cp1252(headers.get("SubjectPhishing", ""))
         )
     
     def _build_whitelist_analysis(
@@ -727,7 +728,8 @@ class SuperAgent2:
             urls_found=urls,
             microsoft_url_check=microsoft_urls,
             risk_score=0,
-            reasons=["Dominio en whitelist — clasificado automáticamente como legítimo"]
+            reasons=["Dominio en whitelist — clasificado automáticamente como legítimo"],
+            subject_phishing=sanitize_for_cp1252(headers.get("SubjectPhishing", ""))
         )
 
     def _build_campaign_analysis(
@@ -755,7 +757,8 @@ class SuperAgent2:
             urls_found=[],
             microsoft_url_check=microsoft_urls,
             risk_score=0,
-            reasons=["Remitente identificado en campaign_senders.txt — simulacro de Phishing"]
+            reasons=["Remitente identificado en campaign_senders.txt — simulacro de Phishing"],
+            subject_phishing=sanitize_for_cp1252(headers.get("SubjectPhishing", ""))
         )
     
     # ========================================================================
@@ -795,6 +798,10 @@ class SuperAgent2:
         # Registrar estadística (incluir feedback si fue KNN)
         self.stats.record_case(classification, classification_source, knn_was_correct if classification_source == "knn" else None)
         
+        # Nombre con el que quedará en processed/<clasificación>/, calculado una sola
+        # vez para que coincida entre la alerta de IRIS y el archivo movido al final
+        processed_name = f"{datetime.now().strftime('%Y%m%d_%H%M%S')}_{file_path.name}"
+        
         # ✨ MEJORA ETAPA 1: Validación LLM antes de actuar
         if classification_source == "llm":
             llm_result = {
@@ -825,7 +832,7 @@ class SuperAgent2:
         
         if classification == "sospechoso":
             log.info("[IRIS] Registrando alerta en IRIS...")
-            self._register_alert_in_iris(analysis)
+            self._register_alert_in_iris(analysis, processed_name)
             self._notify_reporter(analysis, "sospechoso")
             self._update_knn(analysis, knn_result)
         
@@ -842,9 +849,9 @@ class SuperAgent2:
             log.info("[LEGIT] Email clasificado como LEGÍTIMO")
             self._notify_reporter(analysis, "legitimo")
         
-        self._move_to_processed(file_path, classification)
+        self._move_to_processed(file_path, classification, processed_name)
     
-    def _register_alert_in_iris(self, analysis: EmailAnalysis):
+    def _register_alert_in_iris(self, analysis: EmailAnalysis, processed_name: str):
         """Registra alerta en IRIS usando endpoint /alerts/add (en thread separado)."""
         iris_cfg = self.config.get("iris_dfir", {})
         url = iris_cfg.get("url", "")
@@ -858,13 +865,13 @@ class SuperAgent2:
         # Ejecutar en thread separado para no bloquear
         thread = threading.Thread(
             target=self._iris_post_worker,
-            args=(url, api_key, customer_id, analysis),
+            args=(url, api_key, customer_id, analysis, processed_name),
             daemon=True,
             name=f"iris-{analysis.mensaje_id[:8]}"
         )
         thread.start()
     
-    def _iris_post_worker(self, url: str, api_key: str, customer_id: int, analysis: EmailAnalysis):
+    def _iris_post_worker(self, url: str, api_key: str, customer_id: int, analysis: EmailAnalysis, processed_name: str):
         """Worker thread que envía alertas a IRIS con reintentos."""
         import requests
         from datetime import datetime
@@ -911,6 +918,9 @@ class SuperAgent2:
                 "spf": sanitize_for_iris(analysis.indicators.get("spf", "unknown")),
                 "dkim": sanitize_for_iris(analysis.indicators.get("dkim", "unknown")),
                 "dmarc": sanitize_for_iris(analysis.indicators.get("dmarc", "unknown")),
+                # Campo de referencia para el SOC (no participa del an\u00e1lisis/clasificaci\u00f3n)
+                "SubjectPhishing": sanitize_for_iris(analysis.subject_phishing or "N/A"),
+                "processed_name": sanitize_for_iris(processed_name),
             }
         }
         
@@ -1040,13 +1050,13 @@ class SuperAgent2:
             exc_str = str(exc).encode('cp1252', errors='replace').decode('cp1252')
             log.error(f"[ERROR] Error enviando email a {to_addr}: {exc_str}")
     
-    def _move_to_processed(self, file_path: Path, classification: str):
+    def _move_to_processed(self, file_path: Path, classification: str, dest_name: Optional[str] = None):
         """Mueve archivo a processed/<clasificación>/."""
         dest_dir = self.processed_dir / classification
         dest_dir.mkdir(parents=True, exist_ok=True)
         
-        ts = datetime.now().strftime("%Y%m%d_%H%M%S")
-        dest_name = f"{ts}_{file_path.name}"
+        if dest_name is None:
+            dest_name = f"{datetime.now().strftime('%Y%m%d_%H%M%S')}_{file_path.name}"
         dest_path = dest_dir / dest_name
         
         try:
