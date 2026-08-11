@@ -471,11 +471,30 @@ class PhishingAnalyzerTXT:
         headers: Dict[str, str] = {}
         html_body = ""
         in_html_body = False
+        in_metadata = False
         html_body_lines: List[str] = []
+        metadata_lines: List[str] = []
         
         lines = content.split("\n")
         
         for i, line in enumerate(lines):
+            # El campo "Metadata" (con los headers RFC 5322 originales: Received,
+            # authentication-results, received-spf, dkim-signature, etc.) aparece
+            # DESPUÉS de HTMLBody y no está indentado, a diferencia del contenido
+            # HTML envuelto por PowerShell. Debe detectarse aunque estemos dentro
+            # de HTMLBody, si no se pierde toda la info de SPF/DKIM/DMARC.
+            if not in_metadata and re.match(r"^Metadata\s*:", line):
+                in_metadata = True
+                in_html_body = False
+                parts = line.split(":", 1)
+                if len(parts) > 1:
+                    metadata_lines.append(parts[1].strip())
+                continue
+            
+            if in_metadata:
+                metadata_lines.append(line)
+                continue
+            
             # Una vez que encontramos HTMLBody, todo lo que sigue es contenido
             if not in_html_body and line.strip().startswith("HTMLBody"):
                 in_html_body = True
@@ -500,6 +519,34 @@ class PhishingAnalyzerTXT:
         # Unir el HTMLBody multilinea
         html_body = "\n".join(html_body_lines).strip()
         
+        # Reconstruir los headers RFC 5322 embebidos en "Metadata" (el texto viene
+        # envuelto por PowerShell, sin saltos de línea en los límites de header)
+        # para poder recuperar authentication-results / received-spf.
+        auth_results = ""
+        received_spf = ""
+        if metadata_lines:
+            metadata_blob = " ".join(l.strip() for l in metadata_lines if l.strip())
+            metadata_headers_list = [
+                'Received:', 'From:', 'To:', 'Subject:', 'Date:', 'Message-ID:',
+                'Content-Type:', 'Content-Transfer-Encoding:', 'Thread-Topic:',
+                'Thread-Index:', 'Content-Language:', 'MIME-Version:', 'X-MS-', 'x-ms-',
+                'dkim-signature:', 'received-spf:', 'authentication-results:',
+                'arc-seal:', 'arc-message-signature:', 'arc-authentication-results:',
+            ]
+            for keyword in metadata_headers_list:
+                metadata_blob = re.sub(
+                    rf'(\S)\s+({re.escape(keyword)})', r'\1\n\2', metadata_blob
+                )
+            metadata_headers: Dict[str, str] = {}
+            for meta_line in metadata_blob.split("\n"):
+                if ":" in meta_line:
+                    m_key, m_value = meta_line.split(":", 1)
+                    m_key = m_key.strip().lower()
+                    if m_key and m_key not in metadata_headers:
+                        metadata_headers[m_key] = m_value.strip()
+            auth_results = metadata_headers.get("authentication-results", "")
+            received_spf = metadata_headers.get("received-spf", "")
+        
         # Mapear los campos del nuevo formato al formato esperado por el resto del código
         normalized_headers = {
             "From": headers.get("SenderEmailAddress", ""),
@@ -509,6 +556,8 @@ class PhishingAnalyzerTXT:
             "Date": headers.get("ReceivedTime", ""),
             "SenderName": headers.get("SenderName", ""),
             "Message-ID": self._generate_message_id(txt_path),
+            "authentication-results": auth_results,
+            "received-spf": received_spf,
         }
         
         # Detectar si este archivo está confirmado como phishing (comienza con "_")
