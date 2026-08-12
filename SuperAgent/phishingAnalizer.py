@@ -524,6 +524,7 @@ class PhishingAnalyzerTXT:
         # para poder recuperar authentication-results / received-spf.
         auth_results = ""
         received_spf = ""
+        raw_from = ""
         if metadata_lines:
             metadata_blob = " ".join(l.strip() for l in metadata_lines if l.strip())
             metadata_headers_list = [
@@ -546,10 +547,21 @@ class PhishingAnalyzerTXT:
                         metadata_headers[m_key] = m_value.strip()
             auth_results = metadata_headers.get("authentication-results", "")
             received_spf = metadata_headers.get("received-spf", "")
+            raw_from = metadata_headers.get("from", "")
+        
+        # SenderEmailAddress puede venir como un DN de Exchange (remitente externo
+        # resuelto contra un contacto del GAL, p.ej. proveedores de simulacros de
+        # Phishing dados de alta como mail contact) sin dirección SMTP embebida.
+        # En ese caso el "From:" crudo del Metadata sí trae la dirección real, ya
+        # que el mensaje cruzó SMTP externo — sin este fallback, check_campaign_sender()
+        # nunca puede matchear el dominio real del remitente.
+        sender_email_address = headers.get("SenderEmailAddress", "")
+        if sender_email_address.startswith("/O=") and "@" not in sender_email_address and raw_from:
+            sender_email_address = raw_from
         
         # Mapear los campos del nuevo formato al formato esperado por el resto del código
         normalized_headers = {
-            "From": headers.get("SenderEmailAddress", ""),
+            "From": sender_email_address,
             "To": headers.get("To", ""),
             "Subject": headers.get("Subject", ""),
             "SubjectPhishing": headers.get("SubjectPhishing", ""),
