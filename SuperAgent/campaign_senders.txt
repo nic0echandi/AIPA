@@ -11,3 +11,7 @@
 # Ejemplo:
 # simulacro@proveedor-phishing.com
 # campanias.simulacro.com
+
+# Martes 11/08/2026
+protection-365.com
+update-credentials.com

@@ -16,6 +16,44 @@
         "correct": 3,
         "incorrect": 2
       }
+    },
+    "08": {
+      "total": 437,
+      "by_classification": {
+        "legitimo": 298,
+        "spam": 91,
+        "sospechoso": 38,
+        "campana": 10
+      },
+      "by_source": {
+        "whitelist": 294,
+        "knn": 38,
+        "llm": 95,
+        "campaign": 10
+      },
+      "knn_accuracy": {
+        "correct": 38,
+        "incorrect": 0
+      }
+    },
+    "09": {
+      "total": 1497,
+      "by_classification": {
+        "legitimo": 94,
+        "spam": 99,
+        "sospechoso": 61,
+        "campana": 1243
+      },
+      "by_source": {
+        "whitelist": 99,
+        "knn": 120,
+        "llm": 35,
+        "campaign": 1243
+      },
+      "knn_accuracy": {
+        "correct": 120,
+        "incorrect": 0
+      }
     }
   }
 }
