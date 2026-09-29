@@ -1,0 +1,753 @@
+{
+  "total_examples": 327,
+  "by_label": {
+    "legitimo": 7,
+    "spam": 5,
+    "sospechoso": 315
+  },
+  "training_count": 0,
+  "accuracy_history": [],
+  "threshold_adjustments": [
+    {
+      "date": "2026-07-13T14:09:58.972509",
+      "from": 0.85,
+      "to": 0.95,
+      "training_size": 24
+    },
+    {
+      "date": "2026-07-13T21:29:45.829769",
+      "from": 0.85,
+      "to": 0.95,
+      "training_size": 24
+    },
+    {
+      "date": "2026-07-13T22:19:30.532696",
+      "from": 0.85,
+      "to": 0.95,
+      "training_size": 24
+    },
+    {
+      "date": "2026-07-13T22:32:02.406162",
+      "from": 0.85,
+      "to": 0.95,
+      "training_size": 24
+    },
+    {
+      "date": "2026-07-13T22:36:14.931544",
+      "from": 0.85,
+      "to": 0.95,
+      "training_size": 24
+    },
+    {
+      "date": "2026-07-13T22:44:23.759904",
+      "from": 0.85,
+      "to": 0.95,
+      "training_size": 24
+    },
+    {
+      "date": "2026-07-13T23:02:47.496973",
+      "from": 0.85,
+      "to": 0.95,
+      "training_size": 24
+    },
+    {
+      "date": "2026-07-13T23:10:58.660309",
+      "from": 0.85,
+      "to": 0.95,
+      "training_size": 24
+    },
+    {
+      "date": "2026-07-13T23:23:58.205573",
+      "from": 0.85,
+      "to": 0.95,
+      "training_size": 24
+    },
+    {
+      "date": "2026-07-13T23:45:03.552023",
+      "from": 0.85,
+      "to": 0.95,
+      "training_size": 24
+    },
+    {
+      "date": "2026-07-14T00:09:17.954451",
+      "from": 0.85,
+      "to": 0.95,
+      "training_size": 24
+    },
+    {
+      "date": "2026-07-18T23:15:09.327982",
+      "from": 0.85,
+      "to": 0.95,
+      "training_size": 24
+    },
+    {
+      "date": "2026-07-18T23:20:05.129807",
+      "from": 0.85,
+      "to": 0.95,
+      "training_size": 24
+    },
+    {
+      "date": "2026-07-27T11:35:38.686917",
+      "from": 0.9,
+      "to": 0.95,
+      "training_size": 24
+    },
+    {
+      "date": "2026-07-27T11:35:38.696755",
+      "from": 0.9,
+      "to": 0.75,
+      "training_size": 327
+    },
+    {
+      "timestamp": "2026-07-27T11:35:38.696987",
+      "old_threshold": 0.75,
+      "new_threshold": 0.65,
+      "reason": "Auto-adjusted based on 327 training examples"
+    },
+    {
+      "date": "2026-07-30T12:29:43.134974",
+      "from": 0.85,
+      "to": 0.75,
+      "training_size": 327
+    },
+    {
+      "date": "2026-08-11T09:05:21.537640",
+      "from": 0.85,
+      "to": 0.75,
+      "training_size": 327
+    },
+    {
+      "date": "2026-08-12T10:12:53.325680",
+      "from": 0.85,
+      "to": 0.75,
+      "training_size": 327
+    },
+    {
+      "date": "2026-08-15T23:18:43.252188",
+      "from": 0.85,
+      "to": 0.75,
+      "training_size": 327
+    },
+    {
+      "date": "2026-08-22T23:47:39.473829",
+      "from": 0.85,
+      "to": 0.75,
+      "training_size": 327
+    },
+    {
+      "date": "2026-09-13T00:38:45.051688",
+      "from": 0.85,
+      "to": 0.75,
+      "training_size": 327
+    }
+  ],
+  "last_retrain": "2026-07-27T11:35:38.689588",
+  "class_weights": {
+    "0": 1.0,
+    "1": 1.5,
+    "2": 3.0
+  },
+  "feedback_history": [
+    {
+      "date": "2026-09-22T14:01:18.749571",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:01:20.900806",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:01:23.051968",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:01:25.204811",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:01:27.353868",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:01:29.518601",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:01:31.684309",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:01:33.838077",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:01:35.994093",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:01:38.132191",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:01:40.304525",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:01:42.456967",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:01:44.603209",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:01:48.875659",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:01:51.018704",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:01:53.167389",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:01:55.314091",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:01:57.456636",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:01:59.607969",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:01.749981",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:03.920572",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:06.063300",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:08.232743",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:10.373118",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:12.536477",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:14.704496",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:16.850985",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:19.019612",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:21.186179",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:23.328482",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:25.495542",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:27.643196",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:29.789149",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:31.929584",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:34.074855",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:36.232503",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:38.373980",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:40.519273",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:42.682049",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:44.834836",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:46.972611",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:49.119081",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:51.259897",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:53.419788",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:55.571728",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:57.711824",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:02:59.848704",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:03:04.112897",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:03:06.258858",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:03:08.406399",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:03:10.557141",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:03:12.720677",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:03:14.878288",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:03:17.018711",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:03:19.166019",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:03:21.327221",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:03:23.469319",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:03:27.755594",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:03:29.898648",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:03:32.053406",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:03:34.221319",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:03:36.367155",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:03:38.552548",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:03:40.706050",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:03:42.865612",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:03:45.020420",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:03:47.171573",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:03:49.312308",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:03:51.478030",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:03:53.626572",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:03:55.783196",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:03:57.928419",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:00.066379",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:02.220952",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:04.390774",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:06.561964",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:08.705238",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:10.850094",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:12.987707",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:15.139349",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:17.285071",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:19.436815",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:21.600854",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:23.760093",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:25.914698",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:28.058247",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:30.209458",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:32.353398",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:34.513621",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:36.657499",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:38.807055",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:40.982170",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:43.123293",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:45.268234",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:47.403970",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:49.567595",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:51.720799",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:53.874882",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:56.021120",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    },
+    {
+      "date": "2026-09-22T14:04:58.164018",
+      "predicted": "sospechoso",
+      "actual": "spam",
+      "correct": false
+    }
+  ],
+  "current_confidence_threshold": 0.65
+}
