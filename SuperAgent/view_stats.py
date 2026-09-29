@@ -40,7 +40,7 @@ def print_month_summary(stats_obj, year, month):
         return
     
     print("Clasificación de emails:")
-    for cls in ["legitimo", "spam", "sospechoso"]:
+    for cls in ["legitimo", "spam", "sospechoso", "campana"]:
         count = summary['by_classification'].get(cls, 0)
         pct = summary['by_classification_pct'].get(cls, 0)
         bar = "█" * int(pct / 5) + "░" * (20 - int(pct / 5))
@@ -48,7 +48,7 @@ def print_month_summary(stats_obj, year, month):
     
     print()
     print("Decisiones por:")
-    for src in ["whitelist", "knn", "llm"]:
+    for src in ["whitelist", "knn", "llm", "campaign"]:
         count = summary['by_source'].get(src, 0)
         pct = summary['by_source_pct'].get(src, 0)
         bar = "█" * int(pct / 5) + "░" * (20 - int(pct / 5))
@@ -87,14 +87,14 @@ def print_year_summary(stats_obj, year):
         return
     
     print("Resumen por clasificación:")
-    for cls in ["legitimo", "spam", "sospechoso"]:
+    for cls in ["legitimo", "spam", "sospechoso", "campana"]:
         count = summary['by_classification'].get(cls, 0)
         pct = summary['by_classification_pct'].get(cls, 0)
         print(f"  {cls:12} {count:6} ({pct:5.1f}%)")
     
     print()
     print("Resumen por decisión:")
-    for src in ["whitelist", "knn", "llm"]:
+    for src in ["whitelist", "knn", "llm", "campaign"]:
         count = summary['by_source'].get(src, 0)
         pct = summary['by_source_pct'].get(src, 0)
         print(f"  {src:12} {count:6} ({pct:5.1f}%)")
