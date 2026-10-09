@@ -2,9 +2,13 @@ ingress/*.txt
 suspect/*.txt
 testing/*.zip
 *.zip
-agent/whitelist.txt
 testing/*.log
 testing/test_log.txt
 testing/phishing_analyzer.log
 revisar/*.*
 SuperAgent/manual_review/*.*
+*.log
+SuperAgent/logs/*.*
+SuperAgent/*.log
+SuperAgent/*.txt
+SuperAgent/*.csv
